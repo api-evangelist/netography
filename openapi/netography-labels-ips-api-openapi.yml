@@ -1,0 +1,1853 @@
+openapi: 3.0.0
+info:
+  title: Netography (Vectra Fusion) Analytics Labels - IPs API
+  version: '1.0'
+  description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
+  x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
+  x-apievangelist-method: searched
+  x-apievangelist-generated: '2026-07-20'
+servers:
+- url: https://api.netography.com
+  description: Netography API
+tags:
+- name: Labels - IPs
+paths:
+  /api/v1/labels/ips:
+    get:
+      operationId: v1_labels_ips_get
+      summary: List IP Labels
+      description: Returns an array of ip labels.
+      tags:
+      - Labels - IPs
+      responses:
+        '200':
+          description: List of IP Labels Requested
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      allOf:
+                      - description: IP Label Create Config.
+                        type: object
+                        required:
+                        - ip
+                        - context
+                        - labels
+                        additionalProperties: false
+                        properties:
+                          ip:
+                            description: IP address
+                            type: string
+                          context:
+                            description: IP label context.  default context is 'name'.
+                            type: string
+                          labels:
+                            description: Array containing the IP labels.
+                            type: array
+                            minItems: 1
+                            maxItems: 10000
+                            items:
+                              type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    post:
+      operationId: v1_labels_ips_post
+      summary: Create IP Label
+      description: Creates a IP label from the data that's been supplied
+      requestBody:
+        description: IP label to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              description: IP Label Create Config.
+              type: object
+              required:
+              - ip
+              - context
+              - labels
+              additionalProperties: false
+              properties:
+                ip:
+                  description: IP address
+                  type: string
+                context:
+                  description: IP label context.  default context is 'name'.
+                  type: string
+                labels:
+                  description: Array containing the IP labels.
+                  type: array
+                  minItems: 1
+                  maxItems: 10000
+                  items:
+                    type: string
+      tags:
+      - Labels - IPs
+      responses:
+        '201':
+          description: IP Label Requested
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: IP Label Create Config.
+                    type: object
+                    required:
+                    - ip
+                    - context
+                    - labels
+                    additionalProperties: false
+                    properties:
+                      ip:
+                        description: IP address
+                        type: string
+                      context:
+                        description: IP label context.  default context is 'name'.
+                        type: string
+                      labels:
+                        description: Array containing the IP labels.
+                        type: array
+                        minItems: 1
+                        maxItems: 10000
+                        items:
+                          type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    put:
+      operationId: v1_labels_ips_put
+      summary: Update IP Label
+      description: Update an IP Label given the provided object. This does not do a diff. You must send the complete object.
+      requestBody:
+        description: IP Label to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              description: IP Label Create Config.
+              type: object
+              required:
+              - ip
+              - context
+              - labels
+              additionalProperties: false
+              properties:
+                ip:
+                  description: IP address
+                  type: string
+                context:
+                  description: IP label context.  default context is 'name'.
+                  type: string
+                labels:
+                  description: Array containing the IP labels.
+                  type: array
+                  minItems: 1
+                  maxItems: 10000
+                  items:
+                    type: string
+      tags:
+      - Labels - IPs
+      responses:
+        '200':
+          description: IP Label Requested
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: IP Label Create Config.
+                    type: object
+                    required:
+                    - ip
+                    - context
+                    - labels
+                    additionalProperties: false
+                    properties:
+                      ip:
+                        description: IP address
+                        type: string
+                      context:
+                        description: IP label context.  default context is 'name'.
+                        type: string
+                      labels:
+                        description: Array containing the IP labels.
+                        type: array
+                        minItems: 1
+                        maxItems: 10000
+                        items:
+                          type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/labels/ips/all/{context}:
+    get:
+      operationId: v1_labels_ips_all_context_get
+      summary: List IP Labels by context
+      description: Fetches all labels by a specific context for all IPs.
+      tags:
+      - Labels - IPs
+      parameters:
+      - name: context
+        in: path
+        required: true
+        description: The context of the IP labels to be returned.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: IP Label Requested
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: IP Label Create Config.
+                    type: object
+                    required:
+                    - ip
+                    - context
+                    - labels
+                    additionalProperties: false
+                    properties:
+                      ip:
+                        description: IP address
+                        type: string
+                      context:
+                        description: IP label context.  default context is 'name'.
+                        type: string
+                      labels:
+                        description: Array containing the IP labels.
+                        type: array
+                        minItems: 1
+                        maxItems: 10000
+                        items:
+                          type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/labels/ips/{ip}:
+    get:
+      operationId: v1_labels_ips_ip_get
+      summary: List IP Labels by ip
+      description: Fetches a all IP labels for the IP address supplied in the path.
+      tags:
+      - Labels - IPs
+      parameters:
+      - name: ip
+        in: path
+        required: true
+        description: The IP Address of the IP labels to be returned.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: IP Label Requested
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: IP Label Create Config.
+                    type: object
+                    required:
+                    - ip
+                    - context
+                    - labels
+                    additionalProperties: false
+                    properties:
+                      ip:
+                        description: IP address
+                        type: string
+                      context:
+                        description: IP label context.  default context is 'name'.
+                        type: string
+                      labels:
+                        description: Array containing the IP labels.
+                        type: array
+                        minItems: 1
+                        maxItems: 10000
+                        items:
+                          type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/labels/ips/{ip}/{context}:
+    get:
+      operationId: v1_labels_ips_ip_context_get
+      summary: List IP Labels by ip:context
+      description: Fetches a specific IP label from the IP supplied in the path.
+      tags:
+      - Labels - IPs
+      parameters:
+      - name: ip
+        in: path
+        required: true
+        description: The IP Address of the IP labels to be returned.
+        schema:
+          type: string
+      - name: context
+        in: path
+        required: true
+        description: The context of the IP labels.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: IP Label Requested
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: IP Label Create Config.
+                    type: object
+                    required:
+                    - ip
+                    - context
+                    - labels
+                    additionalProperties: false
+                    properties:
+                      ip:
+                        description: IP address
+                        type: string
+                      context:
+                        description: IP label context.  default context is 'name'.
+                        type: string
+                      labels:
+                        description: Array containing the IP labels.
+                        type: array
+                        minItems: 1
+                        maxItems: 10000
+                        items:
+                          type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    delete:
+      operationId: v1_labels_ips_ip_context_delete
+      summary: Delete IP labels by ip:context
+      description: Removes all the labels for the provided context.
+      tags:
+      - Labels - IPs
+      parameters:
+      - name: ip
+        in: path
+        required: true
+        description: The IP of the IP label to be deleted.
+        schema:
+          type: string
+      - name: context
+        in: path
+        required: true
+        description: The context of the IP label to be deleted.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: An empty array
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/labels/ips/bulk:
+    put:
+      operationId: v1_labels_ips_bulk_put
+      summary: Bulk Create/Update IP Labels
+      description: "Bulk create/update IP labels.  \nNew labels will be created, and existing labels will be replaced.    \nLimited to 10,000 labels per request.  \n**Note: the API path has changed from previous versions**\n"
+      requestBody:
+        description: Array of IP labels to be uploaded
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              maxItems: 10000
+              items:
+                description: IP Label Create Config.
+                type: object
+                required:
+                - ip
+                - context
+                - labels
+                additionalProperties: false
+                properties:
+                  ip:
+                    description: IP address
+                    type: string
+                  context:
+                    description: IP label context.  default context is 'name'.
+                    type: string
+                  labels:
+                    description: Array containing the IP labels.
+                    type: array
+                    minItems: 1
+                    maxItems: 10000
+                    items:
+                      type: string
+      tags:
+      - Labels - IPs
+      responses:
+        '201':
+          description: Result of IP Labels bulk upload
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      allOf:
+                      - description: IP Label Create Config.
+                        type: object
+                        required:
+                        - ip
+                        - context
+                        - labels
+                        additionalProperties: false
+                        properties:
+                          ip:
+                            description: IP address
+                            type: string
+                          context:
+                            description: IP label context.  default context is 'name'.
+                            type: string
+                          labels:
+                            description: Array containing the IP labels.
+                            type: array
+                            minItems: 1
+                            maxItems: 10000
+                            items:
+                              type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    delete:
+      operationId: v1_labels_ips_bulk_delete
+      summary: Bulk Delete IP Labels
+      description: Bulk delete IP labels from the data that's been supplied.
+      requestBody:
+        description: IP labels to be deleted
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              maxItems: 10000
+              items:
+                description: Delete IP Labels via ip or context or both.   One of ip or context is required.  Both may be provided as well.
+                type: object
+                required:
+                - ip
+                - context
+                additionalProperties: false
+                properties:
+                  ip:
+                    description: IP address.
+                    type: string
+                  context:
+                    description: IP label context.  Default context is 'name'. Optional if ip is provided.
+                    type: string
+      tags:
+      - Labels - IPs
+      responses:
+        '200':
+          description: Result of IP Labels bulk upload
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      allOf:
+                      - description: IP Label Create Config.
+                        type: object
+                        required:
+                        - ip
+                        - context
+                        - labels
+                        additionalProperties: false
+                        properties:
+                          ip:
+                            description: IP address
+                            type: string
+                          context:
+                            description: IP label context.  default context is 'name'.
+                            type: string
+                          labels:
+                            description: Array containing the IP labels.
+                            type: array
+                            minItems: 1
+                            maxItems: 10000
+                            items:
+                              type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/labels/ips/upload:
+    put:
+      operationId: v1_labels_ips_upload_put
+      summary: Upload IP Labels
+      description: Upload IP labels via a CSV file.  New labels will be created, and existing labels will be replaced. Limited to 10,000 labels per request. <br> The CSV must be a text file and should NOT have any headers.  Multiple labels can be assigned per context by having additional columns.<br> <br> Example CSV:<br> ```IP1, Context1, Label1```<br> ```IP1, Context2, Label1, Label2```<br> ```IP2, Context1, Label3```<br> ```IP2, Context4, Label4, Label5, Label6```<br>
+      requestBody:
+        required: true
+        description: form data body with a `file` key
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - file
+              properties:
+                file:
+                  type: string
+                  format: text
+                  description: The CSV file to upload
+      tags:
+      - Labels - IPs
+      responses:
+        '201':
+          description: Result of IP Labels bulk upload
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      allOf:
+                      - description: IP Label Create Config.
+                        type: object
+                        required:
+                        - ip
+                        - context
+                        - labels
+                        additionalProperties: false
+                        properties:
+                          ip:
+                            description: IP address
+                            type: string
+                          context:
+                            description: IP label context.  default context is 'name'.
+                            type: string
+                          labels:
+                            description: Array containing the IP labels.
+                            type: array
+                            minItems: 1
+                            maxItems: 10000
+                            items:
+                              type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true

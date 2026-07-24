@@ -1,0 +1,367 @@
+openapi: 3.0.0
+info:
+  title: Netography (Vectra Fusion) Analytics MITRE ATT&CK API
+  version: '1.0'
+  description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
+  x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
+  x-apievangelist-method: searched
+  x-apievangelist-generated: '2026-07-20'
+servers:
+- url: https://api.netography.com
+  description: Netography API
+tags:
+- name: MITRE ATT&CK
+paths:
+  /api/v1/mitre/tactics:
+    get:
+      operationId: v1_mitre_tactics_get
+      summary: List MITRE tactics
+      description: Returns an array of MITRE tactics
+      tags:
+      - MITRE ATT&CK
+      responses:
+        '200':
+          description: List of MITRE Tactics with Techniques
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    items:
+                      description: MITRE ATT&CK Tactic Record
+                      type: object
+                      properties:
+                        tactic_name:
+                          type: string
+                        tactic_id:
+                          type: string
+                        techniques:
+                          type: array
+                          items:
+                            description: MITRE ATT&CK Technique Record
+                            type: object
+                            properties:
+                              technique_id:
+                                type: string
+                              technique_name:
+                                type: string
+                              sub_techniques:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    technique_id:
+                                      type: string
+                                    technique_name:
+                                      type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/mitre/tactics/{tactic_id}:
+    get:
+      operationId: v1_mitre_tactic_id_get
+      summary: List MITRE techniques for a given tactic
+      description: Returns an array of MITRE techniques for a given tactic
+      tags:
+      - MITRE ATT&CK
+      parameters:
+      - name: tactic_id
+        in: path
+        required: true
+        description: The ID of the tactic to fetch techniques for
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Techniques for a Specific MITRE Tactic
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    items:
+                      description: MITRE ATT&CK Technique Record
+                      type: object
+                      properties:
+                        technique_id:
+                          type: string
+                        technique_name:
+                          type: string
+                        sub_techniques:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              technique_id:
+                                type: string
+                              technique_name:
+                                type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true

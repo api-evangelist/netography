@@ -1,0 +1,800 @@
+openapi: 3.0.0
+info:
+  title: Netography (Vectra Fusion) Analytics Detect and Respond - Detection Categories API
+  version: '1.0'
+  description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
+  x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
+  x-apievangelist-method: searched
+  x-apievangelist-generated: '2026-07-20'
+servers:
+- url: https://api.netography.com
+  description: Netography API
+tags:
+- name: Detect and Respond - Detection Categories
+paths:
+  /api/v1/rule-engine/categories:
+    get:
+      operationId: v1_detection_categories_get
+      summary: List Detection Categories
+      description: Returns an array of Detection Categories.
+      tags:
+      - Detect and Respond - Detection Categories
+      responses:
+        '200':
+          description: List of Requested Detection Categories
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    items:
+                      allOf:
+                      - description: Detection Category Record
+                        type: object
+                        properties:
+                          description:
+                            description: Detection category description
+                            type: string
+                          name:
+                            description: Detection category name
+                            type: string
+                          system:
+                            description: If true, it's a system detection category
+                            type: boolean
+                          systemdefault:
+                            description: If true, it's a system default detection category
+                            type: boolean
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    delete:
+      operationId: v1_detection_categories_delete
+      summary: Delete All Custom Detection Categories
+      description: Deletes all custom detection categories.
+      tags:
+      - Detect and Respond - Detection Categories
+      responses:
+        '204':
+          description: An empty array
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/rule-engine/category/{name}:
+    get:
+      operationId: v1_detection_category_name_get
+      summary: Fetch Detection Category
+      description: Fetches a specific detection category from the NAME supplied in the path.
+      tags:
+      - Detect and Respond - Detection Categories
+      parameters:
+      - name: name
+        in: path
+        required: true
+        description: The NAME of the detection category to be returned.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Requested Detection Category
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    allOf:
+                    - description: Detection Category Record
+                      type: object
+                      properties:
+                        description:
+                          description: Detection category description
+                          type: string
+                        name:
+                          description: Detection category name
+                          type: string
+                        system:
+                          description: If true, it's a system detection category
+                          type: boolean
+                        systemdefault:
+                          description: If true, it's a system default detection category
+                          type: boolean
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    put:
+      operationId: v1_detection_category_name_put
+      summary: Create or Update Detection Category
+      description: Create or update a detection category given the provided object.
+      tags:
+      - Detect and Respond - Detection Categories
+      requestBody:
+        description: Context creation model to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Detection Category Create or Update Config
+              type: object
+              properties:
+                description:
+                  description: Detection category description
+                  type: string
+      parameters:
+      - name: name
+        in: path
+        required: true
+        description: The NAME of the detection category to be created or updeted.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Requested Detection Category
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    allOf:
+                    - description: Detection Category Record
+                      type: object
+                      properties:
+                        description:
+                          description: Detection category description
+                          type: string
+                        name:
+                          description: Detection category name
+                          type: string
+                        system:
+                          description: If true, it's a system detection category
+                          type: boolean
+                        systemdefault:
+                          description: If true, it's a system default detection category
+                          type: boolean
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    delete:
+      operationId: v1_detection_category_name_delete
+      summary: Delete Detection Model
+      description: Deletes a detection model
+      tags:
+      - Detect and Respond - Detection Categories
+      parameters:
+      - name: name
+        in: path
+        required: true
+        description: The NAME of the detection category to be deleted.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: An empty array
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true

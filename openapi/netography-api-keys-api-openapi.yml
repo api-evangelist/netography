@@ -1,0 +1,1121 @@
+openapi: 3.0.0
+info:
+  title: Netography (Vectra Fusion) Analytics API Keys API
+  version: '1.0'
+  description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
+  x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
+  x-apievangelist-method: searched
+  x-apievangelist-generated: '2026-07-20'
+servers:
+- url: https://api.netography.com
+  description: Netography API
+tags:
+- name: API Keys
+paths:
+  /api/v1/api-keys:
+    get:
+      operationId: v1_api_keys_get
+      summary: List API Keys
+      description: Return a list of all API Keys.
+      tags:
+      - API Keys
+      responses:
+        '200':
+          description: List of Requested API Keys
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    items:
+                      allOf:
+                      - description: API Key Record
+                        type: object
+                        properties:
+                          appname:
+                            type: string
+                            readOnly: true
+                            description: API Key Name
+                          description:
+                            type: string
+                            description: API Key Description
+                          roles:
+                            type: array
+                            maxItems: 1
+                            items:
+                              type: string
+                            description: An array containing strings which include the role name the user should be assigned to.
+                          last_login:
+                            type: number
+                            readOnly: true
+                            description: Unix timestamp of last login
+                          last_ip:
+                            type: string
+                            readOnly: true
+                            description: Last IP address used to login
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    post:
+      operationId: v1_api_keys_post
+      summary: Create API Key
+      description: Create an API Key from the supplied object.
+      requestBody:
+        description: API Key to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+              - description: API Key Create Config
+                type: object
+                required:
+                - appname
+                - roles
+                properties:
+                  appname:
+                    description: API Key Name
+                    type: string
+                  description:
+                    description: API Key Description
+                    type: string
+                  roles:
+                    description: An array containing strings which include the role name the user should be assigned to.
+                    type: array
+                    items:
+                      type: string
+      tags:
+      - API Keys
+      responses:
+        '201':
+          description: Object of a Requested API Key
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    allOf:
+                    - type: object
+                      additionalProperties: false
+                      properties:
+                        appkey:
+                          type: string
+                          readOnly: true
+                          description: The API Key
+                    - description: API Key Record
+                      type: object
+                      properties:
+                        appname:
+                          type: string
+                          readOnly: true
+                          description: API Key Name
+                        description:
+                          type: string
+                          description: API Key Description
+                        roles:
+                          type: array
+                          maxItems: 1
+                          items:
+                            type: string
+                          description: An array containing strings which include the role name the user should be assigned to.
+                        last_login:
+                          type: number
+                          readOnly: true
+                          description: Unix timestamp of last login
+                        last_ip:
+                          type: string
+                          readOnly: true
+                          description: Last IP address used to login
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/api-keys/{appname}:
+    get:
+      operationId: v1_api_keys_appname_get
+      summary: Get API Key
+      description: Fetches a specific API Key from the appname supplied in the path.
+      tags:
+      - API Keys
+      parameters:
+      - in: path
+        name: appname
+        schema:
+          type: string
+        required: true
+        description: String appname of the API Key to get
+      responses:
+        '200':
+          description: Object of a Requested API Key
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    allOf:
+                    - description: API Key Record
+                      type: object
+                      properties:
+                        appname:
+                          type: string
+                          readOnly: true
+                          description: API Key Name
+                        description:
+                          type: string
+                          description: API Key Description
+                        roles:
+                          type: array
+                          maxItems: 1
+                          items:
+                            type: string
+                          description: An array containing strings which include the role name the user should be assigned to.
+                        last_login:
+                          type: number
+                          readOnly: true
+                          description: Unix timestamp of last login
+                        last_ip:
+                          type: string
+                          readOnly: true
+                          description: Last IP address used to login
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    put:
+      operationId: v1_api_keys_appname_put
+      summary: Update API Key
+      description: Update a API Key given the provided object.  This does not do a diff.  You must send the complete object.
+      requestBody:
+        description: API Key to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+              - description: API Key Update Config
+                type: object
+                properties:
+                  description:
+                    description: API Key Description
+                    type: string
+                  roles:
+                    description: An array containing strings which include the role name the user should be assigned to.
+                    type: array
+                    items:
+                      type: string
+      tags:
+      - API Keys
+      parameters:
+      - in: path
+        name: appname
+        schema:
+          type: string
+        required: true
+        description: String appname of the API Key to get
+      responses:
+        '200':
+          description: Object of a Requested API Key
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    allOf:
+                    - description: API Key Record
+                      type: object
+                      properties:
+                        appname:
+                          type: string
+                          readOnly: true
+                          description: API Key Name
+                        description:
+                          type: string
+                          description: API Key Description
+                        roles:
+                          type: array
+                          maxItems: 1
+                          items:
+                            type: string
+                          description: An array containing strings which include the role name the user should be assigned to.
+                        last_login:
+                          type: number
+                          readOnly: true
+                          description: Unix timestamp of last login
+                        last_ip:
+                          type: string
+                          readOnly: true
+                          description: Last IP address used to login
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    delete:
+      operationId: v1_api_keys_appname_delete
+      summary: Delete API Key
+      description: Deletes the API Key
+      tags:
+      - API Keys
+      parameters:
+      - in: path
+        name: appname
+        schema:
+          type: string
+        required: true
+        description: String appname of the API Key to get
+      responses:
+        '204':
+          description: An empty array
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/api-keys/{appname}/regen:
+    put:
+      operationId: v1_api_keys_appname_regen_put
+      summary: Update API Key
+      description: Update a API Key given the provided object.  This does not do a diff.  You must send the complete object.
+      requestBody:
+        description: API Key to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+              - description: API Key Update Config
+                type: object
+                properties:
+                  description:
+                    description: API Key Description
+                    type: string
+                  roles:
+                    description: An array containing strings which include the role name the user should be assigned to.
+                    type: array
+                    items:
+                      type: string
+      tags:
+      - API Keys
+      parameters:
+      - in: path
+        name: appname
+        schema:
+          type: string
+        required: true
+        description: String appname of the API Key to get
+      responses:
+        '200':
+          description: Object of a Requested API Key
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    allOf:
+                    - type: object
+                      additionalProperties: false
+                      properties:
+                        appkey:
+                          type: string
+                          readOnly: true
+                          description: The API Key
+                    - description: API Key Record
+                      type: object
+                      properties:
+                        appname:
+                          type: string
+                          readOnly: true
+                          description: API Key Name
+                        description:
+                          type: string
+                          description: API Key Description
+                        roles:
+                          type: array
+                          maxItems: 1
+                          items:
+                            type: string
+                          description: An array containing strings which include the role name the user should be assigned to.
+                        last_login:
+                          type: number
+                          readOnly: true
+                          description: Unix timestamp of last login
+                        last_ip:
+                          type: string
+                          readOnly: true
+                          description: Last IP address used to login
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true

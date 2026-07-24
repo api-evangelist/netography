@@ -1,0 +1,1756 @@
+openapi: 3.0.0
+info:
+  title: Netography (Vectra Fusion) Analytics Detect and Respond - Response Policies API
+  version: '1.0'
+  description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
+  x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
+  x-apievangelist-method: searched
+  x-apievangelist-generated: '2026-07-20'
+servers:
+- url: https://api.netography.com
+  description: Netography API
+tags:
+- name: Detect and Respond - Response Policies
+paths:
+  /api/v1/rule-engine/rules:
+    get:
+      operationId: v1_response_policies_get
+      summary: List Response Policies
+      description: Returns an array of Response Policies.
+      tags:
+      - Detect and Respond - Response Policies
+      responses:
+        '200':
+          description: List of Requested Response Policies
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    items:
+                      allOf:
+                      - description: Response Policy Record
+                        type: object
+                        allOf:
+                        - type: object
+                          properties:
+                            config:
+                              type: object
+                              properties:
+                                alerttypes:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                    - all
+                                    - start
+                                    - ongoing
+                                    - end
+                                severities:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                    - all
+                                    - low
+                                    - medium
+                                    - high
+                                algorithms:
+                                  type: array
+                                  items:
+                                    type: string
+                                    description: Detection Model (algorithm) name
+                                categories:
+                                  type: array
+                                  items:
+                                    type: string
+                                    description: Detection Category name
+                                tracks:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                    - all
+                                    - dstip
+                                    - flowsrcname
+                                    - input
+                                    - output
+                                    - srcip
+                            description:
+                              type: string
+                            name:
+                              type: string
+                            enabled:
+                              type: boolean
+                            type:
+                              type: string
+                              enum:
+                              - alert
+                        properties:
+                          id:
+                            type: string
+                            description: Response Policy ID
+                          plugins:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                adapter:
+                                  type: string
+                                  description: Plugin type to be used in the response policy
+                                description:
+                                  type: string
+                                  description: Plugin description to be used in the response policy
+                                id:
+                                  type: string
+                                  description: Plugin ID to be used in the response policy
+                                name:
+                                  type: string
+                                  description: Plugin name to be used in the response policy
+                                type:
+                                  type: string
+                                  enum:
+                                  - block
+                                  - dns
+                                  - notification
+                                  - traffic
+                                  description: Plugin type to be used in the response policy
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/rule-engine/rule:
+    post:
+      operationId: v1_response_policy_post
+      summary: Create Response Policy
+      description: Creates a response policy from the data that's been supplied.
+      tags:
+      - Detect and Respond - Response Policies
+      requestBody:
+        description: Response Policy to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Response Policy Create or Update Config
+              type: object
+              required:
+              - name
+              allOf:
+              - type: object
+                properties:
+                  config:
+                    type: object
+                    properties:
+                      alerttypes:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                          - all
+                          - start
+                          - ongoing
+                          - end
+                      severities:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                          - all
+                          - low
+                          - medium
+                          - high
+                      algorithms:
+                        type: array
+                        items:
+                          type: string
+                          description: Detection Model (algorithm) name
+                      categories:
+                        type: array
+                        items:
+                          type: string
+                          description: Detection Category name
+                      tracks:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                          - all
+                          - dstip
+                          - flowsrcname
+                          - input
+                          - output
+                          - srcip
+                  description:
+                    type: string
+                  name:
+                    type: string
+                  enabled:
+                    type: boolean
+                  type:
+                    type: string
+                    enum:
+                    - alert
+              properties:
+                plugins:
+                  type: array
+                  items:
+                    type: string
+                    description: Plugin ID to be used in the response policy
+      responses:
+        '201':
+          description: Requested Response Policy
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1
+                    items:
+                      allOf:
+                      - description: Response Policy Record
+                        type: object
+                        allOf:
+                        - type: object
+                          properties:
+                            config:
+                              type: object
+                              properties:
+                                alerttypes:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                    - all
+                                    - start
+                                    - ongoing
+                                    - end
+                                severities:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                    - all
+                                    - low
+                                    - medium
+                                    - high
+                                algorithms:
+                                  type: array
+                                  items:
+                                    type: string
+                                    description: Detection Model (algorithm) name
+                                categories:
+                                  type: array
+                                  items:
+                                    type: string
+                                    description: Detection Category name
+                                tracks:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                    - all
+                                    - dstip
+                                    - flowsrcname
+                                    - input
+                                    - output
+                                    - srcip
+                            description:
+                              type: string
+                            name:
+                              type: string
+                            enabled:
+                              type: boolean
+                            type:
+                              type: string
+                              enum:
+                              - alert
+                        properties:
+                          id:
+                            type: string
+                            description: Response Policy ID
+                          plugins:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                adapter:
+                                  type: string
+                                  description: Plugin type to be used in the response policy
+                                description:
+                                  type: string
+                                  description: Plugin description to be used in the response policy
+                                id:
+                                  type: string
+                                  description: Plugin ID to be used in the response policy
+                                name:
+                                  type: string
+                                  description: Plugin name to be used in the response policy
+                                type:
+                                  type: string
+                                  enum:
+                                  - block
+                                  - dns
+                                  - notification
+                                  - traffic
+                                  description: Plugin type to be used in the response policy
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/rule-engine/rule/{id}:
+    get:
+      operationId: v1_response_policy_id_get
+      summary: Fetch Response Policy
+      description: Fetches a specific response policy from the ID supplied in the path.
+      tags:
+      - Detect and Respond - Response Policies
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the response policy to be returned.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Requested Response Policy
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1
+                    items:
+                      allOf:
+                      - description: Response Policy Record
+                        type: object
+                        allOf:
+                        - type: object
+                          properties:
+                            config:
+                              type: object
+                              properties:
+                                alerttypes:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                    - all
+                                    - start
+                                    - ongoing
+                                    - end
+                                severities:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                    - all
+                                    - low
+                                    - medium
+                                    - high
+                                algorithms:
+                                  type: array
+                                  items:
+                                    type: string
+                                    description: Detection Model (algorithm) name
+                                categories:
+                                  type: array
+                                  items:
+                                    type: string
+                                    description: Detection Category name
+                                tracks:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                    - all
+                                    - dstip
+                                    - flowsrcname
+                                    - input
+                                    - output
+                                    - srcip
+                            description:
+                              type: string
+                            name:
+                              type: string
+                            enabled:
+                              type: boolean
+                            type:
+                              type: string
+                              enum:
+                              - alert
+                        properties:
+                          id:
+                            type: string
+                            description: Response Policy ID
+                          plugins:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                adapter:
+                                  type: string
+                                  description: Plugin type to be used in the response policy
+                                description:
+                                  type: string
+                                  description: Plugin description to be used in the response policy
+                                id:
+                                  type: string
+                                  description: Plugin ID to be used in the response policy
+                                name:
+                                  type: string
+                                  description: Plugin name to be used in the response policy
+                                type:
+                                  type: string
+                                  enum:
+                                  - block
+                                  - dns
+                                  - notification
+                                  - traffic
+                                  description: Plugin type to be used in the response policy
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    put:
+      operationId: v1_response_policy_id_put
+      summary: Update Response Policy
+      description: Update a response policy given the provided object.  This does not do a diff.  You must send the complete object.
+      tags:
+      - Detect and Respond - Response Policies
+      requestBody:
+        description: Response Policy to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Response Policy Create or Update Config
+              type: object
+              required:
+              - name
+              allOf:
+              - type: object
+                properties:
+                  config:
+                    type: object
+                    properties:
+                      alerttypes:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                          - all
+                          - start
+                          - ongoing
+                          - end
+                      severities:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                          - all
+                          - low
+                          - medium
+                          - high
+                      algorithms:
+                        type: array
+                        items:
+                          type: string
+                          description: Detection Model (algorithm) name
+                      categories:
+                        type: array
+                        items:
+                          type: string
+                          description: Detection Category name
+                      tracks:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                          - all
+                          - dstip
+                          - flowsrcname
+                          - input
+                          - output
+                          - srcip
+                  description:
+                    type: string
+                  name:
+                    type: string
+                  enabled:
+                    type: boolean
+                  type:
+                    type: string
+                    enum:
+                    - alert
+              properties:
+                plugins:
+                  type: array
+                  items:
+                    type: string
+                    description: Plugin ID to be used in the response policy
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the response policy to be updated
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Requested Response Policy
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1
+                    items:
+                      allOf:
+                      - description: Response Policy Record
+                        type: object
+                        allOf:
+                        - type: object
+                          properties:
+                            config:
+                              type: object
+                              properties:
+                                alerttypes:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                    - all
+                                    - start
+                                    - ongoing
+                                    - end
+                                severities:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                    - all
+                                    - low
+                                    - medium
+                                    - high
+                                algorithms:
+                                  type: array
+                                  items:
+                                    type: string
+                                    description: Detection Model (algorithm) name
+                                categories:
+                                  type: array
+                                  items:
+                                    type: string
+                                    description: Detection Category name
+                                tracks:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                    - all
+                                    - dstip
+                                    - flowsrcname
+                                    - input
+                                    - output
+                                    - srcip
+                            description:
+                              type: string
+                            name:
+                              type: string
+                            enabled:
+                              type: boolean
+                            type:
+                              type: string
+                              enum:
+                              - alert
+                        properties:
+                          id:
+                            type: string
+                            description: Response Policy ID
+                          plugins:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                adapter:
+                                  type: string
+                                  description: Plugin type to be used in the response policy
+                                description:
+                                  type: string
+                                  description: Plugin description to be used in the response policy
+                                id:
+                                  type: string
+                                  description: Plugin ID to be used in the response policy
+                                name:
+                                  type: string
+                                  description: Plugin name to be used in the response policy
+                                type:
+                                  type: string
+                                  enum:
+                                  - block
+                                  - dns
+                                  - notification
+                                  - traffic
+                                  description: Plugin type to be used in the response policy
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    delete:
+      operationId: v1_response_policy_id_delete
+      summary: Delete Response Policy
+      description: Deletes a response policy
+      tags:
+      - Detect and Respond - Response Policies
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the response policy to be deleted
+        schema:
+          type: string
+      responses:
+        '204':
+          description: An empty array
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/rule-engine/rule/{id}/enable:
+    put:
+      operationId: v1_response_policy_id_enable_put
+      summary: Enable Response Policy
+      description: Enables a response policy
+      tags:
+      - Detect and Respond - Response Policies
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the response policy to be enabled
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Requested Response Policy
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1
+                    items:
+                      allOf:
+                      - description: Response Policy Record
+                        type: object
+                        allOf:
+                        - type: object
+                          properties:
+                            config:
+                              type: object
+                              properties:
+                                alerttypes:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                    - all
+                                    - start
+                                    - ongoing
+                                    - end
+                                severities:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                    - all
+                                    - low
+                                    - medium
+                                    - high
+                                algorithms:
+                                  type: array
+                                  items:
+                                    type: string
+                                    description: Detection Model (algorithm) name
+                                categories:
+                                  type: array
+                                  items:
+                                    type: string
+                                    description: Detection Category name
+                                tracks:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                    - all
+                                    - dstip
+                                    - flowsrcname
+                                    - input
+                                    - output
+                                    - srcip
+                            description:
+                              type: string
+                            name:
+                              type: string
+                            enabled:
+                              type: boolean
+                            type:
+                              type: string
+                              enum:
+                              - alert
+                        properties:
+                          id:
+                            type: string
+                            description: Response Policy ID
+                          plugins:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                adapter:
+                                  type: string
+                                  description: Plugin type to be used in the response policy
+                                description:
+                                  type: string
+                                  description: Plugin description to be used in the response policy
+                                id:
+                                  type: string
+                                  description: Plugin ID to be used in the response policy
+                                name:
+                                  type: string
+                                  description: Plugin name to be used in the response policy
+                                type:
+                                  type: string
+                                  enum:
+                                  - block
+                                  - dns
+                                  - notification
+                                  - traffic
+                                  description: Plugin type to be used in the response policy
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/rule-engine/rule/{id}/disable:
+    put:
+      operationId: v1_response_policy_id_disable_put
+      summary: Disable Response Policy
+      description: Disables a response policy
+      tags:
+      - Detect and Respond - Response Policies
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the response policy to be disabled
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Requested Response Policy
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1
+                    items:
+                      allOf:
+                      - description: Response Policy Record
+                        type: object
+                        allOf:
+                        - type: object
+                          properties:
+                            config:
+                              type: object
+                              properties:
+                                alerttypes:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                    - all
+                                    - start
+                                    - ongoing
+                                    - end
+                                severities:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                    - all
+                                    - low
+                                    - medium
+                                    - high
+                                algorithms:
+                                  type: array
+                                  items:
+                                    type: string
+                                    description: Detection Model (algorithm) name
+                                categories:
+                                  type: array
+                                  items:
+                                    type: string
+                                    description: Detection Category name
+                                tracks:
+                                  type: array
+                                  items:
+                                    type: string
+                                    enum:
+                                    - all
+                                    - dstip
+                                    - flowsrcname
+                                    - input
+                                    - output
+                                    - srcip
+                            description:
+                              type: string
+                            name:
+                              type: string
+                            enabled:
+                              type: boolean
+                            type:
+                              type: string
+                              enum:
+                              - alert
+                        properties:
+                          id:
+                            type: string
+                            description: Response Policy ID
+                          plugins:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                adapter:
+                                  type: string
+                                  description: Plugin type to be used in the response policy
+                                description:
+                                  type: string
+                                  description: Plugin description to be used in the response policy
+                                id:
+                                  type: string
+                                  description: Plugin ID to be used in the response policy
+                                name:
+                                  type: string
+                                  description: Plugin name to be used in the response policy
+                                type:
+                                  type: string
+                                  enum:
+                                  - block
+                                  - dns
+                                  - notification
+                                  - traffic
+                                  description: Plugin type to be used in the response policy
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true

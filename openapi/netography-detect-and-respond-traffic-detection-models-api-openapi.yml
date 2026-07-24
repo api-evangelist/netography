@@ -1,0 +1,2211 @@
+openapi: 3.0.0
+info:
+  title: Netography (Vectra Fusion) Analytics Detect and Respond - Traffic Detection Models API
+  version: '1.0'
+  description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
+  x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
+  x-apievangelist-method: searched
+  x-apievangelist-generated: '2026-07-20'
+servers:
+- url: https://api.netography.com
+  description: Netography API
+tags:
+- name: Detect and Respond - Traffic Detection Models
+paths:
+  /api/v1/rule-engine/algorithms:
+    get:
+      operationId: v1_traffic_detection_models_get
+      summary: List Traffic Detection Models
+      description: Returns an array of Traffic Detection Models.
+      tags:
+      - Detect and Respond - Traffic Detection Models
+      responses:
+        '200':
+          description: List of Requested Traffic Detection Models
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    items:
+                      allOf:
+                      - description: Traffic Detection Model Record
+                        type: object
+                        allOf:
+                        - type: object
+                          properties:
+                            bypassdisplay:
+                              description: If true, portal and API will not display new events
+                              type: boolean
+                            bypassrule:
+                              description: If true, alerts will not be processed by policies and integrations
+                              type: boolean
+                            categories:
+                              description: Categories for the detection model
+                              type: array
+                              items:
+                                type: string
+                            description:
+                              description: Detection model description
+                              type: string
+                            discards:
+                              description: Discard lists are NQL statements that if matched do not get processed through the event. It enables skipping certain combinations without disabling the detection model
+                              type: array
+                              items:
+                                type: string
+                            enabled:
+                              description: If true, the detection model is enabled
+                              type: boolean
+                            factors:
+                              description: Factors for the detection model
+                              type: array
+                              items:
+                                type: string
+                            name:
+                              description: Name of the detection model
+                              type: string
+                            rollupperiod:
+                              description: The lookback period for the detection model. Min 15 seconds. Max 1 hour (3600)
+                              type: integer
+                            search_by:
+                              description: Search criteria for the detection model
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  search:
+                                    type: array
+                                    items:
+                                      type: string
+                                  type:
+                                    type: string
+                            thresholds:
+                              description: Thresholds for the detection model
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  severity:
+                                    type: string
+                                  threshold:
+                                    type: string
+                            track_by:
+                              description: Tracking criteria for the detection model
+                              type: array
+                              items:
+                                type: array
+                                items:
+                                  type: string
+                            updateinterval:
+                              description: When ongoing updates should be sent. Max 6 hours (21600). 0 for disabled
+                              type: integer
+                            algo_record_type:
+                              description: The context of record to be used for the detection model
+                              type: string
+                              enum:
+                              - flow
+                              - dns
+                        properties:
+                          algo_type:
+                            description: Detection model type
+                            type: string
+                          beta:
+                            description: If true, it's a beta detection model
+                            type: boolean
+                          created:
+                            description: The time at which record was created
+                            type: integer
+                          id:
+                            description: Detection model ID
+                            type: string
+                          recommended:
+                            description: If true, it's a recomended detection model
+                            type: boolean
+                          subscription:
+                            description: Subscription for the detection model
+                            type: object
+                            properties:
+                              all:
+                                type: string
+                          subscriptiontype:
+                            description: Subscription type for the detection model
+                            type: string
+                          system:
+                            description: If true, it's a system detection model
+                            type: boolean
+                          systemdefault:
+                            description: If true, it's a system default detection model
+                            type: boolean
+                          updated:
+                            description: The time at which record was was last updated
+                            type: integer
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/rule-engine/algorithm:
+    post:
+      operationId: v1_traffic_detection_model_post
+      summary: Create Traffic Detection Model
+      description: Creates a traffic detection model from the data that's been supplied.  Do not provide an id.  IDs are auto generated
+      tags:
+      - Detect and Respond - Traffic Detection Models
+      requestBody:
+        description: Traffic Detection Model to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Traffic Detection Model Create or Update Config
+              type: object
+              required:
+              - categories
+              - description
+              - name
+              - rollupperiod
+              - search_by
+              - thresholds
+              - track_by
+              - algo_record_type
+              allOf:
+              - type: object
+                properties:
+                  bypassdisplay:
+                    description: If true, portal and API will not display new events
+                    type: boolean
+                  bypassrule:
+                    description: If true, alerts will not be processed by policies and integrations
+                    type: boolean
+                  categories:
+                    description: Categories for the detection model
+                    type: array
+                    items:
+                      type: string
+                  description:
+                    description: Detection model description
+                    type: string
+                  discards:
+                    description: Discard lists are NQL statements that if matched do not get processed through the event. It enables skipping certain combinations without disabling the detection model
+                    type: array
+                    items:
+                      type: string
+                  enabled:
+                    description: If true, the detection model is enabled
+                    type: boolean
+                  factors:
+                    description: Factors for the detection model
+                    type: array
+                    items:
+                      type: string
+                  name:
+                    description: Name of the detection model
+                    type: string
+                  rollupperiod:
+                    description: The lookback period for the detection model. Min 15 seconds. Max 1 hour (3600)
+                    type: integer
+                  search_by:
+                    description: Search criteria for the detection model
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        search:
+                          type: array
+                          items:
+                            type: string
+                        type:
+                          type: string
+                  thresholds:
+                    description: Thresholds for the detection model
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        severity:
+                          type: string
+                        threshold:
+                          type: string
+                  track_by:
+                    description: Tracking criteria for the detection model
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: string
+                  updateinterval:
+                    description: When ongoing updates should be sent. Max 6 hours (21600). 0 for disabled
+                    type: integer
+                  algo_record_type:
+                    description: The context of record to be used for the detection model
+                    type: string
+                    enum:
+                    - flow
+                    - dns
+      responses:
+        '201':
+          description: Requested Traffic Detection Model
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1
+                    items:
+                      allOf:
+                      - description: Traffic Detection Model Record
+                        type: object
+                        allOf:
+                        - type: object
+                          properties:
+                            bypassdisplay:
+                              description: If true, portal and API will not display new events
+                              type: boolean
+                            bypassrule:
+                              description: If true, alerts will not be processed by policies and integrations
+                              type: boolean
+                            categories:
+                              description: Categories for the detection model
+                              type: array
+                              items:
+                                type: string
+                            description:
+                              description: Detection model description
+                              type: string
+                            discards:
+                              description: Discard lists are NQL statements that if matched do not get processed through the event. It enables skipping certain combinations without disabling the detection model
+                              type: array
+                              items:
+                                type: string
+                            enabled:
+                              description: If true, the detection model is enabled
+                              type: boolean
+                            factors:
+                              description: Factors for the detection model
+                              type: array
+                              items:
+                                type: string
+                            name:
+                              description: Name of the detection model
+                              type: string
+                            rollupperiod:
+                              description: The lookback period for the detection model. Min 15 seconds. Max 1 hour (3600)
+                              type: integer
+                            search_by:
+                              description: Search criteria for the detection model
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  search:
+                                    type: array
+                                    items:
+                                      type: string
+                                  type:
+                                    type: string
+                            thresholds:
+                              description: Thresholds for the detection model
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  severity:
+                                    type: string
+                                  threshold:
+                                    type: string
+                            track_by:
+                              description: Tracking criteria for the detection model
+                              type: array
+                              items:
+                                type: array
+                                items:
+                                  type: string
+                            updateinterval:
+                              description: When ongoing updates should be sent. Max 6 hours (21600). 0 for disabled
+                              type: integer
+                            algo_record_type:
+                              description: The context of record to be used for the detection model
+                              type: string
+                              enum:
+                              - flow
+                              - dns
+                        properties:
+                          algo_type:
+                            description: Detection model type
+                            type: string
+                          beta:
+                            description: If true, it's a beta detection model
+                            type: boolean
+                          created:
+                            description: The time at which record was created
+                            type: integer
+                          id:
+                            description: Detection model ID
+                            type: string
+                          recommended:
+                            description: If true, it's a recomended detection model
+                            type: boolean
+                          subscription:
+                            description: Subscription for the detection model
+                            type: object
+                            properties:
+                              all:
+                                type: string
+                          subscriptiontype:
+                            description: Subscription type for the detection model
+                            type: string
+                          system:
+                            description: If true, it's a system detection model
+                            type: boolean
+                          systemdefault:
+                            description: If true, it's a system default detection model
+                            type: boolean
+                          updated:
+                            description: The time at which record was was last updated
+                            type: integer
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/rule-engine/algorithm/{id}:
+    get:
+      operationId: v1_traffic_detection_model_id_get
+      summary: Fetch Traffic Detection Model
+      description: Fetches a specific traffic detection model from the ID supplied in the path.
+      tags:
+      - Detect and Respond - Traffic Detection Models
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the traffic detection model to be returned.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Requested Traffic Detection Model
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1
+                    items:
+                      allOf:
+                      - description: Traffic Detection Model Record
+                        type: object
+                        allOf:
+                        - type: object
+                          properties:
+                            bypassdisplay:
+                              description: If true, portal and API will not display new events
+                              type: boolean
+                            bypassrule:
+                              description: If true, alerts will not be processed by policies and integrations
+                              type: boolean
+                            categories:
+                              description: Categories for the detection model
+                              type: array
+                              items:
+                                type: string
+                            description:
+                              description: Detection model description
+                              type: string
+                            discards:
+                              description: Discard lists are NQL statements that if matched do not get processed through the event. It enables skipping certain combinations without disabling the detection model
+                              type: array
+                              items:
+                                type: string
+                            enabled:
+                              description: If true, the detection model is enabled
+                              type: boolean
+                            factors:
+                              description: Factors for the detection model
+                              type: array
+                              items:
+                                type: string
+                            name:
+                              description: Name of the detection model
+                              type: string
+                            rollupperiod:
+                              description: The lookback period for the detection model. Min 15 seconds. Max 1 hour (3600)
+                              type: integer
+                            search_by:
+                              description: Search criteria for the detection model
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  search:
+                                    type: array
+                                    items:
+                                      type: string
+                                  type:
+                                    type: string
+                            thresholds:
+                              description: Thresholds for the detection model
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  severity:
+                                    type: string
+                                  threshold:
+                                    type: string
+                            track_by:
+                              description: Tracking criteria for the detection model
+                              type: array
+                              items:
+                                type: array
+                                items:
+                                  type: string
+                            updateinterval:
+                              description: When ongoing updates should be sent. Max 6 hours (21600). 0 for disabled
+                              type: integer
+                            algo_record_type:
+                              description: The context of record to be used for the detection model
+                              type: string
+                              enum:
+                              - flow
+                              - dns
+                        properties:
+                          algo_type:
+                            description: Detection model type
+                            type: string
+                          beta:
+                            description: If true, it's a beta detection model
+                            type: boolean
+                          created:
+                            description: The time at which record was created
+                            type: integer
+                          id:
+                            description: Detection model ID
+                            type: string
+                          recommended:
+                            description: If true, it's a recomended detection model
+                            type: boolean
+                          subscription:
+                            description: Subscription for the detection model
+                            type: object
+                            properties:
+                              all:
+                                type: string
+                          subscriptiontype:
+                            description: Subscription type for the detection model
+                            type: string
+                          system:
+                            description: If true, it's a system detection model
+                            type: boolean
+                          systemdefault:
+                            description: If true, it's a system default detection model
+                            type: boolean
+                          updated:
+                            description: The time at which record was was last updated
+                            type: integer
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    put:
+      operationId: v1_traffic_detection_model_id_put
+      summary: Update Traffic Detection Model
+      description: Update a traffic detection model given the provided object.  This does not do a diff.  You must send the complete object.
+      tags:
+      - Detect and Respond - Traffic Detection Models
+      requestBody:
+        description: Traffic detection model to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Traffic Detection Model Create or Update Config
+              type: object
+              required:
+              - categories
+              - description
+              - name
+              - rollupperiod
+              - search_by
+              - thresholds
+              - track_by
+              - algo_record_type
+              allOf:
+              - type: object
+                properties:
+                  bypassdisplay:
+                    description: If true, portal and API will not display new events
+                    type: boolean
+                  bypassrule:
+                    description: If true, alerts will not be processed by policies and integrations
+                    type: boolean
+                  categories:
+                    description: Categories for the detection model
+                    type: array
+                    items:
+                      type: string
+                  description:
+                    description: Detection model description
+                    type: string
+                  discards:
+                    description: Discard lists are NQL statements that if matched do not get processed through the event. It enables skipping certain combinations without disabling the detection model
+                    type: array
+                    items:
+                      type: string
+                  enabled:
+                    description: If true, the detection model is enabled
+                    type: boolean
+                  factors:
+                    description: Factors for the detection model
+                    type: array
+                    items:
+                      type: string
+                  name:
+                    description: Name of the detection model
+                    type: string
+                  rollupperiod:
+                    description: The lookback period for the detection model. Min 15 seconds. Max 1 hour (3600)
+                    type: integer
+                  search_by:
+                    description: Search criteria for the detection model
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        search:
+                          type: array
+                          items:
+                            type: string
+                        type:
+                          type: string
+                  thresholds:
+                    description: Thresholds for the detection model
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        severity:
+                          type: string
+                        threshold:
+                          type: string
+                  track_by:
+                    description: Tracking criteria for the detection model
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: string
+                  updateinterval:
+                    description: When ongoing updates should be sent. Max 6 hours (21600). 0 for disabled
+                    type: integer
+                  algo_record_type:
+                    description: The context of record to be used for the detection model
+                    type: string
+                    enum:
+                    - flow
+                    - dns
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the traffic detection model to be updated
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Requested Traffic Detection Model
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1
+                    items:
+                      allOf:
+                      - description: Traffic Detection Model Record
+                        type: object
+                        allOf:
+                        - type: object
+                          properties:
+                            bypassdisplay:
+                              description: If true, portal and API will not display new events
+                              type: boolean
+                            bypassrule:
+                              description: If true, alerts will not be processed by policies and integrations
+                              type: boolean
+                            categories:
+                              description: Categories for the detection model
+                              type: array
+                              items:
+                                type: string
+                            description:
+                              description: Detection model description
+                              type: string
+                            discards:
+                              description: Discard lists are NQL statements that if matched do not get processed through the event. It enables skipping certain combinations without disabling the detection model
+                              type: array
+                              items:
+                                type: string
+                            enabled:
+                              description: If true, the detection model is enabled
+                              type: boolean
+                            factors:
+                              description: Factors for the detection model
+                              type: array
+                              items:
+                                type: string
+                            name:
+                              description: Name of the detection model
+                              type: string
+                            rollupperiod:
+                              description: The lookback period for the detection model. Min 15 seconds. Max 1 hour (3600)
+                              type: integer
+                            search_by:
+                              description: Search criteria for the detection model
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  search:
+                                    type: array
+                                    items:
+                                      type: string
+                                  type:
+                                    type: string
+                            thresholds:
+                              description: Thresholds for the detection model
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  severity:
+                                    type: string
+                                  threshold:
+                                    type: string
+                            track_by:
+                              description: Tracking criteria for the detection model
+                              type: array
+                              items:
+                                type: array
+                                items:
+                                  type: string
+                            updateinterval:
+                              description: When ongoing updates should be sent. Max 6 hours (21600). 0 for disabled
+                              type: integer
+                            algo_record_type:
+                              description: The context of record to be used for the detection model
+                              type: string
+                              enum:
+                              - flow
+                              - dns
+                        properties:
+                          algo_type:
+                            description: Detection model type
+                            type: string
+                          beta:
+                            description: If true, it's a beta detection model
+                            type: boolean
+                          created:
+                            description: The time at which record was created
+                            type: integer
+                          id:
+                            description: Detection model ID
+                            type: string
+                          recommended:
+                            description: If true, it's a recomended detection model
+                            type: boolean
+                          subscription:
+                            description: Subscription for the detection model
+                            type: object
+                            properties:
+                              all:
+                                type: string
+                          subscriptiontype:
+                            description: Subscription type for the detection model
+                            type: string
+                          system:
+                            description: If true, it's a system detection model
+                            type: boolean
+                          systemdefault:
+                            description: If true, it's a system default detection model
+                            type: boolean
+                          updated:
+                            description: The time at which record was was last updated
+                            type: integer
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    delete:
+      operationId: v1_traffic_detection_model_id_delete
+      summary: Delete Traffic Detection Model
+      description: Deletes a traffic detection model
+      tags:
+      - Detect and Respond - Traffic Detection Models
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the traffic detection model to be deleted
+        schema:
+          type: string
+      responses:
+        '204':
+          description: An empty array
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/rule-engine/algorithm/{id}/enable:
+    put:
+      operationId: v1_traffic_detection_model_id_enable_put
+      summary: Enable Traffic Detection Model
+      description: Enables a traffic detection model
+      tags:
+      - Detect and Respond - Traffic Detection Models
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the traffic detection model to be enabled
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Requested Traffic Detection Model
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1
+                    items:
+                      allOf:
+                      - description: Traffic Detection Model Record
+                        type: object
+                        allOf:
+                        - type: object
+                          properties:
+                            bypassdisplay:
+                              description: If true, portal and API will not display new events
+                              type: boolean
+                            bypassrule:
+                              description: If true, alerts will not be processed by policies and integrations
+                              type: boolean
+                            categories:
+                              description: Categories for the detection model
+                              type: array
+                              items:
+                                type: string
+                            description:
+                              description: Detection model description
+                              type: string
+                            discards:
+                              description: Discard lists are NQL statements that if matched do not get processed through the event. It enables skipping certain combinations without disabling the detection model
+                              type: array
+                              items:
+                                type: string
+                            enabled:
+                              description: If true, the detection model is enabled
+                              type: boolean
+                            factors:
+                              description: Factors for the detection model
+                              type: array
+                              items:
+                                type: string
+                            name:
+                              description: Name of the detection model
+                              type: string
+                            rollupperiod:
+                              description: The lookback period for the detection model. Min 15 seconds. Max 1 hour (3600)
+                              type: integer
+                            search_by:
+                              description: Search criteria for the detection model
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  search:
+                                    type: array
+                                    items:
+                                      type: string
+                                  type:
+                                    type: string
+                            thresholds:
+                              description: Thresholds for the detection model
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  severity:
+                                    type: string
+                                  threshold:
+                                    type: string
+                            track_by:
+                              description: Tracking criteria for the detection model
+                              type: array
+                              items:
+                                type: array
+                                items:
+                                  type: string
+                            updateinterval:
+                              description: When ongoing updates should be sent. Max 6 hours (21600). 0 for disabled
+                              type: integer
+                            algo_record_type:
+                              description: The context of record to be used for the detection model
+                              type: string
+                              enum:
+                              - flow
+                              - dns
+                        properties:
+                          algo_type:
+                            description: Detection model type
+                            type: string
+                          beta:
+                            description: If true, it's a beta detection model
+                            type: boolean
+                          created:
+                            description: The time at which record was created
+                            type: integer
+                          id:
+                            description: Detection model ID
+                            type: string
+                          recommended:
+                            description: If true, it's a recomended detection model
+                            type: boolean
+                          subscription:
+                            description: Subscription for the detection model
+                            type: object
+                            properties:
+                              all:
+                                type: string
+                          subscriptiontype:
+                            description: Subscription type for the detection model
+                            type: string
+                          system:
+                            description: If true, it's a system detection model
+                            type: boolean
+                          systemdefault:
+                            description: If true, it's a system default detection model
+                            type: boolean
+                          updated:
+                            description: The time at which record was was last updated
+                            type: integer
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/rule-engine/algorithm/{id}/disable:
+    put:
+      operationId: v1_traffic_detection_model_id_disable_put
+      summary: Disable Traffic Detection Model
+      description: Disables a traffic detection model
+      tags:
+      - Detect and Respond - Traffic Detection Models
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the traffic detection model to be disabled
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Requested Traffic Detection Model
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1
+                    items:
+                      allOf:
+                      - description: Traffic Detection Model Record
+                        type: object
+                        allOf:
+                        - type: object
+                          properties:
+                            bypassdisplay:
+                              description: If true, portal and API will not display new events
+                              type: boolean
+                            bypassrule:
+                              description: If true, alerts will not be processed by policies and integrations
+                              type: boolean
+                            categories:
+                              description: Categories for the detection model
+                              type: array
+                              items:
+                                type: string
+                            description:
+                              description: Detection model description
+                              type: string
+                            discards:
+                              description: Discard lists are NQL statements that if matched do not get processed through the event. It enables skipping certain combinations without disabling the detection model
+                              type: array
+                              items:
+                                type: string
+                            enabled:
+                              description: If true, the detection model is enabled
+                              type: boolean
+                            factors:
+                              description: Factors for the detection model
+                              type: array
+                              items:
+                                type: string
+                            name:
+                              description: Name of the detection model
+                              type: string
+                            rollupperiod:
+                              description: The lookback period for the detection model. Min 15 seconds. Max 1 hour (3600)
+                              type: integer
+                            search_by:
+                              description: Search criteria for the detection model
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  search:
+                                    type: array
+                                    items:
+                                      type: string
+                                  type:
+                                    type: string
+                            thresholds:
+                              description: Thresholds for the detection model
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  severity:
+                                    type: string
+                                  threshold:
+                                    type: string
+                            track_by:
+                              description: Tracking criteria for the detection model
+                              type: array
+                              items:
+                                type: array
+                                items:
+                                  type: string
+                            updateinterval:
+                              description: When ongoing updates should be sent. Max 6 hours (21600). 0 for disabled
+                              type: integer
+                            algo_record_type:
+                              description: The context of record to be used for the detection model
+                              type: string
+                              enum:
+                              - flow
+                              - dns
+                        properties:
+                          algo_type:
+                            description: Detection model type
+                            type: string
+                          beta:
+                            description: If true, it's a beta detection model
+                            type: boolean
+                          created:
+                            description: The time at which record was created
+                            type: integer
+                          id:
+                            description: Detection model ID
+                            type: string
+                          recommended:
+                            description: If true, it's a recomended detection model
+                            type: boolean
+                          subscription:
+                            description: Subscription for the detection model
+                            type: object
+                            properties:
+                              all:
+                                type: string
+                          subscriptiontype:
+                            description: Subscription type for the detection model
+                            type: string
+                          system:
+                            description: If true, it's a system detection model
+                            type: boolean
+                          systemdefault:
+                            description: If true, it's a system default detection model
+                            type: boolean
+                          updated:
+                            description: The time at which record was was last updated
+                            type: integer
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/rule-engine/algorithm/{id}/reset:
+    put:
+      operationId: v1_traffic_detection_model_id_reset_put
+      summary: Reset Traffic Detection Model
+      description: Resets a customized system traffic detection model
+      tags:
+      - Detect and Respond - Traffic Detection Models
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the traffic detection model to be reseted
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Requested Traffic Detection Model
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1
+                    items:
+                      allOf:
+                      - description: Traffic Detection Model Record
+                        type: object
+                        allOf:
+                        - type: object
+                          properties:
+                            bypassdisplay:
+                              description: If true, portal and API will not display new events
+                              type: boolean
+                            bypassrule:
+                              description: If true, alerts will not be processed by policies and integrations
+                              type: boolean
+                            categories:
+                              description: Categories for the detection model
+                              type: array
+                              items:
+                                type: string
+                            description:
+                              description: Detection model description
+                              type: string
+                            discards:
+                              description: Discard lists are NQL statements that if matched do not get processed through the event. It enables skipping certain combinations without disabling the detection model
+                              type: array
+                              items:
+                                type: string
+                            enabled:
+                              description: If true, the detection model is enabled
+                              type: boolean
+                            factors:
+                              description: Factors for the detection model
+                              type: array
+                              items:
+                                type: string
+                            name:
+                              description: Name of the detection model
+                              type: string
+                            rollupperiod:
+                              description: The lookback period for the detection model. Min 15 seconds. Max 1 hour (3600)
+                              type: integer
+                            search_by:
+                              description: Search criteria for the detection model
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  search:
+                                    type: array
+                                    items:
+                                      type: string
+                                  type:
+                                    type: string
+                            thresholds:
+                              description: Thresholds for the detection model
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  severity:
+                                    type: string
+                                  threshold:
+                                    type: string
+                            track_by:
+                              description: Tracking criteria for the detection model
+                              type: array
+                              items:
+                                type: array
+                                items:
+                                  type: string
+                            updateinterval:
+                              description: When ongoing updates should be sent. Max 6 hours (21600). 0 for disabled
+                              type: integer
+                            algo_record_type:
+                              description: The context of record to be used for the detection model
+                              type: string
+                              enum:
+                              - flow
+                              - dns
+                        properties:
+                          algo_type:
+                            description: Detection model type
+                            type: string
+                          beta:
+                            description: If true, it's a beta detection model
+                            type: boolean
+                          created:
+                            description: The time at which record was created
+                            type: integer
+                          id:
+                            description: Detection model ID
+                            type: string
+                          recommended:
+                            description: If true, it's a recomended detection model
+                            type: boolean
+                          subscription:
+                            description: Subscription for the detection model
+                            type: object
+                            properties:
+                              all:
+                                type: string
+                          subscriptiontype:
+                            description: Subscription type for the detection model
+                            type: string
+                          system:
+                            description: If true, it's a system detection model
+                            type: boolean
+                          systemdefault:
+                            description: If true, it's a system default detection model
+                            type: boolean
+                          updated:
+                            description: The time at which record was was last updated
+                            type: integer
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true

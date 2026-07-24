@@ -1,0 +1,4084 @@
+openapi: 3.0.0
+info:
+  title: Netography (Vectra Fusion) Analytics Integrations - Response API
+  version: '1.0'
+  description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
+  x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
+  x-apievangelist-method: searched
+  x-apievangelist-generated: '2026-07-20'
+servers:
+- url: https://api.netography.com
+  description: Netography API
+tags:
+- name: Integrations - Response
+paths:
+  /api/v1/integrations/response:
+    get:
+      operationId: v1_integrations_response_get
+      summary: List Response Integrations
+      description: Returns an array of response integrations.
+      tags:
+      - Integrations - Response
+      responses:
+        '200':
+          description: List of Response Integrations Requested, or an array containing the new/updated Response Integration after a Create or Update operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      allOf:
+                      - description: List of Response Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.
+                        type: object
+                        required:
+                        - adapter
+                        - name
+                        - description
+                        allOf:
+                        - type: object
+                          additionalProperties: false
+                          properties:
+                            adapter:
+                              type: string
+                              description: The type of response integration.  The config object is dependant on this.
+                              enum:
+                              - bgp
+                              - blocklist
+                              - crowdstrike
+                              - email
+                              - flowspec
+                              - flowspec_custom
+                              - ns1
+                              - pagerduty
+                              - route53
+                              - rtbh
+                              - slack
+                              - syslog
+                              - teams
+                              - twilio
+                              - webhook
+                            name:
+                              type: string
+                              description: The name of the response integration
+                            description:
+                              type: string
+                              description: The description of the response integration.
+                            config:
+                              oneOf:
+                              - type: object
+                                required:
+                                - expiration
+                                - community
+                                - factors
+                                - max
+                                - neighbors
+                                - nexthop
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  community:
+                                    type: string
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  neighbors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  nexthop:
+                                    type: string
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - factors
+                                - expiration
+                                - max
+                                additionalProperties: false
+                                properties:
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  max:
+                                    type: integer
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - expiration
+                                - factors
+                                - max
+                                - url
+                                - client_id
+                                - client_secret
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  url:
+                                    description: Crowdstrike base API URL, can be found in your crowdstrike account
+                                    type: string
+                                  client_id:
+                                    type: string
+                                  client_secret:
+                                    type: string
+                              - type: object
+                                required:
+                                - recipients
+                                - cc
+                                - bcc
+                                additionalProperties: false
+                                properties:
+                                  recipients:
+                                    type: array
+                                    items:
+                                      type: string
+                                  cc:
+                                    type: array
+                                    items:
+                                      type: string
+                                  bcc:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - expiration
+                                - factors
+                                - max
+                                - neighbors
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  neighbors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - expiration
+                                - factors
+                                - max
+                                - neighbors
+                                - rule
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  neighbors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  rule:
+                                    type: string
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - apikey
+                                - domain
+                                - link
+                                - type
+                                - zone
+                                additionalProperties: false
+                                properties:
+                                  apikey:
+                                    description: API Key
+                                    type: string
+                                  domain:
+                                    type: string
+                                  link:
+                                    type: string
+                                  type:
+                                    type: string
+                                    description: Record type
+                                  zone:
+                                    type: string
+                              - type: object
+                                required:
+                                - apikey
+                                - integrationkey
+                                - severity
+                                additionalProperties: false
+                                properties:
+                                  apikey:
+                                    type: string
+                                  integrationkey:
+                                    type: string
+                                  severity:
+                                    type: string
+                              - type: object
+                                required:
+                                - accesskeyid
+                                - aliastarget
+                                - evaluatetargethealth
+                                - hostedzoneid
+                                - name
+                                - secretaccesskey
+                                - type
+                                additionalProperties: false
+                                properties:
+                                  accesskeyid:
+                                    type: string
+                                  aliastarget:
+                                    type: object
+                                  evaluatetargethealth:
+                                    type: boolean
+                                  hostedzoneid:
+                                    type: string
+                                  name:
+                                    type: string
+                                  secretaccesskey:
+                                    type: string
+                                  type:
+                                    type: string
+                                    description: Record type
+                              - type: object
+                                required:
+                                - expiration
+                                - community
+                                - factors
+                                - max
+                                - neighbors
+                                - nexthop
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  community:
+                                    type: string
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  neighbors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  nexthop:
+                                    type: string
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - url
+                                - channel
+                                additionalProperties: false
+                                properties:
+                                  url:
+                                    type: string
+                                  channel:
+                                    type: string
+                              - type: object
+                                required:
+                                - host
+                                - facility
+                                - protocol
+                                - tag
+                                - output
+                                additionalProperties: false
+                                properties:
+                                  host:
+                                    type: string
+                                    description: combination of hostname and port (host:port) where host is typically ipv4 and port is required. 514 is a safe default port.
+                                  facility:
+                                    type: string
+                                    description: LOG_LOCAL0 is a safe default
+                                    enum:
+                                    - LOG_KERN
+                                    - LOG_USER
+                                    - LOG_MAIL
+                                    - LOG_DAEMON
+                                    - LOG_AUTH
+                                    - LOG_SYSLOG
+                                    - LOG_LPR
+                                    - LOG_NEWS
+                                    - LOG_UUCP
+                                    - LOG_CRON
+                                    - LOG_AUTHPRIV
+                                    - LOG_FTP
+                                    - LOG_LOCAL0
+                                    - LOG_LOCAL1
+                                    - LOG_LOCAL2
+                                    - LOG_LOCAL3
+                                    - LOG_LOCAL4
+                                    - LOG_LOCAL5
+                                    - LOG_LOCAL6
+                                    - LOG_LOCAL7
+                                  protocol:
+                                    type: string
+                                    description: udp or tcp, udp is a safe default
+                                    enum:
+                                    - udp
+                                    - tcp
+                                  tag:
+                                    type: string
+                                    description: dot separated “application tag” that will be included in messages
+                                  output:
+                                    type: string
+                                    description: One of CEE (elastic, json payload), CEF (arcSite Comment Event Format) or default (just the summary)
+                                    enum:
+                                    - CEE
+                                    - CEF
+                                    - DEFAULT
+                              - type: object
+                                required:
+                                - url
+                                additionalProperties: false
+                                properties:
+                                  url:
+                                    type: string
+                                  short:
+                                    type: boolean
+                                    description: Display messages in a shorter style
+                              - type: object
+                                required:
+                                - accountsid
+                                - authtoken
+                                - to
+                                - messagingservicesid
+                                additionalProperties: false
+                                properties:
+                                  accountsid:
+                                    type: string
+                                  authtoken:
+                                    type: string
+                                  to:
+                                    type: object
+                                    additionalProperties: false
+                                    properties:
+                                      number:
+                                        type: string
+                                      region:
+                                        type: string
+                                  messagingservicesid:
+                                    type: string
+                              - type: object
+                                required:
+                                - url
+                                additionalProperties: false
+                                properties:
+                                  authpassword:
+                                    type: string
+                                    description: HTTP Basic Auth password
+                                  authusername:
+                                    type: string
+                                    description: HTTP Basic Auth ID
+                                  contenttype:
+                                    type: string
+                                  headers:
+                                    type: object
+                                    description: Comma separated list of <code>header:value</code> pairs
+                                  skipsslverification:
+                                    type: boolean
+                                    description: Don’t check the server certificate against the available certificate authorities. Also don’t require the URL host name to match the common name presented by the certificate
+                                  url:
+                                    type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    post:
+      operationId: v1_integrations_response_post
+      summary: Create Response Integration
+      description: Creates a response integration from the data that's been supplied.  Do not provide an id.  IDs are auto generated
+      requestBody:
+        description: Response Integration to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              description: List of Response Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.
+              type: object
+              required:
+              - adapter
+              - name
+              - description
+              allOf:
+              - type: object
+                additionalProperties: false
+                properties:
+                  adapter:
+                    type: string
+                    description: The type of response integration.  The config object is dependant on this.
+                    enum:
+                    - bgp
+                    - blocklist
+                    - crowdstrike
+                    - email
+                    - flowspec
+                    - flowspec_custom
+                    - ns1
+                    - pagerduty
+                    - route53
+                    - rtbh
+                    - slack
+                    - syslog
+                    - teams
+                    - twilio
+                    - webhook
+                  name:
+                    type: string
+                    description: The name of the response integration
+                  description:
+                    type: string
+                    description: The description of the response integration.
+                  config:
+                    oneOf:
+                    - type: object
+                      required:
+                      - expiration
+                      - community
+                      - factors
+                      - max
+                      - neighbors
+                      - nexthop
+                      additionalProperties: false
+                      properties:
+                        expiration:
+                          description: In seconds before expiration from the blocklist
+                          type: integer
+                        community:
+                          type: string
+                        factors:
+                          type: array
+                          items:
+                            type: string
+                        max:
+                          type: integer
+                        neighbors:
+                          type: array
+                          items:
+                            type: string
+                        nexthop:
+                          type: string
+                        whitelist:
+                          type: array
+                          items:
+                            type: string
+                    - type: object
+                      required:
+                      - factors
+                      - expiration
+                      - max
+                      additionalProperties: false
+                      properties:
+                        factors:
+                          type: array
+                          items:
+                            type: string
+                        expiration:
+                          description: In seconds before expiration from the blocklist
+                          type: integer
+                        max:
+                          type: integer
+                        whitelist:
+                          type: array
+                          items:
+                            type: string
+                    - type: object
+                      required:
+                      - expiration
+                      - factors
+                      - max
+                      - url
+                      - client_id
+                      - client_secret
+                      additionalProperties: false
+                      properties:
+                        expiration:
+                          description: In seconds before expiration from the blocklist
+                          type: integer
+                        factors:
+                          type: array
+                          items:
+                            type: string
+                        max:
+                          type: integer
+                        url:
+                          description: Crowdstrike base API URL, can be found in your crowdstrike account
+                          type: string
+                        client_id:
+                          type: string
+                        client_secret:
+                          type: string
+                    - type: object
+                      required:
+                      - recipients
+                      - cc
+                      - bcc
+                      additionalProperties: false
+                      properties:
+                        recipients:
+                          type: array
+                          items:
+                            type: string
+                        cc:
+                          type: array
+                          items:
+                            type: string
+                        bcc:
+                          type: array
+                          items:
+                            type: string
+                    - type: object
+                      required:
+                      - expiration
+                      - factors
+                      - max
+                      - neighbors
+                      additionalProperties: false
+                      properties:
+                        expiration:
+                          description: In seconds before expiration from the blocklist
+                          type: integer
+                        factors:
+                          type: array
+                          items:
+                            type: string
+                        max:
+                          type: integer
+                        neighbors:
+                          type: array
+                          items:
+                            type: string
+                        whitelist:
+                          type: array
+                          items:
+                            type: string
+                    - type: object
+                      required:
+                      - expiration
+                      - factors
+                      - max
+                      - neighbors
+                      - rule
+                      additionalProperties: false
+                      properties:
+                        expiration:
+                          description: In seconds before expiration from the blocklist
+                          type: integer
+                        factors:
+                          type: array
+                          items:
+                            type: string
+                        max:
+                          type: integer
+                        neighbors:
+                          type: array
+                          items:
+                            type: string
+                        rule:
+                          type: string
+                        whitelist:
+                          type: array
+                          items:
+                            type: string
+                    - type: object
+                      required:
+                      - apikey
+                      - domain
+                      - link
+                      - type
+                      - zone
+                      additionalProperties: false
+                      properties:
+                        apikey:
+                          description: API Key
+                          type: string
+                        domain:
+                          type: string
+                        link:
+                          type: string
+                        type:
+                          type: string
+                          description: Record type
+                        zone:
+                          type: string
+                    - type: object
+                      required:
+                      - apikey
+                      - integrationkey
+                      - severity
+                      additionalProperties: false
+                      properties:
+                        apikey:
+                          type: string
+                        integrationkey:
+                          type: string
+                        severity:
+                          type: string
+                    - type: object
+                      required:
+                      - accesskeyid
+                      - aliastarget
+                      - evaluatetargethealth
+                      - hostedzoneid
+                      - name
+                      - secretaccesskey
+                      - type
+                      additionalProperties: false
+                      properties:
+                        accesskeyid:
+                          type: string
+                        aliastarget:
+                          type: object
+                        evaluatetargethealth:
+                          type: boolean
+                        hostedzoneid:
+                          type: string
+                        name:
+                          type: string
+                        secretaccesskey:
+                          type: string
+                        type:
+                          type: string
+                          description: Record type
+                    - type: object
+                      required:
+                      - expiration
+                      - community
+                      - factors
+                      - max
+                      - neighbors
+                      - nexthop
+                      additionalProperties: false
+                      properties:
+                        expiration:
+                          description: In seconds before expiration from the blocklist
+                          type: integer
+                        community:
+                          type: string
+                        factors:
+                          type: array
+                          items:
+                            type: string
+                        max:
+                          type: integer
+                        neighbors:
+                          type: array
+                          items:
+                            type: string
+                        nexthop:
+                          type: string
+                        whitelist:
+                          type: array
+                          items:
+                            type: string
+                    - type: object
+                      required:
+                      - url
+                      - channel
+                      additionalProperties: false
+                      properties:
+                        url:
+                          type: string
+                        channel:
+                          type: string
+                    - type: object
+                      required:
+                      - host
+                      - facility
+                      - protocol
+                      - tag
+                      - output
+                      additionalProperties: false
+                      properties:
+                        host:
+                          type: string
+                          description: combination of hostname and port (host:port) where host is typically ipv4 and port is required. 514 is a safe default port.
+                        facility:
+                          type: string
+                          description: LOG_LOCAL0 is a safe default
+                          enum:
+                          - LOG_KERN
+                          - LOG_USER
+                          - LOG_MAIL
+                          - LOG_DAEMON
+                          - LOG_AUTH
+                          - LOG_SYSLOG
+                          - LOG_LPR
+                          - LOG_NEWS
+                          - LOG_UUCP
+                          - LOG_CRON
+                          - LOG_AUTHPRIV
+                          - LOG_FTP
+                          - LOG_LOCAL0
+                          - LOG_LOCAL1
+                          - LOG_LOCAL2
+                          - LOG_LOCAL3
+                          - LOG_LOCAL4
+                          - LOG_LOCAL5
+                          - LOG_LOCAL6
+                          - LOG_LOCAL7
+                        protocol:
+                          type: string
+                          description: udp or tcp, udp is a safe default
+                          enum:
+                          - udp
+                          - tcp
+                        tag:
+                          type: string
+                          description: dot separated “application tag” that will be included in messages
+                        output:
+                          type: string
+                          description: One of CEE (elastic, json payload), CEF (arcSite Comment Event Format) or default (just the summary)
+                          enum:
+                          - CEE
+                          - CEF
+                          - DEFAULT
+                    - type: object
+                      required:
+                      - url
+                      additionalProperties: false
+                      properties:
+                        url:
+                          type: string
+                        short:
+                          type: boolean
+                          description: Display messages in a shorter style
+                    - type: object
+                      required:
+                      - accountsid
+                      - authtoken
+                      - to
+                      - messagingservicesid
+                      additionalProperties: false
+                      properties:
+                        accountsid:
+                          type: string
+                        authtoken:
+                          type: string
+                        to:
+                          type: object
+                          additionalProperties: false
+                          properties:
+                            number:
+                              type: string
+                            region:
+                              type: string
+                        messagingservicesid:
+                          type: string
+                    - type: object
+                      required:
+                      - url
+                      additionalProperties: false
+                      properties:
+                        authpassword:
+                          type: string
+                          description: HTTP Basic Auth password
+                        authusername:
+                          type: string
+                          description: HTTP Basic Auth ID
+                        contenttype:
+                          type: string
+                        headers:
+                          type: object
+                          description: Comma separated list of <code>header:value</code> pairs
+                        skipsslverification:
+                          type: boolean
+                          description: Don’t check the server certificate against the available certificate authorities. Also don’t require the URL host name to match the common name presented by the certificate
+                        url:
+                          type: string
+      tags:
+      - Integrations - Response
+      responses:
+        '201':
+          description: List of Response Integrations Requested, or an array containing the new/updated Response Integration after a Create or Update operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      allOf:
+                      - description: List of Response Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.
+                        type: object
+                        required:
+                        - adapter
+                        - name
+                        - description
+                        allOf:
+                        - type: object
+                          additionalProperties: false
+                          properties:
+                            adapter:
+                              type: string
+                              description: The type of response integration.  The config object is dependant on this.
+                              enum:
+                              - bgp
+                              - blocklist
+                              - crowdstrike
+                              - email
+                              - flowspec
+                              - flowspec_custom
+                              - ns1
+                              - pagerduty
+                              - route53
+                              - rtbh
+                              - slack
+                              - syslog
+                              - teams
+                              - twilio
+                              - webhook
+                            name:
+                              type: string
+                              description: The name of the response integration
+                            description:
+                              type: string
+                              description: The description of the response integration.
+                            config:
+                              oneOf:
+                              - type: object
+                                required:
+                                - expiration
+                                - community
+                                - factors
+                                - max
+                                - neighbors
+                                - nexthop
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  community:
+                                    type: string
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  neighbors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  nexthop:
+                                    type: string
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - factors
+                                - expiration
+                                - max
+                                additionalProperties: false
+                                properties:
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  max:
+                                    type: integer
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - expiration
+                                - factors
+                                - max
+                                - url
+                                - client_id
+                                - client_secret
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  url:
+                                    description: Crowdstrike base API URL, can be found in your crowdstrike account
+                                    type: string
+                                  client_id:
+                                    type: string
+                                  client_secret:
+                                    type: string
+                              - type: object
+                                required:
+                                - recipients
+                                - cc
+                                - bcc
+                                additionalProperties: false
+                                properties:
+                                  recipients:
+                                    type: array
+                                    items:
+                                      type: string
+                                  cc:
+                                    type: array
+                                    items:
+                                      type: string
+                                  bcc:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - expiration
+                                - factors
+                                - max
+                                - neighbors
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  neighbors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - expiration
+                                - factors
+                                - max
+                                - neighbors
+                                - rule
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  neighbors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  rule:
+                                    type: string
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - apikey
+                                - domain
+                                - link
+                                - type
+                                - zone
+                                additionalProperties: false
+                                properties:
+                                  apikey:
+                                    description: API Key
+                                    type: string
+                                  domain:
+                                    type: string
+                                  link:
+                                    type: string
+                                  type:
+                                    type: string
+                                    description: Record type
+                                  zone:
+                                    type: string
+                              - type: object
+                                required:
+                                - apikey
+                                - integrationkey
+                                - severity
+                                additionalProperties: false
+                                properties:
+                                  apikey:
+                                    type: string
+                                  integrationkey:
+                                    type: string
+                                  severity:
+                                    type: string
+                              - type: object
+                                required:
+                                - accesskeyid
+                                - aliastarget
+                                - evaluatetargethealth
+                                - hostedzoneid
+                                - name
+                                - secretaccesskey
+                                - type
+                                additionalProperties: false
+                                properties:
+                                  accesskeyid:
+                                    type: string
+                                  aliastarget:
+                                    type: object
+                                  evaluatetargethealth:
+                                    type: boolean
+                                  hostedzoneid:
+                                    type: string
+                                  name:
+                                    type: string
+                                  secretaccesskey:
+                                    type: string
+                                  type:
+                                    type: string
+                                    description: Record type
+                              - type: object
+                                required:
+                                - expiration
+                                - community
+                                - factors
+                                - max
+                                - neighbors
+                                - nexthop
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  community:
+                                    type: string
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  neighbors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  nexthop:
+                                    type: string
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - url
+                                - channel
+                                additionalProperties: false
+                                properties:
+                                  url:
+                                    type: string
+                                  channel:
+                                    type: string
+                              - type: object
+                                required:
+                                - host
+                                - facility
+                                - protocol
+                                - tag
+                                - output
+                                additionalProperties: false
+                                properties:
+                                  host:
+                                    type: string
+                                    description: combination of hostname and port (host:port) where host is typically ipv4 and port is required. 514 is a safe default port.
+                                  facility:
+                                    type: string
+                                    description: LOG_LOCAL0 is a safe default
+                                    enum:
+                                    - LOG_KERN
+                                    - LOG_USER
+                                    - LOG_MAIL
+                                    - LOG_DAEMON
+                                    - LOG_AUTH
+                                    - LOG_SYSLOG
+                                    - LOG_LPR
+                                    - LOG_NEWS
+                                    - LOG_UUCP
+                                    - LOG_CRON
+                                    - LOG_AUTHPRIV
+                                    - LOG_FTP
+                                    - LOG_LOCAL0
+                                    - LOG_LOCAL1
+                                    - LOG_LOCAL2
+                                    - LOG_LOCAL3
+                                    - LOG_LOCAL4
+                                    - LOG_LOCAL5
+                                    - LOG_LOCAL6
+                                    - LOG_LOCAL7
+                                  protocol:
+                                    type: string
+                                    description: udp or tcp, udp is a safe default
+                                    enum:
+                                    - udp
+                                    - tcp
+                                  tag:
+                                    type: string
+                                    description: dot separated “application tag” that will be included in messages
+                                  output:
+                                    type: string
+                                    description: One of CEE (elastic, json payload), CEF (arcSite Comment Event Format) or default (just the summary)
+                                    enum:
+                                    - CEE
+                                    - CEF
+                                    - DEFAULT
+                              - type: object
+                                required:
+                                - url
+                                additionalProperties: false
+                                properties:
+                                  url:
+                                    type: string
+                                  short:
+                                    type: boolean
+                                    description: Display messages in a shorter style
+                              - type: object
+                                required:
+                                - accountsid
+                                - authtoken
+                                - to
+                                - messagingservicesid
+                                additionalProperties: false
+                                properties:
+                                  accountsid:
+                                    type: string
+                                  authtoken:
+                                    type: string
+                                  to:
+                                    type: object
+                                    additionalProperties: false
+                                    properties:
+                                      number:
+                                        type: string
+                                      region:
+                                        type: string
+                                  messagingservicesid:
+                                    type: string
+                              - type: object
+                                required:
+                                - url
+                                additionalProperties: false
+                                properties:
+                                  authpassword:
+                                    type: string
+                                    description: HTTP Basic Auth password
+                                  authusername:
+                                    type: string
+                                    description: HTTP Basic Auth ID
+                                  contenttype:
+                                    type: string
+                                  headers:
+                                    type: object
+                                    description: Comma separated list of <code>header:value</code> pairs
+                                  skipsslverification:
+                                    type: boolean
+                                    description: Don’t check the server certificate against the available certificate authorities. Also don’t require the URL host name to match the common name presented by the certificate
+                                  url:
+                                    type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/integrations/response/test:
+    post:
+      operationId: v1_integrations_test_post
+      summary: Test a Response Integration Configuration
+      description: Tests the supplied Response Integration configuration.
+      tags:
+      - Integrations - Response
+      requestBody:
+        description: Response Integration to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              description: List of Response Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.
+              type: object
+              required:
+              - adapter
+              - name
+              - description
+              allOf:
+              - type: object
+                additionalProperties: false
+                properties:
+                  adapter:
+                    type: string
+                    description: The type of response integration.  The config object is dependant on this.
+                    enum:
+                    - bgp
+                    - blocklist
+                    - crowdstrike
+                    - email
+                    - flowspec
+                    - flowspec_custom
+                    - ns1
+                    - pagerduty
+                    - route53
+                    - rtbh
+                    - slack
+                    - syslog
+                    - teams
+                    - twilio
+                    - webhook
+                  name:
+                    type: string
+                    description: The name of the response integration
+                  description:
+                    type: string
+                    description: The description of the response integration.
+                  config:
+                    oneOf:
+                    - type: object
+                      required:
+                      - expiration
+                      - community
+                      - factors
+                      - max
+                      - neighbors
+                      - nexthop
+                      additionalProperties: false
+                      properties:
+                        expiration:
+                          description: In seconds before expiration from the blocklist
+                          type: integer
+                        community:
+                          type: string
+                        factors:
+                          type: array
+                          items:
+                            type: string
+                        max:
+                          type: integer
+                        neighbors:
+                          type: array
+                          items:
+                            type: string
+                        nexthop:
+                          type: string
+                        whitelist:
+                          type: array
+                          items:
+                            type: string
+                    - type: object
+                      required:
+                      - factors
+                      - expiration
+                      - max
+                      additionalProperties: false
+                      properties:
+                        factors:
+                          type: array
+                          items:
+                            type: string
+                        expiration:
+                          description: In seconds before expiration from the blocklist
+                          type: integer
+                        max:
+                          type: integer
+                        whitelist:
+                          type: array
+                          items:
+                            type: string
+                    - type: object
+                      required:
+                      - expiration
+                      - factors
+                      - max
+                      - url
+                      - client_id
+                      - client_secret
+                      additionalProperties: false
+                      properties:
+                        expiration:
+                          description: In seconds before expiration from the blocklist
+                          type: integer
+                        factors:
+                          type: array
+                          items:
+                            type: string
+                        max:
+                          type: integer
+                        url:
+                          description: Crowdstrike base API URL, can be found in your crowdstrike account
+                          type: string
+                        client_id:
+                          type: string
+                        client_secret:
+                          type: string
+                    - type: object
+                      required:
+                      - recipients
+                      - cc
+                      - bcc
+                      additionalProperties: false
+                      properties:
+                        recipients:
+                          type: array
+                          items:
+                            type: string
+                        cc:
+                          type: array
+                          items:
+                            type: string
+                        bcc:
+                          type: array
+                          items:
+                            type: string
+                    - type: object
+                      required:
+                      - expiration
+                      - factors
+                      - max
+                      - neighbors
+                      additionalProperties: false
+                      properties:
+                        expiration:
+                          description: In seconds before expiration from the blocklist
+                          type: integer
+                        factors:
+                          type: array
+                          items:
+                            type: string
+                        max:
+                          type: integer
+                        neighbors:
+                          type: array
+                          items:
+                            type: string
+                        whitelist:
+                          type: array
+                          items:
+                            type: string
+                    - type: object
+                      required:
+                      - expiration
+                      - factors
+                      - max
+                      - neighbors
+                      - rule
+                      additionalProperties: false
+                      properties:
+                        expiration:
+                          description: In seconds before expiration from the blocklist
+                          type: integer
+                        factors:
+                          type: array
+                          items:
+                            type: string
+                        max:
+                          type: integer
+                        neighbors:
+                          type: array
+                          items:
+                            type: string
+                        rule:
+                          type: string
+                        whitelist:
+                          type: array
+                          items:
+                            type: string
+                    - type: object
+                      required:
+                      - apikey
+                      - domain
+                      - link
+                      - type
+                      - zone
+                      additionalProperties: false
+                      properties:
+                        apikey:
+                          description: API Key
+                          type: string
+                        domain:
+                          type: string
+                        link:
+                          type: string
+                        type:
+                          type: string
+                          description: Record type
+                        zone:
+                          type: string
+                    - type: object
+                      required:
+                      - apikey
+                      - integrationkey
+                      - severity
+                      additionalProperties: false
+                      properties:
+                        apikey:
+                          type: string
+                        integrationkey:
+                          type: string
+                        severity:
+                          type: string
+                    - type: object
+                      required:
+                      - accesskeyid
+                      - aliastarget
+                      - evaluatetargethealth
+                      - hostedzoneid
+                      - name
+                      - secretaccesskey
+                      - type
+                      additionalProperties: false
+                      properties:
+                        accesskeyid:
+                          type: string
+                        aliastarget:
+                          type: object
+                        evaluatetargethealth:
+                          type: boolean
+                        hostedzoneid:
+                          type: string
+                        name:
+                          type: string
+                        secretaccesskey:
+                          type: string
+                        type:
+                          type: string
+                          description: Record type
+                    - type: object
+                      required:
+                      - expiration
+                      - community
+                      - factors
+                      - max
+                      - neighbors
+                      - nexthop
+                      additionalProperties: false
+                      properties:
+                        expiration:
+                          description: In seconds before expiration from the blocklist
+                          type: integer
+                        community:
+                          type: string
+                        factors:
+                          type: array
+                          items:
+                            type: string
+                        max:
+                          type: integer
+                        neighbors:
+                          type: array
+                          items:
+                            type: string
+                        nexthop:
+                          type: string
+                        whitelist:
+                          type: array
+                          items:
+                            type: string
+                    - type: object
+                      required:
+                      - url
+                      - channel
+                      additionalProperties: false
+                      properties:
+                        url:
+                          type: string
+                        channel:
+                          type: string
+                    - type: object
+                      required:
+                      - host
+                      - facility
+                      - protocol
+                      - tag
+                      - output
+                      additionalProperties: false
+                      properties:
+                        host:
+                          type: string
+                          description: combination of hostname and port (host:port) where host is typically ipv4 and port is required. 514 is a safe default port.
+                        facility:
+                          type: string
+                          description: LOG_LOCAL0 is a safe default
+                          enum:
+                          - LOG_KERN
+                          - LOG_USER
+                          - LOG_MAIL
+                          - LOG_DAEMON
+                          - LOG_AUTH
+                          - LOG_SYSLOG
+                          - LOG_LPR
+                          - LOG_NEWS
+                          - LOG_UUCP
+                          - LOG_CRON
+                          - LOG_AUTHPRIV
+                          - LOG_FTP
+                          - LOG_LOCAL0
+                          - LOG_LOCAL1
+                          - LOG_LOCAL2
+                          - LOG_LOCAL3
+                          - LOG_LOCAL4
+                          - LOG_LOCAL5
+                          - LOG_LOCAL6
+                          - LOG_LOCAL7
+                        protocol:
+                          type: string
+                          description: udp or tcp, udp is a safe default
+                          enum:
+                          - udp
+                          - tcp
+                        tag:
+                          type: string
+                          description: dot separated “application tag” that will be included in messages
+                        output:
+                          type: string
+                          description: One of CEE (elastic, json payload), CEF (arcSite Comment Event Format) or default (just the summary)
+                          enum:
+                          - CEE
+                          - CEF
+                          - DEFAULT
+                    - type: object
+                      required:
+                      - url
+                      additionalProperties: false
+                      properties:
+                        url:
+                          type: string
+                        short:
+                          type: boolean
+                          description: Display messages in a shorter style
+                    - type: object
+                      required:
+                      - accountsid
+                      - authtoken
+                      - to
+                      - messagingservicesid
+                      additionalProperties: false
+                      properties:
+                        accountsid:
+                          type: string
+                        authtoken:
+                          type: string
+                        to:
+                          type: object
+                          additionalProperties: false
+                          properties:
+                            number:
+                              type: string
+                            region:
+                              type: string
+                        messagingservicesid:
+                          type: string
+                    - type: object
+                      required:
+                      - url
+                      additionalProperties: false
+                      properties:
+                        authpassword:
+                          type: string
+                          description: HTTP Basic Auth password
+                        authusername:
+                          type: string
+                          description: HTTP Basic Auth ID
+                        contenttype:
+                          type: string
+                        headers:
+                          type: object
+                          description: Comma separated list of <code>header:value</code> pairs
+                        skipsslverification:
+                          type: boolean
+                          description: Don’t check the server certificate against the available certificate authorities. Also don’t require the URL host name to match the common name presented by the certificate
+                        url:
+                          type: string
+      responses:
+        '201':
+          description: List of Response Integrations Requested, or an array containing the new/updated Response Integration after a Create or Update operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      allOf:
+                      - description: List of Response Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.
+                        type: object
+                        required:
+                        - adapter
+                        - name
+                        - description
+                        allOf:
+                        - type: object
+                          additionalProperties: false
+                          properties:
+                            adapter:
+                              type: string
+                              description: The type of response integration.  The config object is dependant on this.
+                              enum:
+                              - bgp
+                              - blocklist
+                              - crowdstrike
+                              - email
+                              - flowspec
+                              - flowspec_custom
+                              - ns1
+                              - pagerduty
+                              - route53
+                              - rtbh
+                              - slack
+                              - syslog
+                              - teams
+                              - twilio
+                              - webhook
+                            name:
+                              type: string
+                              description: The name of the response integration
+                            description:
+                              type: string
+                              description: The description of the response integration.
+                            config:
+                              oneOf:
+                              - type: object
+                                required:
+                                - expiration
+                                - community
+                                - factors
+                                - max
+                                - neighbors
+                                - nexthop
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  community:
+                                    type: string
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  neighbors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  nexthop:
+                                    type: string
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - factors
+                                - expiration
+                                - max
+                                additionalProperties: false
+                                properties:
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  max:
+                                    type: integer
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - expiration
+                                - factors
+                                - max
+                                - url
+                                - client_id
+                                - client_secret
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  url:
+                                    description: Crowdstrike base API URL, can be found in your crowdstrike account
+                                    type: string
+                                  client_id:
+                                    type: string
+                                  client_secret:
+                                    type: string
+                              - type: object
+                                required:
+                                - recipients
+                                - cc
+                                - bcc
+                                additionalProperties: false
+                                properties:
+                                  recipients:
+                                    type: array
+                                    items:
+                                      type: string
+                                  cc:
+                                    type: array
+                                    items:
+                                      type: string
+                                  bcc:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - expiration
+                                - factors
+                                - max
+                                - neighbors
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  neighbors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - expiration
+                                - factors
+                                - max
+                                - neighbors
+                                - rule
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  neighbors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  rule:
+                                    type: string
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - apikey
+                                - domain
+                                - link
+                                - type
+                                - zone
+                                additionalProperties: false
+                                properties:
+                                  apikey:
+                                    description: API Key
+                                    type: string
+                                  domain:
+                                    type: string
+                                  link:
+                                    type: string
+                                  type:
+                                    type: string
+                                    description: Record type
+                                  zone:
+                                    type: string
+                              - type: object
+                                required:
+                                - apikey
+                                - integrationkey
+                                - severity
+                                additionalProperties: false
+                                properties:
+                                  apikey:
+                                    type: string
+                                  integrationkey:
+                                    type: string
+                                  severity:
+                                    type: string
+                              - type: object
+                                required:
+                                - accesskeyid
+                                - aliastarget
+                                - evaluatetargethealth
+                                - hostedzoneid
+                                - name
+                                - secretaccesskey
+                                - type
+                                additionalProperties: false
+                                properties:
+                                  accesskeyid:
+                                    type: string
+                                  aliastarget:
+                                    type: object
+                                  evaluatetargethealth:
+                                    type: boolean
+                                  hostedzoneid:
+                                    type: string
+                                  name:
+                                    type: string
+                                  secretaccesskey:
+                                    type: string
+                                  type:
+                                    type: string
+                                    description: Record type
+                              - type: object
+                                required:
+                                - expiration
+                                - community
+                                - factors
+                                - max
+                                - neighbors
+                                - nexthop
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  community:
+                                    type: string
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  neighbors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  nexthop:
+                                    type: string
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - url
+                                - channel
+                                additionalProperties: false
+                                properties:
+                                  url:
+                                    type: string
+                                  channel:
+                                    type: string
+                              - type: object
+                                required:
+                                - host
+                                - facility
+                                - protocol
+                                - tag
+                                - output
+                                additionalProperties: false
+                                properties:
+                                  host:
+                                    type: string
+                                    description: combination of hostname and port (host:port) where host is typically ipv4 and port is required. 514 is a safe default port.
+                                  facility:
+                                    type: string
+                                    description: LOG_LOCAL0 is a safe default
+                                    enum:
+                                    - LOG_KERN
+                                    - LOG_USER
+                                    - LOG_MAIL
+                                    - LOG_DAEMON
+                                    - LOG_AUTH
+                                    - LOG_SYSLOG
+                                    - LOG_LPR
+                                    - LOG_NEWS
+                                    - LOG_UUCP
+                                    - LOG_CRON
+                                    - LOG_AUTHPRIV
+                                    - LOG_FTP
+                                    - LOG_LOCAL0
+                                    - LOG_LOCAL1
+                                    - LOG_LOCAL2
+                                    - LOG_LOCAL3
+                                    - LOG_LOCAL4
+                                    - LOG_LOCAL5
+                                    - LOG_LOCAL6
+                                    - LOG_LOCAL7
+                                  protocol:
+                                    type: string
+                                    description: udp or tcp, udp is a safe default
+                                    enum:
+                                    - udp
+                                    - tcp
+                                  tag:
+                                    type: string
+                                    description: dot separated “application tag” that will be included in messages
+                                  output:
+                                    type: string
+                                    description: One of CEE (elastic, json payload), CEF (arcSite Comment Event Format) or default (just the summary)
+                                    enum:
+                                    - CEE
+                                    - CEF
+                                    - DEFAULT
+                              - type: object
+                                required:
+                                - url
+                                additionalProperties: false
+                                properties:
+                                  url:
+                                    type: string
+                                  short:
+                                    type: boolean
+                                    description: Display messages in a shorter style
+                              - type: object
+                                required:
+                                - accountsid
+                                - authtoken
+                                - to
+                                - messagingservicesid
+                                additionalProperties: false
+                                properties:
+                                  accountsid:
+                                    type: string
+                                  authtoken:
+                                    type: string
+                                  to:
+                                    type: object
+                                    additionalProperties: false
+                                    properties:
+                                      number:
+                                        type: string
+                                      region:
+                                        type: string
+                                  messagingservicesid:
+                                    type: string
+                              - type: object
+                                required:
+                                - url
+                                additionalProperties: false
+                                properties:
+                                  authpassword:
+                                    type: string
+                                    description: HTTP Basic Auth password
+                                  authusername:
+                                    type: string
+                                    description: HTTP Basic Auth ID
+                                  contenttype:
+                                    type: string
+                                  headers:
+                                    type: object
+                                    description: Comma separated list of <code>header:value</code> pairs
+                                  skipsslverification:
+                                    type: boolean
+                                    description: Don’t check the server certificate against the available certificate authorities. Also don’t require the URL host name to match the common name presented by the certificate
+                                  url:
+                                    type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/integrations/response/{id}:
+    get:
+      operationId: v1_integrations_response_id_get
+      summary: Fetch Response Integration
+      description: Fetches a specific response integration from the ID supplied in the path.
+      tags:
+      - Integrations - Response
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the response integration to be returned.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of Response Integrations Requested, or an array containing the new/updated Response Integration after a Create or Update operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      allOf:
+                      - description: List of Response Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.
+                        type: object
+                        required:
+                        - adapter
+                        - name
+                        - description
+                        allOf:
+                        - type: object
+                          additionalProperties: false
+                          properties:
+                            adapter:
+                              type: string
+                              description: The type of response integration.  The config object is dependant on this.
+                              enum:
+                              - bgp
+                              - blocklist
+                              - crowdstrike
+                              - email
+                              - flowspec
+                              - flowspec_custom
+                              - ns1
+                              - pagerduty
+                              - route53
+                              - rtbh
+                              - slack
+                              - syslog
+                              - teams
+                              - twilio
+                              - webhook
+                            name:
+                              type: string
+                              description: The name of the response integration
+                            description:
+                              type: string
+                              description: The description of the response integration.
+                            config:
+                              oneOf:
+                              - type: object
+                                required:
+                                - expiration
+                                - community
+                                - factors
+                                - max
+                                - neighbors
+                                - nexthop
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  community:
+                                    type: string
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  neighbors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  nexthop:
+                                    type: string
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - factors
+                                - expiration
+                                - max
+                                additionalProperties: false
+                                properties:
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  max:
+                                    type: integer
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - expiration
+                                - factors
+                                - max
+                                - url
+                                - client_id
+                                - client_secret
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  url:
+                                    description: Crowdstrike base API URL, can be found in your crowdstrike account
+                                    type: string
+                                  client_id:
+                                    type: string
+                                  client_secret:
+                                    type: string
+                              - type: object
+                                required:
+                                - recipients
+                                - cc
+                                - bcc
+                                additionalProperties: false
+                                properties:
+                                  recipients:
+                                    type: array
+                                    items:
+                                      type: string
+                                  cc:
+                                    type: array
+                                    items:
+                                      type: string
+                                  bcc:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - expiration
+                                - factors
+                                - max
+                                - neighbors
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  neighbors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - expiration
+                                - factors
+                                - max
+                                - neighbors
+                                - rule
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  neighbors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  rule:
+                                    type: string
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - apikey
+                                - domain
+                                - link
+                                - type
+                                - zone
+                                additionalProperties: false
+                                properties:
+                                  apikey:
+                                    description: API Key
+                                    type: string
+                                  domain:
+                                    type: string
+                                  link:
+                                    type: string
+                                  type:
+                                    type: string
+                                    description: Record type
+                                  zone:
+                                    type: string
+                              - type: object
+                                required:
+                                - apikey
+                                - integrationkey
+                                - severity
+                                additionalProperties: false
+                                properties:
+                                  apikey:
+                                    type: string
+                                  integrationkey:
+                                    type: string
+                                  severity:
+                                    type: string
+                              - type: object
+                                required:
+                                - accesskeyid
+                                - aliastarget
+                                - evaluatetargethealth
+                                - hostedzoneid
+                                - name
+                                - secretaccesskey
+                                - type
+                                additionalProperties: false
+                                properties:
+                                  accesskeyid:
+                                    type: string
+                                  aliastarget:
+                                    type: object
+                                  evaluatetargethealth:
+                                    type: boolean
+                                  hostedzoneid:
+                                    type: string
+                                  name:
+                                    type: string
+                                  secretaccesskey:
+                                    type: string
+                                  type:
+                                    type: string
+                                    description: Record type
+                              - type: object
+                                required:
+                                - expiration
+                                - community
+                                - factors
+                                - max
+                                - neighbors
+                                - nexthop
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  community:
+                                    type: string
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  neighbors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  nexthop:
+                                    type: string
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - url
+                                - channel
+                                additionalProperties: false
+                                properties:
+                                  url:
+                                    type: string
+                                  channel:
+                                    type: string
+                              - type: object
+                                required:
+                                - host
+                                - facility
+                                - protocol
+                                - tag
+                                - output
+                                additionalProperties: false
+                                properties:
+                                  host:
+                                    type: string
+                                    description: combination of hostname and port (host:port) where host is typically ipv4 and port is required. 514 is a safe default port.
+                                  facility:
+                                    type: string
+                                    description: LOG_LOCAL0 is a safe default
+                                    enum:
+                                    - LOG_KERN
+                                    - LOG_USER
+                                    - LOG_MAIL
+                                    - LOG_DAEMON
+                                    - LOG_AUTH
+                                    - LOG_SYSLOG
+                                    - LOG_LPR
+                                    - LOG_NEWS
+                                    - LOG_UUCP
+                                    - LOG_CRON
+                                    - LOG_AUTHPRIV
+                                    - LOG_FTP
+                                    - LOG_LOCAL0
+                                    - LOG_LOCAL1
+                                    - LOG_LOCAL2
+                                    - LOG_LOCAL3
+                                    - LOG_LOCAL4
+                                    - LOG_LOCAL5
+                                    - LOG_LOCAL6
+                                    - LOG_LOCAL7
+                                  protocol:
+                                    type: string
+                                    description: udp or tcp, udp is a safe default
+                                    enum:
+                                    - udp
+                                    - tcp
+                                  tag:
+                                    type: string
+                                    description: dot separated “application tag” that will be included in messages
+                                  output:
+                                    type: string
+                                    description: One of CEE (elastic, json payload), CEF (arcSite Comment Event Format) or default (just the summary)
+                                    enum:
+                                    - CEE
+                                    - CEF
+                                    - DEFAULT
+                              - type: object
+                                required:
+                                - url
+                                additionalProperties: false
+                                properties:
+                                  url:
+                                    type: string
+                                  short:
+                                    type: boolean
+                                    description: Display messages in a shorter style
+                              - type: object
+                                required:
+                                - accountsid
+                                - authtoken
+                                - to
+                                - messagingservicesid
+                                additionalProperties: false
+                                properties:
+                                  accountsid:
+                                    type: string
+                                  authtoken:
+                                    type: string
+                                  to:
+                                    type: object
+                                    additionalProperties: false
+                                    properties:
+                                      number:
+                                        type: string
+                                      region:
+                                        type: string
+                                  messagingservicesid:
+                                    type: string
+                              - type: object
+                                required:
+                                - url
+                                additionalProperties: false
+                                properties:
+                                  authpassword:
+                                    type: string
+                                    description: HTTP Basic Auth password
+                                  authusername:
+                                    type: string
+                                    description: HTTP Basic Auth ID
+                                  contenttype:
+                                    type: string
+                                  headers:
+                                    type: object
+                                    description: Comma separated list of <code>header:value</code> pairs
+                                  skipsslverification:
+                                    type: boolean
+                                    description: Don’t check the server certificate against the available certificate authorities. Also don’t require the URL host name to match the common name presented by the certificate
+                                  url:
+                                    type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    put:
+      operationId: v1_integrations_response_id_put
+      summary: Update Response Integration
+      description: Update a response integration given the provided object.  This does not do a diff.  You must send the complete object.
+      requestBody:
+        description: Response Integration to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              description: List of Response Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.
+              type: object
+              required:
+              - adapter
+              - name
+              - description
+              allOf:
+              - type: object
+                additionalProperties: false
+                properties:
+                  adapter:
+                    type: string
+                    description: The type of response integration.  The config object is dependant on this.
+                    enum:
+                    - bgp
+                    - blocklist
+                    - crowdstrike
+                    - email
+                    - flowspec
+                    - flowspec_custom
+                    - ns1
+                    - pagerduty
+                    - route53
+                    - rtbh
+                    - slack
+                    - syslog
+                    - teams
+                    - twilio
+                    - webhook
+                  name:
+                    type: string
+                    description: The name of the response integration
+                  description:
+                    type: string
+                    description: The description of the response integration.
+                  config:
+                    oneOf:
+                    - type: object
+                      required:
+                      - expiration
+                      - community
+                      - factors
+                      - max
+                      - neighbors
+                      - nexthop
+                      additionalProperties: false
+                      properties:
+                        expiration:
+                          description: In seconds before expiration from the blocklist
+                          type: integer
+                        community:
+                          type: string
+                        factors:
+                          type: array
+                          items:
+                            type: string
+                        max:
+                          type: integer
+                        neighbors:
+                          type: array
+                          items:
+                            type: string
+                        nexthop:
+                          type: string
+                        whitelist:
+                          type: array
+                          items:
+                            type: string
+                    - type: object
+                      required:
+                      - factors
+                      - expiration
+                      - max
+                      additionalProperties: false
+                      properties:
+                        factors:
+                          type: array
+                          items:
+                            type: string
+                        expiration:
+                          description: In seconds before expiration from the blocklist
+                          type: integer
+                        max:
+                          type: integer
+                        whitelist:
+                          type: array
+                          items:
+                            type: string
+                    - type: object
+                      required:
+                      - expiration
+                      - factors
+                      - max
+                      - url
+                      - client_id
+                      - client_secret
+                      additionalProperties: false
+                      properties:
+                        expiration:
+                          description: In seconds before expiration from the blocklist
+                          type: integer
+                        factors:
+                          type: array
+                          items:
+                            type: string
+                        max:
+                          type: integer
+                        url:
+                          description: Crowdstrike base API URL, can be found in your crowdstrike account
+                          type: string
+                        client_id:
+                          type: string
+                        client_secret:
+                          type: string
+                    - type: object
+                      required:
+                      - recipients
+                      - cc
+                      - bcc
+                      additionalProperties: false
+                      properties:
+                        recipients:
+                          type: array
+                          items:
+                            type: string
+                        cc:
+                          type: array
+                          items:
+                            type: string
+                        bcc:
+                          type: array
+                          items:
+                            type: string
+                    - type: object
+                      required:
+                      - expiration
+                      - factors
+                      - max
+                      - neighbors
+                      additionalProperties: false
+                      properties:
+                        expiration:
+                          description: In seconds before expiration from the blocklist
+                          type: integer
+                        factors:
+                          type: array
+                          items:
+                            type: string
+                        max:
+                          type: integer
+                        neighbors:
+                          type: array
+                          items:
+                            type: string
+                        whitelist:
+                          type: array
+                          items:
+                            type: string
+                    - type: object
+                      required:
+                      - expiration
+                      - factors
+                      - max
+                      - neighbors
+                      - rule
+                      additionalProperties: false
+                      properties:
+                        expiration:
+                          description: In seconds before expiration from the blocklist
+                          type: integer
+                        factors:
+                          type: array
+                          items:
+                            type: string
+                        max:
+                          type: integer
+                        neighbors:
+                          type: array
+                          items:
+                            type: string
+                        rule:
+                          type: string
+                        whitelist:
+                          type: array
+                          items:
+                            type: string
+                    - type: object
+                      required:
+                      - apikey
+                      - domain
+                      - link
+                      - type
+                      - zone
+                      additionalProperties: false
+                      properties:
+                        apikey:
+                          description: API Key
+                          type: string
+                        domain:
+                          type: string
+                        link:
+                          type: string
+                        type:
+                          type: string
+                          description: Record type
+                        zone:
+                          type: string
+                    - type: object
+                      required:
+                      - apikey
+                      - integrationkey
+                      - severity
+                      additionalProperties: false
+                      properties:
+                        apikey:
+                          type: string
+                        integrationkey:
+                          type: string
+                        severity:
+                          type: string
+                    - type: object
+                      required:
+                      - accesskeyid
+                      - aliastarget
+                      - evaluatetargethealth
+                      - hostedzoneid
+                      - name
+                      - secretaccesskey
+                      - type
+                      additionalProperties: false
+                      properties:
+                        accesskeyid:
+                          type: string
+                        aliastarget:
+                          type: object
+                        evaluatetargethealth:
+                          type: boolean
+                        hostedzoneid:
+                          type: string
+                        name:
+                          type: string
+                        secretaccesskey:
+                          type: string
+                        type:
+                          type: string
+                          description: Record type
+                    - type: object
+                      required:
+                      - expiration
+                      - community
+                      - factors
+                      - max
+                      - neighbors
+                      - nexthop
+                      additionalProperties: false
+                      properties:
+                        expiration:
+                          description: In seconds before expiration from the blocklist
+                          type: integer
+                        community:
+                          type: string
+                        factors:
+                          type: array
+                          items:
+                            type: string
+                        max:
+                          type: integer
+                        neighbors:
+                          type: array
+                          items:
+                            type: string
+                        nexthop:
+                          type: string
+                        whitelist:
+                          type: array
+                          items:
+                            type: string
+                    - type: object
+                      required:
+                      - url
+                      - channel
+                      additionalProperties: false
+                      properties:
+                        url:
+                          type: string
+                        channel:
+                          type: string
+                    - type: object
+                      required:
+                      - host
+                      - facility
+                      - protocol
+                      - tag
+                      - output
+                      additionalProperties: false
+                      properties:
+                        host:
+                          type: string
+                          description: combination of hostname and port (host:port) where host is typically ipv4 and port is required. 514 is a safe default port.
+                        facility:
+                          type: string
+                          description: LOG_LOCAL0 is a safe default
+                          enum:
+                          - LOG_KERN
+                          - LOG_USER
+                          - LOG_MAIL
+                          - LOG_DAEMON
+                          - LOG_AUTH
+                          - LOG_SYSLOG
+                          - LOG_LPR
+                          - LOG_NEWS
+                          - LOG_UUCP
+                          - LOG_CRON
+                          - LOG_AUTHPRIV
+                          - LOG_FTP
+                          - LOG_LOCAL0
+                          - LOG_LOCAL1
+                          - LOG_LOCAL2
+                          - LOG_LOCAL3
+                          - LOG_LOCAL4
+                          - LOG_LOCAL5
+                          - LOG_LOCAL6
+                          - LOG_LOCAL7
+                        protocol:
+                          type: string
+                          description: udp or tcp, udp is a safe default
+                          enum:
+                          - udp
+                          - tcp
+                        tag:
+                          type: string
+                          description: dot separated “application tag” that will be included in messages
+                        output:
+                          type: string
+                          description: One of CEE (elastic, json payload), CEF (arcSite Comment Event Format) or default (just the summary)
+                          enum:
+                          - CEE
+                          - CEF
+                          - DEFAULT
+                    - type: object
+                      required:
+                      - url
+                      additionalProperties: false
+                      properties:
+                        url:
+                          type: string
+                        short:
+                          type: boolean
+                          description: Display messages in a shorter style
+                    - type: object
+                      required:
+                      - accountsid
+                      - authtoken
+                      - to
+                      - messagingservicesid
+                      additionalProperties: false
+                      properties:
+                        accountsid:
+                          type: string
+                        authtoken:
+                          type: string
+                        to:
+                          type: object
+                          additionalProperties: false
+                          properties:
+                            number:
+                              type: string
+                            region:
+                              type: string
+                        messagingservicesid:
+                          type: string
+                    - type: object
+                      required:
+                      - url
+                      additionalProperties: false
+                      properties:
+                        authpassword:
+                          type: string
+                          description: HTTP Basic Auth password
+                        authusername:
+                          type: string
+                          description: HTTP Basic Auth ID
+                        contenttype:
+                          type: string
+                        headers:
+                          type: object
+                          description: Comma separated list of <code>header:value</code> pairs
+                        skipsslverification:
+                          type: boolean
+                          description: Don’t check the server certificate against the available certificate authorities. Also don’t require the URL host name to match the common name presented by the certificate
+                        url:
+                          type: string
+      tags:
+      - Integrations - Response
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the response integration to be updated
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of Response Integrations Requested, or an array containing the new/updated Response Integration after a Create or Update operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      allOf:
+                      - description: List of Response Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.
+                        type: object
+                        required:
+                        - adapter
+                        - name
+                        - description
+                        allOf:
+                        - type: object
+                          additionalProperties: false
+                          properties:
+                            adapter:
+                              type: string
+                              description: The type of response integration.  The config object is dependant on this.
+                              enum:
+                              - bgp
+                              - blocklist
+                              - crowdstrike
+                              - email
+                              - flowspec
+                              - flowspec_custom
+                              - ns1
+                              - pagerduty
+                              - route53
+                              - rtbh
+                              - slack
+                              - syslog
+                              - teams
+                              - twilio
+                              - webhook
+                            name:
+                              type: string
+                              description: The name of the response integration
+                            description:
+                              type: string
+                              description: The description of the response integration.
+                            config:
+                              oneOf:
+                              - type: object
+                                required:
+                                - expiration
+                                - community
+                                - factors
+                                - max
+                                - neighbors
+                                - nexthop
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  community:
+                                    type: string
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  neighbors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  nexthop:
+                                    type: string
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - factors
+                                - expiration
+                                - max
+                                additionalProperties: false
+                                properties:
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  max:
+                                    type: integer
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - expiration
+                                - factors
+                                - max
+                                - url
+                                - client_id
+                                - client_secret
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  url:
+                                    description: Crowdstrike base API URL, can be found in your crowdstrike account
+                                    type: string
+                                  client_id:
+                                    type: string
+                                  client_secret:
+                                    type: string
+                              - type: object
+                                required:
+                                - recipients
+                                - cc
+                                - bcc
+                                additionalProperties: false
+                                properties:
+                                  recipients:
+                                    type: array
+                                    items:
+                                      type: string
+                                  cc:
+                                    type: array
+                                    items:
+                                      type: string
+                                  bcc:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - expiration
+                                - factors
+                                - max
+                                - neighbors
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  neighbors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - expiration
+                                - factors
+                                - max
+                                - neighbors
+                                - rule
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  neighbors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  rule:
+                                    type: string
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - apikey
+                                - domain
+                                - link
+                                - type
+                                - zone
+                                additionalProperties: false
+                                properties:
+                                  apikey:
+                                    description: API Key
+                                    type: string
+                                  domain:
+                                    type: string
+                                  link:
+                                    type: string
+                                  type:
+                                    type: string
+                                    description: Record type
+                                  zone:
+                                    type: string
+                              - type: object
+                                required:
+                                - apikey
+                                - integrationkey
+                                - severity
+                                additionalProperties: false
+                                properties:
+                                  apikey:
+                                    type: string
+                                  integrationkey:
+                                    type: string
+                                  severity:
+                                    type: string
+                              - type: object
+                                required:
+                                - accesskeyid
+                                - aliastarget
+                                - evaluatetargethealth
+                                - hostedzoneid
+                                - name
+                                - secretaccesskey
+                                - type
+                                additionalProperties: false
+                                properties:
+                                  accesskeyid:
+                                    type: string
+                                  aliastarget:
+                                    type: object
+                                  evaluatetargethealth:
+                                    type: boolean
+                                  hostedzoneid:
+                                    type: string
+                                  name:
+                                    type: string
+                                  secretaccesskey:
+                                    type: string
+                                  type:
+                                    type: string
+                                    description: Record type
+                              - type: object
+                                required:
+                                - expiration
+                                - community
+                                - factors
+                                - max
+                                - neighbors
+                                - nexthop
+                                additionalProperties: false
+                                properties:
+                                  expiration:
+                                    description: In seconds before expiration from the blocklist
+                                    type: integer
+                                  community:
+                                    type: string
+                                  factors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  max:
+                                    type: integer
+                                  neighbors:
+                                    type: array
+                                    items:
+                                      type: string
+                                  nexthop:
+                                    type: string
+                                  whitelist:
+                                    type: array
+                                    items:
+                                      type: string
+                              - type: object
+                                required:
+                                - url
+                                - channel
+                                additionalProperties: false
+                                properties:
+                                  url:
+                                    type: string
+                                  channel:
+                                    type: string
+                              - type: object
+                                required:
+                                - host
+                                - facility
+                                - protocol
+                                - tag
+                                - output
+                                additionalProperties: false
+                                properties:
+                                  host:
+                                    type: string
+                                    description: combination of hostname and port (host:port) where host is typically ipv4 and port is required. 514 is a safe default port.
+                                  facility:
+                                    type: string
+                                    description: LOG_LOCAL0 is a safe default
+                                    enum:
+                                    - LOG_KERN
+                                    - LOG_USER
+                                    - LOG_MAIL
+                                    - LOG_DAEMON
+                                    - LOG_AUTH
+                                    - LOG_SYSLOG
+                                    - LOG_LPR
+                                    - LOG_NEWS
+                                    - LOG_UUCP
+                                    - LOG_CRON
+                                    - LOG_AUTHPRIV
+                                    - LOG_FTP
+                                    - LOG_LOCAL0
+                                    - LOG_LOCAL1
+                                    - LOG_LOCAL2
+                                    - LOG_LOCAL3
+                                    - LOG_LOCAL4
+                                    - LOG_LOCAL5
+                                    - LOG_LOCAL6
+                                    - LOG_LOCAL7
+                                  protocol:
+                                    type: string
+                                    description: udp or tcp, udp is a safe default
+                                    enum:
+                                    - udp
+                                    - tcp
+                                  tag:
+                                    type: string
+                                    description: dot separated “application tag” that will be included in messages
+                                  output:
+                                    type: string
+                                    description: One of CEE (elastic, json payload), CEF (arcSite Comment Event Format) or default (just the summary)
+                                    enum:
+                                    - CEE
+                                    - CEF
+                                    - DEFAULT
+                              - type: object
+                                required:
+                                - url
+                                additionalProperties: false
+                                properties:
+                                  url:
+                                    type: string
+                                  short:
+                                    type: boolean
+                                    description: Display messages in a shorter style
+                              - type: object
+                                required:
+                                - accountsid
+                                - authtoken
+                                - to
+                                - messagingservicesid
+                                additionalProperties: false
+                                properties:
+                                  accountsid:
+                                    type: string
+                                  authtoken:
+                                    type: string
+                                  to:
+                                    type: object
+                                    additionalProperties: false
+                                    properties:
+                                      number:
+                                        type: string
+                                      region:
+                                        type: string
+                                  messagingservicesid:
+                                    type: string
+                              - type: object
+                                required:
+                                - url
+                                additionalProperties: false
+                                properties:
+                                  authpassword:
+                                    type: string
+                                    description: HTTP Basic Auth password
+                                  authusername:
+                                    type: string
+                                    description: HTTP Basic Auth ID
+                                  contenttype:
+                                    type: string
+                                  headers:
+                                    type: object
+                                    description: Comma separated list of <code>header:value</code> pairs
+                                  skipsslverification:
+                                    type: boolean
+                                    description: Don’t check the server certificate against the available certificate authorities. Also don’t require the URL host name to match the common name presented by the certificate
+                                  url:
+                                    type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    delete:
+      operationId: v1_integrations_response_id_delete
+      summary: Delete Response Integration
+      description: Deletes a response integration
+      tags:
+      - Integrations - Response
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the response integration to be deleted
+        schema:
+          type: string
+      responses:
+        '204':
+          description: An empty array
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true

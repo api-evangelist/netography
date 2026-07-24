@@ -1,0 +1,1234 @@
+openapi: 3.0.0
+info:
+  title: Netography (Vectra Fusion) Analytics Resellers API
+  version: '1.0'
+  description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
+  x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
+  x-apievangelist-method: searched
+  x-apievangelist-generated: '2026-07-20'
+servers:
+- url: https://api.netography.com
+  description: Netography API
+tags:
+- name: Resellers
+paths:
+  /api/v1/customers/types:
+    get:
+      operationId: v1_customers_types_get
+      summary: List Account Types
+      description: Return a list of all Accounts Types.
+      tags:
+      - Resellers
+      responses:
+        '200':
+          description: An object which contains response metadata information and a data array of Fields.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: An array of the Account type objects.
+                    type: array
+                    maxItems: 1000
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        value:
+                          description: The account type value.   immutable.
+                          enum:
+                          - customer
+                          - reseller
+                          - staff
+                          type: string
+                        label:
+                          description: The account type label.
+                          type: string
+                        description:
+                          description: Additional information to help describe the account type.
+                          type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/customers:
+    get:
+      operationId: v1_customers_get
+      summary: List Accounts
+      description: Return a list of all Accounts for the reseller.
+      tags:
+      - Resellers
+      responses:
+        '200':
+          description: Account response object
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: Result set from API call
+                    type: array
+                    maxItems: 1000
+                    items:
+                      allOf:
+                      - type: object
+                        description: Account properties
+                        additionalProperties: false
+                        properties:
+                          id:
+                            type: string
+                            readOnly: true
+                            description: Internal ID. Immutable
+                          billing:
+                            type: object
+                            description: Configuration Information
+                            additionalProperties: false
+                            properties:
+                              data_retention:
+                                type: integer
+                                description: Data Retention (days)
+                              rollup_retention:
+                                type: integer
+                                description: Data Rollup Retention (days)
+                              trial:
+                                type: boolean
+                                description: True if considered a trial account
+                          ingest_ip:
+                            type: string
+                            description: Flow ingest ip address assigned to the customer
+                          ingest_port:
+                            type: integer
+                            description: Flow ingest ip port assigned to the customer
+                          reseller:
+                            type: object
+                            description: Reseller Configuration
+                            additionalProperties: false
+                            properties:
+                              children:
+                                type: integer
+                                description: Number of direct sub accounts
+                              is_parent:
+                                type: boolean
+                                description: True if sub accounts exist
+                              node:
+                                type: string
+                                description: Tree-based shortname for reseller heirarchy
+                              parent:
+                                type: string
+                                description: Shortname of the parent reseller
+                          shortname:
+                            type: string
+                            description: Account shortname
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/customer:
+    post:
+      operationId: v1_customer_post
+      summary: Create Account
+      description: Create an Account (sub customer) the supplied object.  Do NOT submit an ID.  IDs are auto generated and immutable.
+      requestBody:
+        description: Account to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - shortname
+              - organization
+              - type
+              - retention
+              - rollupRetention
+              - username
+              - given_name
+              - family_name
+              additionalProperties: false
+              properties:
+                shortname:
+                  description: Shortname of the organization.  5-16 chars max.  RFC 3986 characters only.
+                  type: string
+                organization:
+                  description: Name of the organization
+                  type: string
+                type:
+                  description: Account Type.  See <a href="#list-account-types">Account Types</a>
+                  type: string
+                trial:
+                  type: boolean
+                  description: Whether or not this is a trial account
+                retention:
+                  type: integer
+                  description: Data retention
+                  enum:
+                  - 7
+                  - 45
+                  - 90
+                  - 180
+                rollupRetention:
+                  type: integer
+                  description: Rollup Data Retention.  Should be >= retention.
+                  enum:
+                  - 7
+                  - 90
+                  - 180
+                  - 365
+                fps:
+                  type: integer
+                  description: Optional. Contractual Flows per Second for the account
+                username:
+                  type: string
+                  description: Email address of the 1st admin user
+                given_name:
+                  type: string
+                  description: First or Given name of the 1st admin user
+                family_name:
+                  type: string
+                  description: Last or Family name of the 1st admin user
+      tags:
+      - Resellers
+      responses:
+        '201':
+          description: Account response object
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: Result set from API call
+                    allOf:
+                    - type: object
+                      description: Account properties
+                      additionalProperties: false
+                      properties:
+                        id:
+                          type: string
+                          readOnly: true
+                          description: Internal ID. Immutable
+                        billing:
+                          type: object
+                          description: Configuration Information
+                          additionalProperties: false
+                          properties:
+                            data_retention:
+                              type: integer
+                              description: Data Retention (days)
+                            rollup_retention:
+                              type: integer
+                              description: Data Rollup Retention (days)
+                            trial:
+                              type: boolean
+                              description: True if considered a trial account
+                        ingest_ip:
+                          type: string
+                          description: Flow ingest ip address assigned to the customer
+                        ingest_port:
+                          type: integer
+                          description: Flow ingest ip port assigned to the customer
+                        reseller:
+                          type: object
+                          description: Reseller Configuration
+                          additionalProperties: false
+                          properties:
+                            children:
+                              type: integer
+                              description: Number of direct sub accounts
+                            is_parent:
+                              type: boolean
+                              description: True if sub accounts exist
+                            node:
+                              type: string
+                              description: Tree-based shortname for reseller heirarchy
+                            parent:
+                              type: string
+                              description: Shortname of the parent reseller
+                        shortname:
+                          type: string
+                          description: Account shortname
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/customer/{shortname}:
+    get:
+      operationId: v1_customer_shortname_get
+      summary: Get Account
+      description: Fetches a specific Account from the shortname supplied in the path.
+      tags:
+      - Resellers
+      parameters:
+      - in: path
+        name: shortname
+        schema:
+          type: string
+        required: true
+        description: String identifier of the customer
+      responses:
+        '200':
+          description: Account response object
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: Result set from API call
+                    allOf:
+                    - type: object
+                      description: Account properties
+                      additionalProperties: false
+                      properties:
+                        id:
+                          type: string
+                          readOnly: true
+                          description: Internal ID. Immutable
+                        billing:
+                          type: object
+                          description: Configuration Information
+                          additionalProperties: false
+                          properties:
+                            data_retention:
+                              type: integer
+                              description: Data Retention (days)
+                            rollup_retention:
+                              type: integer
+                              description: Data Rollup Retention (days)
+                            trial:
+                              type: boolean
+                              description: True if considered a trial account
+                        ingest_ip:
+                          type: string
+                          description: Flow ingest ip address assigned to the customer
+                        ingest_port:
+                          type: integer
+                          description: Flow ingest ip port assigned to the customer
+                        reseller:
+                          type: object
+                          description: Reseller Configuration
+                          additionalProperties: false
+                          properties:
+                            children:
+                              type: integer
+                              description: Number of direct sub accounts
+                            is_parent:
+                              type: boolean
+                              description: True if sub accounts exist
+                            node:
+                              type: string
+                              description: Tree-based shortname for reseller heirarchy
+                            parent:
+                              type: string
+                              description: Shortname of the parent reseller
+                        shortname:
+                          type: string
+                          description: Account shortname
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    put:
+      operationId: v1_customer_shortname_put
+      summary: Update Account
+      description: Update an Account given the provided object.  This does not do a diff.  You must send the complete object.
+      requestBody:
+        description: Account to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - organization
+              - type
+              - retention
+              - rollupRetention
+              additionalProperties: false
+              properties:
+                organization:
+                  description: Name of the organization
+                  type: string
+                type:
+                  description: Account Type.  See <a href="#list-account-types">Account Types</a>
+                  type: string
+                trial:
+                  type: boolean
+                  description: Whether or not this is a trial account
+                retention:
+                  type: integer
+                  description: Data retention
+                  enum:
+                  - 7
+                  - 45
+                  - 90
+                  - 180
+                rollupRetention:
+                  type: integer
+                  description: Rollup Data Retention.  Should be >= retention.
+                  enum:
+                  - 7
+                  - 90
+                  - 180
+                  - 365
+                fps:
+                  type: integer
+                  description: Optional. Contractual Flows per Second for the account
+      tags:
+      - Resellers
+      parameters:
+      - name: shortname
+        in: path
+        required: true
+        description: The shortname of the Account to be updated
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Account response object
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: Result set from API call
+                    allOf:
+                    - type: object
+                      description: Account properties
+                      additionalProperties: false
+                      properties:
+                        id:
+                          type: string
+                          readOnly: true
+                          description: Internal ID. Immutable
+                        billing:
+                          type: object
+                          description: Configuration Information
+                          additionalProperties: false
+                          properties:
+                            data_retention:
+                              type: integer
+                              description: Data Retention (days)
+                            rollup_retention:
+                              type: integer
+                              description: Data Rollup Retention (days)
+                            trial:
+                              type: boolean
+                              description: True if considered a trial account
+                        ingest_ip:
+                          type: string
+                          description: Flow ingest ip address assigned to the customer
+                        ingest_port:
+                          type: integer
+                          description: Flow ingest ip port assigned to the customer
+                        reseller:
+                          type: object
+                          description: Reseller Configuration
+                          additionalProperties: false
+                          properties:
+                            children:
+                              type: integer
+                              description: Number of direct sub accounts
+                            is_parent:
+                              type: boolean
+                              description: True if sub accounts exist
+                            node:
+                              type: string
+                              description: Tree-based shortname for reseller heirarchy
+                            parent:
+                              type: string
+                              description: Shortname of the parent reseller
+                        shortname:
+                          type: string
+                          description: Account shortname
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    delete:
+      operationId: v1_customer_shortname_delete
+      summary: Delete Account
+      description: Deletes the Account.
+      tags:
+      - Resellers
+      parameters:
+      - name: shortname
+        in: path
+        required: true
+        description: The shortname of the User to be retrieved
+        schema:
+          type: string
+      responses:
+        '204':
+          description: An empty array
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true

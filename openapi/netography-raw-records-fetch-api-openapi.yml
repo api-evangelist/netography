@@ -1,0 +1,908 @@
+openapi: 3.0.0
+info:
+  title: Netography (Vectra Fusion) Analytics Raw Records - Fetch API
+  version: '1.0'
+  description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
+  x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
+  x-apievangelist-method: searched
+  x-apievangelist-generated: '2026-07-20'
+servers:
+- url: https://api.netography.com
+  description: Netography API
+tags:
+- name: Raw Records - Fetch
+paths:
+  /api/v1/fetch/{context}/{id}:
+    get:
+      operationId: v1_fetch_context_id_get
+      summary: Fetch Record
+      description: 'Fetches a specific context record per the id supplied in the path.
+
+
+        <b>Note: flow records by ID are currently not available.</b>
+
+        '
+      tags:
+      - Raw Records - Fetch
+      parameters:
+      - name: context
+        in: path
+        description: Context of the Fields Request
+        required: true
+        schema:
+          type: string
+          enum:
+          - alert
+          - audit
+          - block
+          - flow
+          - dns
+      - name: id
+        in: path
+        required: true
+        description: The ID of the record to be returned.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: An object which contains response metadata information and a data array of records
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: Result set from API call
+                    type: array
+                    maxItems: 1000
+                    items:
+                      oneOf:
+                      - description: Event Record
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          alerttype:
+                            description: Type of alert. Eg start, end, ongoing.
+                            type: string
+                          algorithm:
+                            description: Name of the Detection Model (algorithm) that triggered the alert.
+                            type: string
+                          categories:
+                            description: categories of the alert. Eg security, ddos etc
+                            type: array
+                            maxItems: 1000
+                            items:
+                              type: string
+                          description:
+                            description: Description of the alert
+                            type: string
+                          dstports: {}
+                          duration:
+                            description: Time in seconds for the current triggered alert metric.
+                            type: integer
+                          end:
+                            description: End time of the alert.
+                            type: integer
+                          flowsrcnames:
+                            description: Device or Cloud Provider name sending flows
+                            type: string
+                          id:
+                            type: string
+                            readOnly: true
+                            description: The ID for this alert.
+                          ipinfo:
+                            description: An array of ip info objects that contains the netography known enrichment data for an ip at the time of the alert
+                            type: array
+                            maxItems: 1000
+                            items:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                as:
+                                  description: ASN object that contains the number and org
+                                  type: object
+                                  additionalProperties: false
+                                  properties:
+                                    number:
+                                      description: AS Number
+                                      type: integer
+                                    org:
+                                      description: AS Org
+                                      type: string
+                                bogon:
+                                  description: Is this IP bogon?
+                                  type: boolean
+                                count:
+                                  description: Number of times this IP has been seen
+                                  type: integer
+                                firstseen:
+                                  description: timestamp of when this IP was first seen by Netography
+                                  type: integer
+                                geo:
+                                  description: geo data for this ip
+                                  type: object
+                                  additionalProperties: false
+                                  properties:
+                                    city:
+                                      description: Name of the city
+                                      type: string
+                                    continentcode:
+                                      description: Continent code
+                                      type: string
+                                    countrycode:
+                                      description: Country code
+                                      type: string
+                                    location:
+                                      description: Latitude & Longitude Object
+                                      type: object
+                                      additionalProperties: false
+                                      properties:
+                                        lat:
+                                          description: Latitude
+                                          type: number
+                                          minimum: -90
+                                          maximum: 90
+                                        lon:
+                                          description: Longitude
+                                          type: number
+                                          minimum: -180
+                                          maximum: 180
+                                    postal:
+                                      description: Postal code
+                                      type: string
+                                    subdiso:
+                                      description: Name of the subdivision iso code
+                                      type: string
+                                    subdivisionb:
+                                      description: Name of the additional subdivision
+                                      type: string
+                                ip:
+                                  description: IP address this info applies to
+                                  type: string
+                                iprep:
+                                  description: IP Reputation information for this IP
+                                  type: object
+                                  additionalProperties: false
+                                  properties:
+                                    categories:
+                                      description: The IP reputation categories this IP belongs to.
+                                      type: array
+                                      maxItems: 1000
+                                      items:
+                                        type: string
+                                    count:
+                                      description: Number of IP reputation categories this IP belongs to
+                                      type: integer
+                                lastseen:
+                                  description: timestamp of when this IP was first seen by Netography
+                                  type: integer
+                                pdns:
+                                  description: Passive DNS information for this IP
+                                  type: object
+                                  additionalProperties: false
+                                  properties:
+                                    count:
+                                      description: Number of passive DNS records for this IP
+                                      type: integer
+                                    records:
+                                      description: The passive DNS records that were found during the event duration
+                                      type: array
+                                      maxItems: 1000
+                                      items:
+                                        type: string
+                                rdns:
+                                  description: Reverse DNS for this ip
+                                  type: array
+                                  maxItems: 1000
+                                  items:
+                                    type: string
+                          ipinfocount:
+                            description: number of IPs extend information was fetched on.
+                            type: integer
+                          metrics:
+                            type: object
+                            additionalProperties: false
+                            properties:
+                              bits:
+                                type: object
+                                additionalProperties: false
+                                properties:
+                                  min:
+                                    description: The minumum value for the current triggered alert metric.
+                                    type: integer
+                                  max:
+                                    description: The maximum value for the current triggered alert metric.
+                                    type: integer
+                                  avg:
+                                    description: The average value for the current triggered alert metric.
+                                    type: number
+                                  sum:
+                                    description: The sum of the values for the current triggered alert metric.
+                                    type: number
+                              bitsxrate:
+                                type: object
+                                additionalProperties: false
+                                properties:
+                                  min:
+                                    description: The minumum value for the current triggered alert metric.
+                                    type: integer
+                                  max:
+                                    description: The maximum value for the current triggered alert metric.
+                                    type: integer
+                                  avg:
+                                    description: The average value for the current triggered alert metric.
+                                    type: number
+                                  sum:
+                                    description: The sum of the values for the current triggered alert metric.
+                                    type: number
+                              packets:
+                                type: object
+                                additionalProperties: false
+                                properties:
+                                  min:
+                                    description: The minumum value for the current triggered alert metric.
+                                    type: integer
+                                  max:
+                                    description: The maximum value for the current triggered alert metric.
+                                    type: integer
+                                  avg:
+                                    description: The average value for the current triggered alert metric.
+                                    type: number
+                                  sum:
+                                    description: The sum of the values for the current triggered alert metric.
+                                    type: number
+                              packetsxrate:
+                                type: object
+                                additionalProperties: false
+                                properties:
+                                  min:
+                                    description: The minumum value for the current triggered alert metric.
+                                    type: integer
+                                  max:
+                                    description: The maximum value for the current triggered alert metric.
+                                    type: integer
+                                  avg:
+                                    description: The average value for the current triggered alert metric.
+                                    type: number
+                                  sum:
+                                    description: The sum of the values for the current triggered alert metric.
+                                    type: number
+                          rollupperiod:
+                            description: Time in seconds looked back for calculating the alert metric.
+                            type: integer
+                          rulecount:
+                            description: Number of response policies (rules) that fired from this alert
+                            type: integer
+                          rules:
+                            description: Response policies (rules) that fired with this alert
+                            type: array
+                            maxItems: 1000
+                            items:
+                              type: string
+                          search:
+                            description: NQL used
+                            type: string
+                          severity:
+                            description: Severity of the alert.
+                            type: string
+                          sites:
+                            description: The site of the alert.
+                            type: string
+                          srcports: {}
+                          start:
+                            description: Start time of the alert.
+                            type: integer
+                          summary:
+                            description: Human readable summary of the alert.
+                            type: string
+                          tag:
+                            description: Tag associated with the alert if applicable
+                            type: string
+                          tags:
+                            description: Tag associated with the alert if applicable
+                            type: array
+                            maxItems: 1000
+                            items:
+                              type: string
+                          threshold:
+                            description: Threshold for this detection model (algorithm)
+                            type: string
+                          timestamp:
+                            description: Unix timestamp for the alert.
+                            type: integer
+                          track:
+                            description: The object string that the detection model (algorithm) uses to track, this can be different than the objectfield value).
+                            type: string
+                          track_by:
+                            description: The field that identifies the object (dstip, flowsrcname, tag, input, output).
+                            type: array
+                            maxItems: 5
+                            items:
+                              type: string
+                          updateinterval:
+                            description: Time in seconds updates are sent out.
+                            type: integer
+                      - description: Audit Log Record
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          action:
+                            description: What operation was done to generate the record
+                            type: string
+                          class:
+                            description: The audit class of the record
+                            type: string
+                          description:
+                            description: User summary of the record
+                            type: string
+                          id:
+                            type: string
+                            readOnly: true
+                            description: The unique ID, as an UUID, of the audit record
+                          impersonator:
+                            description: The user id of the impersonator of the change
+                            type: string
+                          new_object:
+                            description: The new object subject to the audit record
+                            type: object
+                          original_id:
+                            type: string
+                            readOnly: true
+                            description: The id of the object subject to the audit record
+                          original_object:
+                            description: The original object subject to the audit record
+                            type: object
+                          subclass:
+                            description: The audit subclass of the record
+                            type: string
+                          timestamp:
+                            description: Epoch timestamp
+                            type: integer
+                          user:
+                            description: The user id of the user of the change
+                            type: string
+                      - description: Block Record
+                        type: object
+                      - description: DNS Record
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          accountid:
+                            description: Account ID
+                            type: string
+                          action:
+                            description: Action that was taken on this query (cloud only)
+                            type: string
+                          answercount:
+                            description: The number of answers returned
+                            type: integer
+                          answers:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                  description: the DNS answer type
+                                rdata:
+                                  type: string
+                                  description: the DNS answer rdata
+                                class:
+                                  type: string
+                                  description: the DNS answer class
+                          datasrc:
+                            description: Device or Cloud Provider name sending dns
+                            type: string
+                          id:
+                            description: The unique ID, as an UUID, of the DNS record
+                            type: string
+                          instanceid:
+                            description: Instance ID
+                            type: string
+                          internal:
+                            description: Is this query name for an internal domain
+                            type: boolean
+                          label:
+                            type: object
+                            properties:
+                              ip:
+                                type: object
+                                description: IP labels for all contexts
+                              port:
+                                type: object
+                                description: Port labels for all protocols
+                          protocol:
+                            description: Protocol of the query
+                            type: string
+                          provider:
+                            description: Is the answer a provider
+                            type: boolean
+                          providername:
+                            description: The name of the provider
+                            type: string
+                          query:
+                            type: object
+                            properties:
+                              class:
+                                description: DNS query class
+                                type: string
+                              depth:
+                                description: DNS query depth
+                                type: integer
+                              domain:
+                                description: DNS query domain
+                                type: string
+                              host:
+                                description: DNS query host
+                                type: string
+                              name:
+                                description: DNS query name
+                                type: string
+                              publicsuffix:
+                                description: DNS query domain under which multiple parties that are unaffiliated with the operator of the domain may register subdomains
+                                type: string
+                              tld:
+                                description: DNS query tld
+                                type: string
+                              type:
+                                description: DNS query type
+                                type: string
+                          rcode:
+                            description: the DNS rcode
+                            type: string
+                          region:
+                            description: Region
+                            type: string
+                          rtime:
+                            description: The time the record was received
+                            type: string
+                          site:
+                            description: The site name the DNS request was sent from.  Site names can be managed in Devices
+                            type: string
+                          srcip:
+                            description: Source IP of the DNS request
+                            type: string
+                          srcport:
+                            description: Source port of the DNS request
+                            type: integer
+                          timestamp:
+                            description: Unix timestamp for the dns request.
+                            type: integer
+                          type:
+                            description: the DNS Type
+                            type: string
+                          version:
+                            description: the DNS version
+                            type: string
+                          vpcid:
+                            description: VPC Id
+                            type: string
+                      - description: Flow Record
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          action:
+                            description: Whether the flow was accepted or rejected.  AWS only.
+                            type: string
+                          bits:
+                            description: Number of bits.
+                            type: integer
+                          bogonsrc:
+                            description: Is source IP bogon?
+                            type: boolean
+                          bogondst:
+                            description: Is destination IP bogon?
+                            type: boolean
+                          dstas:
+                            type: object
+                            description: Autonymous System Object
+                            additionalProperties: false
+                            properties:
+                              number:
+                                description: Destination AS the traffic came from.
+                                type: integer
+                              org:
+                                description: Destination AS Organization the traffic came from.
+                                type: string
+                          dstgeo:
+                            type: object
+                            description: Destination Geolocation Object
+                            additionalProperties: false
+                            properties:
+                              countrycode:
+                                description: Country code of destination IP.
+                                type: string
+                              continentcode:
+                                description: Continent of destination IP.
+                                type: string
+                              location:
+                                type: object
+                                description: Latitude & Longitude Object
+                                additionalProperties: false
+                                properties:
+                                  lat:
+                                    description: Latitude of the destination IP.
+                                    type: number
+                                    minimum: -90
+                                    maximum: 90
+                                  lon:
+                                    description: Longitude of the destination IP.
+                                    type: number
+                                    minimum: -180
+                                    maximum: 180
+                          dstinternal:
+                            description: Is the destination an internal IP?
+                            type: boolean
+                          dstip:
+                            description: Destination IP for the flow.
+                            type: string
+                          dstiprep:
+                            type: object
+                            description: Destination IP Reputation Object
+                            additionalProperties: false
+                            properties:
+                              count:
+                                description: Number of IP Reputation categories the destination IP belongs to.
+                                type: integer
+                              categories:
+                                description: The IP Reputation categories the destination ip belongs to.
+                                type: array
+                                maxItems: 1000
+                                items:
+                                  type: string
+                          dstowneras:
+                            type: object
+                            description: Autonymous System Object
+                            additionalProperties: false
+                            properties:
+                              number:
+                                description: AS number of the destination IP owner.
+                                type: integer
+                              org:
+                                description: AS Organization of the destination IP owner.
+                                type: string
+                          dstport:
+                            description: Destination port for the flow.
+                            type: integer
+                          dstvlan:
+                            description: Destination VLAN.
+                            type: integer
+                          duration:
+                            description: Duration of the flow in ms.
+                            type: integer
+                          end:
+                            description: End of the flow if it could be calculated (netflow only)
+                            type: integer
+                          flowbrate:
+                            description: The rate of bits for this flow. Netflow/VPC flow only
+                            type: number
+                          flowprate:
+                            description: The rate of packets for this flow. Netflow/VPC flow only
+                            type: number
+                          flowsrcname:
+                            description: Device or Cloud Provider name sending flows
+                            type: string
+                          flowsrcip:
+                            description: Device sending IP of flow.
+                            type: string
+                          flowtype:
+                            description: Type of flow for this flow. Eg. aws, netflow, sflow.
+                            type: string
+                          flowversion:
+                            description: Version of the flow being sent.
+                            type: integer
+                          icmpcode:
+                            description: ICMP code V10 only.
+                            type: string
+                          icmptype:
+                            description: ICMP type
+                            type: string
+                          ipversion:
+                            description: Version of the IP protocol for this flow.
+                            type: integer
+                          input:
+                            description: Input (index) interface.
+                            type: integer
+                          inputalias:
+                            description: Alias for input interface.
+                            type: string
+                          inputclasses:
+                            description: Interface classes the input interface belongs to.
+                            type: array
+                            maxItems: 1000
+                            items:
+                              type: string
+                          inputname:
+                            description: Nescription of the input interface.
+                            type: string
+                          nexthop:
+                            description: IP address of the next hop.
+                            type: string
+                          output:
+                            description: Output (index) interface.
+                            type: integer
+                          outputalias:
+                            description: Alias for output interface.
+                            type: string
+                          outputclasses:
+                            description: Interface classes the output interface belongs to.
+                            type: array
+                            maxItems: 1000
+                            items:
+                              type: string
+                          outputname:
+                            description: Name for output interface.
+                            type: string
+                          packets:
+                            description: Number of packets.
+                            type: integer
+                          pbratio:
+                            description: Ratio of packets to bits for this flow (packets/bits).
+                            type: number
+                          protocol:
+                            description: Protocol of the flow.
+                            type: string
+                          protocolint:
+                            description: Integer representation of the protocol of the flow.
+                            type: integer
+                          site:
+                            description: Site for this device/VPC.
+                            type: string
+                          srcas:
+                            type: object
+                            description: Autonymous System Object
+                            additionalProperties: false
+                            properties:
+                              number:
+                                description: Source AS the traffic came from.
+                                type: integer
+                              org:
+                                description: Source AS Organization the traffic came from.
+                                type: string
+                          srcgeo:
+                            type: object
+                            description: Source Geolocation Object
+                            additionalProperties: false
+                            properties:
+                              countrycode:
+                                description: Country code of source IP.
+                                type: string
+                              continentcode:
+                                description: Continent of source IP.
+                                type: string
+                              location:
+                                type: object
+                                description: Latitude & Longitude Object
+                                additionalProperties: false
+                                properties:
+                                  lat:
+                                    description: Latitude of the source IP.
+                                    type: number
+                                    minimum: -90
+                                    maximum: 90
+                                  lon:
+                                    description: Longitude of the source IP.
+                                    type: number
+                                    minimum: -180
+                                    maximum: 180
+                          srcinternal:
+                            description: Is the source an internal IP?
+                            type: boolean
+                          srcip:
+                            description: Source IP for the flow.
+                            type: string
+                          srciprep:
+                            type: object
+                            description: Source IP Reputation Object
+                            additionalProperties: false
+                            properties:
+                              count:
+                                description: Number of IP Reputation categories the source IP belongs to.
+                                type: integer
+                              categories:
+                                description: The IP Reputation categories the source ip belongs to.
+                                type: array
+                                maxItems: 1000
+                                items:
+                                  type: string
+                          srcowneras:
+                            type: object
+                            description: Autonymous System Object
+                            additionalProperties: false
+                            properties:
+                              number:
+                                description: AS number of the source IP owner.
+                                type: integer
+                              org:
+                                description: AS Organization of the source IP owner
+                                type: string
+                          srcport:
+                            description: Source port for the flow.
+                            type: integer
+                          srcvlan:
+                            description: Source VLAN.
+                            type: integer
+                          start:
+                            description: Start of the flow if it could be calculated (netflow only)
+                            type: integer
+                          tags:
+                            description: User defined metadata.
+                            type: array
+                            maxItems: 1000
+                            items:
+                              type: string
+                          timestamp:
+                            description: Unix timestamp for the flow.
+                            type: integer
+                          tcpflagsint:
+                            description: Integer value representing ALL TCP flags.
+                            type: integer
+                          tcpflags:
+                            type: object
+                            description: TCP Flags Object
+                            additionalProperties: false
+                            properties:
+                              ack:
+                                description: Was tcp flag ACK set?
+                                type: boolean
+                              cwr:
+                                description: Was tcp flag CWR set?
+                                type: boolean
+                              ece:
+                                description: Was tcp flag ECE set?
+                                type: boolean
+                              fin:
+                                description: Was tcp flag FIN set?
+                                type: boolean
+                              ns:
+                                description: Was tcp flag NS set?
+                                type: boolean
+                              psh:
+                                description: Was tcp flag PSH set?
+                                type: boolean
+                              rst:
+                                description: Was tcp flag RST set?
+                                type: boolean
+                              syn:
+                                description: Was tcp flag SYN set?
+                                type: boolean
+                              urg:
+                                description: Was tcp flag URG set?
+                                type: boolean
+                          tos:
+                            description: Type of service set on the flow.
+                            type: integer
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true

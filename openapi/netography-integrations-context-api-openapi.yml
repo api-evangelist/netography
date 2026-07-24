@@ -1,0 +1,3860 @@
+openapi: 3.0.0
+info:
+  title: Netography (Vectra Fusion) Analytics Integrations - Context API
+  version: '1.0'
+  description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
+  x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
+  x-apievangelist-method: searched
+  x-apievangelist-generated: '2026-07-20'
+servers:
+- url: https://api.netography.com
+  description: Netography API
+tags:
+- name: Integrations - Context
+paths:
+  /api/v1/integrations/context:
+    get:
+      operationId: v1_integrations_context_get
+      summary: List Context Integrations
+      description: Returns an array of context integrations.
+      tags:
+      - Integrations - Context
+      responses:
+        '200':
+          description: List of Context Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        id:
+                          type: string
+                          readOnly: true
+                          description: The id of the context integration. This is immutable.
+                        created:
+                          type: string
+                          description: Date/time the context integration was created.
+                        lastupdated:
+                          type: string
+                          description: Date/time the context integration was last updated.
+                        allOf:
+                          description: List of Context Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.
+                          type: object
+                          required:
+                          - name
+                          - type
+                          - enabled
+                          - updateinterval
+                          allOf:
+                          - type: object
+                            properties:
+                              name:
+                                type: string
+                                description: The name of the context integration
+                              type:
+                                type: string
+                                description: The type of the context integration. The configuration parameters are dependent on this value.
+                                enum:
+                                - aws
+                                - azure
+                                - crowdstrike
+                                - crowdstrikediscover
+                                - ibm
+                                - oracle
+                                - gcp
+                                - s3
+                              enabled:
+                                type: boolean
+                                description: The state of the context integration. Whether to auto update or not.
+                              updateinterval:
+                                type: integer
+                                description: The number of seconds by which to poll the integration.
+                                minimum: 3600
+                                maximum: 604800
+                                format: int32
+                              aws:
+                                type: object
+                                description: Configuration options specific to type <code>aws</code>. nil if not configuring AWS
+                                required:
+                                - awsauthtype
+                                - region
+                                additionalProperties: false
+                                properties:
+                                  region:
+                                    type: string
+                                    description: The aws region to authenticate to
+                                  tags:
+                                    type: array
+                                    items:
+                                      type: string
+                                    description: An array of strings to match any custom tag names to track in AWS
+                                  awsauthtype:
+                                    description: '<p>The method of authentication to use with AWS.  Valid options are:</p> <ul> <li><code>AccessKey</code>: indicates key/secret auth. <code>accesskeyid</code> and <code>accesssecret</code> fields are then required.</li> <li><code>RoleARN</code> indicates that role auth.  The <code>role</code> object is then required.</li> </ul>
+
+                                      '
+                                    type: string
+                                    enum:
+                                    - AccessKey
+                                    - RoleARN
+                                  accesskeyid:
+                                    description: AWS accesskey id.  Required for <code>AccessKey</code> auth type.
+                                    type: string
+                                  accesssecret:
+                                    description: AWS Access secret.  Required for <code>AccessKey</code> auth type.
+                                    type: string
+                                  role:
+                                    description: object containing role authentication data.  Required for <code>RoleARN</code> auth type.
+                                    type: object
+                                    properties:
+                                      arn:
+                                        description: ARN used to authenticate the flow source
+                                        type: string
+                              azure:
+                                type: object
+                                description: Configuration options specific to type <code>azure</code>. nil if not configuring Azure
+                                required:
+                                - clientid
+                                - clientsecret
+                                - subscriptionid
+                                - tenantid
+                                additionalProperties: false
+                                properties:
+                                  clientid:
+                                    description: The client id to use authenticating with azure
+                                    type: string
+                                  clientsecret:
+                                    description: The client secret to use authenticating with azure
+                                    type: string
+                                  subscriptionid:
+                                    type: string
+                                    description: The azure subscription id to be queried
+                                  tenantid:
+                                    type: string
+                                    description: The azure tenant id to use
+                                  tags:
+                                    type: array
+                                    items:
+                                      type: string
+                                    description: An array of strings to match any custom tag names to track in Azure
+                              crowdstrike:
+                                type: object
+                                description: Configuration options specific to <code>crowdstrike</code>. nil if not configuring CrowdStrike Falcon.
+                                required:
+                                - clientid
+                                - clientsecret
+                                - cloud
+                                additionalProperties: false
+                                properties:
+                                  clientid:
+                                    description: The client id to authenticate to the Falcon cloud api
+                                    type: string
+                                  clientsecret:
+                                    description: The client secret to authenticate to the Falcon cloud api
+                                    type: string
+                                  cloud:
+                                    type: string
+                                    description: The Falcon cloud abbreviation to query
+                                    enum:
+                                    - us-1
+                                    - us-2
+                                    - eu-1
+                                    - us-gov-1
+                                  filter:
+                                    type: string
+                                    description: An optional FQL string to be used when filtering results, e.g. <code>entity_type:'managed'+last_seen_timestamp:<'now-3d</code>
+                                  sort:
+                                    type: string
+                                    description: An optional FQL sort string, e.g. <code>last_seen_timestamp.desc</code>
+                              crowdstrikediscover:
+                                type: object
+                                description: Configuration options specific to <code>crowdstrikediscover</code>.  nil if not configuring CrowdStrike Discover Falcon.
+                                required:
+                                - clientid
+                                - clientsecret
+                                - cloud
+                                additionalProperties: false
+                                properties:
+                                  clientid:
+                                    description: The client id to authenticate to the Falcon cloud api
+                                    type: string
+                                  clientsecret:
+                                    description: The client secret to authenticate to the Falcon cloud api
+                                    type: string
+                                  cloud:
+                                    type: string
+                                    description: The Falcon cloud abbreviation to query
+                                    enum:
+                                    - us-1
+                                    - us-2
+                                    - eu-1
+                                    - us-gov-1
+                                  filter:
+                                    type: string
+                                    description: An optional FQL string to be used when filtering results, e.g. <code>entity_type:'managed'+last_seen_timestamp:<'now-3d</code>
+                                  sort:
+                                    type: string
+                                    description: An optional FQL sort string, e.g. <code>last_seen_timestamp.desc</code>
+                              ibm:
+                                type: object
+                                description: Configuration options specific to <code>ibm</code>. nil if not configuring IBM Cloud
+                                required:
+                                - apikey
+                                - region
+                                properties:
+                                  apikey:
+                                    description: The api key to use for authentication
+                                    type: string
+                                  region:
+                                    type: string
+                                    description: The IBM region to query
+                              oracle:
+                                type: object
+                                description: Configuration options specific to <code>oracle</code>. nil if not configuring Oracle Cloud
+                                required:
+                                - user
+                                - tenancy
+                                - region
+                                additionalProperties: false
+                                properties:
+                                  user:
+                                    description: The user ocid to use for authentication to oracle cloud
+                                    type: string
+                                  tenancy:
+                                    description: The tenancy ocid to use for connecting to oracle cloud
+                                    type: string
+                                  region:
+                                    type: string
+                                    description: The region of oracle cloud to connect to
+                                  tags:
+                                    type: array
+                                    items:
+                                      type: string
+                                    description: An array of strings to match any custom tag names to track in oracle cloud
+                              gcp:
+                                type: object
+                                description: Configuration options specific to <code>gcp</code>. nil if not configuring GCP
+                                required:
+                                - zone
+                                - credentials
+                                additionalProperties: false
+                                properties:
+                                  zone:
+                                    description: The GCP zone for this configuration
+                                    type: string
+                                  credentials:
+                                    type: object
+                                    description: The credentials object necessary to authenticate to the project. This is sent to you via a json file download following the creation of a GCP service account.
+                                    additionalProperties: false
+                                    required:
+                                    - type
+                                    - project_id
+                                    - private_key_id
+                                    - private_key
+                                    - client_email
+                                    - client_id
+                                    - auth_uri
+                                    - token_uri
+                                    - auth_provider_x509_cert_url
+                                    - client_x509_cert_url
+                                    properties:
+                                      type:
+                                        type: string
+                                        description: Credential type. this will typically be "service_account"
+                                      project_id:
+                                        type: string
+                                        description: The project id of the account
+                                      private_key_id:
+                                        type: string
+                                        description: The private key id of the service account
+                                      private_key:
+                                        type: string
+                                        description: The pirvate key to authenticate with
+                                      client_email:
+                                        type: string
+                                        description: The email of the service account
+                                      client_id:
+                                        type: string
+                                        description: The id of the client
+                                      auth_uri:
+                                        type: string
+                                        description: OAth2 uri
+                                      token_uri:
+                                        type: string
+                                        description: Token URI
+                                      auth_provider_x509_cert_url:
+                                        type: string
+                                        description: Auth cert url
+                                      client_x509_cert_url:
+                                        type: string
+                                        description: Client cert url
+                                  labels:
+                                    type: array
+                                    items:
+                                      type: string
+                                    description: An array of strings to match any custom label names to track in GCP
+                              s3:
+                                type: object
+                                description: "Configuration options specific to type <code>s3</code>.\n This is used for pulling a CSV file from an S3 bucket. The format of the file is <code>ip,context,label1,label2</code> etc. nil if not configuring S3\n"
+                                required:
+                                - awsauthtype
+                                - region
+                                - bucket
+                                additionalProperties: false
+                                properties:
+                                  region:
+                                    type: string
+                                    description: The aws region to authenticate to
+                                  bucket:
+                                    type: string
+                                    description: The name of the s3 bucket from which to pull the csv file.
+                                  path:
+                                    type: string
+                                    description: The path to the csv file to import labels from. The format of the file is <code>ip,context,label1,label2,...</code>
+                                  awsauthtype:
+                                    description: '<p>The method of authentication to use with AWS.  Valid options are:</p> <ul> <li><code>AccessKey</code>: indicates key/secret auth. <code>accesskeyid</code> and <code>accesssecret</code> fields are then required.</li> <li><code>RoleARN</code> indicates that role auth.  The <code>role</code> object is then required.</li> </ul>
+
+                                      '
+                                    type: string
+                                    enum:
+                                    - AccessKey
+                                    - RoleARN
+                                  accesskeyid:
+                                    description: AWS accesskey id.  Required for <code>AccessKey</code> auth type.
+                                    type: string
+                                  accesssecret:
+                                    description: AWS Access secret.  Required for <code>AccessKey</code> auth type.
+                                    type: string
+                                  role:
+                                    description: object containing role authentication data.  Required for <code>RoleARN</code> auth type.
+                                    type: object
+                                    properties:
+                                      arn:
+                                        description: ARN used to authenticate the flow source
+                                        type: string
+                              sentinelone:
+                                type: object
+                                description: Configuration options specific to <code>sentinelone</code>. nil if not configuring SentinelOne
+                                required:
+                                - base_url
+                                - params
+                                - token
+                                additionalProperties: false
+                                properties:
+                                  base_url:
+                                    description: The SentinelOne domain URL to query, e.g. <code>https://<subdomain>.sentinelone.net</code>
+                                    type: string
+                                  params:
+                                    type: object
+                                    additionalProperties: false
+                                    properties:
+                                      accountId:
+                                        type: string
+                                        description: The SentinelOne account ID to query
+                                      filterId:
+                                        type: string
+                                        description: The SentinelOne filter ID to limit query, SentinelOne API result size limit is 10,000
+                                  token:
+                                    description: API token to use for authentication
+                                    type: string
+                                  ranger:
+                                    type: object
+                                    properties:
+                                      enabled:
+                                        type: boolean
+                              wiz:
+                                type: object
+                                description: Configuration options specific to <code>wiz</code>. nil if not configuring Wiz
+                                required:
+                                - apiendpoint
+                                - tokenurl
+                                - clientid
+                                - clientsecret
+                                additionalProperties: false
+                                properties:
+                                  apiendpoint:
+                                    description: Wiz API Endpoint URL
+                                    type: string
+                                    enum:
+                                    - https://api.us1.app.wiz.io/graphql
+                                    - https://api.us2.app.wiz.io/graphql
+                                    - https://api.eu1.app.wiz.io/graphql
+                                    - https://api.eu2.app.wiz.io/graphql
+                                    - https://api.us17.app.wiz.io/graphql
+                                  tokenurl:
+                                    description: Wiz Token URL
+                                    type: string
+                                    enum:
+                                    - https://auth.app.wiz.io/oauth/token
+                                    - https://auth.wiz.io/oauth/token
+                                    - https://auth.gov.wiz.io/oauth/token
+                                    - https://auth0.gov.wiz.io/oauth/token
+                                  clientid:
+                                    description: Client id to use authenticating with Wiz API
+                                    type: string
+                                  clientsecret:
+                                    description: Client secret to use authenticating with Wiz API
+                                    type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    post:
+      operationId: v1_integrations_context_post
+      summary: Create Context Integration
+      description: Creates a context integration from the data that's been supplied.  Do not provide an id.  IDs are auto generated
+      requestBody:
+        description: Integration to be added.  Parameters are dependant on which context 'type' is provided.
+        required: true
+        content:
+          application/json:
+            schema:
+              description: List of Context Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.
+              type: object
+              required:
+              - name
+              - type
+              - enabled
+              - updateinterval
+              allOf:
+              - type: object
+                properties:
+                  name:
+                    type: string
+                    description: The name of the context integration
+                  type:
+                    type: string
+                    description: The type of the context integration. The configuration parameters are dependent on this value.
+                    enum:
+                    - aws
+                    - azure
+                    - crowdstrike
+                    - crowdstrikediscover
+                    - ibm
+                    - oracle
+                    - gcp
+                    - s3
+                  enabled:
+                    type: boolean
+                    description: The state of the context integration. Whether to auto update or not.
+                  updateinterval:
+                    type: integer
+                    description: The number of seconds by which to poll the integration.
+                    minimum: 3600
+                    maximum: 604800
+                    format: int32
+                  aws:
+                    type: object
+                    description: Configuration options specific to type <code>aws</code>. nil if not configuring AWS
+                    required:
+                    - awsauthtype
+                    - region
+                    additionalProperties: false
+                    properties:
+                      region:
+                        type: string
+                        description: The aws region to authenticate to
+                      tags:
+                        type: array
+                        items:
+                          type: string
+                        description: An array of strings to match any custom tag names to track in AWS
+                      awsauthtype:
+                        description: '<p>The method of authentication to use with AWS.  Valid options are:</p> <ul> <li><code>AccessKey</code>: indicates key/secret auth. <code>accesskeyid</code> and <code>accesssecret</code> fields are then required.</li> <li><code>RoleARN</code> indicates that role auth.  The <code>role</code> object is then required.</li> </ul>
+
+                          '
+                        type: string
+                        enum:
+                        - AccessKey
+                        - RoleARN
+                      accesskeyid:
+                        description: AWS accesskey id.  Required for <code>AccessKey</code> auth type.
+                        type: string
+                      accesssecret:
+                        description: AWS Access secret.  Required for <code>AccessKey</code> auth type.
+                        type: string
+                      role:
+                        description: object containing role authentication data.  Required for <code>RoleARN</code> auth type.
+                        type: object
+                        properties:
+                          arn:
+                            description: ARN used to authenticate the flow source
+                            type: string
+                  azure:
+                    type: object
+                    description: Configuration options specific to type <code>azure</code>. nil if not configuring Azure
+                    required:
+                    - clientid
+                    - clientsecret
+                    - subscriptionid
+                    - tenantid
+                    additionalProperties: false
+                    properties:
+                      clientid:
+                        description: The client id to use authenticating with azure
+                        type: string
+                      clientsecret:
+                        description: The client secret to use authenticating with azure
+                        type: string
+                      subscriptionid:
+                        type: string
+                        description: The azure subscription id to be queried
+                      tenantid:
+                        type: string
+                        description: The azure tenant id to use
+                      tags:
+                        type: array
+                        items:
+                          type: string
+                        description: An array of strings to match any custom tag names to track in Azure
+                  crowdstrike:
+                    type: object
+                    description: Configuration options specific to <code>crowdstrike</code>. nil if not configuring CrowdStrike Falcon.
+                    required:
+                    - clientid
+                    - clientsecret
+                    - cloud
+                    additionalProperties: false
+                    properties:
+                      clientid:
+                        description: The client id to authenticate to the Falcon cloud api
+                        type: string
+                      clientsecret:
+                        description: The client secret to authenticate to the Falcon cloud api
+                        type: string
+                      cloud:
+                        type: string
+                        description: The Falcon cloud abbreviation to query
+                        enum:
+                        - us-1
+                        - us-2
+                        - eu-1
+                        - us-gov-1
+                      filter:
+                        type: string
+                        description: An optional FQL string to be used when filtering results, e.g. <code>entity_type:'managed'+last_seen_timestamp:<'now-3d</code>
+                      sort:
+                        type: string
+                        description: An optional FQL sort string, e.g. <code>last_seen_timestamp.desc</code>
+                  crowdstrikediscover:
+                    type: object
+                    description: Configuration options specific to <code>crowdstrikediscover</code>.  nil if not configuring CrowdStrike Discover Falcon.
+                    required:
+                    - clientid
+                    - clientsecret
+                    - cloud
+                    additionalProperties: false
+                    properties:
+                      clientid:
+                        description: The client id to authenticate to the Falcon cloud api
+                        type: string
+                      clientsecret:
+                        description: The client secret to authenticate to the Falcon cloud api
+                        type: string
+                      cloud:
+                        type: string
+                        description: The Falcon cloud abbreviation to query
+                        enum:
+                        - us-1
+                        - us-2
+                        - eu-1
+                        - us-gov-1
+                      filter:
+                        type: string
+                        description: An optional FQL string to be used when filtering results, e.g. <code>entity_type:'managed'+last_seen_timestamp:<'now-3d</code>
+                      sort:
+                        type: string
+                        description: An optional FQL sort string, e.g. <code>last_seen_timestamp.desc</code>
+                  ibm:
+                    type: object
+                    description: Configuration options specific to <code>ibm</code>. nil if not configuring IBM Cloud
+                    required:
+                    - apikey
+                    - region
+                    properties:
+                      apikey:
+                        description: The api key to use for authentication
+                        type: string
+                      region:
+                        type: string
+                        description: The IBM region to query
+                  oracle:
+                    type: object
+                    description: Configuration options specific to <code>oracle</code>. nil if not configuring Oracle Cloud
+                    required:
+                    - user
+                    - tenancy
+                    - region
+                    additionalProperties: false
+                    properties:
+                      user:
+                        description: The user ocid to use for authentication to oracle cloud
+                        type: string
+                      tenancy:
+                        description: The tenancy ocid to use for connecting to oracle cloud
+                        type: string
+                      region:
+                        type: string
+                        description: The region of oracle cloud to connect to
+                      tags:
+                        type: array
+                        items:
+                          type: string
+                        description: An array of strings to match any custom tag names to track in oracle cloud
+                  gcp:
+                    type: object
+                    description: Configuration options specific to <code>gcp</code>. nil if not configuring GCP
+                    required:
+                    - zone
+                    - credentials
+                    additionalProperties: false
+                    properties:
+                      zone:
+                        description: The GCP zone for this configuration
+                        type: string
+                      credentials:
+                        type: object
+                        description: The credentials object necessary to authenticate to the project. This is sent to you via a json file download following the creation of a GCP service account.
+                        additionalProperties: false
+                        required:
+                        - type
+                        - project_id
+                        - private_key_id
+                        - private_key
+                        - client_email
+                        - client_id
+                        - auth_uri
+                        - token_uri
+                        - auth_provider_x509_cert_url
+                        - client_x509_cert_url
+                        properties:
+                          type:
+                            type: string
+                            description: Credential type. this will typically be "service_account"
+                          project_id:
+                            type: string
+                            description: The project id of the account
+                          private_key_id:
+                            type: string
+                            description: The private key id of the service account
+                          private_key:
+                            type: string
+                            description: The pirvate key to authenticate with
+                          client_email:
+                            type: string
+                            description: The email of the service account
+                          client_id:
+                            type: string
+                            description: The id of the client
+                          auth_uri:
+                            type: string
+                            description: OAth2 uri
+                          token_uri:
+                            type: string
+                            description: Token URI
+                          auth_provider_x509_cert_url:
+                            type: string
+                            description: Auth cert url
+                          client_x509_cert_url:
+                            type: string
+                            description: Client cert url
+                      labels:
+                        type: array
+                        items:
+                          type: string
+                        description: An array of strings to match any custom label names to track in GCP
+                  s3:
+                    type: object
+                    description: "Configuration options specific to type <code>s3</code>.\n This is used for pulling a CSV file from an S3 bucket. The format of the file is <code>ip,context,label1,label2</code> etc. nil if not configuring S3\n"
+                    required:
+                    - awsauthtype
+                    - region
+                    - bucket
+                    additionalProperties: false
+                    properties:
+                      region:
+                        type: string
+                        description: The aws region to authenticate to
+                      bucket:
+                        type: string
+                        description: The name of the s3 bucket from which to pull the csv file.
+                      path:
+                        type: string
+                        description: The path to the csv file to import labels from. The format of the file is <code>ip,context,label1,label2,...</code>
+                      awsauthtype:
+                        description: '<p>The method of authentication to use with AWS.  Valid options are:</p> <ul> <li><code>AccessKey</code>: indicates key/secret auth. <code>accesskeyid</code> and <code>accesssecret</code> fields are then required.</li> <li><code>RoleARN</code> indicates that role auth.  The <code>role</code> object is then required.</li> </ul>
+
+                          '
+                        type: string
+                        enum:
+                        - AccessKey
+                        - RoleARN
+                      accesskeyid:
+                        description: AWS accesskey id.  Required for <code>AccessKey</code> auth type.
+                        type: string
+                      accesssecret:
+                        description: AWS Access secret.  Required for <code>AccessKey</code> auth type.
+                        type: string
+                      role:
+                        description: object containing role authentication data.  Required for <code>RoleARN</code> auth type.
+                        type: object
+                        properties:
+                          arn:
+                            description: ARN used to authenticate the flow source
+                            type: string
+                  sentinelone:
+                    type: object
+                    description: Configuration options specific to <code>sentinelone</code>. nil if not configuring SentinelOne
+                    required:
+                    - base_url
+                    - params
+                    - token
+                    additionalProperties: false
+                    properties:
+                      base_url:
+                        description: The SentinelOne domain URL to query, e.g. <code>https://<subdomain>.sentinelone.net</code>
+                        type: string
+                      params:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          accountId:
+                            type: string
+                            description: The SentinelOne account ID to query
+                          filterId:
+                            type: string
+                            description: The SentinelOne filter ID to limit query, SentinelOne API result size limit is 10,000
+                      token:
+                        description: API token to use for authentication
+                        type: string
+                      ranger:
+                        type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                  wiz:
+                    type: object
+                    description: Configuration options specific to <code>wiz</code>. nil if not configuring Wiz
+                    required:
+                    - apiendpoint
+                    - tokenurl
+                    - clientid
+                    - clientsecret
+                    additionalProperties: false
+                    properties:
+                      apiendpoint:
+                        description: Wiz API Endpoint URL
+                        type: string
+                        enum:
+                        - https://api.us1.app.wiz.io/graphql
+                        - https://api.us2.app.wiz.io/graphql
+                        - https://api.eu1.app.wiz.io/graphql
+                        - https://api.eu2.app.wiz.io/graphql
+                        - https://api.us17.app.wiz.io/graphql
+                      tokenurl:
+                        description: Wiz Token URL
+                        type: string
+                        enum:
+                        - https://auth.app.wiz.io/oauth/token
+                        - https://auth.wiz.io/oauth/token
+                        - https://auth.gov.wiz.io/oauth/token
+                        - https://auth0.gov.wiz.io/oauth/token
+                      clientid:
+                        description: Client id to use authenticating with Wiz API
+                        type: string
+                      clientsecret:
+                        description: Client secret to use authenticating with Wiz API
+                        type: string
+      tags:
+      - Integrations - Context
+      responses:
+        '201':
+          description: List of Context Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        id:
+                          type: string
+                          readOnly: true
+                          description: The id of the context integration. This is immutable.
+                        created:
+                          type: string
+                          description: Date/time the context integration was created.
+                        lastupdated:
+                          type: string
+                          description: Date/time the context integration was last updated.
+                        allOf:
+                          description: List of Context Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.
+                          type: object
+                          required:
+                          - name
+                          - type
+                          - enabled
+                          - updateinterval
+                          allOf:
+                          - type: object
+                            properties:
+                              name:
+                                type: string
+                                description: The name of the context integration
+                              type:
+                                type: string
+                                description: The type of the context integration. The configuration parameters are dependent on this value.
+                                enum:
+                                - aws
+                                - azure
+                                - crowdstrike
+                                - crowdstrikediscover
+                                - ibm
+                                - oracle
+                                - gcp
+                                - s3
+                              enabled:
+                                type: boolean
+                                description: The state of the context integration. Whether to auto update or not.
+                              updateinterval:
+                                type: integer
+                                description: The number of seconds by which to poll the integration.
+                                minimum: 3600
+                                maximum: 604800
+                                format: int32
+                              aws:
+                                type: object
+                                description: Configuration options specific to type <code>aws</code>. nil if not configuring AWS
+                                required:
+                                - awsauthtype
+                                - region
+                                additionalProperties: false
+                                properties:
+                                  region:
+                                    type: string
+                                    description: The aws region to authenticate to
+                                  tags:
+                                    type: array
+                                    items:
+                                      type: string
+                                    description: An array of strings to match any custom tag names to track in AWS
+                                  awsauthtype:
+                                    description: '<p>The method of authentication to use with AWS.  Valid options are:</p> <ul> <li><code>AccessKey</code>: indicates key/secret auth. <code>accesskeyid</code> and <code>accesssecret</code> fields are then required.</li> <li><code>RoleARN</code> indicates that role auth.  The <code>role</code> object is then required.</li> </ul>
+
+                                      '
+                                    type: string
+                                    enum:
+                                    - AccessKey
+                                    - RoleARN
+                                  accesskeyid:
+                                    description: AWS accesskey id.  Required for <code>AccessKey</code> auth type.
+                                    type: string
+                                  accesssecret:
+                                    description: AWS Access secret.  Required for <code>AccessKey</code> auth type.
+                                    type: string
+                                  role:
+                                    description: object containing role authentication data.  Required for <code>RoleARN</code> auth type.
+                                    type: object
+                                    properties:
+                                      arn:
+                                        description: ARN used to authenticate the flow source
+                                        type: string
+                              azure:
+                                type: object
+                                description: Configuration options specific to type <code>azure</code>. nil if not configuring Azure
+                                required:
+                                - clientid
+                                - clientsecret
+                                - subscriptionid
+                                - tenantid
+                                additionalProperties: false
+                                properties:
+                                  clientid:
+                                    description: The client id to use authenticating with azure
+                                    type: string
+                                  clientsecret:
+                                    description: The client secret to use authenticating with azure
+                                    type: string
+                                  subscriptionid:
+                                    type: string
+                                    description: The azure subscription id to be queried
+                                  tenantid:
+                                    type: string
+                                    description: The azure tenant id to use
+                                  tags:
+                                    type: array
+                                    items:
+                                      type: string
+                                    description: An array of strings to match any custom tag names to track in Azure
+                              crowdstrike:
+                                type: object
+                                description: Configuration options specific to <code>crowdstrike</code>. nil if not configuring CrowdStrike Falcon.
+                                required:
+                                - clientid
+                                - clientsecret
+                                - cloud
+                                additionalProperties: false
+                                properties:
+                                  clientid:
+                                    description: The client id to authenticate to the Falcon cloud api
+                                    type: string
+                                  clientsecret:
+                                    description: The client secret to authenticate to the Falcon cloud api
+                                    type: string
+                                  cloud:
+                                    type: string
+                                    description: The Falcon cloud abbreviation to query
+                                    enum:
+                                    - us-1
+                                    - us-2
+                                    - eu-1
+                                    - us-gov-1
+                                  filter:
+                                    type: string
+                                    description: An optional FQL string to be used when filtering results, e.g. <code>entity_type:'managed'+last_seen_timestamp:<'now-3d</code>
+                                  sort:
+                                    type: string
+                                    description: An optional FQL sort string, e.g. <code>last_seen_timestamp.desc</code>
+                              crowdstrikediscover:
+                                type: object
+                                description: Configuration options specific to <code>crowdstrikediscover</code>.  nil if not configuring CrowdStrike Discover Falcon.
+                                required:
+                                - clientid
+                                - clientsecret
+                                - cloud
+                                additionalProperties: false
+                                properties:
+                                  clientid:
+                                    description: The client id to authenticate to the Falcon cloud api
+                                    type: string
+                                  clientsecret:
+                                    description: The client secret to authenticate to the Falcon cloud api
+                                    type: string
+                                  cloud:
+                                    type: string
+                                    description: The Falcon cloud abbreviation to query
+                                    enum:
+                                    - us-1
+                                    - us-2
+                                    - eu-1
+                                    - us-gov-1
+                                  filter:
+                                    type: string
+                                    description: An optional FQL string to be used when filtering results, e.g. <code>entity_type:'managed'+last_seen_timestamp:<'now-3d</code>
+                                  sort:
+                                    type: string
+                                    description: An optional FQL sort string, e.g. <code>last_seen_timestamp.desc</code>
+                              ibm:
+                                type: object
+                                description: Configuration options specific to <code>ibm</code>. nil if not configuring IBM Cloud
+                                required:
+                                - apikey
+                                - region
+                                properties:
+                                  apikey:
+                                    description: The api key to use for authentication
+                                    type: string
+                                  region:
+                                    type: string
+                                    description: The IBM region to query
+                              oracle:
+                                type: object
+                                description: Configuration options specific to <code>oracle</code>. nil if not configuring Oracle Cloud
+                                required:
+                                - user
+                                - tenancy
+                                - region
+                                additionalProperties: false
+                                properties:
+                                  user:
+                                    description: The user ocid to use for authentication to oracle cloud
+                                    type: string
+                                  tenancy:
+                                    description: The tenancy ocid to use for connecting to oracle cloud
+                                    type: string
+                                  region:
+                                    type: string
+                                    description: The region of oracle cloud to connect to
+                                  tags:
+                                    type: array
+                                    items:
+                                      type: string
+                                    description: An array of strings to match any custom tag names to track in oracle cloud
+                              gcp:
+                                type: object
+                                description: Configuration options specific to <code>gcp</code>. nil if not configuring GCP
+                                required:
+                                - zone
+                                - credentials
+                                additionalProperties: false
+                                properties:
+                                  zone:
+                                    description: The GCP zone for this configuration
+                                    type: string
+                                  credentials:
+                                    type: object
+                                    description: The credentials object necessary to authenticate to the project. This is sent to you via a json file download following the creation of a GCP service account.
+                                    additionalProperties: false
+                                    required:
+                                    - type
+                                    - project_id
+                                    - private_key_id
+                                    - private_key
+                                    - client_email
+                                    - client_id
+                                    - auth_uri
+                                    - token_uri
+                                    - auth_provider_x509_cert_url
+                                    - client_x509_cert_url
+                                    properties:
+                                      type:
+                                        type: string
+                                        description: Credential type. this will typically be "service_account"
+                                      project_id:
+                                        type: string
+                                        description: The project id of the account
+                                      private_key_id:
+                                        type: string
+                                        description: The private key id of the service account
+                                      private_key:
+                                        type: string
+                                        description: The pirvate key to authenticate with
+                                      client_email:
+                                        type: string
+                                        description: The email of the service account
+                                      client_id:
+                                        type: string
+                                        description: The id of the client
+                                      auth_uri:
+                                        type: string
+                                        description: OAth2 uri
+                                      token_uri:
+                                        type: string
+                                        description: Token URI
+                                      auth_provider_x509_cert_url:
+                                        type: string
+                                        description: Auth cert url
+                                      client_x509_cert_url:
+                                        type: string
+                                        description: Client cert url
+                                  labels:
+                                    type: array
+                                    items:
+                                      type: string
+                                    description: An array of strings to match any custom label names to track in GCP
+                              s3:
+                                type: object
+                                description: "Configuration options specific to type <code>s3</code>.\n This is used for pulling a CSV file from an S3 bucket. The format of the file is <code>ip,context,label1,label2</code> etc. nil if not configuring S3\n"
+                                required:
+                                - awsauthtype
+                                - region
+                                - bucket
+                                additionalProperties: false
+                                properties:
+                                  region:
+                                    type: string
+                                    description: The aws region to authenticate to
+                                  bucket:
+                                    type: string
+                                    description: The name of the s3 bucket from which to pull the csv file.
+                                  path:
+                                    type: string
+                                    description: The path to the csv file to import labels from. The format of the file is <code>ip,context,label1,label2,...</code>
+                                  awsauthtype:
+                                    description: '<p>The method of authentication to use with AWS.  Valid options are:</p> <ul> <li><code>AccessKey</code>: indicates key/secret auth. <code>accesskeyid</code> and <code>accesssecret</code> fields are then required.</li> <li><code>RoleARN</code> indicates that role auth.  The <code>role</code> object is then required.</li> </ul>
+
+                                      '
+                                    type: string
+                                    enum:
+                                    - AccessKey
+                                    - RoleARN
+                                  accesskeyid:
+                                    description: AWS accesskey id.  Required for <code>AccessKey</code> auth type.
+                                    type: string
+                                  accesssecret:
+                                    description: AWS Access secret.  Required for <code>AccessKey</code> auth type.
+                                    type: string
+                                  role:
+                                    description: object containing role authentication data.  Required for <code>RoleARN</code> auth type.
+                                    type: object
+                                    properties:
+                                      arn:
+                                        description: ARN used to authenticate the flow source
+                                        type: string
+                              sentinelone:
+                                type: object
+                                description: Configuration options specific to <code>sentinelone</code>. nil if not configuring SentinelOne
+                                required:
+                                - base_url
+                                - params
+                                - token
+                                additionalProperties: false
+                                properties:
+                                  base_url:
+                                    description: The SentinelOne domain URL to query, e.g. <code>https://<subdomain>.sentinelone.net</code>
+                                    type: string
+                                  params:
+                                    type: object
+                                    additionalProperties: false
+                                    properties:
+                                      accountId:
+                                        type: string
+                                        description: The SentinelOne account ID to query
+                                      filterId:
+                                        type: string
+                                        description: The SentinelOne filter ID to limit query, SentinelOne API result size limit is 10,000
+                                  token:
+                                    description: API token to use for authentication
+                                    type: string
+                                  ranger:
+                                    type: object
+                                    properties:
+                                      enabled:
+                                        type: boolean
+                              wiz:
+                                type: object
+                                description: Configuration options specific to <code>wiz</code>. nil if not configuring Wiz
+                                required:
+                                - apiendpoint
+                                - tokenurl
+                                - clientid
+                                - clientsecret
+                                additionalProperties: false
+                                properties:
+                                  apiendpoint:
+                                    description: Wiz API Endpoint URL
+                                    type: string
+                                    enum:
+                                    - https://api.us1.app.wiz.io/graphql
+                                    - https://api.us2.app.wiz.io/graphql
+                                    - https://api.eu1.app.wiz.io/graphql
+                                    - https://api.eu2.app.wiz.io/graphql
+                                    - https://api.us17.app.wiz.io/graphql
+                                  tokenurl:
+                                    description: Wiz Token URL
+                                    type: string
+                                    enum:
+                                    - https://auth.app.wiz.io/oauth/token
+                                    - https://auth.wiz.io/oauth/token
+                                    - https://auth.gov.wiz.io/oauth/token
+                                    - https://auth0.gov.wiz.io/oauth/token
+                                  clientid:
+                                    description: Client id to use authenticating with Wiz API
+                                    type: string
+                                  clientsecret:
+                                    description: Client secret to use authenticating with Wiz API
+                                    type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/integrations/context/{id}:
+    get:
+      operationId: v1_integrations_context_id_get
+      summary: Fetch Context Integration
+      description: Fetches a specific context integration from the ID supplied in the path.
+      tags:
+      - Integrations - Context
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the context integration to be returned.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of Context Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: object
+                    additionalProperties: false
+                    properties:
+                      id:
+                        type: string
+                        readOnly: true
+                        description: The id of the context integration. This is immutable.
+                      created:
+                        type: string
+                        description: Date/time the context integration was created.
+                      lastupdated:
+                        type: string
+                        description: Date/time the context integration was last updated.
+                      allOf:
+                        description: List of Context Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.
+                        type: object
+                        required:
+                        - name
+                        - type
+                        - enabled
+                        - updateinterval
+                        allOf:
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              description: The name of the context integration
+                            type:
+                              type: string
+                              description: The type of the context integration. The configuration parameters are dependent on this value.
+                              enum:
+                              - aws
+                              - azure
+                              - crowdstrike
+                              - crowdstrikediscover
+                              - ibm
+                              - oracle
+                              - gcp
+                              - s3
+                            enabled:
+                              type: boolean
+                              description: The state of the context integration. Whether to auto update or not.
+                            updateinterval:
+                              type: integer
+                              description: The number of seconds by which to poll the integration.
+                              minimum: 3600
+                              maximum: 604800
+                              format: int32
+                            aws:
+                              type: object
+                              description: Configuration options specific to type <code>aws</code>. nil if not configuring AWS
+                              required:
+                              - awsauthtype
+                              - region
+                              additionalProperties: false
+                              properties:
+                                region:
+                                  type: string
+                                  description: The aws region to authenticate to
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: An array of strings to match any custom tag names to track in AWS
+                                awsauthtype:
+                                  description: '<p>The method of authentication to use with AWS.  Valid options are:</p> <ul> <li><code>AccessKey</code>: indicates key/secret auth. <code>accesskeyid</code> and <code>accesssecret</code> fields are then required.</li> <li><code>RoleARN</code> indicates that role auth.  The <code>role</code> object is then required.</li> </ul>
+
+                                    '
+                                  type: string
+                                  enum:
+                                  - AccessKey
+                                  - RoleARN
+                                accesskeyid:
+                                  description: AWS accesskey id.  Required for <code>AccessKey</code> auth type.
+                                  type: string
+                                accesssecret:
+                                  description: AWS Access secret.  Required for <code>AccessKey</code> auth type.
+                                  type: string
+                                role:
+                                  description: object containing role authentication data.  Required for <code>RoleARN</code> auth type.
+                                  type: object
+                                  properties:
+                                    arn:
+                                      description: ARN used to authenticate the flow source
+                                      type: string
+                            azure:
+                              type: object
+                              description: Configuration options specific to type <code>azure</code>. nil if not configuring Azure
+                              required:
+                              - clientid
+                              - clientsecret
+                              - subscriptionid
+                              - tenantid
+                              additionalProperties: false
+                              properties:
+                                clientid:
+                                  description: The client id to use authenticating with azure
+                                  type: string
+                                clientsecret:
+                                  description: The client secret to use authenticating with azure
+                                  type: string
+                                subscriptionid:
+                                  type: string
+                                  description: The azure subscription id to be queried
+                                tenantid:
+                                  type: string
+                                  description: The azure tenant id to use
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: An array of strings to match any custom tag names to track in Azure
+                            crowdstrike:
+                              type: object
+                              description: Configuration options specific to <code>crowdstrike</code>. nil if not configuring CrowdStrike Falcon.
+                              required:
+                              - clientid
+                              - clientsecret
+                              - cloud
+                              additionalProperties: false
+                              properties:
+                                clientid:
+                                  description: The client id to authenticate to the Falcon cloud api
+                                  type: string
+                                clientsecret:
+                                  description: The client secret to authenticate to the Falcon cloud api
+                                  type: string
+                                cloud:
+                                  type: string
+                                  description: The Falcon cloud abbreviation to query
+                                  enum:
+                                  - us-1
+                                  - us-2
+                                  - eu-1
+                                  - us-gov-1
+                                filter:
+                                  type: string
+                                  description: An optional FQL string to be used when filtering results, e.g. <code>entity_type:'managed'+last_seen_timestamp:<'now-3d</code>
+                                sort:
+                                  type: string
+                                  description: An optional FQL sort string, e.g. <code>last_seen_timestamp.desc</code>
+                            crowdstrikediscover:
+                              type: object
+                              description: Configuration options specific to <code>crowdstrikediscover</code>.  nil if not configuring CrowdStrike Discover Falcon.
+                              required:
+                              - clientid
+                              - clientsecret
+                              - cloud
+                              additionalProperties: false
+                              properties:
+                                clientid:
+                                  description: The client id to authenticate to the Falcon cloud api
+                                  type: string
+                                clientsecret:
+                                  description: The client secret to authenticate to the Falcon cloud api
+                                  type: string
+                                cloud:
+                                  type: string
+                                  description: The Falcon cloud abbreviation to query
+                                  enum:
+                                  - us-1
+                                  - us-2
+                                  - eu-1
+                                  - us-gov-1
+                                filter:
+                                  type: string
+                                  description: An optional FQL string to be used when filtering results, e.g. <code>entity_type:'managed'+last_seen_timestamp:<'now-3d</code>
+                                sort:
+                                  type: string
+                                  description: An optional FQL sort string, e.g. <code>last_seen_timestamp.desc</code>
+                            ibm:
+                              type: object
+                              description: Configuration options specific to <code>ibm</code>. nil if not configuring IBM Cloud
+                              required:
+                              - apikey
+                              - region
+                              properties:
+                                apikey:
+                                  description: The api key to use for authentication
+                                  type: string
+                                region:
+                                  type: string
+                                  description: The IBM region to query
+                            oracle:
+                              type: object
+                              description: Configuration options specific to <code>oracle</code>. nil if not configuring Oracle Cloud
+                              required:
+                              - user
+                              - tenancy
+                              - region
+                              additionalProperties: false
+                              properties:
+                                user:
+                                  description: The user ocid to use for authentication to oracle cloud
+                                  type: string
+                                tenancy:
+                                  description: The tenancy ocid to use for connecting to oracle cloud
+                                  type: string
+                                region:
+                                  type: string
+                                  description: The region of oracle cloud to connect to
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: An array of strings to match any custom tag names to track in oracle cloud
+                            gcp:
+                              type: object
+                              description: Configuration options specific to <code>gcp</code>. nil if not configuring GCP
+                              required:
+                              - zone
+                              - credentials
+                              additionalProperties: false
+                              properties:
+                                zone:
+                                  description: The GCP zone for this configuration
+                                  type: string
+                                credentials:
+                                  type: object
+                                  description: The credentials object necessary to authenticate to the project. This is sent to you via a json file download following the creation of a GCP service account.
+                                  additionalProperties: false
+                                  required:
+                                  - type
+                                  - project_id
+                                  - private_key_id
+                                  - private_key
+                                  - client_email
+                                  - client_id
+                                  - auth_uri
+                                  - token_uri
+                                  - auth_provider_x509_cert_url
+                                  - client_x509_cert_url
+                                  properties:
+                                    type:
+                                      type: string
+                                      description: Credential type. this will typically be "service_account"
+                                    project_id:
+                                      type: string
+                                      description: The project id of the account
+                                    private_key_id:
+                                      type: string
+                                      description: The private key id of the service account
+                                    private_key:
+                                      type: string
+                                      description: The pirvate key to authenticate with
+                                    client_email:
+                                      type: string
+                                      description: The email of the service account
+                                    client_id:
+                                      type: string
+                                      description: The id of the client
+                                    auth_uri:
+                                      type: string
+                                      description: OAth2 uri
+                                    token_uri:
+                                      type: string
+                                      description: Token URI
+                                    auth_provider_x509_cert_url:
+                                      type: string
+                                      description: Auth cert url
+                                    client_x509_cert_url:
+                                      type: string
+                                      description: Client cert url
+                                labels:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: An array of strings to match any custom label names to track in GCP
+                            s3:
+                              type: object
+                              description: "Configuration options specific to type <code>s3</code>.\n This is used for pulling a CSV file from an S3 bucket. The format of the file is <code>ip,context,label1,label2</code> etc. nil if not configuring S3\n"
+                              required:
+                              - awsauthtype
+                              - region
+                              - bucket
+                              additionalProperties: false
+                              properties:
+                                region:
+                                  type: string
+                                  description: The aws region to authenticate to
+                                bucket:
+                                  type: string
+                                  description: The name of the s3 bucket from which to pull the csv file.
+                                path:
+                                  type: string
+                                  description: The path to the csv file to import labels from. The format of the file is <code>ip,context,label1,label2,...</code>
+                                awsauthtype:
+                                  description: '<p>The method of authentication to use with AWS.  Valid options are:</p> <ul> <li><code>AccessKey</code>: indicates key/secret auth. <code>accesskeyid</code> and <code>accesssecret</code> fields are then required.</li> <li><code>RoleARN</code> indicates that role auth.  The <code>role</code> object is then required.</li> </ul>
+
+                                    '
+                                  type: string
+                                  enum:
+                                  - AccessKey
+                                  - RoleARN
+                                accesskeyid:
+                                  description: AWS accesskey id.  Required for <code>AccessKey</code> auth type.
+                                  type: string
+                                accesssecret:
+                                  description: AWS Access secret.  Required for <code>AccessKey</code> auth type.
+                                  type: string
+                                role:
+                                  description: object containing role authentication data.  Required for <code>RoleARN</code> auth type.
+                                  type: object
+                                  properties:
+                                    arn:
+                                      description: ARN used to authenticate the flow source
+                                      type: string
+                            sentinelone:
+                              type: object
+                              description: Configuration options specific to <code>sentinelone</code>. nil if not configuring SentinelOne
+                              required:
+                              - base_url
+                              - params
+                              - token
+                              additionalProperties: false
+                              properties:
+                                base_url:
+                                  description: The SentinelOne domain URL to query, e.g. <code>https://<subdomain>.sentinelone.net</code>
+                                  type: string
+                                params:
+                                  type: object
+                                  additionalProperties: false
+                                  properties:
+                                    accountId:
+                                      type: string
+                                      description: The SentinelOne account ID to query
+                                    filterId:
+                                      type: string
+                                      description: The SentinelOne filter ID to limit query, SentinelOne API result size limit is 10,000
+                                token:
+                                  description: API token to use for authentication
+                                  type: string
+                                ranger:
+                                  type: object
+                                  properties:
+                                    enabled:
+                                      type: boolean
+                            wiz:
+                              type: object
+                              description: Configuration options specific to <code>wiz</code>. nil if not configuring Wiz
+                              required:
+                              - apiendpoint
+                              - tokenurl
+                              - clientid
+                              - clientsecret
+                              additionalProperties: false
+                              properties:
+                                apiendpoint:
+                                  description: Wiz API Endpoint URL
+                                  type: string
+                                  enum:
+                                  - https://api.us1.app.wiz.io/graphql
+                                  - https://api.us2.app.wiz.io/graphql
+                                  - https://api.eu1.app.wiz.io/graphql
+                                  - https://api.eu2.app.wiz.io/graphql
+                                  - https://api.us17.app.wiz.io/graphql
+                                tokenurl:
+                                  description: Wiz Token URL
+                                  type: string
+                                  enum:
+                                  - https://auth.app.wiz.io/oauth/token
+                                  - https://auth.wiz.io/oauth/token
+                                  - https://auth.gov.wiz.io/oauth/token
+                                  - https://auth0.gov.wiz.io/oauth/token
+                                clientid:
+                                  description: Client id to use authenticating with Wiz API
+                                  type: string
+                                clientsecret:
+                                  description: Client secret to use authenticating with Wiz API
+                                  type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    put:
+      operationId: v1_integrations_context_id_put
+      summary: Update Context Integration
+      description: Update a context integration given the provided object.  This does not do a diff.  You must send the complete object.
+      requestBody:
+        description: Context Integration to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              description: List of Context Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.
+              type: object
+              required:
+              - name
+              - type
+              - enabled
+              - updateinterval
+              allOf:
+              - type: object
+                properties:
+                  name:
+                    type: string
+                    description: The name of the context integration
+                  type:
+                    type: string
+                    description: The type of the context integration. The configuration parameters are dependent on this value.
+                    enum:
+                    - aws
+                    - azure
+                    - crowdstrike
+                    - crowdstrikediscover
+                    - ibm
+                    - oracle
+                    - gcp
+                    - s3
+                  enabled:
+                    type: boolean
+                    description: The state of the context integration. Whether to auto update or not.
+                  updateinterval:
+                    type: integer
+                    description: The number of seconds by which to poll the integration.
+                    minimum: 3600
+                    maximum: 604800
+                    format: int32
+                  aws:
+                    type: object
+                    description: Configuration options specific to type <code>aws</code>. nil if not configuring AWS
+                    required:
+                    - awsauthtype
+                    - region
+                    additionalProperties: false
+                    properties:
+                      region:
+                        type: string
+                        description: The aws region to authenticate to
+                      tags:
+                        type: array
+                        items:
+                          type: string
+                        description: An array of strings to match any custom tag names to track in AWS
+                      awsauthtype:
+                        description: '<p>The method of authentication to use with AWS.  Valid options are:</p> <ul> <li><code>AccessKey</code>: indicates key/secret auth. <code>accesskeyid</code> and <code>accesssecret</code> fields are then required.</li> <li><code>RoleARN</code> indicates that role auth.  The <code>role</code> object is then required.</li> </ul>
+
+                          '
+                        type: string
+                        enum:
+                        - AccessKey
+                        - RoleARN
+                      accesskeyid:
+                        description: AWS accesskey id.  Required for <code>AccessKey</code> auth type.
+                        type: string
+                      accesssecret:
+                        description: AWS Access secret.  Required for <code>AccessKey</code> auth type.
+                        type: string
+                      role:
+                        description: object containing role authentication data.  Required for <code>RoleARN</code> auth type.
+                        type: object
+                        properties:
+                          arn:
+                            description: ARN used to authenticate the flow source
+                            type: string
+                  azure:
+                    type: object
+                    description: Configuration options specific to type <code>azure</code>. nil if not configuring Azure
+                    required:
+                    - clientid
+                    - clientsecret
+                    - subscriptionid
+                    - tenantid
+                    additionalProperties: false
+                    properties:
+                      clientid:
+                        description: The client id to use authenticating with azure
+                        type: string
+                      clientsecret:
+                        description: The client secret to use authenticating with azure
+                        type: string
+                      subscriptionid:
+                        type: string
+                        description: The azure subscription id to be queried
+                      tenantid:
+                        type: string
+                        description: The azure tenant id to use
+                      tags:
+                        type: array
+                        items:
+                          type: string
+                        description: An array of strings to match any custom tag names to track in Azure
+                  crowdstrike:
+                    type: object
+                    description: Configuration options specific to <code>crowdstrike</code>. nil if not configuring CrowdStrike Falcon.
+                    required:
+                    - clientid
+                    - clientsecret
+                    - cloud
+                    additionalProperties: false
+                    properties:
+                      clientid:
+                        description: The client id to authenticate to the Falcon cloud api
+                        type: string
+                      clientsecret:
+                        description: The client secret to authenticate to the Falcon cloud api
+                        type: string
+                      cloud:
+                        type: string
+                        description: The Falcon cloud abbreviation to query
+                        enum:
+                        - us-1
+                        - us-2
+                        - eu-1
+                        - us-gov-1
+                      filter:
+                        type: string
+                        description: An optional FQL string to be used when filtering results, e.g. <code>entity_type:'managed'+last_seen_timestamp:<'now-3d</code>
+                      sort:
+                        type: string
+                        description: An optional FQL sort string, e.g. <code>last_seen_timestamp.desc</code>
+                  crowdstrikediscover:
+                    type: object
+                    description: Configuration options specific to <code>crowdstrikediscover</code>.  nil if not configuring CrowdStrike Discover Falcon.
+                    required:
+                    - clientid
+                    - clientsecret
+                    - cloud
+                    additionalProperties: false
+                    properties:
+                      clientid:
+                        description: The client id to authenticate to the Falcon cloud api
+                        type: string
+                      clientsecret:
+                        description: The client secret to authenticate to the Falcon cloud api
+                        type: string
+                      cloud:
+                        type: string
+                        description: The Falcon cloud abbreviation to query
+                        enum:
+                        - us-1
+                        - us-2
+                        - eu-1
+                        - us-gov-1
+                      filter:
+                        type: string
+                        description: An optional FQL string to be used when filtering results, e.g. <code>entity_type:'managed'+last_seen_timestamp:<'now-3d</code>
+                      sort:
+                        type: string
+                        description: An optional FQL sort string, e.g. <code>last_seen_timestamp.desc</code>
+                  ibm:
+                    type: object
+                    description: Configuration options specific to <code>ibm</code>. nil if not configuring IBM Cloud
+                    required:
+                    - apikey
+                    - region
+                    properties:
+                      apikey:
+                        description: The api key to use for authentication
+                        type: string
+                      region:
+                        type: string
+                        description: The IBM region to query
+                  oracle:
+                    type: object
+                    description: Configuration options specific to <code>oracle</code>. nil if not configuring Oracle Cloud
+                    required:
+                    - user
+                    - tenancy
+                    - region
+                    additionalProperties: false
+                    properties:
+                      user:
+                        description: The user ocid to use for authentication to oracle cloud
+                        type: string
+                      tenancy:
+                        description: The tenancy ocid to use for connecting to oracle cloud
+                        type: string
+                      region:
+                        type: string
+                        description: The region of oracle cloud to connect to
+                      tags:
+                        type: array
+                        items:
+                          type: string
+                        description: An array of strings to match any custom tag names to track in oracle cloud
+                  gcp:
+                    type: object
+                    description: Configuration options specific to <code>gcp</code>. nil if not configuring GCP
+                    required:
+                    - zone
+                    - credentials
+                    additionalProperties: false
+                    properties:
+                      zone:
+                        description: The GCP zone for this configuration
+                        type: string
+                      credentials:
+                        type: object
+                        description: The credentials object necessary to authenticate to the project. This is sent to you via a json file download following the creation of a GCP service account.
+                        additionalProperties: false
+                        required:
+                        - type
+                        - project_id
+                        - private_key_id
+                        - private_key
+                        - client_email
+                        - client_id
+                        - auth_uri
+                        - token_uri
+                        - auth_provider_x509_cert_url
+                        - client_x509_cert_url
+                        properties:
+                          type:
+                            type: string
+                            description: Credential type. this will typically be "service_account"
+                          project_id:
+                            type: string
+                            description: The project id of the account
+                          private_key_id:
+                            type: string
+                            description: The private key id of the service account
+                          private_key:
+                            type: string
+                            description: The pirvate key to authenticate with
+                          client_email:
+                            type: string
+                            description: The email of the service account
+                          client_id:
+                            type: string
+                            description: The id of the client
+                          auth_uri:
+                            type: string
+                            description: OAth2 uri
+                          token_uri:
+                            type: string
+                            description: Token URI
+                          auth_provider_x509_cert_url:
+                            type: string
+                            description: Auth cert url
+                          client_x509_cert_url:
+                            type: string
+                            description: Client cert url
+                      labels:
+                        type: array
+                        items:
+                          type: string
+                        description: An array of strings to match any custom label names to track in GCP
+                  s3:
+                    type: object
+                    description: "Configuration options specific to type <code>s3</code>.\n This is used for pulling a CSV file from an S3 bucket. The format of the file is <code>ip,context,label1,label2</code> etc. nil if not configuring S3\n"
+                    required:
+                    - awsauthtype
+                    - region
+                    - bucket
+                    additionalProperties: false
+                    properties:
+                      region:
+                        type: string
+                        description: The aws region to authenticate to
+                      bucket:
+                        type: string
+                        description: The name of the s3 bucket from which to pull the csv file.
+                      path:
+                        type: string
+                        description: The path to the csv file to import labels from. The format of the file is <code>ip,context,label1,label2,...</code>
+                      awsauthtype:
+                        description: '<p>The method of authentication to use with AWS.  Valid options are:</p> <ul> <li><code>AccessKey</code>: indicates key/secret auth. <code>accesskeyid</code> and <code>accesssecret</code> fields are then required.</li> <li><code>RoleARN</code> indicates that role auth.  The <code>role</code> object is then required.</li> </ul>
+
+                          '
+                        type: string
+                        enum:
+                        - AccessKey
+                        - RoleARN
+                      accesskeyid:
+                        description: AWS accesskey id.  Required for <code>AccessKey</code> auth type.
+                        type: string
+                      accesssecret:
+                        description: AWS Access secret.  Required for <code>AccessKey</code> auth type.
+                        type: string
+                      role:
+                        description: object containing role authentication data.  Required for <code>RoleARN</code> auth type.
+                        type: object
+                        properties:
+                          arn:
+                            description: ARN used to authenticate the flow source
+                            type: string
+                  sentinelone:
+                    type: object
+                    description: Configuration options specific to <code>sentinelone</code>. nil if not configuring SentinelOne
+                    required:
+                    - base_url
+                    - params
+                    - token
+                    additionalProperties: false
+                    properties:
+                      base_url:
+                        description: The SentinelOne domain URL to query, e.g. <code>https://<subdomain>.sentinelone.net</code>
+                        type: string
+                      params:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          accountId:
+                            type: string
+                            description: The SentinelOne account ID to query
+                          filterId:
+                            type: string
+                            description: The SentinelOne filter ID to limit query, SentinelOne API result size limit is 10,000
+                      token:
+                        description: API token to use for authentication
+                        type: string
+                      ranger:
+                        type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                  wiz:
+                    type: object
+                    description: Configuration options specific to <code>wiz</code>. nil if not configuring Wiz
+                    required:
+                    - apiendpoint
+                    - tokenurl
+                    - clientid
+                    - clientsecret
+                    additionalProperties: false
+                    properties:
+                      apiendpoint:
+                        description: Wiz API Endpoint URL
+                        type: string
+                        enum:
+                        - https://api.us1.app.wiz.io/graphql
+                        - https://api.us2.app.wiz.io/graphql
+                        - https://api.eu1.app.wiz.io/graphql
+                        - https://api.eu2.app.wiz.io/graphql
+                        - https://api.us17.app.wiz.io/graphql
+                      tokenurl:
+                        description: Wiz Token URL
+                        type: string
+                        enum:
+                        - https://auth.app.wiz.io/oauth/token
+                        - https://auth.wiz.io/oauth/token
+                        - https://auth.gov.wiz.io/oauth/token
+                        - https://auth0.gov.wiz.io/oauth/token
+                      clientid:
+                        description: Client id to use authenticating with Wiz API
+                        type: string
+                      clientsecret:
+                        description: Client secret to use authenticating with Wiz API
+                        type: string
+      tags:
+      - Integrations - Context
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the context integration to be updated
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of Context Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: object
+                    additionalProperties: false
+                    properties:
+                      id:
+                        type: string
+                        readOnly: true
+                        description: The id of the context integration. This is immutable.
+                      created:
+                        type: string
+                        description: Date/time the context integration was created.
+                      lastupdated:
+                        type: string
+                        description: Date/time the context integration was last updated.
+                      allOf:
+                        description: List of Context Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.
+                        type: object
+                        required:
+                        - name
+                        - type
+                        - enabled
+                        - updateinterval
+                        allOf:
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              description: The name of the context integration
+                            type:
+                              type: string
+                              description: The type of the context integration. The configuration parameters are dependent on this value.
+                              enum:
+                              - aws
+                              - azure
+                              - crowdstrike
+                              - crowdstrikediscover
+                              - ibm
+                              - oracle
+                              - gcp
+                              - s3
+                            enabled:
+                              type: boolean
+                              description: The state of the context integration. Whether to auto update or not.
+                            updateinterval:
+                              type: integer
+                              description: The number of seconds by which to poll the integration.
+                              minimum: 3600
+                              maximum: 604800
+                              format: int32
+                            aws:
+                              type: object
+                              description: Configuration options specific to type <code>aws</code>. nil if not configuring AWS
+                              required:
+                              - awsauthtype
+                              - region
+                              additionalProperties: false
+                              properties:
+                                region:
+                                  type: string
+                                  description: The aws region to authenticate to
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: An array of strings to match any custom tag names to track in AWS
+                                awsauthtype:
+                                  description: '<p>The method of authentication to use with AWS.  Valid options are:</p> <ul> <li><code>AccessKey</code>: indicates key/secret auth. <code>accesskeyid</code> and <code>accesssecret</code> fields are then required.</li> <li><code>RoleARN</code> indicates that role auth.  The <code>role</code> object is then required.</li> </ul>
+
+                                    '
+                                  type: string
+                                  enum:
+                                  - AccessKey
+                                  - RoleARN
+                                accesskeyid:
+                                  description: AWS accesskey id.  Required for <code>AccessKey</code> auth type.
+                                  type: string
+                                accesssecret:
+                                  description: AWS Access secret.  Required for <code>AccessKey</code> auth type.
+                                  type: string
+                                role:
+                                  description: object containing role authentication data.  Required for <code>RoleARN</code> auth type.
+                                  type: object
+                                  properties:
+                                    arn:
+                                      description: ARN used to authenticate the flow source
+                                      type: string
+                            azure:
+                              type: object
+                              description: Configuration options specific to type <code>azure</code>. nil if not configuring Azure
+                              required:
+                              - clientid
+                              - clientsecret
+                              - subscriptionid
+                              - tenantid
+                              additionalProperties: false
+                              properties:
+                                clientid:
+                                  description: The client id to use authenticating with azure
+                                  type: string
+                                clientsecret:
+                                  description: The client secret to use authenticating with azure
+                                  type: string
+                                subscriptionid:
+                                  type: string
+                                  description: The azure subscription id to be queried
+                                tenantid:
+                                  type: string
+                                  description: The azure tenant id to use
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: An array of strings to match any custom tag names to track in Azure
+                            crowdstrike:
+                              type: object
+                              description: Configuration options specific to <code>crowdstrike</code>. nil if not configuring CrowdStrike Falcon.
+                              required:
+                              - clientid
+                              - clientsecret
+                              - cloud
+                              additionalProperties: false
+                              properties:
+                                clientid:
+                                  description: The client id to authenticate to the Falcon cloud api
+                                  type: string
+                                clientsecret:
+                                  description: The client secret to authenticate to the Falcon cloud api
+                                  type: string
+                                cloud:
+                                  type: string
+                                  description: The Falcon cloud abbreviation to query
+                                  enum:
+                                  - us-1
+                                  - us-2
+                                  - eu-1
+                                  - us-gov-1
+                                filter:
+                                  type: string
+                                  description: An optional FQL string to be used when filtering results, e.g. <code>entity_type:'managed'+last_seen_timestamp:<'now-3d</code>
+                                sort:
+                                  type: string
+                                  description: An optional FQL sort string, e.g. <code>last_seen_timestamp.desc</code>
+                            crowdstrikediscover:
+                              type: object
+                              description: Configuration options specific to <code>crowdstrikediscover</code>.  nil if not configuring CrowdStrike Discover Falcon.
+                              required:
+                              - clientid
+                              - clientsecret
+                              - cloud
+                              additionalProperties: false
+                              properties:
+                                clientid:
+                                  description: The client id to authenticate to the Falcon cloud api
+                                  type: string
+                                clientsecret:
+                                  description: The client secret to authenticate to the Falcon cloud api
+                                  type: string
+                                cloud:
+                                  type: string
+                                  description: The Falcon cloud abbreviation to query
+                                  enum:
+                                  - us-1
+                                  - us-2
+                                  - eu-1
+                                  - us-gov-1
+                                filter:
+                                  type: string
+                                  description: An optional FQL string to be used when filtering results, e.g. <code>entity_type:'managed'+last_seen_timestamp:<'now-3d</code>
+                                sort:
+                                  type: string
+                                  description: An optional FQL sort string, e.g. <code>last_seen_timestamp.desc</code>
+                            ibm:
+                              type: object
+                              description: Configuration options specific to <code>ibm</code>. nil if not configuring IBM Cloud
+                              required:
+                              - apikey
+                              - region
+                              properties:
+                                apikey:
+                                  description: The api key to use for authentication
+                                  type: string
+                                region:
+                                  type: string
+                                  description: The IBM region to query
+                            oracle:
+                              type: object
+                              description: Configuration options specific to <code>oracle</code>. nil if not configuring Oracle Cloud
+                              required:
+                              - user
+                              - tenancy
+                              - region
+                              additionalProperties: false
+                              properties:
+                                user:
+                                  description: The user ocid to use for authentication to oracle cloud
+                                  type: string
+                                tenancy:
+                                  description: The tenancy ocid to use for connecting to oracle cloud
+                                  type: string
+                                region:
+                                  type: string
+                                  description: The region of oracle cloud to connect to
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: An array of strings to match any custom tag names to track in oracle cloud
+                            gcp:
+                              type: object
+                              description: Configuration options specific to <code>gcp</code>. nil if not configuring GCP
+                              required:
+                              - zone
+                              - credentials
+                              additionalProperties: false
+                              properties:
+                                zone:
+                                  description: The GCP zone for this configuration
+                                  type: string
+                                credentials:
+                                  type: object
+                                  description: The credentials object necessary to authenticate to the project. This is sent to you via a json file download following the creation of a GCP service account.
+                                  additionalProperties: false
+                                  required:
+                                  - type
+                                  - project_id
+                                  - private_key_id
+                                  - private_key
+                                  - client_email
+                                  - client_id
+                                  - auth_uri
+                                  - token_uri
+                                  - auth_provider_x509_cert_url
+                                  - client_x509_cert_url
+                                  properties:
+                                    type:
+                                      type: string
+                                      description: Credential type. this will typically be "service_account"
+                                    project_id:
+                                      type: string
+                                      description: The project id of the account
+                                    private_key_id:
+                                      type: string
+                                      description: The private key id of the service account
+                                    private_key:
+                                      type: string
+                                      description: The pirvate key to authenticate with
+                                    client_email:
+                                      type: string
+                                      description: The email of the service account
+                                    client_id:
+                                      type: string
+                                      description: The id of the client
+                                    auth_uri:
+                                      type: string
+                                      description: OAth2 uri
+                                    token_uri:
+                                      type: string
+                                      description: Token URI
+                                    auth_provider_x509_cert_url:
+                                      type: string
+                                      description: Auth cert url
+                                    client_x509_cert_url:
+                                      type: string
+                                      description: Client cert url
+                                labels:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: An array of strings to match any custom label names to track in GCP
+                            s3:
+                              type: object
+                              description: "Configuration options specific to type <code>s3</code>.\n This is used for pulling a CSV file from an S3 bucket. The format of the file is <code>ip,context,label1,label2</code> etc. nil if not configuring S3\n"
+                              required:
+                              - awsauthtype
+                              - region
+                              - bucket
+                              additionalProperties: false
+                              properties:
+                                region:
+                                  type: string
+                                  description: The aws region to authenticate to
+                                bucket:
+                                  type: string
+                                  description: The name of the s3 bucket from which to pull the csv file.
+                                path:
+                                  type: string
+                                  description: The path to the csv file to import labels from. The format of the file is <code>ip,context,label1,label2,...</code>
+                                awsauthtype:
+                                  description: '<p>The method of authentication to use with AWS.  Valid options are:</p> <ul> <li><code>AccessKey</code>: indicates key/secret auth. <code>accesskeyid</code> and <code>accesssecret</code> fields are then required.</li> <li><code>RoleARN</code> indicates that role auth.  The <code>role</code> object is then required.</li> </ul>
+
+                                    '
+                                  type: string
+                                  enum:
+                                  - AccessKey
+                                  - RoleARN
+                                accesskeyid:
+                                  description: AWS accesskey id.  Required for <code>AccessKey</code> auth type.
+                                  type: string
+                                accesssecret:
+                                  description: AWS Access secret.  Required for <code>AccessKey</code> auth type.
+                                  type: string
+                                role:
+                                  description: object containing role authentication data.  Required for <code>RoleARN</code> auth type.
+                                  type: object
+                                  properties:
+                                    arn:
+                                      description: ARN used to authenticate the flow source
+                                      type: string
+                            sentinelone:
+                              type: object
+                              description: Configuration options specific to <code>sentinelone</code>. nil if not configuring SentinelOne
+                              required:
+                              - base_url
+                              - params
+                              - token
+                              additionalProperties: false
+                              properties:
+                                base_url:
+                                  description: The SentinelOne domain URL to query, e.g. <code>https://<subdomain>.sentinelone.net</code>
+                                  type: string
+                                params:
+                                  type: object
+                                  additionalProperties: false
+                                  properties:
+                                    accountId:
+                                      type: string
+                                      description: The SentinelOne account ID to query
+                                    filterId:
+                                      type: string
+                                      description: The SentinelOne filter ID to limit query, SentinelOne API result size limit is 10,000
+                                token:
+                                  description: API token to use for authentication
+                                  type: string
+                                ranger:
+                                  type: object
+                                  properties:
+                                    enabled:
+                                      type: boolean
+                            wiz:
+                              type: object
+                              description: Configuration options specific to <code>wiz</code>. nil if not configuring Wiz
+                              required:
+                              - apiendpoint
+                              - tokenurl
+                              - clientid
+                              - clientsecret
+                              additionalProperties: false
+                              properties:
+                                apiendpoint:
+                                  description: Wiz API Endpoint URL
+                                  type: string
+                                  enum:
+                                  - https://api.us1.app.wiz.io/graphql
+                                  - https://api.us2.app.wiz.io/graphql
+                                  - https://api.eu1.app.wiz.io/graphql
+                                  - https://api.eu2.app.wiz.io/graphql
+                                  - https://api.us17.app.wiz.io/graphql
+                                tokenurl:
+                                  description: Wiz Token URL
+                                  type: string
+                                  enum:
+                                  - https://auth.app.wiz.io/oauth/token
+                                  - https://auth.wiz.io/oauth/token
+                                  - https://auth.gov.wiz.io/oauth/token
+                                  - https://auth0.gov.wiz.io/oauth/token
+                                clientid:
+                                  description: Client id to use authenticating with Wiz API
+                                  type: string
+                                clientsecret:
+                                  description: Client secret to use authenticating with Wiz API
+                                  type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    delete:
+      operationId: v1_integrations_context_id_delete
+      summary: Delete Context Integration
+      description: Deletes a context integration
+      tags:
+      - Integrations - Context
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the context integration to be deleted
+        schema:
+          type: string
+      responses:
+        '204':
+          description: An empty array
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/integrations/context/{id}/run:
+    get:
+      operationId: v1_integrations_context_id_run_get
+      summary: Dry Run/Test a Context Integration
+      description: Runs the specified context integration.  Retuns a list of ip labels that would be imported when the context integration is run.
+      tags:
+      - Integrations - Context
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the context integration to be test run.
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List of IP Labels Requested
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      allOf:
+                      - description: IP Label Create Config.
+                        type: object
+                        required:
+                        - ip
+                        - context
+                        - labels
+                        additionalProperties: false
+                        properties:
+                          ip:
+                            description: IP address
+                            type: string
+                          context:
+                            description: IP label context.  default context is 'name'.
+                            type: string
+                          labels:
+                            description: Array containing the IP labels.
+                            type: array
+                            minItems: 1
+                            maxItems: 10000
+                            items:
+                              type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    put:
+      operationId: v1_integrations_context_id_run_put
+      summary: Run a Context Integration
+      description: Runs the specified context integration.  Returns a list of ip labels that were imported.
+      tags:
+      - Integrations - Context
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the context integration to be test run.
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List of IP Labels Requested
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      allOf:
+                      - description: IP Label Create Config.
+                        type: object
+                        required:
+                        - ip
+                        - context
+                        - labels
+                        additionalProperties: false
+                        properties:
+                          ip:
+                            description: IP address
+                            type: string
+                          context:
+                            description: IP label context.  default context is 'name'.
+                            type: string
+                          labels:
+                            description: Array containing the IP labels.
+                            type: array
+                            minItems: 1
+                            maxItems: 10000
+                            items:
+                              type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/integrations/context/{id}/regenkeys:
+    put:
+      operationId: v1_integrations_context_id_regenkeys_put
+      summary: Regenerate private/public keys.
+      description: Only applicable to Oracle Cloud.
+      tags:
+      - Integrations - Context
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: String ID of the role to get
+      responses:
+        '200':
+          description: List of Context Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: object
+                    additionalProperties: false
+                    properties:
+                      id:
+                        type: string
+                        readOnly: true
+                        description: The id of the context integration. This is immutable.
+                      created:
+                        type: string
+                        description: Date/time the context integration was created.
+                      lastupdated:
+                        type: string
+                        description: Date/time the context integration was last updated.
+                      allOf:
+                        description: List of Context Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.
+                        type: object
+                        required:
+                        - name
+                        - type
+                        - enabled
+                        - updateinterval
+                        allOf:
+                        - type: object
+                          properties:
+                            name:
+                              type: string
+                              description: The name of the context integration
+                            type:
+                              type: string
+                              description: The type of the context integration. The configuration parameters are dependent on this value.
+                              enum:
+                              - aws
+                              - azure
+                              - crowdstrike
+                              - crowdstrikediscover
+                              - ibm
+                              - oracle
+                              - gcp
+                              - s3
+                            enabled:
+                              type: boolean
+                              description: The state of the context integration. Whether to auto update or not.
+                            updateinterval:
+                              type: integer
+                              description: The number of seconds by which to poll the integration.
+                              minimum: 3600
+                              maximum: 604800
+                              format: int32
+                            aws:
+                              type: object
+                              description: Configuration options specific to type <code>aws</code>. nil if not configuring AWS
+                              required:
+                              - awsauthtype
+                              - region
+                              additionalProperties: false
+                              properties:
+                                region:
+                                  type: string
+                                  description: The aws region to authenticate to
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: An array of strings to match any custom tag names to track in AWS
+                                awsauthtype:
+                                  description: '<p>The method of authentication to use with AWS.  Valid options are:</p> <ul> <li><code>AccessKey</code>: indicates key/secret auth. <code>accesskeyid</code> and <code>accesssecret</code> fields are then required.</li> <li><code>RoleARN</code> indicates that role auth.  The <code>role</code> object is then required.</li> </ul>
+
+                                    '
+                                  type: string
+                                  enum:
+                                  - AccessKey
+                                  - RoleARN
+                                accesskeyid:
+                                  description: AWS accesskey id.  Required for <code>AccessKey</code> auth type.
+                                  type: string
+                                accesssecret:
+                                  description: AWS Access secret.  Required for <code>AccessKey</code> auth type.
+                                  type: string
+                                role:
+                                  description: object containing role authentication data.  Required for <code>RoleARN</code> auth type.
+                                  type: object
+                                  properties:
+                                    arn:
+                                      description: ARN used to authenticate the flow source
+                                      type: string
+                            azure:
+                              type: object
+                              description: Configuration options specific to type <code>azure</code>. nil if not configuring Azure
+                              required:
+                              - clientid
+                              - clientsecret
+                              - subscriptionid
+                              - tenantid
+                              additionalProperties: false
+                              properties:
+                                clientid:
+                                  description: The client id to use authenticating with azure
+                                  type: string
+                                clientsecret:
+                                  description: The client secret to use authenticating with azure
+                                  type: string
+                                subscriptionid:
+                                  type: string
+                                  description: The azure subscription id to be queried
+                                tenantid:
+                                  type: string
+                                  description: The azure tenant id to use
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: An array of strings to match any custom tag names to track in Azure
+                            crowdstrike:
+                              type: object
+                              description: Configuration options specific to <code>crowdstrike</code>. nil if not configuring CrowdStrike Falcon.
+                              required:
+                              - clientid
+                              - clientsecret
+                              - cloud
+                              additionalProperties: false
+                              properties:
+                                clientid:
+                                  description: The client id to authenticate to the Falcon cloud api
+                                  type: string
+                                clientsecret:
+                                  description: The client secret to authenticate to the Falcon cloud api
+                                  type: string
+                                cloud:
+                                  type: string
+                                  description: The Falcon cloud abbreviation to query
+                                  enum:
+                                  - us-1
+                                  - us-2
+                                  - eu-1
+                                  - us-gov-1
+                                filter:
+                                  type: string
+                                  description: An optional FQL string to be used when filtering results, e.g. <code>entity_type:'managed'+last_seen_timestamp:<'now-3d</code>
+                                sort:
+                                  type: string
+                                  description: An optional FQL sort string, e.g. <code>last_seen_timestamp.desc</code>
+                            crowdstrikediscover:
+                              type: object
+                              description: Configuration options specific to <code>crowdstrikediscover</code>.  nil if not configuring CrowdStrike Discover Falcon.
+                              required:
+                              - clientid
+                              - clientsecret
+                              - cloud
+                              additionalProperties: false
+                              properties:
+                                clientid:
+                                  description: The client id to authenticate to the Falcon cloud api
+                                  type: string
+                                clientsecret:
+                                  description: The client secret to authenticate to the Falcon cloud api
+                                  type: string
+                                cloud:
+                                  type: string
+                                  description: The Falcon cloud abbreviation to query
+                                  enum:
+                                  - us-1
+                                  - us-2
+                                  - eu-1
+                                  - us-gov-1
+                                filter:
+                                  type: string
+                                  description: An optional FQL string to be used when filtering results, e.g. <code>entity_type:'managed'+last_seen_timestamp:<'now-3d</code>
+                                sort:
+                                  type: string
+                                  description: An optional FQL sort string, e.g. <code>last_seen_timestamp.desc</code>
+                            ibm:
+                              type: object
+                              description: Configuration options specific to <code>ibm</code>. nil if not configuring IBM Cloud
+                              required:
+                              - apikey
+                              - region
+                              properties:
+                                apikey:
+                                  description: The api key to use for authentication
+                                  type: string
+                                region:
+                                  type: string
+                                  description: The IBM region to query
+                            oracle:
+                              type: object
+                              description: Configuration options specific to <code>oracle</code>. nil if not configuring Oracle Cloud
+                              required:
+                              - user
+                              - tenancy
+                              - region
+                              additionalProperties: false
+                              properties:
+                                user:
+                                  description: The user ocid to use for authentication to oracle cloud
+                                  type: string
+                                tenancy:
+                                  description: The tenancy ocid to use for connecting to oracle cloud
+                                  type: string
+                                region:
+                                  type: string
+                                  description: The region of oracle cloud to connect to
+                                tags:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: An array of strings to match any custom tag names to track in oracle cloud
+                            gcp:
+                              type: object
+                              description: Configuration options specific to <code>gcp</code>. nil if not configuring GCP
+                              required:
+                              - zone
+                              - credentials
+                              additionalProperties: false
+                              properties:
+                                zone:
+                                  description: The GCP zone for this configuration
+                                  type: string
+                                credentials:
+                                  type: object
+                                  description: The credentials object necessary to authenticate to the project. This is sent to you via a json file download following the creation of a GCP service account.
+                                  additionalProperties: false
+                                  required:
+                                  - type
+                                  - project_id
+                                  - private_key_id
+                                  - private_key
+                                  - client_email
+                                  - client_id
+                                  - auth_uri
+                                  - token_uri
+                                  - auth_provider_x509_cert_url
+                                  - client_x509_cert_url
+                                  properties:
+                                    type:
+                                      type: string
+                                      description: Credential type. this will typically be "service_account"
+                                    project_id:
+                                      type: string
+                                      description: The project id of the account
+                                    private_key_id:
+                                      type: string
+                                      description: The private key id of the service account
+                                    private_key:
+                                      type: string
+                                      description: The pirvate key to authenticate with
+                                    client_email:
+                                      type: string
+                                      description: The email of the service account
+                                    client_id:
+                                      type: string
+                                      description: The id of the client
+                                    auth_uri:
+                                      type: string
+                                      description: OAth2 uri
+                                    token_uri:
+                                      type: string
+                                      description: Token URI
+                                    auth_provider_x509_cert_url:
+                                      type: string
+                                      description: Auth cert url
+                                    client_x509_cert_url:
+                                      type: string
+                                      description: Client cert url
+                                labels:
+                                  type: array
+                                  items:
+                                    type: string
+                                  description: An array of strings to match any custom label names to track in GCP
+                            s3:
+                              type: object
+                              description: "Configuration options specific to type <code>s3</code>.\n This is used for pulling a CSV file from an S3 bucket. The format of the file is <code>ip,context,label1,label2</code> etc. nil if not configuring S3\n"
+                              required:
+                              - awsauthtype
+                              - region
+                              - bucket
+                              additionalProperties: false
+                              properties:
+                                region:
+                                  type: string
+                                  description: The aws region to authenticate to
+                                bucket:
+                                  type: string
+                                  description: The name of the s3 bucket from which to pull the csv file.
+                                path:
+                                  type: string
+                                  description: The path to the csv file to import labels from. The format of the file is <code>ip,context,label1,label2,...</code>
+                                awsauthtype:
+                                  description: '<p>The method of authentication to use with AWS.  Valid options are:</p> <ul> <li><code>AccessKey</code>: indicates key/secret auth. <code>accesskeyid</code> and <code>accesssecret</code> fields are then required.</li> <li><code>RoleARN</code> indicates that role auth.  The <code>role</code> object is then required.</li> </ul>
+
+                                    '
+                                  type: string
+                                  enum:
+                                  - AccessKey
+                                  - RoleARN
+                                accesskeyid:
+                                  description: AWS accesskey id.  Required for <code>AccessKey</code> auth type.
+                                  type: string
+                                accesssecret:
+                                  description: AWS Access secret.  Required for <code>AccessKey</code> auth type.
+                                  type: string
+                                role:
+                                  description: object containing role authentication data.  Required for <code>RoleARN</code> auth type.
+                                  type: object
+                                  properties:
+                                    arn:
+                                      description: ARN used to authenticate the flow source
+                                      type: string
+                            sentinelone:
+                              type: object
+                              description: Configuration options specific to <code>sentinelone</code>. nil if not configuring SentinelOne
+                              required:
+                              - base_url
+                              - params
+                              - token
+                              additionalProperties: false
+                              properties:
+                                base_url:
+                                  description: The SentinelOne domain URL to query, e.g. <code>https://<subdomain>.sentinelone.net</code>
+                                  type: string
+                                params:
+                                  type: object
+                                  additionalProperties: false
+                                  properties:
+                                    accountId:
+                                      type: string
+                                      description: The SentinelOne account ID to query
+                                    filterId:
+                                      type: string
+                                      description: The SentinelOne filter ID to limit query, SentinelOne API result size limit is 10,000
+                                token:
+                                  description: API token to use for authentication
+                                  type: string
+                                ranger:
+                                  type: object
+                                  properties:
+                                    enabled:
+                                      type: boolean
+                            wiz:
+                              type: object
+                              description: Configuration options specific to <code>wiz</code>. nil if not configuring Wiz
+                              required:
+                              - apiendpoint
+                              - tokenurl
+                              - clientid
+                              - clientsecret
+                              additionalProperties: false
+                              properties:
+                                apiendpoint:
+                                  description: Wiz API Endpoint URL
+                                  type: string
+                                  enum:
+                                  - https://api.us1.app.wiz.io/graphql
+                                  - https://api.us2.app.wiz.io/graphql
+                                  - https://api.eu1.app.wiz.io/graphql
+                                  - https://api.eu2.app.wiz.io/graphql
+                                  - https://api.us17.app.wiz.io/graphql
+                                tokenurl:
+                                  description: Wiz Token URL
+                                  type: string
+                                  enum:
+                                  - https://auth.app.wiz.io/oauth/token
+                                  - https://auth.wiz.io/oauth/token
+                                  - https://auth.gov.wiz.io/oauth/token
+                                  - https://auth0.gov.wiz.io/oauth/token
+                                clientid:
+                                  description: Client id to use authenticating with Wiz API
+                                  type: string
+                                clientsecret:
+                                  description: Client secret to use authenticating with Wiz API
+                                  type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true

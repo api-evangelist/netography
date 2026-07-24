@@ -1,0 +1,584 @@
+openapi: 3.0.0
+info:
+  title: Netography (Vectra Fusion) Analytics Intelligence API
+  version: '1.0'
+  description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
+  x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
+  x-apievangelist-method: searched
+  x-apievangelist-generated: '2026-07-20'
+servers:
+- url: https://api.netography.com
+  description: Netography API
+tags:
+- name: Intelligence
+paths:
+  /api/v1/intel/lookup/asns:
+    post:
+      operationId: v1_intel_lookup_asns_post
+      summary: ASN Lookup
+      description: This method takes an array of ASNs and looks up the corresponding ORG.
+      requestBody:
+        description: ASN lookup JSON Body.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - asns
+              additionalProperties: false
+              properties:
+                asns:
+                  description: Array of AS numbers to lookup org names for
+                  type: array
+                  maxItems: 1000
+                  items:
+                    type: integer
+      tags:
+      - Intelligence
+      responses:
+        '200':
+          description: ASN Number and Organisation the ASN provided in the request.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      type: object
+                      additionalProperties: false
+                      description: ASN record schema for the AS number lookup API. This schema defines the structure of the response returned when querying for an Autonomous System Number (ASN) and its associated organization.
+                      properties:
+                        number:
+                          description: AS number looked up
+                          type: integer
+                        org:
+                          description: AS Org for this AS number
+                          type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/cve/{cveid}:
+    get:
+      operationId: v1_cve_cveid_get
+      summary: CVE Lookup
+      description: 'Returns Common Vulnerability and Exposure information for the CVE ID provided.
+
+        For more information on the data returned, see the <a href="https://nvd.nist.gov/developers/vulnerabilities" target="_blank">NIST NVD CVE API response documentation</a>
+
+        '
+      tags:
+      - Intelligence
+      parameters:
+      - name: cveid
+        in: path
+        required: true
+        description: The unique Common Vulnerabilities and Exposures identifier (the CVE ID)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/intel/lookup/ips:
+    post:
+      operationId: v1_intel_lookup_ips_post
+      summary: IP Lookup
+      description: This method takes an array of IPs and looks up the corresponding information.
+      tags:
+      - Intelligence
+      requestBody:
+        description: IP lookup JSON body.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - ips
+              additionalProperties: false
+              properties:
+                as:
+                  type: boolean
+                  description: Include Autonomous System information in the response
+                bogon:
+                  type: boolean
+                  description: Include bogon intellegence in the response
+                geo:
+                  type: boolean
+                  description: Include Geolocation Data in the response
+                iprep:
+                  type: boolean
+                  description: Include IP Reputation intellegence in the response
+                rdns:
+                  type: boolean
+                  description: Include RDNS info in the response
+                pdns:
+                  type: boolean
+                  description: Include PDNS info in the response
+                ips:
+                  description: Array of IP addresses to lookup
+                  type: array
+                  maxItems: 1000
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Ip Intelligence information for the ip addresses provided in the request.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        bogon:
+                          description: Is a bogon or not
+                          type: boolean
+                        ip:
+                          description: IP Address
+                          type: string
+                        firstseen:
+                          description: Timestamp of first time this ip address was seen.
+                          type: integer
+                        lastseen:
+                          description: Timestamp of last time this ip address was seen.
+                          type: integer
+                        count:
+                          description: Number of times this ip address has been seen.
+                          type: integer
+                        iprep:
+                          description: Object with ip reputation information
+                          type: object
+                          additionalProperties: false
+                          properties:
+                            count:
+                              description: Number of times this ip address has been seen.
+                              type: integer
+                            categories:
+                              type: array
+                              description: Array of geo reputation categories this ip address has been flagged in.
+                              maxItems: 1000
+                              items:
+                                type: string
+                        geo:
+                          description: Object with geographic location information
+                          type: object
+                        as:
+                          type: object
+                          additionalProperties: false
+                          description: ASN record schema for the AS number lookup API. This schema defines the structure of the response returned when querying for an Autonomous System Number (ASN) and its associated organization.
+                          properties:
+                            number:
+                              description: AS number looked up
+                              type: integer
+                            org:
+                              description: AS Org for this AS number
+                              type: string
+                        rdns:
+                          description: Reverse DNS
+                          type: string
+                        pdns:
+                          description: Protective DNS
+                          type: object
+                          additionalProperties: false
+                          properties:
+                            count:
+                              description: Number of times this ip address has been seen.
+                              type: integer
+                            records:
+                              type: array
+                              description: Array of PDNS records
+                              maxItems: 1000
+                              items:
+                                type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true

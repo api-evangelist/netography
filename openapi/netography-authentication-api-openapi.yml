@@ -1,0 +1,393 @@
+openapi: 3.0.0
+info:
+  title: Netography (Vectra Fusion) Analytics Authentication API
+  version: '1.0'
+  description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
+  x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
+  x-apievangelist-method: searched
+  x-apievangelist-generated: '2026-07-20'
+servers:
+- url: https://api.netography.com
+  description: Netography API
+tags:
+- name: Authentication
+paths:
+  /api/v1/auth/token:
+    post:
+      operationId: v1_auth_token_post
+      tags:
+      - Authentication
+      requestBody:
+        required: true
+        description: A JSON request body with the key `jwt`.
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              properties:
+                jwt:
+                  type: string
+                  description: A JWT token encoded using your Accounts API Key Shared Secret.
+              required:
+              - jwt
+      summary: via API Key
+      description: "To authenticate to the API, a JWT request token is encoded and sent as the `jwt` param in a `POST` to `/auth/token`.  The `access_token` in the response is the JWT bearer token that is included as the `Authorization` value in the `Header` of all subsequent API calls.\n\nIf you do not have the 4 fields below available, see [Create a Netography API Key](ref:create-a-netography-api-key).\n\n## Generating a JWT request token in code\n\n[block:tutorial-tile]\n{\n  \"backgroundColor\": \"#018FF4\",\n  \"emoji\": \"\U0001F989\",\n  \"id\": \"657c52c3a5434c00493811e0\",\n  \"link\": \"https://docs.netography.com/v1.0/recipes/create-a-jwt-request-token\",\n  \"slug\": \"create-a-jwt-request-token\",\n  \"title\": \"Create a JWT request token\"\n}\n[/block]\n\n\n## Generating a JWT request token in browser\n\nTo use API via the API reference pages here, you can create a JWT request token here, and then copy it to the _jwt_ params field below.\n\n[block:embed]\n{\n  \"html\": false,\n  \"url\": \"https://jsfiddle.net/netography/rex57sb6/12/embedded/result,js,html\",\n  \"provider\": \"jsfiddle.net\",\n  \"href\": \"https://jsfiddle.net/netography/rex57sb6/12/embedded/result,js,html\",\n  \"typeOfEmbed\": \"iframe\",\n  \"height\": \"400px\",\n  \"width\": \"100%\",\n  \"iframe\": true\n}\n[/block]\n\n\n> ↕️ Copy and Paste the JWT request token string\n> \n> To authenticate to the API on this page, you need to copy the token string from the _JWT Request Token_ field directly above, and paste it into the _jwt_ field directly below.\n"
+      responses:
+        '200':
+          description: A JSON object which contains the `access_token` to use in all subsequent calls to the API
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  access_token:
+                    type: string
+                    description: Access Token (JWT)
+                    readOnly: true
+                  expires_in:
+                    type: integer
+                    description: Seconds until the Access Token expires
+                    readOnly: true
+                  refresh_expires_in:
+                    type: integer
+                    description: Seconds until the Refresh Token expires
+                    readOnly: true
+                  refresh_token:
+                    type: string
+                    description: Refresh Token (JWT)
+                    readOnly: true
+                  token_type:
+                    type: string
+                    description: Type of JWT token.  Will always be "bearer"
+                    readOnly: true
+                  id_token:
+                    type: string
+                    description: ID Token (JWT)
+                    readOnly: true
+                  not-before-policy:
+                    type: integer
+                    description: Seconds until the Token will be considered valid.  Will always be 0 (now).
+                    readOnly: true
+                  session-state:
+                    type: string
+                    description: Unique Session ID
+                    readOnly: true
+                  scope:
+                    type: string
+                    description: Application Scopes
+                    readOnly: true
+        '401':
+          description: Missing or invalid credentials
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/auth/bearer/token:
+    post:
+      operationId: auth_bearer_token_post
+      tags:
+      - Authentication
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              additionalProperties: false
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+                  format: password
+              required:
+              - username
+              - password
+      summary: via User Credentials
+      description: Obtain an `access_token` via User Credentials
+      responses:
+        '200':
+          description: A JSON object which contains the `access_token` to use in all subsequent calls to the API
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  access_token:
+                    type: string
+                    description: Access Token (JWT)
+                    readOnly: true
+                  expires_in:
+                    type: integer
+                    description: Seconds until the Access Token expires
+                    readOnly: true
+                  refresh_expires_in:
+                    type: integer
+                    description: Seconds until the Refresh Token expires
+                    readOnly: true
+                  refresh_token:
+                    type: string
+                    description: Refresh Token (JWT)
+                    readOnly: true
+                  token_type:
+                    type: string
+                    description: Type of JWT token.  Will always be "bearer"
+                    readOnly: true
+                  id_token:
+                    type: string
+                    description: ID Token (JWT)
+                    readOnly: true
+                  not-before-policy:
+                    type: integer
+                    description: Seconds until the Token will be considered valid.  Will always be 0 (now).
+                    readOnly: true
+                  session-state:
+                    type: string
+                    description: Unique Session ID
+                    readOnly: true
+                  scope:
+                    type: string
+                    description: Application Scopes
+                    readOnly: true
+        '401':
+          description: Missing or invalid credentials
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/auth/bearer/refresh:
+    post:
+      operationId: auth_bearer_refresh_post
+      tags:
+      - Authentication
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              additionalProperties: false
+              properties:
+                refresh_token:
+                  type: string
+              required:
+              - refresh_token
+      summary: via Refresh Token
+      description: Obtain a new `access_token` via a `refresh_token`
+      responses:
+        '200':
+          description: A JSON object which contains the `access_token` to use in all subsequent calls to the API
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  access_token:
+                    type: string
+                    description: Access Token (JWT)
+                    readOnly: true
+                  expires_in:
+                    type: integer
+                    description: Seconds until the Access Token expires
+                    readOnly: true
+                  refresh_expires_in:
+                    type: integer
+                    description: Seconds until the Refresh Token expires
+                    readOnly: true
+                  refresh_token:
+                    type: string
+                    description: Refresh Token (JWT)
+                    readOnly: true
+                  token_type:
+                    type: string
+                    description: Type of JWT token.  Will always be "bearer"
+                    readOnly: true
+                  id_token:
+                    type: string
+                    description: ID Token (JWT)
+                    readOnly: true
+                  not-before-policy:
+                    type: integer
+                    description: Seconds until the Token will be considered valid.  Will always be 0 (now).
+                    readOnly: true
+                  session-state:
+                    type: string
+                    description: Unique Session ID
+                    readOnly: true
+                  scope:
+                    type: string
+                    description: Application Scopes
+                    readOnly: true
+        '400':
+          description: Wrong or expired refresh token, or user/api-key removed
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true

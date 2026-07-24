@@ -1,0 +1,4006 @@
+openapi: 3.0.0
+info:
+  title: Netography (Vectra Fusion) Analytics Traffic Sources - Devices API
+  version: '1.0'
+  description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
+  x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
+  x-apievangelist-method: searched
+  x-apievangelist-generated: '2026-07-20'
+servers:
+- url: https://api.netography.com
+  description: Netography API
+tags:
+- name: Traffic Sources - Devices
+paths:
+  /api/v1/devices:
+    get:
+      operationId: v1_devices_get
+      summary: List Devices
+      description: Returns an array of devices.
+      tags:
+      - Traffic Sources - Devices
+      responses:
+        '200':
+          description: List of Devices Requested, or an array containing the new/updated Device after a Create or Update operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: Result set from API call
+                    type: array
+                    maxItems: 1000
+                    items:
+                      required:
+                      - id
+                      - name
+                      - ips
+                      - samplerate
+                      allOf:
+                      - type: object
+                        required:
+                        - id
+                        additionalProperties: false
+                        properties:
+                          id:
+                            type: string
+                            readOnly: true
+                            description: The ID for the device.  This is immutable.
+                      - required:
+                        - name
+                        - ips
+                        - samplerate
+                        additionalProperties: false
+                        properties:
+                          name:
+                            description: The name of the device. Eg. router1.site.company.com
+                            type: string
+                          ips:
+                            description: An array of IPs that this device sends flows from.
+                            type: array
+                            items:
+                              type: string
+                              format: cidr
+                          samplerate:
+                            description: The samplerate of flows this device will send.
+                            type: integer
+                            format: int32
+                            minimum: 1
+                            maximum: 65535
+                          payload:
+                            description: Whether to store payload sample or not.  SFLOW only.  Default to false if not set.
+                            type: boolean
+                          tags:
+                            description: An array of strings to tag every flow from this device with.
+                            type: array
+                            items:
+                              type: string
+                          site:
+                            description: The site identifier for this device.
+                            type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/device:
+    post:
+      operationId: v1_device_post
+      summary: Create Device
+      description: Creates a device from the data that's been supplied.  Do not provide an id.  IDs are auto generated
+      requestBody:
+        description: Device to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - name
+              - ips
+              - samplerate
+              additionalProperties: false
+              properties:
+                name:
+                  description: The name of the device. Eg. router1.site.company.com
+                  type: string
+                ips:
+                  description: An array of IPs that this device sends flows from.
+                  type: array
+                  items:
+                    type: string
+                    format: cidr
+                samplerate:
+                  description: The samplerate of flows this device will send.
+                  type: integer
+                  format: int32
+                  minimum: 1
+                  maximum: 65535
+                payload:
+                  description: Whether to store payload sample or not.  SFLOW only.  Default to false if not set.
+                  type: boolean
+                tags:
+                  description: An array of strings to tag every flow from this device with.
+                  type: array
+                  items:
+                    type: string
+                site:
+                  description: The site identifier for this device.
+                  type: string
+      tags:
+      - Traffic Sources - Devices
+      responses:
+        '201':
+          description: List of Devices Requested, or an array containing the new/updated Device after a Create or Update operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: Result set from API call
+                    type: array
+                    maxItems: 1000
+                    items:
+                      required:
+                      - id
+                      - name
+                      - ips
+                      - samplerate
+                      allOf:
+                      - type: object
+                        required:
+                        - id
+                        additionalProperties: false
+                        properties:
+                          id:
+                            type: string
+                            readOnly: true
+                            description: The ID for the device.  This is immutable.
+                      - required:
+                        - name
+                        - ips
+                        - samplerate
+                        additionalProperties: false
+                        properties:
+                          name:
+                            description: The name of the device. Eg. router1.site.company.com
+                            type: string
+                          ips:
+                            description: An array of IPs that this device sends flows from.
+                            type: array
+                            items:
+                              type: string
+                              format: cidr
+                          samplerate:
+                            description: The samplerate of flows this device will send.
+                            type: integer
+                            format: int32
+                            minimum: 1
+                            maximum: 65535
+                          payload:
+                            description: Whether to store payload sample or not.  SFLOW only.  Default to false if not set.
+                            type: boolean
+                          tags:
+                            description: An array of strings to tag every flow from this device with.
+                            type: array
+                            items:
+                              type: string
+                          site:
+                            description: The site identifier for this device.
+                            type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/device/{id}:
+    get:
+      operationId: v1_device_id_get
+      summary: Fetch Device
+      description: Fetches a specific device from the ID supplied in the path.
+      tags:
+      - Traffic Sources - Devices
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the device to be returned.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of Devices Requested, or an array containing the new/updated Device after a Create or Update operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: Result set from API call
+                    type: array
+                    maxItems: 1000
+                    items:
+                      required:
+                      - id
+                      - name
+                      - ips
+                      - samplerate
+                      allOf:
+                      - type: object
+                        required:
+                        - id
+                        additionalProperties: false
+                        properties:
+                          id:
+                            type: string
+                            readOnly: true
+                            description: The ID for the device.  This is immutable.
+                      - required:
+                        - name
+                        - ips
+                        - samplerate
+                        additionalProperties: false
+                        properties:
+                          name:
+                            description: The name of the device. Eg. router1.site.company.com
+                            type: string
+                          ips:
+                            description: An array of IPs that this device sends flows from.
+                            type: array
+                            items:
+                              type: string
+                              format: cidr
+                          samplerate:
+                            description: The samplerate of flows this device will send.
+                            type: integer
+                            format: int32
+                            minimum: 1
+                            maximum: 65535
+                          payload:
+                            description: Whether to store payload sample or not.  SFLOW only.  Default to false if not set.
+                            type: boolean
+                          tags:
+                            description: An array of strings to tag every flow from this device with.
+                            type: array
+                            items:
+                              type: string
+                          site:
+                            description: The site identifier for this device.
+                            type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    put:
+      operationId: v1_devoce_id_put
+      summary: Update Device
+      description: Update a device given the provided object.  This does not do a diff.  You must send the complete object.
+      requestBody:
+        description: Device to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - name
+              - ips
+              - samplerate
+              additionalProperties: false
+              properties:
+                name:
+                  description: The name of the device. Eg. router1.site.company.com
+                  type: string
+                ips:
+                  description: An array of IPs that this device sends flows from.
+                  type: array
+                  items:
+                    type: string
+                    format: cidr
+                samplerate:
+                  description: The samplerate of flows this device will send.
+                  type: integer
+                  format: int32
+                  minimum: 1
+                  maximum: 65535
+                payload:
+                  description: Whether to store payload sample or not.  SFLOW only.  Default to false if not set.
+                  type: boolean
+                tags:
+                  description: An array of strings to tag every flow from this device with.
+                  type: array
+                  items:
+                    type: string
+                site:
+                  description: The site identifier for this device.
+                  type: string
+      tags:
+      - Traffic Sources - Devices
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the device to be updated
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of Devices Requested, or an array containing the new/updated Device after a Create or Update operation.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: Result set from API call
+                    type: array
+                    maxItems: 1000
+                    items:
+                      required:
+                      - id
+                      - name
+                      - ips
+                      - samplerate
+                      allOf:
+                      - type: object
+                        required:
+                        - id
+                        additionalProperties: false
+                        properties:
+                          id:
+                            type: string
+                            readOnly: true
+                            description: The ID for the device.  This is immutable.
+                      - required:
+                        - name
+                        - ips
+                        - samplerate
+                        additionalProperties: false
+                        properties:
+                          name:
+                            description: The name of the device. Eg. router1.site.company.com
+                            type: string
+                          ips:
+                            description: An array of IPs that this device sends flows from.
+                            type: array
+                            items:
+                              type: string
+                              format: cidr
+                          samplerate:
+                            description: The samplerate of flows this device will send.
+                            type: integer
+                            format: int32
+                            minimum: 1
+                            maximum: 65535
+                          payload:
+                            description: Whether to store payload sample or not.  SFLOW only.  Default to false if not set.
+                            type: boolean
+                          tags:
+                            description: An array of strings to tag every flow from this device with.
+                            type: array
+                            items:
+                              type: string
+                          site:
+                            description: The site identifier for this device.
+                            type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    delete:
+      operationId: v1_device_id_delete
+      summary: Delete Device
+      description: Deletes a device
+      tags:
+      - Traffic Sources - Devices
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the device to be deleted
+        schema:
+          type: string
+      responses:
+        '204':
+          description: An empty array
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/devices/status:
+    get:
+      operationId: v1_devices_status_get
+      summary: List Device Statuses
+      description: Returns an array of device status objects.
+      tags:
+      - Traffic Sources - Devices
+      responses:
+        '200':
+          description: List of Device States.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: Result set from API call
+                    type: array
+                    maxItems: 1000
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        id:
+                          type: string
+                          readOnly: true
+                          description: The ID for the device.  This is immutable.
+                        name:
+                          description: The name of the device. Eg. router1.site.company.com
+                          type: string
+                        flow:
+                          required:
+                          - lastseen
+                          - active
+                          additionalProperties: false
+                          properties:
+                            lastseen:
+                              description: Unix timestamp of last seen flow.
+                              type: number
+                            active:
+                              description: Actively receiving flow.
+                              type: boolean
+                          type: object
+                        bgp:
+                          type: object
+                          additionalProperties: false
+                          properties:
+                            active:
+                              description: BGP is active
+                              type: boolean
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/device/status/{id}:
+    get:
+      operationId: v1_device_status_id_get
+      summary: Fetch Device Status
+      description: Fetches a specific device from the ID supplied in the path.
+      tags:
+      - Traffic Sources - Devices
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the device to be returned.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of Device States.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: Result set from API call
+                    type: array
+                    maxItems: 1000
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        id:
+                          type: string
+                          readOnly: true
+                          description: The ID for the device.  This is immutable.
+                        name:
+                          description: The name of the device. Eg. router1.site.company.com
+                          type: string
+                        flow:
+                          required:
+                          - lastseen
+                          - active
+                          additionalProperties: false
+                          properties:
+                            lastseen:
+                              description: Unix timestamp of last seen flow.
+                              type: number
+                            active:
+                              description: Actively receiving flow.
+                              type: boolean
+                          type: object
+                        bgp:
+                          type: object
+                          additionalProperties: false
+                          properties:
+                            active:
+                              description: BGP is active
+                              type: boolean
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/bgp/neighbors:
+    get:
+      operationId: v1_bgp_neighbors_get
+      summary: List BGP Neighbors
+      description: Returns an array of BGP Neighbors.
+      tags:
+      - Traffic Sources - Devices
+      responses:
+        '200':
+          description: List of BGP Neighbors
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    items:
+                      allOf:
+                      - description: BGP Neighbor Record
+                        type: object
+                        allOf:
+                        - type: object
+                          properties:
+                            addresslocal:
+                              type: string
+                            addressremote:
+                              type: string
+                            admindown:
+                              type: boolean
+                            advanced:
+                              type: boolean
+                            asn:
+                              type: string
+                            authpassword:
+                              type: string
+                            description:
+                              type: string
+                            deviceid:
+                              type: string
+                            gracefulrestart:
+                              type: boolean
+                            holdtime:
+                              type: integer
+                            ipv4-flowspec:
+                              type: boolean
+                            ipv4-unicast:
+                              type: boolean
+                            ipv6-flowspec:
+                              type: boolean
+                            ipv6-unicast:
+                              type: boolean
+                            keepalive:
+                              type: integer
+                            negotiated:
+                              type: object
+                              properties:
+                                capabilities:
+                                  type: array
+                                holdtime:
+                                  type: integer
+                                keepalive:
+                                  type: integer
+                            restarttime:
+                              type: integer
+                            routes:
+                              type: object
+                              properties:
+                                ipv4-flow:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv4-unicast:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv6-flow:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv6-unicast:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                total:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    prefixrate:
+                                      type: integer
+                                    prefixsessioncount:
+                                      type: integer
+                                    prefixtotalcount:
+                                      type: integer
+                                    received:
+                                      type: integer
+                            state:
+                              type: string
+                            stats:
+                              type: object
+                              properties:
+                                recv:
+                                  type: object
+                                  properties:
+                                    discarded:
+                                      type: integer
+                                    keepalives:
+                                      type: integer
+                                    notifications:
+                                      type: integer
+                                    opens:
+                                      type: integer
+                                    routerefreshes:
+                                      type: integer
+                                    updates:
+                                      type: integer
+                                    withdrawprefix:
+                                      type: integer
+                                    withdrawupdate:
+                                      type: integer
+                                sent:
+                                  type: object
+                                  properties:
+                                    discarded:
+                                      type: integer
+                                    keepalives:
+                                      type: integer
+                                    notifications:
+                                      type: integer
+                                    opens:
+                                      type: integer
+                                    routerefreshes:
+                                      type: integer
+                                    updates:
+                                      type: integer
+                                    withdrawprefix:
+                                      type: integer
+                                    withdrawupdate:
+                                      type: integer
+                            uptime:
+                              type: string
+                        properties:
+                          id:
+                            type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/bgp/neighbors/devices/{deviceid}:
+    get:
+      operationId: v1_bgp_neighbors_devices_deviceid_get
+      summary: List BGP Neighbors for a Device
+      description: Returns an array of BGP Neighbors for a Device.
+      tags:
+      - Traffic Sources - Devices
+      parameters:
+      - in: path
+        name: deviceid
+        required: true
+        schema:
+          type: string
+        description: The ID of the device to retrieve BGP Neighbors for.
+      responses:
+        '200':
+          description: List of BGP Neighbors
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    items:
+                      allOf:
+                      - description: BGP Neighbor Record
+                        type: object
+                        allOf:
+                        - type: object
+                          properties:
+                            addresslocal:
+                              type: string
+                            addressremote:
+                              type: string
+                            admindown:
+                              type: boolean
+                            advanced:
+                              type: boolean
+                            asn:
+                              type: string
+                            authpassword:
+                              type: string
+                            description:
+                              type: string
+                            deviceid:
+                              type: string
+                            gracefulrestart:
+                              type: boolean
+                            holdtime:
+                              type: integer
+                            ipv4-flowspec:
+                              type: boolean
+                            ipv4-unicast:
+                              type: boolean
+                            ipv6-flowspec:
+                              type: boolean
+                            ipv6-unicast:
+                              type: boolean
+                            keepalive:
+                              type: integer
+                            negotiated:
+                              type: object
+                              properties:
+                                capabilities:
+                                  type: array
+                                holdtime:
+                                  type: integer
+                                keepalive:
+                                  type: integer
+                            restarttime:
+                              type: integer
+                            routes:
+                              type: object
+                              properties:
+                                ipv4-flow:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv4-unicast:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv6-flow:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv6-unicast:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                total:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    prefixrate:
+                                      type: integer
+                                    prefixsessioncount:
+                                      type: integer
+                                    prefixtotalcount:
+                                      type: integer
+                                    received:
+                                      type: integer
+                            state:
+                              type: string
+                            stats:
+                              type: object
+                              properties:
+                                recv:
+                                  type: object
+                                  properties:
+                                    discarded:
+                                      type: integer
+                                    keepalives:
+                                      type: integer
+                                    notifications:
+                                      type: integer
+                                    opens:
+                                      type: integer
+                                    routerefreshes:
+                                      type: integer
+                                    updates:
+                                      type: integer
+                                    withdrawprefix:
+                                      type: integer
+                                    withdrawupdate:
+                                      type: integer
+                                sent:
+                                  type: object
+                                  properties:
+                                    discarded:
+                                      type: integer
+                                    keepalives:
+                                      type: integer
+                                    notifications:
+                                      type: integer
+                                    opens:
+                                      type: integer
+                                    routerefreshes:
+                                      type: integer
+                                    updates:
+                                      type: integer
+                                    withdrawprefix:
+                                      type: integer
+                                    withdrawupdate:
+                                      type: integer
+                            uptime:
+                              type: string
+                        properties:
+                          id:
+                            type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/bgp/neighbor:
+    post:
+      operationId: v1_bgp_neighbor_post
+      summary: Create BGP Neighbor
+      description: Create a new BGP Neighbor.
+      tags:
+      - Traffic Sources - Devices
+      requestBody:
+        description: BGP Neighbor to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              description: BGP Neighbor Create or Update Config
+              type: object
+              allOf:
+              - type: object
+                properties:
+                  addresslocal:
+                    type: string
+                  addressremote:
+                    type: string
+                  admindown:
+                    type: boolean
+                  advanced:
+                    type: boolean
+                  asn:
+                    type: string
+                  authpassword:
+                    type: string
+                  description:
+                    type: string
+                  deviceid:
+                    type: string
+                  gracefulrestart:
+                    type: boolean
+                  holdtime:
+                    type: integer
+                  ipv4-flowspec:
+                    type: boolean
+                  ipv4-unicast:
+                    type: boolean
+                  ipv6-flowspec:
+                    type: boolean
+                  ipv6-unicast:
+                    type: boolean
+                  keepalive:
+                    type: integer
+                  negotiated:
+                    type: object
+                    properties:
+                      capabilities:
+                        type: array
+                      holdtime:
+                        type: integer
+                      keepalive:
+                        type: integer
+                  restarttime:
+                    type: integer
+                  routes:
+                    type: object
+                    properties:
+                      ipv4-flow:
+                        type: object
+                        properties:
+                          accepted:
+                            type: integer
+                          advertised:
+                            type: integer
+                          received:
+                            type: integer
+                      ipv4-unicast:
+                        type: object
+                        properties:
+                          accepted:
+                            type: integer
+                          advertised:
+                            type: integer
+                          received:
+                            type: integer
+                      ipv6-flow:
+                        type: object
+                        properties:
+                          accepted:
+                            type: integer
+                          advertised:
+                            type: integer
+                          received:
+                            type: integer
+                      ipv6-unicast:
+                        type: object
+                        properties:
+                          accepted:
+                            type: integer
+                          advertised:
+                            type: integer
+                          received:
+                            type: integer
+                      total:
+                        type: object
+                        properties:
+                          accepted:
+                            type: integer
+                          advertised:
+                            type: integer
+                          prefixrate:
+                            type: integer
+                          prefixsessioncount:
+                            type: integer
+                          prefixtotalcount:
+                            type: integer
+                          received:
+                            type: integer
+                  state:
+                    type: string
+                  stats:
+                    type: object
+                    properties:
+                      recv:
+                        type: object
+                        properties:
+                          discarded:
+                            type: integer
+                          keepalives:
+                            type: integer
+                          notifications:
+                            type: integer
+                          opens:
+                            type: integer
+                          routerefreshes:
+                            type: integer
+                          updates:
+                            type: integer
+                          withdrawprefix:
+                            type: integer
+                          withdrawupdate:
+                            type: integer
+                      sent:
+                        type: object
+                        properties:
+                          discarded:
+                            type: integer
+                          keepalives:
+                            type: integer
+                          notifications:
+                            type: integer
+                          opens:
+                            type: integer
+                          routerefreshes:
+                            type: integer
+                          updates:
+                            type: integer
+                          withdrawprefix:
+                            type: integer
+                          withdrawupdate:
+                            type: integer
+                  uptime:
+                    type: string
+              required:
+              - addressremote
+              - description
+              - asn
+      responses:
+        '201':
+          description: List of BGP Neighbors
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1
+                    items:
+                      allOf:
+                      - description: BGP Neighbor Record
+                        type: object
+                        allOf:
+                        - type: object
+                          properties:
+                            addresslocal:
+                              type: string
+                            addressremote:
+                              type: string
+                            admindown:
+                              type: boolean
+                            advanced:
+                              type: boolean
+                            asn:
+                              type: string
+                            authpassword:
+                              type: string
+                            description:
+                              type: string
+                            deviceid:
+                              type: string
+                            gracefulrestart:
+                              type: boolean
+                            holdtime:
+                              type: integer
+                            ipv4-flowspec:
+                              type: boolean
+                            ipv4-unicast:
+                              type: boolean
+                            ipv6-flowspec:
+                              type: boolean
+                            ipv6-unicast:
+                              type: boolean
+                            keepalive:
+                              type: integer
+                            negotiated:
+                              type: object
+                              properties:
+                                capabilities:
+                                  type: array
+                                holdtime:
+                                  type: integer
+                                keepalive:
+                                  type: integer
+                            restarttime:
+                              type: integer
+                            routes:
+                              type: object
+                              properties:
+                                ipv4-flow:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv4-unicast:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv6-flow:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv6-unicast:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                total:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    prefixrate:
+                                      type: integer
+                                    prefixsessioncount:
+                                      type: integer
+                                    prefixtotalcount:
+                                      type: integer
+                                    received:
+                                      type: integer
+                            state:
+                              type: string
+                            stats:
+                              type: object
+                              properties:
+                                recv:
+                                  type: object
+                                  properties:
+                                    discarded:
+                                      type: integer
+                                    keepalives:
+                                      type: integer
+                                    notifications:
+                                      type: integer
+                                    opens:
+                                      type: integer
+                                    routerefreshes:
+                                      type: integer
+                                    updates:
+                                      type: integer
+                                    withdrawprefix:
+                                      type: integer
+                                    withdrawupdate:
+                                      type: integer
+                                sent:
+                                  type: object
+                                  properties:
+                                    discarded:
+                                      type: integer
+                                    keepalives:
+                                      type: integer
+                                    notifications:
+                                      type: integer
+                                    opens:
+                                      type: integer
+                                    routerefreshes:
+                                      type: integer
+                                    updates:
+                                      type: integer
+                                    withdrawprefix:
+                                      type: integer
+                                    withdrawupdate:
+                                      type: integer
+                            uptime:
+                              type: string
+                        properties:
+                          id:
+                            type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/bgp/neighbor/{neighborid}:
+    get:
+      operationId: v1_bgp_neighbors_neighborid_get
+      summary: Get BGP Neighbor
+      description: Returns the details of a specific BGP Neighbor.
+      tags:
+      - Traffic Sources - Devices
+      parameters:
+      - in: path
+        name: neighborid
+        required: true
+        schema:
+          type: string
+        description: The ID of the BGP Neighbor to retrieve.
+      responses:
+        '200':
+          description: List of BGP Neighbors
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1
+                    items:
+                      allOf:
+                      - description: BGP Neighbor Record
+                        type: object
+                        allOf:
+                        - type: object
+                          properties:
+                            addresslocal:
+                              type: string
+                            addressremote:
+                              type: string
+                            admindown:
+                              type: boolean
+                            advanced:
+                              type: boolean
+                            asn:
+                              type: string
+                            authpassword:
+                              type: string
+                            description:
+                              type: string
+                            deviceid:
+                              type: string
+                            gracefulrestart:
+                              type: boolean
+                            holdtime:
+                              type: integer
+                            ipv4-flowspec:
+                              type: boolean
+                            ipv4-unicast:
+                              type: boolean
+                            ipv6-flowspec:
+                              type: boolean
+                            ipv6-unicast:
+                              type: boolean
+                            keepalive:
+                              type: integer
+                            negotiated:
+                              type: object
+                              properties:
+                                capabilities:
+                                  type: array
+                                holdtime:
+                                  type: integer
+                                keepalive:
+                                  type: integer
+                            restarttime:
+                              type: integer
+                            routes:
+                              type: object
+                              properties:
+                                ipv4-flow:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv4-unicast:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv6-flow:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv6-unicast:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                total:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    prefixrate:
+                                      type: integer
+                                    prefixsessioncount:
+                                      type: integer
+                                    prefixtotalcount:
+                                      type: integer
+                                    received:
+                                      type: integer
+                            state:
+                              type: string
+                            stats:
+                              type: object
+                              properties:
+                                recv:
+                                  type: object
+                                  properties:
+                                    discarded:
+                                      type: integer
+                                    keepalives:
+                                      type: integer
+                                    notifications:
+                                      type: integer
+                                    opens:
+                                      type: integer
+                                    routerefreshes:
+                                      type: integer
+                                    updates:
+                                      type: integer
+                                    withdrawprefix:
+                                      type: integer
+                                    withdrawupdate:
+                                      type: integer
+                                sent:
+                                  type: object
+                                  properties:
+                                    discarded:
+                                      type: integer
+                                    keepalives:
+                                      type: integer
+                                    notifications:
+                                      type: integer
+                                    opens:
+                                      type: integer
+                                    routerefreshes:
+                                      type: integer
+                                    updates:
+                                      type: integer
+                                    withdrawprefix:
+                                      type: integer
+                                    withdrawupdate:
+                                      type: integer
+                            uptime:
+                              type: string
+                        properties:
+                          id:
+                            type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    put:
+      operationId: v1_bgp_neighbors_neighborid_put
+      summary: Update BGP Neighbor
+      description: Updates the details of a specific BGP Neighbor.
+      tags:
+      - Traffic Sources - Devices
+      requestBody:
+        description: BGP Neighbor to be updated.
+        required: true
+        content:
+          application/json:
+            schema:
+              description: BGP Neighbor Create or Update Config
+              type: object
+              allOf:
+              - type: object
+                properties:
+                  addresslocal:
+                    type: string
+                  addressremote:
+                    type: string
+                  admindown:
+                    type: boolean
+                  advanced:
+                    type: boolean
+                  asn:
+                    type: string
+                  authpassword:
+                    type: string
+                  description:
+                    type: string
+                  deviceid:
+                    type: string
+                  gracefulrestart:
+                    type: boolean
+                  holdtime:
+                    type: integer
+                  ipv4-flowspec:
+                    type: boolean
+                  ipv4-unicast:
+                    type: boolean
+                  ipv6-flowspec:
+                    type: boolean
+                  ipv6-unicast:
+                    type: boolean
+                  keepalive:
+                    type: integer
+                  negotiated:
+                    type: object
+                    properties:
+                      capabilities:
+                        type: array
+                      holdtime:
+                        type: integer
+                      keepalive:
+                        type: integer
+                  restarttime:
+                    type: integer
+                  routes:
+                    type: object
+                    properties:
+                      ipv4-flow:
+                        type: object
+                        properties:
+                          accepted:
+                            type: integer
+                          advertised:
+                            type: integer
+                          received:
+                            type: integer
+                      ipv4-unicast:
+                        type: object
+                        properties:
+                          accepted:
+                            type: integer
+                          advertised:
+                            type: integer
+                          received:
+                            type: integer
+                      ipv6-flow:
+                        type: object
+                        properties:
+                          accepted:
+                            type: integer
+                          advertised:
+                            type: integer
+                          received:
+                            type: integer
+                      ipv6-unicast:
+                        type: object
+                        properties:
+                          accepted:
+                            type: integer
+                          advertised:
+                            type: integer
+                          received:
+                            type: integer
+                      total:
+                        type: object
+                        properties:
+                          accepted:
+                            type: integer
+                          advertised:
+                            type: integer
+                          prefixrate:
+                            type: integer
+                          prefixsessioncount:
+                            type: integer
+                          prefixtotalcount:
+                            type: integer
+                          received:
+                            type: integer
+                  state:
+                    type: string
+                  stats:
+                    type: object
+                    properties:
+                      recv:
+                        type: object
+                        properties:
+                          discarded:
+                            type: integer
+                          keepalives:
+                            type: integer
+                          notifications:
+                            type: integer
+                          opens:
+                            type: integer
+                          routerefreshes:
+                            type: integer
+                          updates:
+                            type: integer
+                          withdrawprefix:
+                            type: integer
+                          withdrawupdate:
+                            type: integer
+                      sent:
+                        type: object
+                        properties:
+                          discarded:
+                            type: integer
+                          keepalives:
+                            type: integer
+                          notifications:
+                            type: integer
+                          opens:
+                            type: integer
+                          routerefreshes:
+                            type: integer
+                          updates:
+                            type: integer
+                          withdrawprefix:
+                            type: integer
+                          withdrawupdate:
+                            type: integer
+                  uptime:
+                    type: string
+              required:
+              - addressremote
+              - description
+              - asn
+      parameters:
+      - in: path
+        name: neighborid
+        required: true
+        schema:
+          type: string
+        description: The ID of the BGP Neighbor to update.
+      responses:
+        '200':
+          description: List of BGP Neighbors
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1
+                    items:
+                      allOf:
+                      - description: BGP Neighbor Record
+                        type: object
+                        allOf:
+                        - type: object
+                          properties:
+                            addresslocal:
+                              type: string
+                            addressremote:
+                              type: string
+                            admindown:
+                              type: boolean
+                            advanced:
+                              type: boolean
+                            asn:
+                              type: string
+                            authpassword:
+                              type: string
+                            description:
+                              type: string
+                            deviceid:
+                              type: string
+                            gracefulrestart:
+                              type: boolean
+                            holdtime:
+                              type: integer
+                            ipv4-flowspec:
+                              type: boolean
+                            ipv4-unicast:
+                              type: boolean
+                            ipv6-flowspec:
+                              type: boolean
+                            ipv6-unicast:
+                              type: boolean
+                            keepalive:
+                              type: integer
+                            negotiated:
+                              type: object
+                              properties:
+                                capabilities:
+                                  type: array
+                                holdtime:
+                                  type: integer
+                                keepalive:
+                                  type: integer
+                            restarttime:
+                              type: integer
+                            routes:
+                              type: object
+                              properties:
+                                ipv4-flow:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv4-unicast:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv6-flow:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv6-unicast:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                total:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    prefixrate:
+                                      type: integer
+                                    prefixsessioncount:
+                                      type: integer
+                                    prefixtotalcount:
+                                      type: integer
+                                    received:
+                                      type: integer
+                            state:
+                              type: string
+                            stats:
+                              type: object
+                              properties:
+                                recv:
+                                  type: object
+                                  properties:
+                                    discarded:
+                                      type: integer
+                                    keepalives:
+                                      type: integer
+                                    notifications:
+                                      type: integer
+                                    opens:
+                                      type: integer
+                                    routerefreshes:
+                                      type: integer
+                                    updates:
+                                      type: integer
+                                    withdrawprefix:
+                                      type: integer
+                                    withdrawupdate:
+                                      type: integer
+                                sent:
+                                  type: object
+                                  properties:
+                                    discarded:
+                                      type: integer
+                                    keepalives:
+                                      type: integer
+                                    notifications:
+                                      type: integer
+                                    opens:
+                                      type: integer
+                                    routerefreshes:
+                                      type: integer
+                                    updates:
+                                      type: integer
+                                    withdrawprefix:
+                                      type: integer
+                                    withdrawupdate:
+                                      type: integer
+                            uptime:
+                              type: string
+                        properties:
+                          id:
+                            type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    delete:
+      operationId: v1_bgp_neighbors_neighborid_delete
+      summary: Delete BGP Neighbor
+      description: Deletes a specific BGP Neighbor.
+      tags:
+      - Traffic Sources - Devices
+      parameters:
+      - in: path
+        name: neighborid
+        required: true
+        schema:
+          type: string
+        description: The ID of the BGP Neighbor to delete.
+      responses:
+        '204':
+          description: Empty Response
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/bgp/neighbor/{neighborid}/enable:
+    put:
+      operationId: v1_bgp_neighbors_neighborid_enable_put
+      summary: Enable BGP Neighbor
+      description: Enable a specific BGP Neighbor.
+      tags:
+      - Traffic Sources - Devices
+      parameters:
+      - in: path
+        name: neighborid
+        required: true
+        schema:
+          type: string
+        description: The ID of the BGP Neighbor to enable.
+      responses:
+        '200':
+          description: List of BGP Neighbors
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1
+                    items:
+                      allOf:
+                      - description: BGP Neighbor Record
+                        type: object
+                        allOf:
+                        - type: object
+                          properties:
+                            addresslocal:
+                              type: string
+                            addressremote:
+                              type: string
+                            admindown:
+                              type: boolean
+                            advanced:
+                              type: boolean
+                            asn:
+                              type: string
+                            authpassword:
+                              type: string
+                            description:
+                              type: string
+                            deviceid:
+                              type: string
+                            gracefulrestart:
+                              type: boolean
+                            holdtime:
+                              type: integer
+                            ipv4-flowspec:
+                              type: boolean
+                            ipv4-unicast:
+                              type: boolean
+                            ipv6-flowspec:
+                              type: boolean
+                            ipv6-unicast:
+                              type: boolean
+                            keepalive:
+                              type: integer
+                            negotiated:
+                              type: object
+                              properties:
+                                capabilities:
+                                  type: array
+                                holdtime:
+                                  type: integer
+                                keepalive:
+                                  type: integer
+                            restarttime:
+                              type: integer
+                            routes:
+                              type: object
+                              properties:
+                                ipv4-flow:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv4-unicast:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv6-flow:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv6-unicast:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                total:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    prefixrate:
+                                      type: integer
+                                    prefixsessioncount:
+                                      type: integer
+                                    prefixtotalcount:
+                                      type: integer
+                                    received:
+                                      type: integer
+                            state:
+                              type: string
+                            stats:
+                              type: object
+                              properties:
+                                recv:
+                                  type: object
+                                  properties:
+                                    discarded:
+                                      type: integer
+                                    keepalives:
+                                      type: integer
+                                    notifications:
+                                      type: integer
+                                    opens:
+                                      type: integer
+                                    routerefreshes:
+                                      type: integer
+                                    updates:
+                                      type: integer
+                                    withdrawprefix:
+                                      type: integer
+                                    withdrawupdate:
+                                      type: integer
+                                sent:
+                                  type: object
+                                  properties:
+                                    discarded:
+                                      type: integer
+                                    keepalives:
+                                      type: integer
+                                    notifications:
+                                      type: integer
+                                    opens:
+                                      type: integer
+                                    routerefreshes:
+                                      type: integer
+                                    updates:
+                                      type: integer
+                                    withdrawprefix:
+                                      type: integer
+                                    withdrawupdate:
+                                      type: integer
+                            uptime:
+                              type: string
+                        properties:
+                          id:
+                            type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/bgp/neighbor/{neighborid}/disable:
+    put:
+      operationId: v1_bgp_neighbors_neighborid_disable_put
+      summary: Disable BGP Neighbor
+      description: Disable a specific BGP Neighbor.
+      tags:
+      - Traffic Sources - Devices
+      parameters:
+      - in: path
+        name: neighborid
+        required: true
+        schema:
+          type: string
+        description: The ID of the BGP Neighbor to disable.
+      responses:
+        '200':
+          description: List of BGP Neighbors
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1
+                    items:
+                      allOf:
+                      - description: BGP Neighbor Record
+                        type: object
+                        allOf:
+                        - type: object
+                          properties:
+                            addresslocal:
+                              type: string
+                            addressremote:
+                              type: string
+                            admindown:
+                              type: boolean
+                            advanced:
+                              type: boolean
+                            asn:
+                              type: string
+                            authpassword:
+                              type: string
+                            description:
+                              type: string
+                            deviceid:
+                              type: string
+                            gracefulrestart:
+                              type: boolean
+                            holdtime:
+                              type: integer
+                            ipv4-flowspec:
+                              type: boolean
+                            ipv4-unicast:
+                              type: boolean
+                            ipv6-flowspec:
+                              type: boolean
+                            ipv6-unicast:
+                              type: boolean
+                            keepalive:
+                              type: integer
+                            negotiated:
+                              type: object
+                              properties:
+                                capabilities:
+                                  type: array
+                                holdtime:
+                                  type: integer
+                                keepalive:
+                                  type: integer
+                            restarttime:
+                              type: integer
+                            routes:
+                              type: object
+                              properties:
+                                ipv4-flow:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv4-unicast:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv6-flow:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                ipv6-unicast:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    received:
+                                      type: integer
+                                total:
+                                  type: object
+                                  properties:
+                                    accepted:
+                                      type: integer
+                                    advertised:
+                                      type: integer
+                                    prefixrate:
+                                      type: integer
+                                    prefixsessioncount:
+                                      type: integer
+                                    prefixtotalcount:
+                                      type: integer
+                                    received:
+                                      type: integer
+                            state:
+                              type: string
+                            stats:
+                              type: object
+                              properties:
+                                recv:
+                                  type: object
+                                  properties:
+                                    discarded:
+                                      type: integer
+                                    keepalives:
+                                      type: integer
+                                    notifications:
+                                      type: integer
+                                    opens:
+                                      type: integer
+                                    routerefreshes:
+                                      type: integer
+                                    updates:
+                                      type: integer
+                                    withdrawprefix:
+                                      type: integer
+                                    withdrawupdate:
+                                      type: integer
+                                sent:
+                                  type: object
+                                  properties:
+                                    discarded:
+                                      type: integer
+                                    keepalives:
+                                      type: integer
+                                    notifications:
+                                      type: integer
+                                    opens:
+                                      type: integer
+                                    routerefreshes:
+                                      type: integer
+                                    updates:
+                                      type: integer
+                                    withdrawprefix:
+                                      type: integer
+                                    withdrawupdate:
+                                      type: integer
+                            uptime:
+                              type: string
+                        properties:
+                          id:
+                            type: string
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true

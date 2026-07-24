@@ -1,0 +1,1304 @@
+openapi: 3.0.0
+info:
+  title: Netography (Vectra Fusion) Analytics Auto Thresholds API
+  version: '1.0'
+  description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
+  x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
+  x-apievangelist-method: searched
+  x-apievangelist-generated: '2026-07-20'
+servers:
+- url: https://api.netography.com
+  description: Netography API
+tags:
+- name: Auto Thresholds
+paths:
+  /api/v1/thresholder/automaton:
+    get:
+      operationId: v1_thresholder_automaton_get
+      summary: Get all threshold automaton configs
+      description: Returns all auto-threshold automaton configs configured for all DMs in a given customer.
+      tags:
+      - Auto Thresholds
+      responses:
+        '200':
+          description: List of threshold automaton configs for a customer
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    items:
+                      allOf:
+                      - description: Threshold Automaton Record
+                        type: object
+                        allOf:
+                        - description: Threshold Automaton Create or Update Config
+                          type: object
+                          properties:
+                            algorithm:
+                              type: string
+                              description: name of detection model
+                            data_interval:
+                              type: string
+                              description: defines the how specific a time frame the Threshold override produced by Auto Thresholding applies to.
+                            data_lookback:
+                              type: string
+                              description: determines how many previous days aggregate data and Auto Thresholding configuration will use to generate Threshold overrides
+                            data_window:
+                              type: string
+                              description: defines the period of over which values are aggregated for Track By aggregates.
+                            disabled:
+                              type: boolean
+                              description: disables auto-thresholding for the given automaton
+                            filters:
+                              type: array
+                              items:
+                                type: string
+                            force_override:
+                              type: boolean
+                              description: optional, if set will override the default behavior preventing threshold values below the global average
+                            high_sigma:
+                              type: number
+                              description: optional, number of standard deviations to use when calculating high-severity thresholds
+                            med_sigma:
+                              type: number
+                              description: optional, number of standard deviations to use when calculating medium-severity thresholds
+                            low_sigma:
+                              type: number
+                              description: optional, number of standard deviations to use when calculating low-severity thresholds
+                            strategy:
+                              type: string
+                              description: used to determine the default threshold, either uses the maximum or average of data values.
+                            thresholds:
+                              type: array
+                              items:
+                                type: string
+                            track_by:
+                              type: array
+                              description: values to aggregate data on, should match parent DM track-by fields.
+                              items:
+                                type: string
+                            update_interval:
+                              type: string
+                        properties:
+                          customer:
+                            type: string
+                            description: customer shortname
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    post:
+      operationId: v1_thresholder_automaton_algorithm_post
+      summary: Update threshold automaton config
+      description: Updates the auto-threshold automaton config for a given detection model.
+      tags:
+      - Auto Thresholds
+      requestBody:
+        description: Automaton config to be updated.
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Threshold Automaton Create or Update Config
+              type: object
+              properties:
+                algorithm:
+                  type: string
+                  description: name of detection model
+                data_interval:
+                  type: string
+                  description: defines the how specific a time frame the Threshold override produced by Auto Thresholding applies to.
+                data_lookback:
+                  type: string
+                  description: determines how many previous days aggregate data and Auto Thresholding configuration will use to generate Threshold overrides
+                data_window:
+                  type: string
+                  description: defines the period of over which values are aggregated for Track By aggregates.
+                disabled:
+                  type: boolean
+                  description: disables auto-thresholding for the given automaton
+                filters:
+                  type: array
+                  items:
+                    type: string
+                force_override:
+                  type: boolean
+                  description: optional, if set will override the default behavior preventing threshold values below the global average
+                high_sigma:
+                  type: number
+                  description: optional, number of standard deviations to use when calculating high-severity thresholds
+                med_sigma:
+                  type: number
+                  description: optional, number of standard deviations to use when calculating medium-severity thresholds
+                low_sigma:
+                  type: number
+                  description: optional, number of standard deviations to use when calculating low-severity thresholds
+                strategy:
+                  type: string
+                  description: used to determine the default threshold, either uses the maximum or average of data values.
+                thresholds:
+                  type: array
+                  items:
+                    type: string
+                track_by:
+                  type: array
+                  description: values to aggregate data on, should match parent DM track-by fields.
+                  items:
+                    type: string
+                update_interval:
+                  type: string
+      responses:
+        '200':
+          description: Threshold Automaton config
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: Threshold Automaton Record
+                    type: object
+                    allOf:
+                    - description: Threshold Automaton Create or Update Config
+                      type: object
+                      properties:
+                        algorithm:
+                          type: string
+                          description: name of detection model
+                        data_interval:
+                          type: string
+                          description: defines the how specific a time frame the Threshold override produced by Auto Thresholding applies to.
+                        data_lookback:
+                          type: string
+                          description: determines how many previous days aggregate data and Auto Thresholding configuration will use to generate Threshold overrides
+                        data_window:
+                          type: string
+                          description: defines the period of over which values are aggregated for Track By aggregates.
+                        disabled:
+                          type: boolean
+                          description: disables auto-thresholding for the given automaton
+                        filters:
+                          type: array
+                          items:
+                            type: string
+                        force_override:
+                          type: boolean
+                          description: optional, if set will override the default behavior preventing threshold values below the global average
+                        high_sigma:
+                          type: number
+                          description: optional, number of standard deviations to use when calculating high-severity thresholds
+                        med_sigma:
+                          type: number
+                          description: optional, number of standard deviations to use when calculating medium-severity thresholds
+                        low_sigma:
+                          type: number
+                          description: optional, number of standard deviations to use when calculating low-severity thresholds
+                        strategy:
+                          type: string
+                          description: used to determine the default threshold, either uses the maximum or average of data values.
+                        thresholds:
+                          type: array
+                          items:
+                            type: string
+                        track_by:
+                          type: array
+                          description: values to aggregate data on, should match parent DM track-by fields.
+                          items:
+                            type: string
+                        update_interval:
+                          type: string
+                    properties:
+                      customer:
+                        type: string
+                        description: customer shortname
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/thresholder/automaton/{algorithm}:
+    get:
+      operationId: v1_thresholder_automaton_algorithm_get
+      summary: Get threshold automaton config
+      description: Returns the auto-threshold automaton config for a detection model
+      tags:
+      - Auto Thresholds
+      parameters:
+      - in: path
+        name: algorithm
+        required: true
+        schema:
+          type: string
+        description: The name of the detection model to fetch automaton config for
+      responses:
+        '200':
+          description: Threshold Automaton config
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: Threshold Automaton Record
+                    type: object
+                    allOf:
+                    - description: Threshold Automaton Create or Update Config
+                      type: object
+                      properties:
+                        algorithm:
+                          type: string
+                          description: name of detection model
+                        data_interval:
+                          type: string
+                          description: defines the how specific a time frame the Threshold override produced by Auto Thresholding applies to.
+                        data_lookback:
+                          type: string
+                          description: determines how many previous days aggregate data and Auto Thresholding configuration will use to generate Threshold overrides
+                        data_window:
+                          type: string
+                          description: defines the period of over which values are aggregated for Track By aggregates.
+                        disabled:
+                          type: boolean
+                          description: disables auto-thresholding for the given automaton
+                        filters:
+                          type: array
+                          items:
+                            type: string
+                        force_override:
+                          type: boolean
+                          description: optional, if set will override the default behavior preventing threshold values below the global average
+                        high_sigma:
+                          type: number
+                          description: optional, number of standard deviations to use when calculating high-severity thresholds
+                        med_sigma:
+                          type: number
+                          description: optional, number of standard deviations to use when calculating medium-severity thresholds
+                        low_sigma:
+                          type: number
+                          description: optional, number of standard deviations to use when calculating low-severity thresholds
+                        strategy:
+                          type: string
+                          description: used to determine the default threshold, either uses the maximum or average of data values.
+                        thresholds:
+                          type: array
+                          items:
+                            type: string
+                        track_by:
+                          type: array
+                          description: values to aggregate data on, should match parent DM track-by fields.
+                          items:
+                            type: string
+                        update_interval:
+                          type: string
+                    properties:
+                      customer:
+                        type: string
+                        description: customer shortname
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    delete:
+      operationId: v1_thresholder_automaton_algorithm_delete
+      summary: Delete automaton config
+      description: Deletes the threshold automaton config for a given detection model
+      tags:
+      - Auto Thresholds
+      parameters:
+      - in: path
+        name: algorithm
+        required: true
+        schema:
+          type: string
+        description: The name of the detection model to delete.
+      responses:
+        '204':
+          description: Empty Response
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    patch:
+      operationId: v1_thresholder_automaton_algorithm_patch
+      summary: Update threshold automaton config specific value
+      description: Updates specific values in the auto-threshold automaton config for a given detection model.
+      tags:
+      - Auto Thresholds
+      parameters:
+      - in: path
+        name: algorithm
+        required: true
+        schema:
+          type: string
+        description: The name of the detection model to update.
+      requestBody:
+        description: Automaton config values to be updated.
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Threshold Automaton Record
+              type: object
+              anyOf:
+              - description: Threshold Automaton Create or Update Config
+                type: object
+                properties:
+                  algorithm:
+                    type: string
+                    description: name of detection model
+                  data_interval:
+                    type: string
+                    description: defines the how specific a time frame the Threshold override produced by Auto Thresholding applies to.
+                  data_lookback:
+                    type: string
+                    description: determines how many previous days aggregate data and Auto Thresholding configuration will use to generate Threshold overrides
+                  data_window:
+                    type: string
+                    description: defines the period of over which values are aggregated for Track By aggregates.
+                  disabled:
+                    type: boolean
+                    description: disables auto-thresholding for the given automaton
+                  filters:
+                    type: array
+                    items:
+                      type: string
+                  force_override:
+                    type: boolean
+                    description: optional, if set will override the default behavior preventing threshold values below the global average
+                  high_sigma:
+                    type: number
+                    description: optional, number of standard deviations to use when calculating high-severity thresholds
+                  med_sigma:
+                    type: number
+                    description: optional, number of standard deviations to use when calculating medium-severity thresholds
+                  low_sigma:
+                    type: number
+                    description: optional, number of standard deviations to use when calculating low-severity thresholds
+                  strategy:
+                    type: string
+                    description: used to determine the default threshold, either uses the maximum or average of data values.
+                  thresholds:
+                    type: array
+                    items:
+                      type: string
+                  track_by:
+                    type: array
+                    description: values to aggregate data on, should match parent DM track-by fields.
+                    items:
+                      type: string
+                  update_interval:
+                    type: string
+      responses:
+        '200':
+          description: Threshold Automaton config
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: Threshold Automaton Record
+                    type: object
+                    allOf:
+                    - description: Threshold Automaton Create or Update Config
+                      type: object
+                      properties:
+                        algorithm:
+                          type: string
+                          description: name of detection model
+                        data_interval:
+                          type: string
+                          description: defines the how specific a time frame the Threshold override produced by Auto Thresholding applies to.
+                        data_lookback:
+                          type: string
+                          description: determines how many previous days aggregate data and Auto Thresholding configuration will use to generate Threshold overrides
+                        data_window:
+                          type: string
+                          description: defines the period of over which values are aggregated for Track By aggregates.
+                        disabled:
+                          type: boolean
+                          description: disables auto-thresholding for the given automaton
+                        filters:
+                          type: array
+                          items:
+                            type: string
+                        force_override:
+                          type: boolean
+                          description: optional, if set will override the default behavior preventing threshold values below the global average
+                        high_sigma:
+                          type: number
+                          description: optional, number of standard deviations to use when calculating high-severity thresholds
+                        med_sigma:
+                          type: number
+                          description: optional, number of standard deviations to use when calculating medium-severity thresholds
+                        low_sigma:
+                          type: number
+                          description: optional, number of standard deviations to use when calculating low-severity thresholds
+                        strategy:
+                          type: string
+                          description: used to determine the default threshold, either uses the maximum or average of data values.
+                        thresholds:
+                          type: array
+                          items:
+                            type: string
+                        track_by:
+                          type: array
+                          description: values to aggregate data on, should match parent DM track-by fields.
+                          items:
+                            type: string
+                        update_interval:
+                          type: string
+                    properties:
+                      customer:
+                        type: string
+                        description: customer shortname
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/thresholder/automaton/{algorithm}/trackby/{track}:
+    get:
+      operationId: v1_thresholder_automaton_algorithm_trackby_get
+      summary: Get track values
+      description: Returns auto-threshold track data for the given track
+      tags:
+      - Auto Thresholds
+      parameters:
+      - in: path
+        name: algorithm
+        required: true
+        schema:
+          type: string
+        description: The name of the detection model to fetch track data for
+      - in: path
+        name: track
+        required: true
+        schema:
+          type: string
+        description: The name of the track (group) to fetch data for
+      - in: query
+        name: from
+        required: true
+        schema:
+          type: number
+        description: Unix timestamp defining the start of the data range to query
+      - in: query
+        name: to
+        required: true
+        schema:
+          type: number
+        description: Unix timestamp defining the end of the data range to query
+      responses:
+        '200':
+          description: List of track values for a given auto threshold
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    items:
+                      allOf:
+                      - description: Threshold Automaton Create or Update Config
+                        type: object
+                        properties:
+                          average:
+                            type: number
+                            description: average value for operation
+                          deviation:
+                            type: number
+                          operation:
+                            type: string
+                          threshold:
+                            type: array
+                            description: array holding values for each configured severity level for the data point.
+                            items:
+                              type: object
+                              properties:
+                                level:
+                                  type: string
+                                value:
+                                  type: number
+                          customer:
+                            type: string
+                            description: Netography customer shortname
+                          group:
+                            type: string
+                            description: the specific track (group) the data corresponds to.
+                          algorithm:
+                            type: string
+                            description: the detection model the threshold values are derived from
+                          timestamp:
+                            type: number
+                            description: unix timestamp describing when the threshold values were generated
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true

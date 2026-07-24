@@ -1,0 +1,1541 @@
+openapi: 3.0.0
+info:
+  title: Netography (Vectra Fusion) Analytics Tags API
+  version: '1.0'
+  description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
+  x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
+  x-apievangelist-method: searched
+  x-apievangelist-generated: '2026-07-20'
+servers:
+- url: https://api.netography.com
+  description: Netography API
+tags:
+- name: Tags
+paths:
+  /api/v1/tags:
+    get:
+      operationId: v1_tags_get
+      summary: List Tags
+      description: Return a list of all Tags.
+      tags:
+      - Tags
+      parameters:
+      - name: terse
+        in: query
+        description: boolean as integer.  default 1 (true).  0 for false.  true will return a simple array of tags, e.g. [ 'tag1', 'tag2', 'tag3', ... ]
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: An array of Tags
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      type: object
+                      required:
+                      - entitytype
+                      - entityname
+                      - entityid
+                      - tag
+                      additionalProperties: false
+                      properties:
+                        entitytype:
+                          type: string
+                          description: entity this tag is associated with
+                          enum:
+                          - device
+                          - flow
+                          - vpc
+                        entityname:
+                          type: string
+                          description: name of the entity
+                        entityid:
+                          type: string
+                          readOnly: true
+                          description: id of the entity
+                        tag:
+                          type: string
+                          description: value of the tag
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/tags/{entitytype}:
+    get:
+      operationId: v1_tags_entitytype_get
+      summary: List Tags by Entity Type
+      description: Return a list of all Tags.
+      tags:
+      - Tags
+      parameters:
+      - name: entitytype
+        in: path
+        description: Entity Type of the Tags, e.g. device, flow, vpc
+        required: true
+        schema:
+          type: string
+          enum:
+          - device
+          - flow
+          - vpc
+      - name: terse
+        in: query
+        description: boolean as integer.  default 1 (true).  0 for false.  true will return a simple array of tags, e.g. [ 'tag1', 'tag2', 'tag3', ... ]
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: An array of Tags
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      type: object
+                      required:
+                      - entitytype
+                      - entityname
+                      - entityid
+                      - tag
+                      additionalProperties: false
+                      properties:
+                        entitytype:
+                          type: string
+                          description: entity this tag is associated with
+                          enum:
+                          - device
+                          - flow
+                          - vpc
+                        entityname:
+                          type: string
+                          description: name of the entity
+                        entityid:
+                          type: string
+                          readOnly: true
+                          description: id of the entity
+                        tag:
+                          type: string
+                          description: value of the tag
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/tags/ip:
+    get:
+      operationId: v1_tags_ip_get
+      summary: Get Tag Values for IP
+      description: 'Returns all tag values associated with a specific IP address within the specified timeframe.
+
+
+        This endpoint allows you to retrieve all tags that have been applied to flows associated with the given IP address during the specified time period.
+
+        '
+      tags:
+      - Tags
+      parameters:
+      - name: ip
+        in: query
+        description: The IP address to retrieve tag values for
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: "Start time for the query. Negative values represent lookback time in seconds from now \n(e.g., -86400 for 24 hours ago), or positive values represent Unix timestamp in seconds.\n"
+        required: true
+        schema:
+          type: integer
+      - name: end
+        in: query
+        description: "End time for the query. Negative values represent lookback time in seconds from now \n(e.g., -3600 for 1 hour ago), 0 for current time, or positive values represent Unix timestamp in seconds.\n"
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Tag values for an IP address within a timeframe
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    items:
+                      type: string
+                      description: tag value
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/tag/flow:
+    post:
+      operationId: v1_tag_flow_post
+      summary: Create Flow Tag
+      description: Create a Tag given the provided object.
+      requestBody:
+        description: Tag to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - required:
+                - name
+                - tags
+                additionalProperties: false
+                properties:
+                  name:
+                    description: The name of the Flow Tag Rule. Eg. carrier tags
+                    type: string
+                  tags:
+                    description: An array of strings to tag every flow that matches this response policy (rule) with
+                    type: array
+                    items:
+                      type: string
+                  inputaliasregex:
+                    description: A regular expression that matches against inputalias of a given flow record.
+                    type: string
+                  inputnameregex:
+                    description: A regular expression that matches against inputname of the input interface of a given flow record.
+                    type: string
+                  outputaliasregex:
+                    description: A regular expression that matches against outputalias of a given flow record.
+                    type: string
+                  outputnameregex:
+                    description: A regular expression that matches against outputname of a given flow record.
+                    type: string
+                  srcnets:
+                    description: An array of CIDR blocks to match against the source IP for a given flow record.
+                    type: array
+                    items:
+                      type: string
+                  dstnets:
+                    description: An array of CIDR blocks to match against the destination IP for a given flow record.
+                    type: array
+                    items:
+                      type: string
+                  srcport:
+                    description: Source port to match against a given flow.
+                    type: integer
+                    format: int32
+                  dstport:
+                    description: Destination port to match against a given flow.
+                    type: integer
+                    format: int32
+                  protocol:
+                    description: lower case string representing the protocol of this flow. Eg. tcp, udp, icmp etc
+                    type: string
+                  tcpflagsint:
+                    description: integer representing which tcp flags were set in the flow record. Values between 0-255 are valid.
+                    type: integer
+                    format: int32
+                  srcas:
+                    description: An array of AS numbers to match against the source AS for a given flow record.
+                    type: array
+                    items:
+                      type: integer
+                  dstas:
+                    description: An array of AS numbers to match against the destination AS for a given flow record.
+                    type: array
+                    items:
+                      type: integer
+                  srcowneras:
+                    description: An array of AS numbers to match against the AS of the source IP for a given flow record.
+                    type: array
+                    items:
+                      type: integer
+                  dstowneras:
+                    description: An array of AS numbers to match against the AS of the destination IP for a given flow record.
+                    type: array
+                    items:
+                      type: integer
+      tags:
+      - Tags
+      responses:
+        '201':
+          description: An array of Flow Tags
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      required:
+                      - name
+                      - tags
+                      additionalProperties: false
+                      properties:
+                        name:
+                          description: The name of the Flow Tag Rule. Eg. carrier tags
+                          type: string
+                        tags:
+                          description: An array of strings to tag every flow that matches this response policy (rule) with
+                          type: array
+                          items:
+                            type: string
+                        inputaliasregex:
+                          description: A regular expression that matches against inputalias of a given flow record.
+                          type: string
+                        inputnameregex:
+                          description: A regular expression that matches against inputname of the input interface of a given flow record.
+                          type: string
+                        outputaliasregex:
+                          description: A regular expression that matches against outputalias of a given flow record.
+                          type: string
+                        outputnameregex:
+                          description: A regular expression that matches against outputname of a given flow record.
+                          type: string
+                        srcnets:
+                          description: An array of CIDR blocks to match against the source IP for a given flow record.
+                          type: array
+                          items:
+                            type: string
+                        dstnets:
+                          description: An array of CIDR blocks to match against the destination IP for a given flow record.
+                          type: array
+                          items:
+                            type: string
+                        srcport:
+                          description: Source port to match against a given flow.
+                          type: integer
+                          format: int32
+                        dstport:
+                          description: Destination port to match against a given flow.
+                          type: integer
+                          format: int32
+                        protocol:
+                          description: lower case string representing the protocol of this flow. Eg. tcp, udp, icmp etc
+                          type: string
+                        tcpflagsint:
+                          description: integer representing which tcp flags were set in the flow record. Values between 0-255 are valid.
+                          type: integer
+                          format: int32
+                        srcas:
+                          description: An array of AS numbers to match against the source AS for a given flow record.
+                          type: array
+                          items:
+                            type: integer
+                        dstas:
+                          description: An array of AS numbers to match against the destination AS for a given flow record.
+                          type: array
+                          items:
+                            type: integer
+                        srcowneras:
+                          description: An array of AS numbers to match against the AS of the source IP for a given flow record.
+                          type: array
+                          items:
+                            type: integer
+                        dstowneras:
+                          description: An array of AS numbers to match against the AS of the destination IP for a given flow record.
+                          type: array
+                          items:
+                            type: integer
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/tag/flow/{id}:
+    get:
+      operationId: v1_tag_flow_id_get
+      summary: Get Flow Tag
+      description: Fetches a specific Flow Tag from the ID supplied in the path.
+      tags:
+      - Tags
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the Flow Tag to be returned.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: An array of Flow Tags
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      required:
+                      - name
+                      - tags
+                      additionalProperties: false
+                      properties:
+                        name:
+                          description: The name of the Flow Tag Rule. Eg. carrier tags
+                          type: string
+                        tags:
+                          description: An array of strings to tag every flow that matches this response policy (rule) with
+                          type: array
+                          items:
+                            type: string
+                        inputaliasregex:
+                          description: A regular expression that matches against inputalias of a given flow record.
+                          type: string
+                        inputnameregex:
+                          description: A regular expression that matches against inputname of the input interface of a given flow record.
+                          type: string
+                        outputaliasregex:
+                          description: A regular expression that matches against outputalias of a given flow record.
+                          type: string
+                        outputnameregex:
+                          description: A regular expression that matches against outputname of a given flow record.
+                          type: string
+                        srcnets:
+                          description: An array of CIDR blocks to match against the source IP for a given flow record.
+                          type: array
+                          items:
+                            type: string
+                        dstnets:
+                          description: An array of CIDR blocks to match against the destination IP for a given flow record.
+                          type: array
+                          items:
+                            type: string
+                        srcport:
+                          description: Source port to match against a given flow.
+                          type: integer
+                          format: int32
+                        dstport:
+                          description: Destination port to match against a given flow.
+                          type: integer
+                          format: int32
+                        protocol:
+                          description: lower case string representing the protocol of this flow. Eg. tcp, udp, icmp etc
+                          type: string
+                        tcpflagsint:
+                          description: integer representing which tcp flags were set in the flow record. Values between 0-255 are valid.
+                          type: integer
+                          format: int32
+                        srcas:
+                          description: An array of AS numbers to match against the source AS for a given flow record.
+                          type: array
+                          items:
+                            type: integer
+                        dstas:
+                          description: An array of AS numbers to match against the destination AS for a given flow record.
+                          type: array
+                          items:
+                            type: integer
+                        srcowneras:
+                          description: An array of AS numbers to match against the AS of the source IP for a given flow record.
+                          type: array
+                          items:
+                            type: integer
+                        dstowneras:
+                          description: An array of AS numbers to match against the AS of the destination IP for a given flow record.
+                          type: array
+                          items:
+                            type: integer
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    put:
+      operationId: v1_tag_flow_id_put
+      summary: Update Flow Tag
+      description: Update a Flow Tag given the provided object.  This does not do a diff.  You must send the complete object and have at least 1 match criteria set.
+      requestBody:
+        description: Flow Tag Rule to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - name
+              - tags
+              additionalProperties: false
+              properties:
+                name:
+                  description: The name of the Flow Tag Rule. Eg. carrier tags
+                  type: string
+                tags:
+                  description: An array of strings to tag every flow that matches this response policy (rule) with
+                  type: array
+                  items:
+                    type: string
+                inputaliasregex:
+                  description: A regular expression that matches against inputalias of a given flow record.
+                  type: string
+                inputnameregex:
+                  description: A regular expression that matches against inputname of the input interface of a given flow record.
+                  type: string
+                outputaliasregex:
+                  description: A regular expression that matches against outputalias of a given flow record.
+                  type: string
+                outputnameregex:
+                  description: A regular expression that matches against outputname of a given flow record.
+                  type: string
+                srcnets:
+                  description: An array of CIDR blocks to match against the source IP for a given flow record.
+                  type: array
+                  items:
+                    type: string
+                dstnets:
+                  description: An array of CIDR blocks to match against the destination IP for a given flow record.
+                  type: array
+                  items:
+                    type: string
+                srcport:
+                  description: Source port to match against a given flow.
+                  type: integer
+                  format: int32
+                dstport:
+                  description: Destination port to match against a given flow.
+                  type: integer
+                  format: int32
+                protocol:
+                  description: lower case string representing the protocol of this flow. Eg. tcp, udp, icmp etc
+                  type: string
+                tcpflagsint:
+                  description: integer representing which tcp flags were set in the flow record. Values between 0-255 are valid.
+                  type: integer
+                  format: int32
+                srcas:
+                  description: An array of AS numbers to match against the source AS for a given flow record.
+                  type: array
+                  items:
+                    type: integer
+                dstas:
+                  description: An array of AS numbers to match against the destination AS for a given flow record.
+                  type: array
+                  items:
+                    type: integer
+                srcowneras:
+                  description: An array of AS numbers to match against the AS of the source IP for a given flow record.
+                  type: array
+                  items:
+                    type: integer
+                dstowneras:
+                  description: An array of AS numbers to match against the AS of the destination IP for a given flow record.
+                  type: array
+                  items:
+                    type: integer
+      tags:
+      - Tags
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the Flow Tag Rule to be updated
+        schema:
+          type: string
+      responses:
+        '200':
+          description: An array of Flow Tags
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    type: array
+                    maxItems: 1000
+                    items:
+                      required:
+                      - name
+                      - tags
+                      additionalProperties: false
+                      properties:
+                        name:
+                          description: The name of the Flow Tag Rule. Eg. carrier tags
+                          type: string
+                        tags:
+                          description: An array of strings to tag every flow that matches this response policy (rule) with
+                          type: array
+                          items:
+                            type: string
+                        inputaliasregex:
+                          description: A regular expression that matches against inputalias of a given flow record.
+                          type: string
+                        inputnameregex:
+                          description: A regular expression that matches against inputname of the input interface of a given flow record.
+                          type: string
+                        outputaliasregex:
+                          description: A regular expression that matches against outputalias of a given flow record.
+                          type: string
+                        outputnameregex:
+                          description: A regular expression that matches against outputname of a given flow record.
+                          type: string
+                        srcnets:
+                          description: An array of CIDR blocks to match against the source IP for a given flow record.
+                          type: array
+                          items:
+                            type: string
+                        dstnets:
+                          description: An array of CIDR blocks to match against the destination IP for a given flow record.
+                          type: array
+                          items:
+                            type: string
+                        srcport:
+                          description: Source port to match against a given flow.
+                          type: integer
+                          format: int32
+                        dstport:
+                          description: Destination port to match against a given flow.
+                          type: integer
+                          format: int32
+                        protocol:
+                          description: lower case string representing the protocol of this flow. Eg. tcp, udp, icmp etc
+                          type: string
+                        tcpflagsint:
+                          description: integer representing which tcp flags were set in the flow record. Values between 0-255 are valid.
+                          type: integer
+                          format: int32
+                        srcas:
+                          description: An array of AS numbers to match against the source AS for a given flow record.
+                          type: array
+                          items:
+                            type: integer
+                        dstas:
+                          description: An array of AS numbers to match against the destination AS for a given flow record.
+                          type: array
+                          items:
+                            type: integer
+                        srcowneras:
+                          description: An array of AS numbers to match against the AS of the source IP for a given flow record.
+                          type: array
+                          items:
+                            type: integer
+                        dstowneras:
+                          description: An array of AS numbers to match against the AS of the destination IP for a given flow record.
+                          type: array
+                          items:
+                            type: integer
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    delete:
+      operationId: v1_tag_flow_id_delete
+      summary: Delete Flow Tag
+      description: Deletes the Flow Tag.
+      tags:
+      - Tags
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the Flow Tag Rule to be deleted
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Empty response
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true

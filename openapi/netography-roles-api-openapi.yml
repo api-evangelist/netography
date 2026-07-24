@@ -1,0 +1,1242 @@
+openapi: 3.0.0
+info:
+  title: Netography (Vectra Fusion) Analytics Roles API
+  version: '1.0'
+  description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
+  x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
+  x-apievangelist-method: searched
+  x-apievangelist-generated: '2026-07-20'
+servers:
+- url: https://api.netography.com
+  description: Netography API
+tags:
+- name: Roles
+paths:
+  /api/v1/roles/permissions:
+    get:
+      operationId: v1_roles_permissions_get
+      summary: List Role Permissions
+      description: Return a list of permissions available for Roles.
+      tags:
+      - Roles
+      responses:
+        '200':
+          description: Object of available role permissions
+          content:
+            application/json:
+              schema:
+                type: array
+                maxItems: 1000
+                items:
+                  allOf:
+                  - type: object
+                    required:
+                    - resource
+                    additionalProperties: false
+                    properties:
+                      resource:
+                        type: string
+                        description: Resource Name
+                      description:
+                        type: string
+                        description: Resource description and/or mapping to portal
+                      fetch:
+                        type: boolean
+                        description: If fetch/get is an available action
+                      create:
+                        type: boolean
+                        description: If create is an available action
+                      update:
+                        type: boolean
+                        description: If update is an available action
+                      delete:
+                        type: boolean
+                        description: If delete is an available action
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/roles:
+    get:
+      operationId: v1_roles_get
+      summary: List Roles
+      description: Return a list of all Roles.
+      tags:
+      - Roles
+      responses:
+        '200':
+          description: Role response object
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: Result set from API call
+                    type: object
+                    required:
+                    - name
+                    - permissions
+                    additionalProperties: false
+                    properties:
+                      id:
+                        type: string
+                        readOnly: true
+                        description: role id.  immutable.
+                      name:
+                        type: string
+                        description: Role Name
+                      description:
+                        type: string
+                        description: Role Description
+                      canMasquerade:
+                        type: boolean
+                        description: (resellers only) Whether or not the role can masquerade into sub accounts
+                      canSendFlow:
+                        type: boolean
+                        description: Whether or not the role can send NetoFlow
+                      system:
+                        type: boolean
+                        description: Whether or not this is a system role.  immutable.
+                      permissions:
+                        type: array
+                        maxItems: 1000
+                        items:
+                          allOf:
+                          - type: object
+                            required:
+                            - resource
+                            additionalProperties: false
+                            properties:
+                              resource:
+                                type: string
+                                description: Resource Name
+                              description:
+                                type: string
+                                description: Resource description and/or mapping to portal
+                              fetch:
+                                type: boolean
+                                description: If fetch/get is an available action
+                              create:
+                                type: boolean
+                                description: If create is an available action
+                              update:
+                                type: boolean
+                                description: If update is an available action
+                              delete:
+                                type: boolean
+                                description: If delete is an available action
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    post:
+      operationId: v1_roles_post
+      summary: Create Role
+      description: Create a Role from the supplied object.  Do NOT submit an ID.  IDs are auto generated and immutable.
+      requestBody:
+        description: Role to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+              - required:
+                - name
+                - permissions
+                additionalProperties: false
+                properties:
+                  name:
+                    description: The name of the role.
+                    type: string
+                  description:
+                    description: A user friendly description of the role.
+                    type: string
+                  canMasquerade:
+                    description: (resellers only) Whether or not the role can masquerade into sub accounts.
+                    type: boolean
+                    default: false
+                  canSendFlow:
+                    description: Whether or not the role can send NetoFlow.
+                    type: boolean
+                    default: false
+                  permissions:
+                    type: array
+                    items:
+                      allOf:
+                      - type: object
+                        required:
+                        - resource
+                        additionalProperties: false
+                        properties:
+                          resource:
+                            type: string
+                            description: Resource Name
+                          description:
+                            type: string
+                            description: Resource description and/or mapping to portal
+                          fetch:
+                            type: boolean
+                            description: If fetch/get is an available action
+                          create:
+                            type: boolean
+                            description: If create is an available action
+                          update:
+                            type: boolean
+                            description: If update is an available action
+                          delete:
+                            type: boolean
+                            description: If delete is an available action
+      tags:
+      - Roles
+      responses:
+        '201':
+          description: Role response object
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: Result set from API call
+                    type: object
+                    required:
+                    - name
+                    - permissions
+                    additionalProperties: false
+                    properties:
+                      id:
+                        type: string
+                        readOnly: true
+                        description: role id.  immutable.
+                      name:
+                        type: string
+                        description: Role Name
+                      description:
+                        type: string
+                        description: Role Description
+                      canMasquerade:
+                        type: boolean
+                        description: (resellers only) Whether or not the role can masquerade into sub accounts
+                      canSendFlow:
+                        type: boolean
+                        description: Whether or not the role can send NetoFlow
+                      system:
+                        type: boolean
+                        description: Whether or not this is a system role.  immutable.
+                      permissions:
+                        type: array
+                        maxItems: 1000
+                        items:
+                          allOf:
+                          - type: object
+                            required:
+                            - resource
+                            additionalProperties: false
+                            properties:
+                              resource:
+                                type: string
+                                description: Resource Name
+                              description:
+                                type: string
+                                description: Resource description and/or mapping to portal
+                              fetch:
+                                type: boolean
+                                description: If fetch/get is an available action
+                              create:
+                                type: boolean
+                                description: If create is an available action
+                              update:
+                                type: boolean
+                                description: If update is an available action
+                              delete:
+                                type: boolean
+                                description: If delete is an available action
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/roles/{id}:
+    get:
+      operationId: v1_roles_id_get
+      summary: Get Role
+      description: Fetches a specific Role from the ID supplied in the path.
+      tags:
+      - Roles
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: String ID of the role to get
+      responses:
+        '200':
+          description: Role response object
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: Result set from API call
+                    type: object
+                    required:
+                    - name
+                    - permissions
+                    additionalProperties: false
+                    properties:
+                      id:
+                        type: string
+                        readOnly: true
+                        description: role id.  immutable.
+                      name:
+                        type: string
+                        description: Role Name
+                      description:
+                        type: string
+                        description: Role Description
+                      canMasquerade:
+                        type: boolean
+                        description: (resellers only) Whether or not the role can masquerade into sub accounts
+                      canSendFlow:
+                        type: boolean
+                        description: Whether or not the role can send NetoFlow
+                      system:
+                        type: boolean
+                        description: Whether or not this is a system role.  immutable.
+                      permissions:
+                        type: array
+                        maxItems: 1000
+                        items:
+                          allOf:
+                          - type: object
+                            required:
+                            - resource
+                            additionalProperties: false
+                            properties:
+                              resource:
+                                type: string
+                                description: Resource Name
+                              description:
+                                type: string
+                                description: Resource description and/or mapping to portal
+                              fetch:
+                                type: boolean
+                                description: If fetch/get is an available action
+                              create:
+                                type: boolean
+                                description: If create is an available action
+                              update:
+                                type: boolean
+                                description: If update is an available action
+                              delete:
+                                type: boolean
+                                description: If delete is an available action
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    put:
+      operationId: v1_roles_id_put
+      summary: Update Role
+      description: Update a Role given the provided object.  This does not do a diff.  You must send the complete object.
+      requestBody:
+        description: Role to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+              - required:
+                - name
+                - permissions
+                additionalProperties: false
+                properties:
+                  name:
+                    description: The name of the role.
+                    type: string
+                  description:
+                    description: A user friendly description of the role.
+                    type: string
+                  canMasquerade:
+                    description: (resellers only) Whether or not the role can masquerade into sub accounts.
+                    type: boolean
+                    default: false
+                  canSendFlow:
+                    description: Whether or not the role can send NetoFlow.
+                    type: boolean
+                    default: false
+                  permissions:
+                    type: array
+                    items:
+                      allOf:
+                      - type: object
+                        required:
+                        - resource
+                        additionalProperties: false
+                        properties:
+                          resource:
+                            type: string
+                            description: Resource Name
+                          description:
+                            type: string
+                            description: Resource description and/or mapping to portal
+                          fetch:
+                            type: boolean
+                            description: If fetch/get is an available action
+                          create:
+                            type: boolean
+                            description: If create is an available action
+                          update:
+                            type: boolean
+                            description: If update is an available action
+                          delete:
+                            type: boolean
+                            description: If delete is an available action
+      tags:
+      - Roles
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the Role to be updated
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Role response object
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: Result set from API call
+                    type: object
+                    required:
+                    - name
+                    - permissions
+                    additionalProperties: false
+                    properties:
+                      id:
+                        type: string
+                        readOnly: true
+                        description: role id.  immutable.
+                      name:
+                        type: string
+                        description: Role Name
+                      description:
+                        type: string
+                        description: Role Description
+                      canMasquerade:
+                        type: boolean
+                        description: (resellers only) Whether or not the role can masquerade into sub accounts
+                      canSendFlow:
+                        type: boolean
+                        description: Whether or not the role can send NetoFlow
+                      system:
+                        type: boolean
+                        description: Whether or not this is a system role.  immutable.
+                      permissions:
+                        type: array
+                        maxItems: 1000
+                        items:
+                          allOf:
+                          - type: object
+                            required:
+                            - resource
+                            additionalProperties: false
+                            properties:
+                              resource:
+                                type: string
+                                description: Resource Name
+                              description:
+                                type: string
+                                description: Resource description and/or mapping to portal
+                              fetch:
+                                type: boolean
+                                description: If fetch/get is an available action
+                              create:
+                                type: boolean
+                                description: If create is an available action
+                              update:
+                                type: boolean
+                                description: If update is an available action
+                              delete:
+                                type: boolean
+                                description: If delete is an available action
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+    delete:
+      operationId: v1_roles_id_delete
+      summary: Delete Role
+      description: Deletes the Role.  API will return a 409 Conflict if the role is in use.
+      tags:
+      - Roles
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: The ID of the Role to be retrieved
+        schema:
+          type: string
+      responses:
+        '204':
+          description: An empty array
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true

@@ -1,0 +1,1209 @@
+openapi: 3.0.0
+info:
+  title: Netography (Vectra Fusion) Analytics API
+  version: '1.0'
+  description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
+  x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
+  x-apievangelist-method: searched
+  x-apievangelist-generated: '2026-07-20'
+servers:
+- url: https://api.netography.com
+  description: Netography API
+tags:
+- name: Analytics
+paths:
+  /api/v1/stats/{context}/fields:
+    get:
+      operationId: v1_stats_context_fields_get
+      tags:
+      - Analytics
+      summary: Fields
+      description: Values that can be used for the <code>field</code> parameter in subsequent API calls
+      parameters:
+      - name: context
+        in: path
+        description: Context of the Fields Request
+        required: true
+        schema:
+          type: string
+          enum:
+          - alert
+          - audit
+          - block
+          - flow
+          - dns
+      responses:
+        '200':
+          description: An object which contains response metadata information and a data array of Fields.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: An array of the Fields.
+                    type: array
+                    maxItems: 1000
+                    items:
+                      additionalProperties: false
+                      properties:
+                        field:
+                          description: Field name
+                          type: string
+                          readOnly: true
+                        type:
+                          description: value type.  e.g. string, integer, float, Array of strings, boolean
+                          type: string
+                          readOnly: true
+                        description:
+                          description: Human readable description of the field
+                          type: integer
+                          readOnly: true
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/stats/{context}/aliases:
+    get:
+      operationId: v1_stats_context_aliases_get
+      tags:
+      - Analytics
+      summary: Aliases
+      description: "Values that can be used for the <code>field</code> parameter in subsequent search API calls.  \nAliases are shortcuts for searching multiple fields of a similar nomenclature.  \nExamples:\n  * <code>ip == 8.8.8.8</code> will be interpolated to create a search of <code>(dstip = 8.8.8.8 or srcip = 8.8.8.8)</code>\n  * <code>ipname == myipname</code> will create a search of <code>(dstipname = myipname or srcipname = myipname)</code>\n  * <code>as.number</code> will search the fields <code>dstas.number, dstowneras.number, srcas.number, and srcowneras.number</code>"
+      parameters:
+      - name: context
+        in: path
+        description: Context of the Fields Request, e.g. flow
+        required: true
+        schema:
+          type: string
+          enum:
+          - alert
+          - audit
+          - block
+          - flow
+          - dns
+      responses:
+        '200':
+          description: An object which contains response metadata information and a data array of Fields.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: An array of the Fields.
+                    type: array
+                    maxItems: 1000
+                    items:
+                      additionalProperties: false
+                      properties:
+                        field:
+                          description: Field name
+                          type: string
+                          readOnly: true
+                        type:
+                          description: value type.  e.g. string, integer, float, Array of strings, boolean
+                          type: string
+                          readOnly: true
+                        description:
+                          description: Human readable description of the field
+                          type: integer
+                          readOnly: true
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/stats/{context}/metrics:
+    get:
+      operationId: v1_stats_context_metrics_get
+      tags:
+      - Analytics
+      summary: Metrics
+      description: Values that can be used for the <code>metric</code> parameter in subsequent search API calls
+      parameters:
+      - name: context
+        in: path
+        description: Context of the Metrics Request
+        required: true
+        schema:
+          type: string
+          enum:
+          - alert
+          - audit
+          - block
+          - flow
+          - dns
+      responses:
+        '200':
+          description: An object which contains response metadata information and a data array of Fields.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: An array of the Fields.
+                    type: array
+                    maxItems: 1000
+                    items:
+                      additionalProperties: false
+                      properties:
+                        field:
+                          description: Field name
+                          type: string
+                          readOnly: true
+                        type:
+                          description: value type.  e.g. string, integer, float, Array of strings, boolean
+                          type: string
+                          readOnly: true
+                        description:
+                          description: Human readable description of the field
+                          type: integer
+                          readOnly: true
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/stats/{context}/ts:
+    post:
+      operationId: v1_stats_context_ts_post
+      tags:
+      - Analytics
+      summary: Time Series
+      description: Request data as a time series. This is used for charts and graphs.
+      parameters:
+      - name: context
+        in: path
+        description: Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)
+        required: true
+        schema:
+          type: string
+          enum:
+          - alert
+          - audit
+          - block
+          - flow
+          - dns
+      requestBody:
+        description: JSON structure for a timeseries request
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - start
+              - end
+              - series
+              additionalProperties: false
+              properties:
+                start:
+                  type: integer
+                  description: Start time for this time series. Negative for lookback (Eg. -3600 for 1 hour ago) or timestamp in milliseconds.
+                end:
+                  type: integer
+                  description: End time for this time series. Negative for lookback (Eg. -3600 for 1 hour ago), 0 for NOW or timestamp in milliseconds.
+                format:
+                  title: format
+                  description: Series data can be provided in a variety of formats which are native to some charting libraries. e.g. amcharts or highcharts
+                  type: string
+                  default: highcharts
+                  enum:
+                  - amcharts
+                  - d3
+                  - highcharts
+                  - png
+                series:
+                  type: array
+                  maxItems: 25
+                  description: List of series to aggregate on. Each series must have a unique name.
+                  items:
+                    type: object
+                    description: Configuration for a time series data query that defines how to aggregate and analyze network traffic data over time. Each series specifies the metric to measure, fields to group by, time intervals, and filtering criteria to generate meaningful analytics insights.
+                    required:
+                    - name
+                    - metric
+                    - size
+                    - field
+                    additionalProperties: false
+                    properties:
+                      name:
+                        type: string
+                        description: Series name.  All series in a query must have a unique name.  This is how you will locate them in the response.
+                      field:
+                        type: array
+                        items:
+                          type: string
+                        description: Field name(s) to aggregate (split) on.  See <a href="#fields">Analytics > Fields</a> for more information.
+                        maxItems: 7
+                      field_separator:
+                        type: string
+                        default: .
+                        description: when multiple fields are provided in the request, the separator is used to join the two fields in the `label` and `name` keys in the response
+                      interval:
+                        type: integer
+                        description: Time interval to group the data.  If not provided the interval will be calculated based on start/end times.  The greater the window the larger the interval.
+                      ipagg:
+                        type: object
+                        required:
+                        - cidr
+                        - field
+                        additionalProperties: false
+                        properties:
+                          cidr:
+                            type: integer
+                            description: CIDR to aggregate on.  8, 16, 32
+                          field:
+                            type: string
+                            description: Field to aggregate the CIDR on. For flow and block valid fields are `srcip` and `dstip`. For alert the valid field is `ipinfo.ip`
+                      metric:
+                        type: string
+                        description: metric to aggregate on.  See <a href='#metrics'>Metrics</a> for available values.
+                      search:
+                        type: array
+                        maxItems: 1
+                        description: A NQL search filter for constraining the dataset.
+                        items:
+                          type: string
+                      size:
+                        type: integer
+                        minimum: 1
+                        maximum: 10000
+                        description: The "Top N" number of series to limit this query to.  Not required for cardinality.
+                        format: int32
+                      sort:
+                        type: string
+                        description: Buckets returned ascending (asc) or descending (desc).
+                        default: asc
+      responses:
+        '200':
+          description: An object which contains response metadata information and a data object containing the Time Series array.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: An array of arrays.  The outer array is per series requested, the inner is the Data Series Points for that series.
+                    type: array
+                    maxItems: 1000
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        data:
+                          type: array
+                          maxItems: 1000
+                          items:
+                            description: Series data formatted per the <code>format</code> parameter
+                            anyOf:
+                            - type: object
+                              description: <em>default</em> series format
+                              additionalProperties: false
+                              properties:
+                                key:
+                                  type: string
+                                  description: value of the <code>field</code> property in the request
+                                value:
+                                  description: data point value
+                            - type: object
+                              description: <b>amcharts</b> series format
+                              additionalProperties: false
+                              properties:
+                                date:
+                                  type: integer
+                                  description: Unix Timestamp in milliseconds.
+                                field1:
+                                  description: data point value
+                            - type: array
+                              description: <b>d3</b> series format
+                              items:
+                                type: integer
+                              minItems: 2
+                              maxItems: 2
+                            - type: array
+                              description: <b>highcharts</b> series format [ unix timestamp (ms), value ]
+                              items:
+                                type: integer
+                              minItems: 2
+                              maxItems: 2
+                            - type: object
+                              description: <b>png</b> series format
+                              additionalProperties: false
+                              properties:
+                                name:
+                                  type: string
+                                  description: value of the <code>field</code> property in the request
+                                buckets:
+                                  type: array
+                                  maxItems: 1000
+                                  items:
+                                    type: object
+                                  description: array of the raw data in the image, in the <em>default</em> format
+                                img:
+                                  type: string
+                                  description: base64 encoded png image
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
+  /api/v1/stats/{context}/agg:
+    post:
+      operationId: v1_stats_context_agg_post
+      tags:
+      - Analytics
+      summary: Aggregations
+      description: Get summarized statistics by aggregating data for the specified context over a given time range. Returns computed metrics like counts, sums, averages, etc. rather than individual events.
+      parameters:
+      - name: context
+        in: path
+        description: Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)
+        required: true
+        schema:
+          type: string
+          enum:
+          - alert
+          - audit
+          - block
+          - flow
+          - dns
+      requestBody:
+        description: JSON structure for an aggregation request
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - start
+              - end
+              - series
+              additionalProperties: false
+              properties:
+                start:
+                  description: Start time for this time series. Negative for lookback (Eg. -3600 for 1 hour ago) or timestamp in milliseconds.
+                  type: integer
+                end:
+                  description: End time for this time series. Negative for lookback (Eg. -3600 for 1 hour ago), 0 for NOW or timestamp in milliseconds.
+                  type: integer
+                format:
+                  title: format
+                  description: Series data can be provided in a variety of formats which are native to some charting libraries. e.g. amcharts or highcharts
+                  type: string
+                  default: highcharts
+                  enum:
+                  - amcharts
+                  - d3
+                  - highcharts
+                  - png
+                series:
+                  type: array
+                  maxItems: 25
+                  description: List of series to aggregate on.  Each series must have a unique name.
+                  items:
+                    type: object
+                    description: Configuration for a data aggregation series used in analytics queries. Defines how to group, filter, and aggregate data with various options for fields, metrics, and time intervals.
+                    required:
+                    - name
+                    - metric
+                    additionalProperties: false
+                    properties:
+                      name:
+                        type: string
+                        description: Series name.  All series in a query must have a unique name.  This is how you will locate them in the response.
+                      field:
+                        type: array
+                        items:
+                          type: string
+                        description: Field name(s) to aggregate (split) on.  See <a href="#fields">Analytics > Fields</a> for more information.
+                        maxItems: 7
+                      field_separator:
+                        type: string
+                        default: .
+                        description: when multiple fields are provided in the request, the separator is used to join the two fields in the `label` and `name` keys in the response
+                      interval:
+                        type: integer
+                        description: Time interval to group the data.  If not provided the interval will be calculated based on start/end times.  The greater the window the larger the interval.
+                        minimum: 1
+                        maximum: 2147483647
+                        format: int32
+                      ipagg:
+                        type: object
+                        description: IP aggregation configuration for grouping IP addresses by CIDR blocks.
+                        required:
+                        - cidr
+                        - field
+                        additionalProperties: false
+                        properties:
+                          cidr:
+                            type: integer
+                            description: CIDR to aggregate on.  8, 16, 32
+                            minimum: 8
+                            maximum: 32
+                            format: int32
+                          field:
+                            type: string
+                            description: Field to aggregate the CIDR on. For flow and block valid fields are `srcip` and `dstip`. For alert the valid field is `ipinfo.ip`
+                      metric:
+                        type: string
+                        description: metric to aggregate on.  See <a href='#metrics'>Metrics</a> for available values.
+                      search:
+                        type: array
+                        maxItems: 1
+                        description: A NQL search filter for constraining the dataset. Only one search is allowed for aggregation series.
+                        items:
+                          type: string
+                          description: NQL query string for filtering data.
+                      size:
+                        type: integer
+                        minimum: 1
+                        maximum: 10000
+                        description: The "Top N" number of series to limit this query to.  Not required for cardinality.
+                      sort:
+                        type: string
+                        description: Buckets returned ascending (asc) or descending (desc).
+                        default: asc
+                        enum:
+                        - asc
+                        - desc
+      responses:
+        '200':
+          description: An object which contains response metadata information and a data object containing the Aggregation array.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  meta:
+                    type: object
+                    additionalProperties: false
+                    readOnly: true
+                    properties:
+                      code:
+                        description: API response code.  200 ok, 400 you did something wrong.  500 we did something wrong
+                        type: integer
+                        readOnly: true
+                        format: int32
+                      count:
+                        description: Number of documents retrieved or updated.
+                        type: integer
+                        readOnly: true
+                        format: int32
+                  data:
+                    description: An array of arrays.  The outer array is per series requested, the inner is the Data Series Points for that series.
+                    type: array
+                    maxItems: 1000
+                    items:
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        interval:
+                          type: string
+                          description: aggregation time window. e.g. 1s, 1m, 1h, 1d, 1M
+                        label:
+                          type: string
+                          description: value of the <code>field</code> in the requested series
+                        metric:
+                          type: string
+                          description: metric describing the data being returned.
+                        name:
+                          type: string
+                          description: name of the series, corresponding to the <code>field</code>s provided in the request
+                        series:
+                          type: string
+                          description: name of the series, corresponding to the series name provided in the request
+                        data:
+                          type: array
+                          maxItems: 1000
+                          items:
+                            description: Series data formatted per the <code>format</code> parameter
+                            anyOf:
+                            - type: object
+                              description: <em>default</em> series format
+                              additionalProperties: false
+                              properties:
+                                key:
+                                  type: string
+                                  description: value of the <code>field</code> property in the request
+                                value:
+                                  description: data point value
+                            - type: object
+                              description: <b>amcharts</b> series format
+                              additionalProperties: false
+                              properties:
+                                category:
+                                  type: string
+                                  description: value of the <code>field</code> property in the request
+                                value:
+                                  description: data point value
+                            - type: object
+                              description: <b>d3</b> series format
+                              additionalProperties: false
+                              properties:
+                                field1:
+                                  description: field1 is the value of the <code>field</code> property in the request and it's value is the data point value
+                            - type: object
+                              description: <b>highcharts</b> series format
+                              additionalProperties: false
+                              properties:
+                                name:
+                                  type: string
+                                  description: value of the <code>field</code> property in the request
+                                y:
+                                  description: data point value
+                            - type: object
+                              description: <b>png</b> series format
+                              additionalProperties: false
+                              properties:
+                                name:
+                                  type: string
+                                  description: value of the <code>field</code> property in the request
+                                buckets:
+                                  type: array
+                                  maxItems: 1000
+                                  items:
+                                    type: object
+                                  description: array of the raw data in the image, in the <em>default</em> format
+                                img:
+                                  type: string
+                                  description: base64 encoded png image
+        '400':
+          description: Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '401':
+          description: Access token is missing or invalid
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        '403':
+          description: Access is forbidden
+          content:
+            application/json:
+              schema:
+                allOf:
+                - type: object
+                  required:
+                  - status
+                  - name
+                  - message
+                  additionalProperties: false
+                  properties:
+                    status:
+                      description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                      type: integer
+                      readOnly: true
+                      format: int32
+                    name:
+                      description: They type of error
+                      type: string
+                      readOnly: true
+                    message:
+                      description: description of the error
+                      type: string
+                      readOnly: true
+                - type: object
+                  properties:
+                    status: {}
+                    name: {}
+                    message: {}
+        default:
+          description: Unknown Error Occurred
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - status
+                - name
+                - message
+                additionalProperties: false
+                properties:
+                  status:
+                    description: "API response code: \n  * 4xx - you did something dumb\n  * 5xx - we did something dumb\n"
+                    type: integer
+                    readOnly: true
+                    format: int32
+                  name:
+                    description: They type of error
+                    type: string
+                    readOnly: true
+                  message:
+                    description: description of the error
+                    type: string
+                    readOnly: true
