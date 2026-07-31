@@ -1,0 +1,30 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.fusion.vectra.ai/api-reference/readme.md
+base_url: https://api.netography.com
+media_type: application/json
+authentication:
+  style: JWT bearer
+  detail: Sign a JWT request token with your NETOSECRET API-key shared secret, POST it to /api/v1/auth/token,
+    receive an access_token (JWT bearer), and send it as the Authorization header on all subsequent calls.
+versioning:
+  scheme: uri-path
+  current: v1
+  example: /api/v1/...
+idempotency:
+  supported: false
+  notes: No documented idempotency-key header; write operations are addressed by resource id (PUT/DELETE
+    on /{id}) which are naturally idempotent.
+pagination:
+  observed_params:
+  - end
+  - start
+  notes: Search/analytics endpoints accept time ranges and NQL queries in the request body rather than
+    classic offset paging.
+query_language:
+  name: NQL (Netography Query Language)
+  used_by:
+  - /api/v1/search/{context}
+  - /api/v1/stats/{context}/*
+error_envelope: errors/netography-problem-types.yml
+rate_limits: Not published in the API reference.

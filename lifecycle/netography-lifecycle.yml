@@ -1,0 +1,15 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.fusion.vectra.ai/api-reference/readme.md
+versioning:
+  scheme: uri-path
+  current: v1
+  docs: https://docs.fusion.vectra.ai/api-reference/readme.md
+deprecation:
+  policy_url: null
+  sunset_header: null
+  notes: No public deprecation/sunset policy located in the API reference.
+status_page: null
+sla: null
+notes: Netography Fusion is now Vectra Fusion (docs.netography.com -> docs.fusion.vectra.ai).
+deprecated_operations: []

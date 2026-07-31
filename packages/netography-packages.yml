@@ -1,0 +1,36 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/orgs/netography/repositories
+notes: No published REST client SDK on npm/PyPI. First-party tooling ships as connectors (Docker) and
+  the official MCP server (Python via GitHub).
+packages:
+- language: python
+  registry: github
+  name: neto-mcp
+  url: https://github.com/netography/neto-mcp
+  install: git clone https://github.com/netography/neto-mcp && uv sync
+  official: true
+  kind: mcp-server
+  description: Official Netography Fusion MCP server (stdio/http/sse).
+- language: go
+  registry: docker
+  name: NetoFlow Connector
+  url: https://docs.fusion.vectra.ai/ingest-network-traffic-logs/netflow-sflow/traffic-source-netoflow.md
+  official: true
+  kind: connector
+  description: NetFlow/sFlow/IPFIX collector that uploads records to Fusion.
+- language: go
+  registry: docker
+  name: NetoFuse
+  url: https://docs.fusion.vectra.ai/netofuse/get-started/launch.md
+  official: true
+  kind: connector
+  description: 'Context-enrichment connector: pulls asset context from 3rd-party platforms and uploads
+    context labels.'
+- language: go
+  registry: docker
+  name: NetoDNS
+  url: https://docs.fusion.vectra.ai/netodns/reading-statistics-from-netodns-api.md
+  official: true
+  kind: connector
+  description: DNS log forwarder/collector for Fusion.

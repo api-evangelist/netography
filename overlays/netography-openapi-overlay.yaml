@@ -1,0 +1,20 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Netography (Vectra Fusion) API
+  version: 1.0.0
+extends: openapi/netography-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-rating: 4
+    x-apievangelist-notes: Harvested from embedded OpenAPI blocks in the provider
+      public API reference. Base URL https://api.netography.com.
+- target: $.components
+  update:
+    securitySchemes:
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+        description: JWT access_token from POST /api/v1/auth/token (API key), /api/auth/bearer/token
+          (user credentials), or /api/auth/bearer/refresh.

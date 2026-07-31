@@ -1,0 +1,39 @@
+generated: '2026-07-20'
+method: generated
+skills:
+- file: netography-query-flow-and-events.md
+  name: Query flow and detection data with NQL
+  api: openapi/netography-openapi.yml
+  operations:
+  - v1_auth_token_post
+  - v1_search_context_fields_get
+  - v1_search_context_post
+  - v1_stats_context_agg_post
+  - v1_fetch_context_id_get
+- file: netography-manage-ip-labels.md
+  name: Enrich traffic with IP context labels
+  api: openapi/netography-openapi.yml
+  operations:
+  - v1_auth_token_post
+  - v1_labels_ips_get
+  - v1_labels_ips_post
+  - v1_labels_ips_bulk_put
+  - v1_labels_ips_ip_context_get
+- file: netography-manage-detection-models.md
+  name: Create and tune detection models
+  api: openapi/netography-openapi.yml
+  operations:
+  - v1_auth_token_post
+  - v1_traffic_detection_models_get
+  - v1_traffic_detection_model_post
+  - v1_traffic_detection_model_id_enable_put
+  - v1_threshold_overrides_put
+- file: netography-manage-response-policies.md
+  name: Automate response policies and blocking
+  api: openapi/netography-openapi.yml
+  operations:
+  - v1_auth_token_post
+  - v1_intel_lookup_ips_post
+  - v1_response_policies_get
+  - v1_response_policy_post
+  - v1_blocks_delete

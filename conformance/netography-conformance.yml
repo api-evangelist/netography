@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/netography-openapi.yml
+standards:
+- id: oauth2
+  conforms: false
+  evidence: Auth is JWT bearer minted from an API-key shared secret, not an OAuth2 authorization-server
+    flow.
+- id: jwt-bearer
+  conforms: true
+  evidence: POST /api/v1/auth/token returns a JWT access_token used as the Authorization bearer.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a custom {status,name,message} envelope, not application/problem+json.
+- id: mitre-attack
+  conforms: true
+  evidence: /api/v1/mitre/tactics and techniques endpoints map detections to MITRE ATT&CK.
+- id: rest-json
+  conforms: true
+  evidence: REST API returning JSON, uri-path versioned (/api/v1).
+- id: uri-path-versioning
+  conforms: true
+  evidence: Version carried in the path (/api/v1).

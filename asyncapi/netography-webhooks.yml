@@ -1,0 +1,70 @@
+generated: '2026-07-20'
+method: searched
+spec_type: Webhooks
+source: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations.md
+summary: Netography Fusion triggers Response Integrations when a detection/response policy fires. These
+  push events outbound (webhook/notification), block traffic, or steer DNS/BGP. Configured via the Fusion
+  Portal or the /api/v1/integrations/response API.
+webhook:
+  type: Notification response integration
+  docs: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations/webhook.md
+  config_schema: openapi/netography-openapi.yml#/components/schemas/IntegrationsResponseWebhook
+  api: openapi/netography-openapi.yml#v1_integrations_response_post
+response_integrations:
+- name: Webhook
+  category: Notification
+  docs: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations/webhook.md
+- name: Slack
+  category: Notification
+  docs: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations/slack.md
+- name: Microsoft Teams
+  category: Notification
+  docs: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations/microsoft-teams.md
+- name: Email
+  category: Notification
+  docs: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations/email.md
+- name: PagerDuty
+  category: Notification
+  docs: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations/pagerduty.md
+- name: Twilio
+  category: Notification
+  docs: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations/twilio.md
+- name: BigPanda
+  category: Notification
+  docs: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations/big-panda.md
+- name: Splunk
+  category: Notification
+  docs: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations/splunk.md
+- name: Sumo Logic
+  category: Notification
+  docs: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations/sumo-logic.md
+- name: Syslog
+  category: Notification
+  docs: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations/syslog.md
+- name: Panther
+  category: Notification
+  docs: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations/panther.md
+- name: Blocklist
+  category: Block
+  docs: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations/blocklist.md
+- name: CrowdStrike
+  category: Block
+  docs: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations/crowdstrike.md
+- name: Flowspec
+  category: Block
+  docs: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations/flowspec-1.md
+- name: RTBH
+  category: Block
+  docs: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations/rtbh.md
+- name: BGP
+  category: Traffic
+  docs: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations/bgp.md
+- name: Flowspec (Custom)
+  category: Traffic
+  docs: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations/flowspec-traffic.md
+- name: AWS Route 53
+  category: DNS
+  docs: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations/route-53.md
+- name: NS1
+  category: DNS
+  docs: https://docs.fusion.vectra.ai/automate-responses/configuring-response-integrations/ns1.md

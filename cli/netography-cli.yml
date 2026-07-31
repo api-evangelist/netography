@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.fusion.vectra.ai/api-recipes/readme.md
+notes: 'Netography ships command-line tooling rather than a single unified CLI: the netosecret encode/decode
+  helper and the connector daemons (NetoFlow/NetoFuse/NetoDNS) that run from the command line / Docker.'
+tools:
+- name: netosecret.py
+  kind: cli
+  language: python
+  docs: https://docs.fusion.vectra.ai/api-recipes/recipes/netosecret.py-python-class-and-cli.md
+  purpose: Encode/decode a netosecret string and mint JWT request tokens for API auth.
+- name: netosecret.sh
+  kind: cli
+  language: bash
+  docs: https://docs.fusion.vectra.ai/api-recipes/recipes/netosecret.sh-bash-script-cli.md
+  purpose: Bash CLI to encode/decode netosecret.
+- name: NetoFlow
+  kind: connector-daemon
+  docs: https://docs.fusion.vectra.ai/netoflow-connector/quickstart.md
+  purpose: Run (docker) to ingest NetFlow/sFlow into Fusion.
+- name: NetoFuse
+  kind: connector-daemon
+  docs: https://docs.fusion.vectra.ai/netofuse/get-started/launch.md
+  purpose: Run modules to push 3rd-party asset context labels into Fusion.

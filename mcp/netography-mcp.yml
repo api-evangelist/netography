@@ -1,0 +1,103 @@
+generated: '2026-07-20'
+method: searched
+status: published
+source: https://github.com/netography/neto-mcp
+server:
+  name: netography
+  official: true
+  language: python
+  hosting: local
+  transport:
+  - stdio
+  - streamable-http
+  - sse
+  install: git clone https://github.com/netography/neto-mcp && uv sync
+  auth:
+    env: NETOSECRET
+    docs: https://docs.fusion.vectra.ai/api-reference/create-a-netography-api-key.md
+  clients:
+  - Claude Desktop
+  - VS Code
+  notes: Official Netography Fusion MCP server. Currently exposes query endpoints (read); resource create/manage
+    tools planned.
+tools:
+- name: search_context_fields_get
+  description: Get valid fields for search API calls for a data type
+  source_operation: openapi/netography-openapi.yml#v1_search_context_fields_get
+- name: search_context_post
+  description: Retrieve events/records for a context over a time range using NQL
+  source_operation: openapi/netography-openapi.yml#v1_search_context_post
+- name: stats_context_fields_get
+  description: Get valid fields for statistical API calls
+  source_operation: openapi/netography-openapi.yml#v1_stats_context_fields_get
+- name: stats_context_aliases_get
+  description: Get field aliases for search API calls
+  source_operation: openapi/netography-openapi.yml#v1_stats_context_aliases_get
+- name: stats_context_metrics_get
+  description: Get valid metrics for statistical API calls
+  source_operation: openapi/netography-openapi.yml#v1_stats_context_metrics_get
+- name: stats_context_agg_post
+  description: Get summarized statistics by aggregating data over time
+  source_operation: openapi/netography-openapi.yml#v1_stats_context_agg_post
+- name: intel_lookup_asns_post
+  description: Look up organization name for one or more ASNs
+  source_operation: openapi/netography-openapi.yml#v1_intel_lookup_asns_post
+- name: intel_lookup_ips_post
+  description: Look up intelligence (Geo, Reputation, RDNS) for IPs
+  source_operation: openapi/netography-openapi.yml#v1_intel_lookup_ips_post
+- name: labels_ips_get
+  description: Return a list of all IP labels
+  source_operation: openapi/netography-openapi.yml#v1_labels_ips_get
+- name: labels_ips_all_context_get
+  description: Fetch all labels for all IPs within a context
+  source_operation: openapi/netography-openapi.yml#v1_labels_ips_all_context_get
+- name: labels_ips_ip_get
+  description: Fetch all labels for a specific IP
+  source_operation: openapi/netography-openapi.yml#v1_labels_ips_ip_get
+- name: labels_ips_ip_context_get
+  description: Fetch labels of a context for an IP
+  source_operation: openapi/netography-openapi.yml#v1_labels_ips_ip_context_get
+- name: labels_ports_get
+  description: Return a list of all port labels
+  source_operation: openapi/netography-openapi.yml#v1_labels_ports_get
+- name: labels_ports_protocols_get
+  description: List protocols that have port labels
+  source_operation: openapi/netography-openapi.yml#v1_labels_ports_protocols_get
+- name: labels_ports_all_protocol_get
+  description: Fetch all port labels for a protocol
+  source_operation: openapi/netography-openapi.yml#v1_labels_ports_all_protocol_get
+- name: labels_ports_port_get
+  description: Fetch all labels for a specific port
+  source_operation: openapi/netography-openapi.yml#v1_labels_ports_port_get
+- name: labels_port_protocol_get
+  description: Fetch the label for a port+protocol
+  source_operation: openapi/netography-openapi.yml#v1_labels_port_protocol_get
+- name: integrations_aws_role_get
+  description: Get info for configuring AWS Role-based auth
+  source_operation: openapi/netography-openapi.yml#v1_integrations_aws_role_get
+- name: vpc_get
+  description: Return all configured Cloud Sources
+  source_operation: openapi/netography-openapi.yml#v1_vpc_get
+- name: integrations_context_get
+  description: Return all context integrations
+  source_operation: openapi/netography-openapi.yml#v1_integrations_context_get
+- name: integrations_context_id_get
+  description: Fetch a context integration by id
+  source_operation: openapi/netography-openapi.yml#v1_integrations_context_id_get
+- name: integrations_context_id_run_get
+  description: Dry-run a context integration; return IP labels
+  source_operation: openapi/netography-openapi.yml#v1_integrations_context_id_run_get
+- name: integrations_response_get
+  description: Return all response integrations
+  source_operation: openapi/netography-openapi.yml#v1_integrations_response_get
+- name: integrations_response_id_get
+  description: Fetch a response integration by id
+  source_operation: openapi/netography-openapi.yml#v1_integrations_response_id_get
+- name: nql_guide
+  description: Guide to NQL (Netography Query Language)
+- name: get_detection_model_list
+  description: List available detection models
+  source_operation: openapi/netography-openapi.yml#v1_traffic_detection_models_get
+- name: get_detection_model_details
+  description: Details of a specific detection model
+  source_operation: openapi/netography-openapi.yml#v1_traffic_detection_model_id_get

@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/netography-openapi.yml
+format: custom-envelope
+envelope:
+  fields:
+  - status
+  - name
+  - message
+  notes: Netography returns a JSON error object with integer status, name (error type), and human-readable
+    message. Not RFC 9457 problem+json.
+docs: https://docs.fusion.vectra.ai/api-reference/netography-apis/models.md
+problems:
+- status: 400
+  title: Wrong or expired refresh token, or user/api-key removed
+  envelope: '{status, name, message}'
+  source_operation: openapi/netography-openapi.yml#auth_bearer_refresh_post
+- status: 401
+  title: Missing or invalid credentials
+  envelope: '{status, name, message}'
+  source_operation: openapi/netography-openapi.yml#v1_auth_token_post
+- status: 403
+  title: Access is forbidden
+  envelope: '{status, name, message}'
+  source_operation: openapi/netography-openapi.yml#v1_stats_context_fields_get
+- status: 404
+  title: Not Found
+  envelope: '{status, name, message}'
+  source_operation: openapi/netography-openapi.yml#v1_auth_token_post

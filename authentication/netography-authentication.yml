@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.fusion.vectra.ai/api-reference/netography-apis/authentication.md
+docs: https://docs.fusion.vectra.ai/api-reference/create-a-netography-api-key.md
+summary:
+  types:
+  - http-bearer-jwt
+  - api-key-derived
+  token_type: bearer
+  token_format: JWT
+model: Netography Fusion authenticates all API calls with a JWT bearer access_token. There is no static
+  API key sent on each request; instead a short-lived bearer token is minted, then sent as the Authorization
+  header.
+schemes:
+- name: apiKeyJwt
+  kind: api-key -> JWT bearer
+  token_endpoint: https://api.netography.com/api/v1/auth/token
+  detail: Create a NETOSECRET API key in the Fusion Portal (Settings > User Management > API Keys). The
+    netosecret encodes appkey/appname/shortname/sharedsecret + API URL. Sign a JWT request token with
+    the shared secret and POST it as the `jwt` field to /api/v1/auth/token; the response access_token
+    is the bearer token.
+- name: userCredentials
+  kind: password -> JWT bearer
+  token_endpoint: https://api.netography.com/api/auth/bearer/token
+  detail: POST username/password (x-www-form-urlencoded) to obtain an access_token.
+- name: refreshToken
+  kind: refresh -> JWT bearer
+  token_endpoint: https://api.netography.com/api/auth/bearer/refresh
+  detail: POST a refresh_token to obtain a new access_token.
+usage: 'Authorization: Bearer <access_token>'
+recipes: https://docs.fusion.vectra.ai/api-recipes/readme.md

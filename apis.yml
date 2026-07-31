@@ -1,8 +1,25 @@
 aid: netography
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/netography.png
 name: Netography
-description: Netography is a company surfaced as a portfolio company of a16z, bessemer-venture-partners,
-  wing-venture-capital and added to the API Evangelist network as a stub for enrichment. This profile
-  is a lead awaiting the enrichment pipeline.
+description: Netography Fusion is a SaaS network defense and observability platform (now Vectra Fusion)
+  that ingests cloud VPC flow logs, DNS, and NetFlow/sFlow from AWS, Azure, GCP, IBM, and Oracle to deliver
+  real-time network detection and response without sensors or agents. Its REST API (base https://api.netography.com)
+  exposes analytics and NQL raw-record search, IP/port context labels, threat intelligence lookups, MITRE
+  ATT&CK mapped detection models, response policies and block lists, cloud traffic sources, and context/response
+  integrations. Authentication is a JWT bearer token minted from a NETOSECRET API key. An official MCP
+  server (neto-mcp) exposes the query endpoints to agents.
 url: https://raw.githubusercontent.com/api-evangelist/netography/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,19 +27,372 @@ x-backed-by:
 - a16z
 - bessemer-venture-partners
 - wing-venture-capital
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enriched-real-api
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
+- Network Security
+- Network Detection and Response
+- Cloud Security
+- Network Observability
+- Flow Data
+- Threat Intelligence
+- DDoS
+- Cybersecurity
+- MITRE ATT&CK
 - Company
-apis: []
+apis:
+- aid: netography:netography-analytics-api
+  name: Netography Analytics API
+  description: The Analytics API from Netography — 5 operation(s) for analytics.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Analytics
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-analytics-api-openapi.yml
+- aid: netography:netography-api-keys-api
+  name: Netography API Keys API
+  description: The API Keys API from Netography — 3 operation(s) for api keys.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - API Keys
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-api-keys-api-openapi.yml
+- aid: netography:netography-authentication-api
+  name: Netography Authentication API
+  description: The Authentication API from Netography — 3 operation(s) for authentication.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-authentication-api-openapi.yml
+- aid: netography:netography-auto-thresholds-api
+  name: Netography Auto Thresholds API
+  description: The Auto Thresholds API from Netography — 3 operation(s) for auto thresholds.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Auto Thresholds
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-auto-thresholds-api-openapi.yml
+- aid: netography:netography-block-list-api
+  name: Netography Block List API
+  description: The Block List API from Netography — 1 operation(s) for block list.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Block List
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-block-list-api-openapi.yml
+- aid: netography:netography-configuration-api
+  name: Netography Configuration API
+  description: The Configuration API from Netography — 1 operation(s) for configuration.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Configuration
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-configuration-api-openapi.yml
+- aid: netography:netography-detect-and-respond-context-creation-models-api
+  name: Netography Detect and Respond - Context Creation Models API
+  description: >-
+    The Detect and Respond - Context Creation Models API from Netography — 6 operation(s) for detect and
+    respond - context creation models.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Detect and Respond - Context Creation Models
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-detect-and-respond-context-creation-models-api-openapi.yml
+- aid: netography:netography-detect-and-respond-detection-categories-api
+  name: Netography Detect and Respond - Detection Categories API
+  description: >-
+    The Detect and Respond - Detection Categories API from Netography — 2 operation(s) for detect and
+    respond - detection categories.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Detect and Respond - Detection Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-detect-and-respond-detection-categories-api-openapi.yml
+- aid: netography:netography-detect-and-respond-response-policies-api
+  name: Netography Detect and Respond - Response Policies API
+  description: >-
+    The Detect and Respond - Response Policies API from Netography — 5 operation(s) for detect and respond
+    - response policies.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Detect and Respond - Response Policies
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-detect-and-respond-response-policies-api-openapi.yml
+- aid: netography:netography-detect-and-respond-threshold-overrides-api
+  name: Netography Detect and Respond - Threshold Overrides API
+  description: >-
+    The Detect and Respond - Threshold Overrides API from Netography — 4 operation(s) for detect and respond
+    - threshold overrides.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Detect and Respond - Threshold Overrides
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-detect-and-respond-threshold-overrides-api-openapi.yml
+- aid: netography:netography-detect-and-respond-traffic-detection-models-api
+  name: Netography Detect and Respond - Traffic Detection Models API
+  description: >-
+    The Detect and Respond - Traffic Detection Models API from Netography — 6 operation(s) for detect
+    and respond - traffic detection models.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Detect and Respond - Traffic Detection Models
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-detect-and-respond-traffic-detection-models-api-openapi.yml
+- aid: netography:netography-integrations-context-api
+  name: Netography Integrations - Context API
+  description: >-
+    The Integrations - Context API from Netography — 4 operation(s) for integrations - context.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Integrations - Context
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-integrations-context-api-openapi.yml
+- aid: netography:netography-integrations-response-api
+  name: Netography Integrations - Response API
+  description: >-
+    The Integrations - Response API from Netography — 3 operation(s) for integrations - response.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Integrations - Response
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-integrations-response-api-openapi.yml
+- aid: netography:netography-intelligence-api
+  name: Netography Intelligence API
+  description: The Intelligence API from Netography — 3 operation(s) for intelligence.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Intelligence
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-intelligence-api-openapi.yml
+- aid: netography:netography-labels-ips-api
+  name: Netography Labels - IPs API
+  description: The Labels - IPs API from Netography — 6 operation(s) for labels - ips.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Labels - IPs
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-labels-ips-api-openapi.yml
+- aid: netography:netography-labels-ports-api
+  name: Netography Labels - Ports API
+  description: The Labels - Ports API from Netography — 10 operation(s) for labels - ports.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Labels - Ports
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-labels-ports-api-openapi.yml
+- aid: netography:netography-mitre-att-ck-api
+  name: Netography MITRE ATT&CK API
+  description: The MITRE ATT&CK API from Netography — 2 operation(s) for mitre att&ck.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - MITRE ATT&CK
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-mitre-att-ck-api-openapi.yml
+- aid: netography:netography-raw-records-fetch-api
+  name: Netography Raw Records - Fetch API
+  description: The Raw Records - Fetch API from Netography — 1 operation(s) for raw records - fetch.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Raw Records - Fetch
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-raw-records-fetch-api-openapi.yml
+- aid: netography:netography-raw-records-search-api
+  name: Netography Raw Records - Search API
+  description: The Raw Records - Search API from Netography — 2 operation(s) for raw records - search.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Raw Records - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-raw-records-search-api-openapi.yml
+- aid: netography:netography-resellers-api
+  name: Netography Resellers API
+  description: The Resellers API from Netography — 4 operation(s) for resellers.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Resellers
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-resellers-api-openapi.yml
+- aid: netography:netography-roles-api
+  name: Netography Roles API
+  description: The Roles API from Netography — 3 operation(s) for roles.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Roles
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-roles-api-openapi.yml
+- aid: netography:netography-settings-security-api
+  name: Netography Settings - Security API
+  description: The Settings - Security API from Netography — 1 operation(s) for settings - security.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Settings - Security
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-settings-security-api-openapi.yml
+- aid: netography:netography-settings-traffic-classification-api
+  name: Netography Settings - Traffic Classification API
+  description: >-
+    The Settings - Traffic Classification API from Netography — 4 operation(s) for settings - traffic
+    classification.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Settings - Traffic Classification
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-settings-traffic-classification-api-openapi.yml
+- aid: netography:netography-tags-api
+  name: Netography Tags API
+  description: The Tags API from Netography — 5 operation(s) for tags.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-tags-api-openapi.yml
+- aid: netography:netography-traffic-sources-devices-api
+  name: Netography Traffic Sources - Devices API
+  description: >-
+    The Traffic Sources - Devices API from Netography — 11 operation(s) for traffic sources - devices.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Traffic Sources - Devices
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-traffic-sources-devices-api-openapi.yml
+- aid: netography:netography-traffic-sources-dns-devices-api
+  name: Netography Traffic Sources - DNS Devices API
+  description: >-
+    The Traffic Sources - DNS Devices API from Netography — 5 operation(s) for traffic sources - dns devices.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Traffic Sources - DNS Devices
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-traffic-sources-dns-devices-api-openapi.yml
+- aid: netography:netography-traffic-sources-vpcs-api
+  name: Netography Traffic Sources - VPCs API
+  description: >-
+    The Traffic Sources - VPCs API from Netography — 8 operation(s) for traffic sources - vpcs.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Traffic Sources - VPCs
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-traffic-sources-vpcs-api-openapi.yml
+- aid: netography:netography-users-api
+  name: Netography Users API
+  description: The Users API from Netography — 3 operation(s) for users.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-users-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/netography-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/netography-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/netography-domain-security.yml
 - type: Website
   url: https://netography.com/
+- type: DeveloperPortal
+  url: https://fusion.vectra.ai
+- type: Documentation
+  url: https://docs.fusion.vectra.ai/
+- type: APIReference
+  url: https://docs.fusion.vectra.ai/api-reference
+- type: GettingStarted
+  url: https://docs.fusion.vectra.ai/readme.md
+- type: GitHubOrganization
+  url: https://github.com/netography
+- type: LLMsTxt
+  url: llms/netography-llms.txt
+- type: Authentication
+  url: authentication/netography-authentication.yml
+- type: MCPServer
+  url: mcp/netography-mcp.yml
+- type: Webhooks
+  url: asyncapi/netography-webhooks.yml
+- type: Conventions
+  url: conventions/netography-conventions.yml
+- type: ErrorCatalog
+  url: errors/netography-problem-types.yml
+- type: Conformance
+  url: conformance/netography-conformance.yml
+- type: Lifecycle
+  url: lifecycle/netography-lifecycle.yml
+- type: DataModel
+  url: data-model/netography-data-model.yml
+- type: Overlay
+  url: overlays/netography-openapi-overlay.yaml
+- type: Packages
+  url: packages/netography-packages.yml
+- type: CLI
+  url: cli/netography-cli.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 21
+  pass: local-v1
