@@ -1,0 +1,1828 @@
+{
+  "item": [
+    {
+      "id": "5f0f2dbf-a264-4fcc-bfb0-a99f6624abdd",
+      "name": "Auto Thresholds",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7c9abf16-ac17-43e9-9a9d-a3ffe575a072",
+          "name": "Get all threshold automaton configs",
+          "request": {
+            "name": "Get all threshold automaton configs",
+            "description": {
+              "content": "Returns all auto-threshold automaton configs configured for all DMs in a given customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "thresholder",
+                "automaton"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "117ba009-bdd1-4ef9-a9d5-84603927df46",
+              "name": "List of threshold automaton configs for a customer",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 2508,\n    \"count\": 5254\n  },\n  \"data\": [\n    {\n      \"customer\": \"string\",\n      \"algorithm\": \"string\",\n      \"data_interval\": \"string\",\n      \"data_lookback\": \"string\",\n      \"data_window\": \"string\",\n      \"disabled\": false,\n      \"filters\": [\n        \"string\",\n        \"string\"\n      ],\n      \"force_override\": true,\n      \"high_sigma\": 5489.4671607132705,\n      \"med_sigma\": 5720.605308921241,\n      \"low_sigma\": 3253.8140972385554,\n      \"strategy\": \"string\",\n      \"thresholds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"track_by\": [\n        \"string\",\n        \"string\"\n      ],\n      \"update_interval\": \"string\"\n    },\n    {\n      \"customer\": \"string\",\n      \"algorithm\": \"string\",\n      \"data_interval\": \"string\",\n      \"data_lookback\": \"string\",\n      \"data_window\": \"string\",\n      \"disabled\": true,\n      \"filters\": [\n        \"string\",\n        \"string\"\n      ],\n      \"force_override\": true,\n      \"high_sigma\": 6979.893560423884,\n      \"med_sigma\": 8260.006981598473,\n      \"low_sigma\": 5554.527632790779,\n      \"strategy\": \"string\",\n      \"thresholds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"track_by\": [\n        \"string\",\n        \"string\"\n      ],\n      \"update_interval\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c72369c4-076b-4fc3-b92e-e1c2466070e6",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb8113e6-e5eb-416e-a4d7-3d51e38d9518",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e90d25dc-9f74-4aa9-a339-bb609f01dc80",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "683b7e4e-a6a4-4101-8541-4c5e0c82a0e1",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be7436b8-1b1d-429a-953a-17aaf62cc5e6",
+          "name": "Update threshold automaton config",
+          "request": {
+            "name": "Update threshold automaton config",
+            "description": {
+              "content": "Updates the auto-threshold automaton config for a given detection model.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "thresholder",
+                "automaton"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"algorithm\": \"<string>\",\n  \"data_interval\": \"<string>\",\n  \"data_lookback\": \"<string>\",\n  \"data_window\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"filters\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"force_override\": \"<boolean>\",\n  \"high_sigma\": \"<number>\",\n  \"med_sigma\": \"<number>\",\n  \"low_sigma\": \"<number>\",\n  \"strategy\": \"<string>\",\n  \"thresholds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"track_by\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"update_interval\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ca38e914-d740-4f29-ab7d-1b6a25e43842",
+              "name": "Threshold Automaton config",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithm\": \"<string>\",\n  \"data_interval\": \"<string>\",\n  \"data_lookback\": \"<string>\",\n  \"data_window\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"filters\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"force_override\": \"<boolean>\",\n  \"high_sigma\": \"<number>\",\n  \"med_sigma\": \"<number>\",\n  \"low_sigma\": \"<number>\",\n  \"strategy\": \"<string>\",\n  \"thresholds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"track_by\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"update_interval\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 9544,\n    \"count\": 8944\n  },\n  \"data\": {\n    \"customer\": \"string\",\n    \"algorithm\": \"string\",\n    \"data_interval\": \"string\",\n    \"data_lookback\": \"string\",\n    \"data_window\": \"string\",\n    \"disabled\": false,\n    \"filters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"force_override\": true,\n    \"high_sigma\": 8169.973169057202,\n    \"med_sigma\": 9220.966110914655,\n    \"low_sigma\": 5596.540964693495,\n    \"strategy\": \"string\",\n    \"thresholds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"track_by\": [\n      \"string\",\n      \"string\"\n    ],\n    \"update_interval\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8aab6062-f457-42c5-963b-79f099508884",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithm\": \"<string>\",\n  \"data_interval\": \"<string>\",\n  \"data_lookback\": \"<string>\",\n  \"data_window\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"filters\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"force_override\": \"<boolean>\",\n  \"high_sigma\": \"<number>\",\n  \"med_sigma\": \"<number>\",\n  \"low_sigma\": \"<number>\",\n  \"strategy\": \"<string>\",\n  \"thresholds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"track_by\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"update_interval\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a63e7280-2bd6-44c2-8c4f-be2fca0558d6",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithm\": \"<string>\",\n  \"data_interval\": \"<string>\",\n  \"data_lookback\": \"<string>\",\n  \"data_window\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"filters\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"force_override\": \"<boolean>\",\n  \"high_sigma\": \"<number>\",\n  \"med_sigma\": \"<number>\",\n  \"low_sigma\": \"<number>\",\n  \"strategy\": \"<string>\",\n  \"thresholds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"track_by\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"update_interval\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c70e3512-4e4f-494a-a26c-08a09dabf94d",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithm\": \"<string>\",\n  \"data_interval\": \"<string>\",\n  \"data_lookback\": \"<string>\",\n  \"data_window\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"filters\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"force_override\": \"<boolean>\",\n  \"high_sigma\": \"<number>\",\n  \"med_sigma\": \"<number>\",\n  \"low_sigma\": \"<number>\",\n  \"strategy\": \"<string>\",\n  \"thresholds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"track_by\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"update_interval\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "acf73b33-f412-4648-b0b7-394a34279543",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithm\": \"<string>\",\n  \"data_interval\": \"<string>\",\n  \"data_lookback\": \"<string>\",\n  \"data_window\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"filters\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"force_override\": \"<boolean>\",\n  \"high_sigma\": \"<number>\",\n  \"med_sigma\": \"<number>\",\n  \"low_sigma\": \"<number>\",\n  \"strategy\": \"<string>\",\n  \"thresholds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"track_by\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"update_interval\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "324de126-cbf7-4f98-85d1-873b71dc840a",
+          "name": "Get threshold automaton config",
+          "request": {
+            "name": "Get threshold automaton config",
+            "description": {
+              "content": "Returns the auto-threshold automaton config for a detection model",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "thresholder",
+                "automaton",
+                ":algorithm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "algorithm",
+                  "description": "(Required) The name of the detection model to fetch automaton config for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a9614416-6536-41a6-a8af-862e0c9bed82",
+              "name": "Threshold Automaton config",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The name of the detection model to fetch automaton config for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 9544,\n    \"count\": 8944\n  },\n  \"data\": {\n    \"customer\": \"string\",\n    \"algorithm\": \"string\",\n    \"data_interval\": \"string\",\n    \"data_lookback\": \"string\",\n    \"data_window\": \"string\",\n    \"disabled\": false,\n    \"filters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"force_override\": true,\n    \"high_sigma\": 8169.973169057202,\n    \"med_sigma\": 9220.966110914655,\n    \"low_sigma\": 5596.540964693495,\n    \"strategy\": \"string\",\n    \"thresholds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"track_by\": [\n      \"string\",\n      \"string\"\n    ],\n    \"update_interval\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "23dfc3b3-552b-430e-aa25-f30ea6315fe8",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The name of the detection model to fetch automaton config for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ace41cfc-08dc-4063-afca-28dc8f9a7b61",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The name of the detection model to fetch automaton config for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bc0895e-e7ad-4108-80fb-18cdae7b152c",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The name of the detection model to fetch automaton config for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cde2c318-0bc4-46fe-9948-f6144ff12e41",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The name of the detection model to fetch automaton config for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "512edd0f-d53a-475d-86fa-103ab2250735",
+          "name": "Delete automaton config",
+          "request": {
+            "name": "Delete automaton config",
+            "description": {
+              "content": "Deletes the threshold automaton config for a given detection model",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "thresholder",
+                "automaton",
+                ":algorithm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "algorithm",
+                  "description": "(Required) The name of the detection model to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ecadf922-0b0b-4456-873a-582dd2e67dac",
+              "name": "Empty Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The name of the detection model to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "75c5f199-e6fb-424c-8f2c-4a46987d104e",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The name of the detection model to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72a30fa1-1f5d-4554-b192-4b3c6bded384",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The name of the detection model to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72df58ba-63b9-42fe-90f9-71fa1a4f63fd",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The name of the detection model to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71e820d3-b553-41d6-9879-7dca2ef9d886",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The name of the detection model to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9bd14e80-075f-4b8c-9875-64c5052aa302",
+          "name": "Update threshold automaton config specific value",
+          "request": {
+            "name": "Update threshold automaton config specific value",
+            "description": {
+              "content": "Updates specific values in the auto-threshold automaton config for a given detection model.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "thresholder",
+                "automaton",
+                ":algorithm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "algorithm",
+                  "description": "(Required) The name of the detection model to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"algorithm\": \"<string>\",\n  \"data_interval\": \"<string>\",\n  \"data_lookback\": \"<string>\",\n  \"data_window\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"filters\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"force_override\": \"<boolean>\",\n  \"high_sigma\": \"<number>\",\n  \"med_sigma\": \"<number>\",\n  \"low_sigma\": \"<number>\",\n  \"strategy\": \"<string>\",\n  \"thresholds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"track_by\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"update_interval\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bfe46c4c-a8f1-4d8a-83c5-0eebfe0a00fa",
+              "name": "Threshold Automaton config",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The name of the detection model to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithm\": \"<string>\",\n  \"data_interval\": \"<string>\",\n  \"data_lookback\": \"<string>\",\n  \"data_window\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"filters\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"force_override\": \"<boolean>\",\n  \"high_sigma\": \"<number>\",\n  \"med_sigma\": \"<number>\",\n  \"low_sigma\": \"<number>\",\n  \"strategy\": \"<string>\",\n  \"thresholds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"track_by\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"update_interval\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 9544,\n    \"count\": 8944\n  },\n  \"data\": {\n    \"customer\": \"string\",\n    \"algorithm\": \"string\",\n    \"data_interval\": \"string\",\n    \"data_lookback\": \"string\",\n    \"data_window\": \"string\",\n    \"disabled\": false,\n    \"filters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"force_override\": true,\n    \"high_sigma\": 8169.973169057202,\n    \"med_sigma\": 9220.966110914655,\n    \"low_sigma\": 5596.540964693495,\n    \"strategy\": \"string\",\n    \"thresholds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"track_by\": [\n      \"string\",\n      \"string\"\n    ],\n    \"update_interval\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b110d202-6966-4484-a32e-91f706189f8d",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The name of the detection model to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithm\": \"<string>\",\n  \"data_interval\": \"<string>\",\n  \"data_lookback\": \"<string>\",\n  \"data_window\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"filters\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"force_override\": \"<boolean>\",\n  \"high_sigma\": \"<number>\",\n  \"med_sigma\": \"<number>\",\n  \"low_sigma\": \"<number>\",\n  \"strategy\": \"<string>\",\n  \"thresholds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"track_by\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"update_interval\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "842f4f4e-9e95-453c-ad2e-394b372f8045",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The name of the detection model to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithm\": \"<string>\",\n  \"data_interval\": \"<string>\",\n  \"data_lookback\": \"<string>\",\n  \"data_window\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"filters\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"force_override\": \"<boolean>\",\n  \"high_sigma\": \"<number>\",\n  \"med_sigma\": \"<number>\",\n  \"low_sigma\": \"<number>\",\n  \"strategy\": \"<string>\",\n  \"thresholds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"track_by\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"update_interval\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7938438-648d-456a-8eb6-44687f125fee",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The name of the detection model to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithm\": \"<string>\",\n  \"data_interval\": \"<string>\",\n  \"data_lookback\": \"<string>\",\n  \"data_window\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"filters\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"force_override\": \"<boolean>\",\n  \"high_sigma\": \"<number>\",\n  \"med_sigma\": \"<number>\",\n  \"low_sigma\": \"<number>\",\n  \"strategy\": \"<string>\",\n  \"thresholds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"track_by\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"update_interval\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f6ba375-5795-4dcb-a387-2bb1df9b400b",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The name of the detection model to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithm\": \"<string>\",\n  \"data_interval\": \"<string>\",\n  \"data_lookback\": \"<string>\",\n  \"data_window\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"filters\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"force_override\": \"<boolean>\",\n  \"high_sigma\": \"<number>\",\n  \"med_sigma\": \"<number>\",\n  \"low_sigma\": \"<number>\",\n  \"strategy\": \"<string>\",\n  \"thresholds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"track_by\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"update_interval\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a88b184-becf-48be-855a-ef27684cf48c",
+          "name": "Get track values",
+          "request": {
+            "name": "Get track values",
+            "description": {
+              "content": "Returns auto-threshold track data for the given track",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "thresholder",
+                "automaton",
+                ":algorithm",
+                "trackby",
+                ":track"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<number>",
+                  "description": "(Required) Unix timestamp defining the start of the data range to query"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<number>",
+                  "description": "(Required) Unix timestamp defining the end of the data range to query"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "algorithm",
+                  "description": "(Required) The name of the detection model to fetch track data for"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "track",
+                  "description": "(Required) The name of the track (group) to fetch data for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8db1ef1f-7034-4412-adb6-81ac6e2559d6",
+              "name": "List of track values for a given auto threshold",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton",
+                    ":algorithm",
+                    "trackby",
+                    ":track"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The name of the detection model to fetch track data for"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "track",
+                      "description": "(Required) The name of the track (group) to fetch data for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 653,\n    \"count\": 6865\n  },\n  \"data\": [\n    {\n      \"average\": 170.36352146728828,\n      \"deviation\": 1545.7421584638353,\n      \"operation\": \"string\",\n      \"threshold\": [\n        {\n          \"level\": \"string\",\n          \"value\": 4678.4519675862175\n        },\n        {\n          \"level\": \"string\",\n          \"value\": 4341.648542108482\n        }\n      ],\n      \"customer\": \"string\",\n      \"group\": \"string\",\n      \"algorithm\": \"string\",\n      \"timestamp\": 8232.788714549377\n    },\n    {\n      \"average\": 6870.011832015374,\n      \"deviation\": 9189.9746233905,\n      \"operation\": \"string\",\n      \"threshold\": [\n        {\n          \"level\": \"string\",\n          \"value\": 6534.714257518398\n        },\n        {\n          \"level\": \"string\",\n          \"value\": 5699.787255321868\n        }\n      ],\n      \"customer\": \"string\",\n      \"group\": \"string\",\n      \"algorithm\": \"string\",\n      \"timestamp\": 3093.8510409073574\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "595bcba1-d09c-48b5-9a4d-79a7a1003a4c",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton",
+                    ":algorithm",
+                    "trackby",
+                    ":track"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The name of the detection model to fetch track data for"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "track",
+                      "description": "(Required) The name of the track (group) to fetch data for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39e05c75-6af4-41d3-a220-31a62fdb3a28",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton",
+                    ":algorithm",
+                    "trackby",
+                    ":track"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The name of the detection model to fetch track data for"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "track",
+                      "description": "(Required) The name of the track (group) to fetch data for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86499d27-b593-4b35-9849-ca406ee38043",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton",
+                    ":algorithm",
+                    "trackby",
+                    ":track"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The name of the detection model to fetch track data for"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "track",
+                      "description": "(Required) The name of the track (group) to fetch data for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bdf12b62-87ef-4ed4-8178-75ad33e1e9ee",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "thresholder",
+                    "automaton",
+                    ":algorithm",
+                    "trackby",
+                    ":track"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The name of the detection model to fetch track data for"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "track",
+                      "description": "(Required) The name of the track (group) to fetch data for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 8808,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.netography.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fcef906f-faaf-43a1-89e2-7f51314cbd33",
+    "name": "Netography (Vectra Fusion) Analytics Auto Thresholds API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).",
+      "type": "text/plain"
+    }
+  }
+}

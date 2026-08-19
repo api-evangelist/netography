@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Authentication API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "via API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/auth/token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "To authenticate to the API, a JWT request token is encoded and sent as the `jwt` param in a `POST` to `/auth/token`.  The `access_token` in the response is the JWT bearer token that is included as the `Authorization` value in the `Header` of all subsequent API calls.\n\nIf you do not have the 4 fields below available, see [Create a Netography API Key](ref:create-a-netography-api-key).\n\n## Generating a JWT request token in code\n\n[block:tutorial-tile]\n{\n  \"backgroundColor\": \"#018FF4\",\n  \"emoji\": \"🦉"
+        },
+        {
+          "info": {
+            "name": "via User Credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/auth/bearer/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "username",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Obtain an `access_token` via User Credentials"
+        },
+        {
+          "info": {
+            "name": "via Refresh Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/auth/bearer/refresh",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "refresh_token",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Obtain a new `access_token` via a `refresh_token`"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

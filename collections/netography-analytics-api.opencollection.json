@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Analytics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/stats/:context/fields",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "path",
+                "description": "Context of the Fields Request"
+              }
+            ]
+          },
+          "docs": "Values that can be used for the <code>field</code> parameter in subsequent API calls"
+        },
+        {
+          "info": {
+            "name": "Aliases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/stats/:context/aliases",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "path",
+                "description": "Context of the Fields Request, e.g. flow"
+              }
+            ]
+          },
+          "docs": "Values that can be used for the <code>field</code> parameter in subsequent search API calls.  \nAliases are shortcuts for searching multiple fields of a similar nomenclature.  \nExamples:\n  * <code>ip == 8.8.8.8</code> will be interpolated to create a search of <code>(dstip = 8.8.8.8 or srcip = 8.8.8.8)</code>\n  * <code>ipname == myipname</code> will create a search of <code>(dstipname = myipname or srcipname = myipname)</code>\n  * <code>as.number</code> will search the fields <code>dstas.number, "
+        },
+        {
+          "info": {
+            "name": "Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/stats/:context/metrics",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "path",
+                "description": "Context of the Metrics Request"
+              }
+            ]
+          },
+          "docs": "Values that can be used for the <code>metric</code> parameter in subsequent search API calls"
+        },
+        {
+          "info": {
+            "name": "Time Series",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/stats/:context/ts",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "path",
+                "description": "Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Request data as a time series. This is used for charts and graphs."
+        },
+        {
+          "info": {
+            "name": "Aggregations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/stats/:context/agg",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "path",
+                "description": "Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get summarized statistics by aggregating data for the specified context over a given time range. Returns computed metrics like counts, sums, averages, etc. rather than individual events."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

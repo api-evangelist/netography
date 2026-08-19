@@ -1,0 +1,284 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Labels - Ports API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Labels - Ports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Port Labels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/labels/ports"
+          },
+          "docs": "Returns an array of port labels."
+        },
+        {
+          "info": {
+            "name": "Create Port Label",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/labels/ports",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a port label from the data that's been supplied"
+        },
+        {
+          "info": {
+            "name": "Update Port Label",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/labels/ports",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Port Label given the provided object. This does not do a diff. You must send the complete object."
+        },
+        {
+          "info": {
+            "name": "List Configured Protocols",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/labels/ports/protocols"
+          },
+          "docs": "Returns an array of protocols."
+        },
+        {
+          "info": {
+            "name": "List Port Labels by protocol",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/labels/ports/all/:protocol",
+            "params": [
+              {
+                "name": "protocol",
+                "value": "",
+                "type": "path",
+                "description": "The protocol of the Port labels to be returned."
+              }
+            ]
+          },
+          "docs": "Fetches all labels by a specific protocol for all Ports."
+        },
+        {
+          "info": {
+            "name": "List Port Labels by port",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/labels/ports/:port",
+            "params": [
+              {
+                "name": "port",
+                "value": "",
+                "type": "path",
+                "description": "The Port number of the Port labels to be returned."
+              }
+            ]
+          },
+          "docs": "Fetches a all Port labels for the port supplied in the path."
+        },
+        {
+          "info": {
+            "name": "Fetch Port Label",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/labels/:port/:protocol",
+            "params": [
+              {
+                "name": "port",
+                "value": "",
+                "type": "path",
+                "description": "The port of the port label to be returned."
+              },
+              {
+                "name": "protocol",
+                "value": "",
+                "type": "path",
+                "description": "The protocol of the port label to be returned."
+              }
+            ]
+          },
+          "docs": "Fetches a specific port label from the protocol and port supplied in the path."
+        },
+        {
+          "info": {
+            "name": "Delete Port Label by port:protocol",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/labels/:port/:protocol",
+            "params": [
+              {
+                "name": "port",
+                "value": "",
+                "type": "path",
+                "description": "The port of the port label to be deleted."
+              },
+              {
+                "name": "protocol",
+                "value": "",
+                "type": "path",
+                "description": "The protocol of the port label to be deleted."
+              }
+            ]
+          },
+          "docs": "Delete Port Label"
+        },
+        {
+          "info": {
+            "name": "Expose Port Label",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/labels/ports/:port/:protocol/show",
+            "params": [
+              {
+                "name": "port",
+                "value": "",
+                "type": "path",
+                "description": "The port of the port label to be exposed.  Labels in this protocol will now appear for this Port in the UI."
+              },
+              {
+                "name": "protocol",
+                "value": "",
+                "type": "path",
+                "description": "The protocol of the port label to be shown."
+              }
+            ]
+          },
+          "docs": "Expose (un-hide) a hidden system port label."
+        },
+        {
+          "info": {
+            "name": "Hide Port Label",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/labels/ports/:port/:protocol/hide",
+            "params": [
+              {
+                "name": "port",
+                "value": "",
+                "type": "path",
+                "description": "The port of the port label to be hidden."
+              },
+              {
+                "name": "protocol",
+                "value": "",
+                "type": "path",
+                "description": "The protocol of the port label to be hidden."
+              }
+            ]
+          },
+          "docs": "Hide system port label."
+        },
+        {
+          "info": {
+            "name": "Reset Port Label",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/labels/ports/:port/:protocol/reset",
+            "params": [
+              {
+                "name": "port",
+                "value": "",
+                "type": "path",
+                "description": "The port of the port label to be reset."
+              },
+              {
+                "name": "protocol",
+                "value": "",
+                "type": "path",
+                "description": "The protocol of the port label to be reset."
+              }
+            ]
+          },
+          "docs": "Reset system port label to default state."
+        },
+        {
+          "info": {
+            "name": "Bulk Upload Port Labels",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/labels/ports/bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk upload port labels.  New labels will be created, and existing labels will be replaced. Limited to 10,000 labels per request."
+        },
+        {
+          "info": {
+            "name": "Bulk Delete Port Labels",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/labels/ports/bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk delete port labels from the data that's been supplied"
+        },
+        {
+          "info": {
+            "name": "Upload Port Labels",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/labels/ports/upload",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload Port labels via a CSV file.  New labels will be created, and existing labels will be replaced. Limited to 10,000 labels per request. <br> The CSV must be a text file and should NOT have any headers.  Multiple labels can be assigned per protocol by having additional columns.<br> <br> Example CSV:<br> ```Port1, Protocol1, Label1```<br> ```Port1, Protocol2, Label1, Label2```<br> ```Port2, Protocol1, Label3```<br> ```Port2, Protocol4, Label4, Label5, Label6```<br>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

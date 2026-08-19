@@ -1,0 +1,143 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Detect and Respond - Response Policies API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Detect and Respond - Response Policies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Response Policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/rule-engine/rules"
+          },
+          "docs": "Returns an array of Response Policies."
+        },
+        {
+          "info": {
+            "name": "Create Response Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/rule-engine/rule",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a response policy from the data that's been supplied."
+        },
+        {
+          "info": {
+            "name": "Fetch Response Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/rule-engine/rule/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the response policy to be returned."
+              }
+            ]
+          },
+          "docs": "Fetches a specific response policy from the ID supplied in the path."
+        },
+        {
+          "info": {
+            "name": "Update Response Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/rule-engine/rule/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the response policy to be updated"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a response policy given the provided object.  This does not do a diff.  You must send the complete object."
+        },
+        {
+          "info": {
+            "name": "Delete Response Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/rule-engine/rule/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the response policy to be deleted"
+              }
+            ]
+          },
+          "docs": "Deletes a response policy"
+        },
+        {
+          "info": {
+            "name": "Enable Response Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/rule-engine/rule/:id/enable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the response policy to be enabled"
+              }
+            ]
+          },
+          "docs": "Enables a response policy"
+        },
+        {
+          "info": {
+            "name": "Disable Response Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/rule-engine/rule/:id/disable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the response policy to be disabled"
+              }
+            ]
+          },
+          "docs": "Disables a response policy"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

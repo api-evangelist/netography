@@ -1,0 +1,2010 @@
+{
+  "item": [
+    {
+      "id": "023240fc-ffed-4940-82d5-f3aacd92ccdc",
+      "name": "Detect and Respond - Response Policies",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "88264d55-ade6-490a-b4ea-cefc794d315c",
+          "name": "List Response Policies",
+          "request": {
+            "name": "List Response Policies",
+            "description": {
+              "content": "Returns an array of Response Policies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5db386a0-f283-47f0-8420-807a93f483c4",
+              "name": "List of Requested Response Policies",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 5857,\n    \"count\": 3134\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"plugins\": [\n        {\n          \"adapter\": \"string\",\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"notification\"\n        },\n        {\n          \"adapter\": \"string\",\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"traffic\"\n        }\n      ],\n      \"config\": {\n        \"alerttypes\": [\n          \"start\",\n          \"end\"\n        ],\n        \"severities\": [\n          \"medium\",\n          \"high\"\n        ],\n        \"algorithms\": [\n          \"string\",\n          \"string\"\n        ],\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"tracks\": [\n          \"flowsrcname\",\n          \"input\"\n        ]\n      },\n      \"description\": \"string\",\n      \"name\": \"string\",\n      \"enabled\": false,\n      \"type\": \"alert\"\n    },\n    {\n      \"id\": \"string\",\n      \"plugins\": [\n        {\n          \"adapter\": \"string\",\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"block\"\n        },\n        {\n          \"adapter\": \"string\",\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"traffic\"\n        }\n      ],\n      \"config\": {\n        \"alerttypes\": [\n          \"end\",\n          \"ongoing\"\n        ],\n        \"severities\": [\n          \"low\",\n          \"high\"\n        ],\n        \"algorithms\": [\n          \"string\",\n          \"string\"\n        ],\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"tracks\": [\n          \"output\",\n          \"all\"\n        ]\n      },\n      \"description\": \"string\",\n      \"name\": \"string\",\n      \"enabled\": false,\n      \"type\": \"alert\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a7b1ddd-5cd5-4620-bb63-960fe7d9beda",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b33efc58-eca7-45ff-af26-ad9ad29bf523",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f5596ba-d306-45d4-9cfd-c5393b212579",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b80f05c9-7d1a-4ae9-b7ba-cc542e5d76e6",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2f2cdd6-a6d6-480b-a043-ff5c1f3b7d88",
+          "name": "Create Response Policy",
+          "request": {
+            "name": "Create Response Policy",
+            "description": {
+              "content": "Creates a response policy from the data that's been supplied.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "rule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"plugins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"config\": {\n    \"alerttypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"severities\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"algorithms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categories\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tracks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9a157761-dec1-46eb-95db-a07252e6d25e",
+              "name": "Requested Response Policy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"plugins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"config\": {\n    \"alerttypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"severities\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"algorithms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categories\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tracks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 9430,\n    \"count\": 3602\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"plugins\": [\n        {\n          \"adapter\": \"string\",\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"notification\"\n        },\n        {\n          \"adapter\": \"string\",\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"block\"\n        }\n      ],\n      \"config\": {\n        \"alerttypes\": [\n          \"all\",\n          \"end\"\n        ],\n        \"severities\": [\n          \"low\",\n          \"all\"\n        ],\n        \"algorithms\": [\n          \"string\",\n          \"string\"\n        ],\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"tracks\": [\n          \"srcip\",\n          \"output\"\n        ]\n      },\n      \"description\": \"string\",\n      \"name\": \"string\",\n      \"enabled\": true,\n      \"type\": \"alert\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "384ac171-5400-4529-a1c5-17e250c077d6",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"plugins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"config\": {\n    \"alerttypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"severities\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"algorithms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categories\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tracks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "923c42c9-51b8-47a0-9f62-a4fefc9e779c",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"plugins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"config\": {\n    \"alerttypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"severities\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"algorithms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categories\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tracks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b26144d9-ceac-4978-99ca-238bceb2e626",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"plugins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"config\": {\n    \"alerttypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"severities\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"algorithms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categories\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tracks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9bce4746-4eaa-49b3-841f-e6fd0ecc78d6",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"plugins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"config\": {\n    \"alerttypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"severities\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"algorithms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categories\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tracks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ca4ddc9-2a8e-4a18-b815-9a96c1193856",
+          "name": "Fetch Response Policy",
+          "request": {
+            "name": "Fetch Response Policy",
+            "description": {
+              "content": "Fetches a specific response policy from the ID supplied in the path.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "rule",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the response policy to be returned."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ccf7328e-93dc-4650-9650-ad6269c0974d",
+              "name": "Requested Response Policy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 9430,\n    \"count\": 3602\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"plugins\": [\n        {\n          \"adapter\": \"string\",\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"notification\"\n        },\n        {\n          \"adapter\": \"string\",\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"block\"\n        }\n      ],\n      \"config\": {\n        \"alerttypes\": [\n          \"all\",\n          \"end\"\n        ],\n        \"severities\": [\n          \"low\",\n          \"all\"\n        ],\n        \"algorithms\": [\n          \"string\",\n          \"string\"\n        ],\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"tracks\": [\n          \"srcip\",\n          \"output\"\n        ]\n      },\n      \"description\": \"string\",\n      \"name\": \"string\",\n      \"enabled\": true,\n      \"type\": \"alert\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c105e7a-8e40-4a74-87d8-85408d024900",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e94fbd1-f635-460c-ab76-16840bf36acc",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df42bc0c-95c1-4f25-80a0-49016a4d817f",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff816776-58a7-446b-9918-3b284b07e7e8",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc49f8e8-e40f-471f-9349-04b7f3a01451",
+          "name": "Update Response Policy",
+          "request": {
+            "name": "Update Response Policy",
+            "description": {
+              "content": "Update a response policy given the provided object.  This does not do a diff.  You must send the complete object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "rule",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the response policy to be updated"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"plugins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"config\": {\n    \"alerttypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"severities\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"algorithms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categories\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tracks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2912767e-d9ad-44da-b59d-b5898491bea1",
+              "name": "Requested Response Policy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"plugins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"config\": {\n    \"alerttypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"severities\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"algorithms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categories\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tracks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 9430,\n    \"count\": 3602\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"plugins\": [\n        {\n          \"adapter\": \"string\",\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"notification\"\n        },\n        {\n          \"adapter\": \"string\",\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"block\"\n        }\n      ],\n      \"config\": {\n        \"alerttypes\": [\n          \"all\",\n          \"end\"\n        ],\n        \"severities\": [\n          \"low\",\n          \"all\"\n        ],\n        \"algorithms\": [\n          \"string\",\n          \"string\"\n        ],\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"tracks\": [\n          \"srcip\",\n          \"output\"\n        ]\n      },\n      \"description\": \"string\",\n      \"name\": \"string\",\n      \"enabled\": true,\n      \"type\": \"alert\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "563c2305-0099-46ab-92f7-b6721f9188f9",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"plugins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"config\": {\n    \"alerttypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"severities\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"algorithms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categories\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tracks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e639f96-ddf7-44c0-a1f9-eb9e7a7e4c24",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"plugins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"config\": {\n    \"alerttypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"severities\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"algorithms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categories\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tracks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba1fa6ca-e9d5-4d45-993e-a48858e311bf",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"plugins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"config\": {\n    \"alerttypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"severities\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"algorithms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categories\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tracks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64e2de37-00be-4677-9f54-31c678dbade7",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"plugins\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"config\": {\n    \"alerttypes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"severities\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"algorithms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categories\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"tracks\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"description\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ddb4703-6f0c-4af6-b789-67fcc6b3362a",
+          "name": "Delete Response Policy",
+          "request": {
+            "name": "Delete Response Policy",
+            "description": {
+              "content": "Deletes a response policy",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "rule",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the response policy to be deleted"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cfad324d-855b-4d20-be6c-c55b07ff7dc4",
+              "name": "An empty array",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be deleted"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1fed66f5-fbf2-4576-bc57-64a52fd50a52",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e90632b-fbf7-476c-8fdc-93830a5426e0",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "295d64f7-d2d2-4e96-a170-f2842453cc89",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9331a60b-9725-4caf-a190-710839699512",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90b47128-0004-4244-bf0c-2ac83cb13228",
+          "name": "Enable Response Policy",
+          "request": {
+            "name": "Enable Response Policy",
+            "description": {
+              "content": "Enables a response policy",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "rule",
+                ":id",
+                "enable"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the response policy to be enabled"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aff30274-1f40-4a34-9dc7-9f6304f03327",
+              "name": "Requested Response Policy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be enabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 9430,\n    \"count\": 3602\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"plugins\": [\n        {\n          \"adapter\": \"string\",\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"notification\"\n        },\n        {\n          \"adapter\": \"string\",\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"block\"\n        }\n      ],\n      \"config\": {\n        \"alerttypes\": [\n          \"all\",\n          \"end\"\n        ],\n        \"severities\": [\n          \"low\",\n          \"all\"\n        ],\n        \"algorithms\": [\n          \"string\",\n          \"string\"\n        ],\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"tracks\": [\n          \"srcip\",\n          \"output\"\n        ]\n      },\n      \"description\": \"string\",\n      \"name\": \"string\",\n      \"enabled\": true,\n      \"type\": \"alert\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c86a58f1-f5ba-46a4-a50b-f5f6b1371f04",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be enabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f54572da-8a24-4caf-9b32-57d9a888903f",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be enabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ae56f4c-f32d-4671-b822-bc00f5013e0d",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be enabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a30d571d-ac95-4d88-b4b0-0fe095d2de1c",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be enabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b258c630-3608-49a0-a637-fc50cd46f153",
+          "name": "Disable Response Policy",
+          "request": {
+            "name": "Disable Response Policy",
+            "description": {
+              "content": "Disables a response policy",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "rule",
+                ":id",
+                "disable"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the response policy to be disabled"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57ef621d-daea-4799-a86b-035ac15b19be",
+              "name": "Requested Response Policy",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be disabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 9430,\n    \"count\": 3602\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"plugins\": [\n        {\n          \"adapter\": \"string\",\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"notification\"\n        },\n        {\n          \"adapter\": \"string\",\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"type\": \"block\"\n        }\n      ],\n      \"config\": {\n        \"alerttypes\": [\n          \"all\",\n          \"end\"\n        ],\n        \"severities\": [\n          \"low\",\n          \"all\"\n        ],\n        \"algorithms\": [\n          \"string\",\n          \"string\"\n        ],\n        \"categories\": [\n          \"string\",\n          \"string\"\n        ],\n        \"tracks\": [\n          \"srcip\",\n          \"output\"\n        ]\n      },\n      \"description\": \"string\",\n      \"name\": \"string\",\n      \"enabled\": true,\n      \"type\": \"alert\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "610e21c2-890b-4b02-a86b-2fd06143b62e",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be disabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a21310e-2656-4dd9-b474-85475ccc7126",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be disabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09cf00e1-9e9f-4f12-9bca-7c9e7554762b",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be disabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f71a245a-0f59-452c-b2f0-f387e7f8ba03",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "rule",
+                    ":id",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the response policy to be disabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7081,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.netography.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "afc45465-7bc3-4c68-8a86-7244b6628736",
+    "name": "Netography (Vectra Fusion) Analytics Detect and Respond - Response Policies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).",
+      "type": "text/plain"
+    }
+  }
+}

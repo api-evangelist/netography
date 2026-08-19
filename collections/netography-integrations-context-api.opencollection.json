@@ -1,0 +1,162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Integrations - Context API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Integrations - Context",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Context Integrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/integrations/context"
+          },
+          "docs": "Returns an array of context integrations."
+        },
+        {
+          "info": {
+            "name": "Create Context Integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/integrations/context",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a context integration from the data that's been supplied.  Do not provide an id.  IDs are auto generated"
+        },
+        {
+          "info": {
+            "name": "Fetch Context Integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/integrations/context/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the context integration to be returned."
+              }
+            ]
+          },
+          "docs": "Fetches a specific context integration from the ID supplied in the path."
+        },
+        {
+          "info": {
+            "name": "Update Context Integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/integrations/context/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the context integration to be updated"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a context integration given the provided object.  This does not do a diff.  You must send the complete object."
+        },
+        {
+          "info": {
+            "name": "Delete Context Integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/integrations/context/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the context integration to be deleted"
+              }
+            ]
+          },
+          "docs": "Deletes a context integration"
+        },
+        {
+          "info": {
+            "name": "Dry Run/Test a Context Integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/integrations/context/:id/run",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the context integration to be test run."
+              }
+            ]
+          },
+          "docs": "Runs the specified context integration.  Retuns a list of ip labels that would be imported when the context integration is run."
+        },
+        {
+          "info": {
+            "name": "Run a Context Integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/integrations/context/:id/run",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the context integration to be test run."
+              }
+            ]
+          },
+          "docs": "Runs the specified context integration.  Returns a list of ip labels that were imported."
+        },
+        {
+          "info": {
+            "name": "Regenerate private/public keys.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/integrations/context/:id/regenkeys",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "String ID of the role to get"
+              }
+            ]
+          },
+          "docs": "Only applicable to Oracle Cloud."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

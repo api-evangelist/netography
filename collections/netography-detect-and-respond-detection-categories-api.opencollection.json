@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Detect and Respond - Detection Categories API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Detect and Respond - Detection Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Detection Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/rule-engine/categories"
+          },
+          "docs": "Returns an array of Detection Categories."
+        },
+        {
+          "info": {
+            "name": "Delete All Custom Detection Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/rule-engine/categories"
+          },
+          "docs": "Deletes all custom detection categories."
+        },
+        {
+          "info": {
+            "name": "Fetch Detection Category",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/rule-engine/category/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The NAME of the detection category to be returned."
+              }
+            ]
+          },
+          "docs": "Fetches a specific detection category from the NAME supplied in the path."
+        },
+        {
+          "info": {
+            "name": "Create or Update Detection Category",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/rule-engine/category/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The NAME of the detection category to be created or updeted."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update a detection category given the provided object."
+        },
+        {
+          "info": {
+            "name": "Delete Detection Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/rule-engine/category/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The NAME of the detection category to be deleted."
+              }
+            ]
+          },
+          "docs": "Deletes a detection model"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

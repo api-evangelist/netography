@@ -1,0 +1,279 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Traffic Sources - Devices API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Traffic Sources - Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/devices"
+          },
+          "docs": "Returns an array of devices."
+        },
+        {
+          "info": {
+            "name": "Create Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/device",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a device from the data that's been supplied.  Do not provide an id.  IDs are auto generated"
+        },
+        {
+          "info": {
+            "name": "Fetch Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/device/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the device to be returned."
+              }
+            ]
+          },
+          "docs": "Fetches a specific device from the ID supplied in the path."
+        },
+        {
+          "info": {
+            "name": "Update Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/device/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the device to be updated"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a device given the provided object.  This does not do a diff.  You must send the complete object."
+        },
+        {
+          "info": {
+            "name": "Delete Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/device/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the device to be deleted"
+              }
+            ]
+          },
+          "docs": "Deletes a device"
+        },
+        {
+          "info": {
+            "name": "List Device Statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/devices/status"
+          },
+          "docs": "Returns an array of device status objects."
+        },
+        {
+          "info": {
+            "name": "Fetch Device Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/device/status/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the device to be returned."
+              }
+            ]
+          },
+          "docs": "Fetches a specific device from the ID supplied in the path."
+        },
+        {
+          "info": {
+            "name": "List BGP Neighbors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/bgp/neighbors"
+          },
+          "docs": "Returns an array of BGP Neighbors."
+        },
+        {
+          "info": {
+            "name": "List BGP Neighbors for a Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/bgp/neighbors/devices/:deviceid",
+            "params": [
+              {
+                "name": "deviceid",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the device to retrieve BGP Neighbors for."
+              }
+            ]
+          },
+          "docs": "Returns an array of BGP Neighbors for a Device."
+        },
+        {
+          "info": {
+            "name": "Create BGP Neighbor",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/bgp/neighbor",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new BGP Neighbor."
+        },
+        {
+          "info": {
+            "name": "Get BGP Neighbor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/bgp/neighbor/:neighborid",
+            "params": [
+              {
+                "name": "neighborid",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the BGP Neighbor to retrieve."
+              }
+            ]
+          },
+          "docs": "Returns the details of a specific BGP Neighbor."
+        },
+        {
+          "info": {
+            "name": "Update BGP Neighbor",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/bgp/neighbor/:neighborid",
+            "params": [
+              {
+                "name": "neighborid",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the BGP Neighbor to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the details of a specific BGP Neighbor."
+        },
+        {
+          "info": {
+            "name": "Delete BGP Neighbor",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/bgp/neighbor/:neighborid",
+            "params": [
+              {
+                "name": "neighborid",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the BGP Neighbor to delete."
+              }
+            ]
+          },
+          "docs": "Deletes a specific BGP Neighbor."
+        },
+        {
+          "info": {
+            "name": "Enable BGP Neighbor",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/bgp/neighbor/:neighborid/enable",
+            "params": [
+              {
+                "name": "neighborid",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the BGP Neighbor to enable."
+              }
+            ]
+          },
+          "docs": "Enable a specific BGP Neighbor."
+        },
+        {
+          "info": {
+            "name": "Disable BGP Neighbor",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/bgp/neighbor/:neighborid/disable",
+            "params": [
+              {
+                "name": "neighborid",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the BGP Neighbor to disable."
+              }
+            ]
+          },
+          "docs": "Disable a specific BGP Neighbor."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

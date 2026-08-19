@@ -1,0 +1,128 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics API Keys API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "API Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List API Keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/api-keys"
+          },
+          "docs": "Return a list of all API Keys."
+        },
+        {
+          "info": {
+            "name": "Create API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/api-keys",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an API Key from the supplied object."
+        },
+        {
+          "info": {
+            "name": "Get API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/api-keys/:appname",
+            "params": [
+              {
+                "name": "appname",
+                "value": "",
+                "type": "path",
+                "description": "String appname of the API Key to get"
+              }
+            ]
+          },
+          "docs": "Fetches a specific API Key from the appname supplied in the path."
+        },
+        {
+          "info": {
+            "name": "Update API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/api-keys/:appname",
+            "params": [
+              {
+                "name": "appname",
+                "value": "",
+                "type": "path",
+                "description": "String appname of the API Key to get"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a API Key given the provided object.  This does not do a diff.  You must send the complete object."
+        },
+        {
+          "info": {
+            "name": "Delete API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/api-keys/:appname",
+            "params": [
+              {
+                "name": "appname",
+                "value": "",
+                "type": "path",
+                "description": "String appname of the API Key to get"
+              }
+            ]
+          },
+          "docs": "Deletes the API Key"
+        },
+        {
+          "info": {
+            "name": "Update API Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/api-keys/:appname/regen",
+            "params": [
+              {
+                "name": "appname",
+                "value": "",
+                "type": "path",
+                "description": "String appname of the API Key to get"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a API Key given the provided object.  This does not do a diff.  You must send the complete object."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Intelligence API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Intelligence",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ASN Lookup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/intel/lookup/asns",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This method takes an array of ASNs and looks up the corresponding ORG."
+        },
+        {
+          "info": {
+            "name": "CVE Lookup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/cve/:cveid",
+            "params": [
+              {
+                "name": "cveid",
+                "value": "",
+                "type": "path",
+                "description": "The unique Common Vulnerabilities and Exposures identifier (the CVE ID)"
+              }
+            ]
+          },
+          "docs": "Returns Common Vulnerability and Exposure information for the CVE ID provided.\nFor more information on the data returned, see the <a href=\"https://nvd.nist.gov/developers/vulnerabilities\" target=\"_blank\">NIST NVD CVE API response documentation</a>\n"
+        },
+        {
+          "info": {
+            "name": "IP Lookup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/intel/lookup/ips",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This method takes an array of IPs and looks up the corresponding information."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

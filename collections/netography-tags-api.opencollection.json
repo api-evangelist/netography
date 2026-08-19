@@ -1,0 +1,169 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Tags API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/tags",
+            "params": [
+              {
+                "name": "terse",
+                "value": "",
+                "type": "query",
+                "description": "boolean as integer.  default 1 (true).  0 for false.  true will return a simple array of tags, e.g. [ 'tag1', 'tag2', 'tag3', ... ]"
+              }
+            ]
+          },
+          "docs": "Return a list of all Tags."
+        },
+        {
+          "info": {
+            "name": "List Tags by Entity Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/tags/:entitytype",
+            "params": [
+              {
+                "name": "entitytype",
+                "value": "",
+                "type": "path",
+                "description": "Entity Type of the Tags, e.g. device, flow, vpc"
+              },
+              {
+                "name": "terse",
+                "value": "",
+                "type": "query",
+                "description": "boolean as integer.  default 1 (true).  0 for false.  true will return a simple array of tags, e.g. [ 'tag1', 'tag2', 'tag3', ... ]"
+              }
+            ]
+          },
+          "docs": "Return a list of all Tags."
+        },
+        {
+          "info": {
+            "name": "Get Tag Values for IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/tags/ip",
+            "params": [
+              {
+                "name": "ip",
+                "value": "",
+                "type": "query",
+                "description": "The IP address to retrieve tag values for"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Start time for the query. Negative values represent lookback time in seconds from now \n(e.g., -86400 for 24 hours ago), or positive values represent Unix timestamp in seconds.\n"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End time for the query. Negative values represent lookback time in seconds from now \n(e.g., -3600 for 1 hour ago), 0 for current time, or positive values represent Unix timestamp in seconds.\n"
+              }
+            ]
+          },
+          "docs": "Returns all tag values associated with a specific IP address within the specified timeframe.\n\nThis endpoint allows you to retrieve all tags that have been applied to flows associated with the given IP address during the specified time period.\n"
+        },
+        {
+          "info": {
+            "name": "Create Flow Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/tag/flow",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Tag given the provided object."
+        },
+        {
+          "info": {
+            "name": "Get Flow Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/tag/flow/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Flow Tag to be returned."
+              }
+            ]
+          },
+          "docs": "Fetches a specific Flow Tag from the ID supplied in the path."
+        },
+        {
+          "info": {
+            "name": "Update Flow Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/tag/flow/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Flow Tag Rule to be updated"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Flow Tag given the provided object.  This does not do a diff.  You must send the complete object and have at least 1 match criteria set."
+        },
+        {
+          "info": {
+            "name": "Delete Flow Tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/tag/flow/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Flow Tag Rule to be deleted"
+              }
+            ]
+          },
+          "docs": "Deletes the Flow Tag."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

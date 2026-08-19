@@ -1,0 +1,2581 @@
+{
+  "item": [
+    {
+      "id": "108585c0-cf32-4924-81da-10f3a27dfb5c",
+      "name": "Detect and Respond - Threshold Overrides",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "125c79dc-396b-42ae-a831-dcab301da289",
+          "name": "List Threshold Overrides",
+          "request": {
+            "name": "List Threshold Overrides",
+            "description": {
+              "content": "Returns an array of Threshold Overrides.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "triggers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b2bce71c-31dc-4fd0-a04c-c39e32b2879e",
+              "name": "List of Requested Threshold Overrides",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 7512,\n    \"count\": 1803\n  },\n  \"data\": [\n    {\n      \"algorithm\": \"string\",\n      \"auto\": true,\n      \"beta\": false,\n      \"bypassdisplay\": false,\n      \"bypassrule\": false,\n      \"createdby\": \"string\",\n      \"default\": true,\n      \"items\": \"string\",\n      \"ndm_score_confidence\": 7125,\n      \"ndm_score_threat\": 4912,\n      \"rollupperiod\": 8443,\n      \"sharedkey\": true,\n      \"state\": \"string\",\n      \"thresholds\": [\n        {\n          \"severity\": \"low\",\n          \"threshold\": \"string\"\n        },\n        {\n          \"severity\": \"medium\",\n          \"threshold\": \"string\"\n        }\n      ],\n      \"track\": \"string\",\n      \"updateinterval\": 9676\n    },\n    {\n      \"algorithm\": \"string\",\n      \"auto\": false,\n      \"beta\": true,\n      \"bypassdisplay\": true,\n      \"bypassrule\": false,\n      \"createdby\": \"string\",\n      \"default\": false,\n      \"items\": \"string\",\n      \"ndm_score_confidence\": 8951,\n      \"ndm_score_threat\": 8596,\n      \"rollupperiod\": 9719,\n      \"sharedkey\": true,\n      \"state\": \"string\",\n      \"thresholds\": [\n        {\n          \"severity\": \"high\",\n          \"threshold\": \"string\"\n        },\n        {\n          \"severity\": \"medium\",\n          \"threshold\": \"string\"\n        }\n      ],\n      \"track\": \"string\",\n      \"updateinterval\": 2575\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dee596b8-ae87-46da-8550-c1005ce60cd3",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a6c8de3-8707-4f37-ac9f-534fa2cfa77a",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e162dd32-fcb7-48cf-b546-23f4d8374d5a",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e0ff8dd-f27a-4570-a5e1-8cc658830503",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41ccdb82-fea7-4cb5-9274-db739f64d855",
+          "name": "Create or Update Threshold Overrides",
+          "request": {
+            "name": "Create or Update Threshold Overrides",
+            "description": {
+              "content": "Create or update threshold overrides given the provided object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "triggers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4d4ba1ae-6734-40f7-af5f-835b94e23a5a",
+              "name": "List of Requested Threshold Overrides",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithm\": \"<string>\",\n  \"rollupperiod\": \"<integer>\",\n  \"thresholds\": [\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    }\n  ],\n  \"track\": \"<string>\",\n  \"updateinterval\": \"<integer>\",\n  \"auto\": \"<boolean>\",\n  \"beta\": \"<boolean>\",\n  \"bypassdisplay\": \"<boolean>\",\n  \"bypassrule\": \"<boolean>\",\n  \"createdby\": \"<string>\",\n  \"default\": \"<boolean>\",\n  \"discards\": \"<array>\",\n  \"items\": \"<string>\",\n  \"ndm_score_confidence\": \"<integer>\",\n  \"ndm_score_threat\": \"<integer>\",\n  \"sharedkey\": \"<boolean>\",\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 7512,\n    \"count\": 1803\n  },\n  \"data\": [\n    {\n      \"algorithm\": \"string\",\n      \"auto\": true,\n      \"beta\": false,\n      \"bypassdisplay\": false,\n      \"bypassrule\": false,\n      \"createdby\": \"string\",\n      \"default\": true,\n      \"items\": \"string\",\n      \"ndm_score_confidence\": 7125,\n      \"ndm_score_threat\": 4912,\n      \"rollupperiod\": 8443,\n      \"sharedkey\": true,\n      \"state\": \"string\",\n      \"thresholds\": [\n        {\n          \"severity\": \"low\",\n          \"threshold\": \"string\"\n        },\n        {\n          \"severity\": \"medium\",\n          \"threshold\": \"string\"\n        }\n      ],\n      \"track\": \"string\",\n      \"updateinterval\": 9676\n    },\n    {\n      \"algorithm\": \"string\",\n      \"auto\": false,\n      \"beta\": true,\n      \"bypassdisplay\": true,\n      \"bypassrule\": false,\n      \"createdby\": \"string\",\n      \"default\": false,\n      \"items\": \"string\",\n      \"ndm_score_confidence\": 8951,\n      \"ndm_score_threat\": 8596,\n      \"rollupperiod\": 9719,\n      \"sharedkey\": true,\n      \"state\": \"string\",\n      \"thresholds\": [\n        {\n          \"severity\": \"high\",\n          \"threshold\": \"string\"\n        },\n        {\n          \"severity\": \"medium\",\n          \"threshold\": \"string\"\n        }\n      ],\n      \"track\": \"string\",\n      \"updateinterval\": 2575\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a9e1f48b-8b86-477f-9cbf-f5f53cd90fa6",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithm\": \"<string>\",\n  \"rollupperiod\": \"<integer>\",\n  \"thresholds\": [\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    }\n  ],\n  \"track\": \"<string>\",\n  \"updateinterval\": \"<integer>\",\n  \"auto\": \"<boolean>\",\n  \"beta\": \"<boolean>\",\n  \"bypassdisplay\": \"<boolean>\",\n  \"bypassrule\": \"<boolean>\",\n  \"createdby\": \"<string>\",\n  \"default\": \"<boolean>\",\n  \"discards\": \"<array>\",\n  \"items\": \"<string>\",\n  \"ndm_score_confidence\": \"<integer>\",\n  \"ndm_score_threat\": \"<integer>\",\n  \"sharedkey\": \"<boolean>\",\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "486d22d1-5145-4b66-b3c8-242f0c1482fe",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithm\": \"<string>\",\n  \"rollupperiod\": \"<integer>\",\n  \"thresholds\": [\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    }\n  ],\n  \"track\": \"<string>\",\n  \"updateinterval\": \"<integer>\",\n  \"auto\": \"<boolean>\",\n  \"beta\": \"<boolean>\",\n  \"bypassdisplay\": \"<boolean>\",\n  \"bypassrule\": \"<boolean>\",\n  \"createdby\": \"<string>\",\n  \"default\": \"<boolean>\",\n  \"discards\": \"<array>\",\n  \"items\": \"<string>\",\n  \"ndm_score_confidence\": \"<integer>\",\n  \"ndm_score_threat\": \"<integer>\",\n  \"sharedkey\": \"<boolean>\",\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70f493b2-2b1c-40f4-8f6f-58eea915ba6c",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithm\": \"<string>\",\n  \"rollupperiod\": \"<integer>\",\n  \"thresholds\": [\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    }\n  ],\n  \"track\": \"<string>\",\n  \"updateinterval\": \"<integer>\",\n  \"auto\": \"<boolean>\",\n  \"beta\": \"<boolean>\",\n  \"bypassdisplay\": \"<boolean>\",\n  \"bypassrule\": \"<boolean>\",\n  \"createdby\": \"<string>\",\n  \"default\": \"<boolean>\",\n  \"discards\": \"<array>\",\n  \"items\": \"<string>\",\n  \"ndm_score_confidence\": \"<integer>\",\n  \"ndm_score_threat\": \"<integer>\",\n  \"sharedkey\": \"<boolean>\",\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "68d84466-83b9-4e14-ab00-addcff747bef",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithm\": \"<string>\",\n  \"rollupperiod\": \"<integer>\",\n  \"thresholds\": [\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    }\n  ],\n  \"track\": \"<string>\",\n  \"updateinterval\": \"<integer>\",\n  \"auto\": \"<boolean>\",\n  \"beta\": \"<boolean>\",\n  \"bypassdisplay\": \"<boolean>\",\n  \"bypassrule\": \"<boolean>\",\n  \"createdby\": \"<string>\",\n  \"default\": \"<boolean>\",\n  \"discards\": \"<array>\",\n  \"items\": \"<string>\",\n  \"ndm_score_confidence\": \"<integer>\",\n  \"ndm_score_threat\": \"<integer>\",\n  \"sharedkey\": \"<boolean>\",\n  \"state\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80e4a97b-356d-48c7-8ebd-cf4487887002",
+          "name": "Delete All Threshold Overrides",
+          "request": {
+            "name": "Delete All Threshold Overrides",
+            "description": {
+              "content": "Deletes custom threshold overrides.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "triggers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1e62aea-a861-40c0-829f-cf0c9c24bd83",
+              "name": "An empty array",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e9716fc0-594b-4049-a779-f7a6616032d5",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f50bdea1-7343-4278-a077-f2aa2ce66318",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88331b3e-29fc-48ee-9e36-8c78d3e943e1",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8be854ab-dac2-44b0-be9c-c61c393c069a",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5dd4b62c-b5ed-4635-8611-8d023173166a",
+          "name": "List Threshold Overrides for Algorithm",
+          "request": {
+            "name": "List Threshold Overrides for Algorithm",
+            "description": {
+              "content": "Returns an array of Threshold Overrides for the specified algorithm.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "triggers",
+                "algorithms",
+                ":algorithm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "algorithm",
+                  "description": "(Required) The algorithm to fetch threshold overrides for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "475951be-d9a6-4000-baba-8cfa9ae82816",
+              "name": "List of Requested Threshold Overrides",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "algorithms",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The algorithm to fetch threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 7512,\n    \"count\": 1803\n  },\n  \"data\": [\n    {\n      \"algorithm\": \"string\",\n      \"auto\": true,\n      \"beta\": false,\n      \"bypassdisplay\": false,\n      \"bypassrule\": false,\n      \"createdby\": \"string\",\n      \"default\": true,\n      \"items\": \"string\",\n      \"ndm_score_confidence\": 7125,\n      \"ndm_score_threat\": 4912,\n      \"rollupperiod\": 8443,\n      \"sharedkey\": true,\n      \"state\": \"string\",\n      \"thresholds\": [\n        {\n          \"severity\": \"low\",\n          \"threshold\": \"string\"\n        },\n        {\n          \"severity\": \"medium\",\n          \"threshold\": \"string\"\n        }\n      ],\n      \"track\": \"string\",\n      \"updateinterval\": 9676\n    },\n    {\n      \"algorithm\": \"string\",\n      \"auto\": false,\n      \"beta\": true,\n      \"bypassdisplay\": true,\n      \"bypassrule\": false,\n      \"createdby\": \"string\",\n      \"default\": false,\n      \"items\": \"string\",\n      \"ndm_score_confidence\": 8951,\n      \"ndm_score_threat\": 8596,\n      \"rollupperiod\": 9719,\n      \"sharedkey\": true,\n      \"state\": \"string\",\n      \"thresholds\": [\n        {\n          \"severity\": \"high\",\n          \"threshold\": \"string\"\n        },\n        {\n          \"severity\": \"medium\",\n          \"threshold\": \"string\"\n        }\n      ],\n      \"track\": \"string\",\n      \"updateinterval\": 2575\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd73de02-d026-474c-a727-3f3485637aad",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "algorithms",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The algorithm to fetch threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1811aad1-6e05-456a-9055-98afa4d821a9",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "algorithms",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The algorithm to fetch threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d82ef408-1769-4f3f-8a65-cedbe19ae797",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "algorithms",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The algorithm to fetch threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "378afec2-b8ca-4fa8-8815-609beb5b1457",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "algorithms",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The algorithm to fetch threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e418422-d678-4405-944b-6b0338d394a3",
+          "name": "Delete Threshold Overrides for Algorithm",
+          "request": {
+            "name": "Delete Threshold Overrides for Algorithm",
+            "description": {
+              "content": "Deletes threshold overrides for the specified algorithm.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "triggers",
+                "algorithms",
+                ":algorithm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "algorithm",
+                  "description": "(Required) The algorithm to delete threshold overrides for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2a1153d4-5f09-4cb1-9eb2-eded03a0ed87",
+              "name": "An empty array",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "algorithms",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The algorithm to delete threshold overrides for."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "395f5d5f-61ba-410c-a76d-06b7df0bff3e",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "algorithms",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The algorithm to delete threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ccfa51c-f0b2-4233-9785-1decd0dbdd9a",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "algorithms",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The algorithm to delete threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c24a7ecd-22b5-4be2-bfae-40f3c5fdb7ba",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "algorithms",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The algorithm to delete threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4747d0a4-9a11-4c43-b036-80b8738b44b6",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "algorithms",
+                    ":algorithm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The algorithm to delete threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab9dc0a2-20e4-4642-bc76-c36f9b3a40ed",
+          "name": "List Threshold Overrides for Object",
+          "request": {
+            "name": "List Threshold Overrides for Object",
+            "description": {
+              "content": "Returns an array of Threshold Overrides for the specified object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "triggers",
+                "objects",
+                ":object"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "object",
+                  "description": "(Required) The object to fetch threshold overrides for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0d9fd1b9-85b6-447a-bda6-c1c9cc8386c3",
+              "name": "List of Requested Threshold Overrides",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "objects",
+                    ":object"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "object",
+                      "description": "(Required) The object to fetch threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 7512,\n    \"count\": 1803\n  },\n  \"data\": [\n    {\n      \"algorithm\": \"string\",\n      \"auto\": true,\n      \"beta\": false,\n      \"bypassdisplay\": false,\n      \"bypassrule\": false,\n      \"createdby\": \"string\",\n      \"default\": true,\n      \"items\": \"string\",\n      \"ndm_score_confidence\": 7125,\n      \"ndm_score_threat\": 4912,\n      \"rollupperiod\": 8443,\n      \"sharedkey\": true,\n      \"state\": \"string\",\n      \"thresholds\": [\n        {\n          \"severity\": \"low\",\n          \"threshold\": \"string\"\n        },\n        {\n          \"severity\": \"medium\",\n          \"threshold\": \"string\"\n        }\n      ],\n      \"track\": \"string\",\n      \"updateinterval\": 9676\n    },\n    {\n      \"algorithm\": \"string\",\n      \"auto\": false,\n      \"beta\": true,\n      \"bypassdisplay\": true,\n      \"bypassrule\": false,\n      \"createdby\": \"string\",\n      \"default\": false,\n      \"items\": \"string\",\n      \"ndm_score_confidence\": 8951,\n      \"ndm_score_threat\": 8596,\n      \"rollupperiod\": 9719,\n      \"sharedkey\": true,\n      \"state\": \"string\",\n      \"thresholds\": [\n        {\n          \"severity\": \"high\",\n          \"threshold\": \"string\"\n        },\n        {\n          \"severity\": \"medium\",\n          \"threshold\": \"string\"\n        }\n      ],\n      \"track\": \"string\",\n      \"updateinterval\": 2575\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75bb1bba-2926-46c6-844f-d3b3abd1c4e7",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "objects",
+                    ":object"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "object",
+                      "description": "(Required) The object to fetch threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eebdd12b-5965-40e6-84c0-5b710dc5336b",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "objects",
+                    ":object"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "object",
+                      "description": "(Required) The object to fetch threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5fec666-c156-40f4-8de8-fda4c0fe7553",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "objects",
+                    ":object"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "object",
+                      "description": "(Required) The object to fetch threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "360ace67-5749-4fea-8872-40f1ef1dae10",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "objects",
+                    ":object"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "object",
+                      "description": "(Required) The object to fetch threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96b354b9-4acf-4083-beb2-27bad2278962",
+          "name": "Delete Threshold Overrides for Object",
+          "request": {
+            "name": "Delete Threshold Overrides for Object",
+            "description": {
+              "content": "Deletes threshold overrides for the specified object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "triggers",
+                "objects",
+                ":object"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "object",
+                  "description": "(Required) The object to delete threshold overrides for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "71de3c72-fb3b-4b24-813a-748c8415f786",
+              "name": "An empty array",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "objects",
+                    ":object"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "object",
+                      "description": "(Required) The object to delete threshold overrides for."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "042ad6db-b20e-44a6-8227-f6dce60082b9",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "objects",
+                    ":object"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "object",
+                      "description": "(Required) The object to delete threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f4b28f9-c07c-425a-9aa7-8e8faf2fae7f",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "objects",
+                    ":object"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "object",
+                      "description": "(Required) The object to delete threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "341ffc79-8c50-4f3d-a938-9943d8756647",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "objects",
+                    ":object"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "object",
+                      "description": "(Required) The object to delete threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02ecb819-dfc2-4daa-accc-26c897199ab1",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "objects",
+                    ":object"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "object",
+                      "description": "(Required) The object to delete threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07f7a6c4-1c10-40b1-8c15-9c582c5e8263",
+          "name": "List Threshold Overrides for Algorithm and Object",
+          "request": {
+            "name": "List Threshold Overrides for Algorithm and Object",
+            "description": {
+              "content": "Returns an array of Threshold Overrides for the specified algorithm and object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "triggers",
+                "algorithms",
+                ":algorithm",
+                "objects",
+                ":object"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "algorithm",
+                  "description": "(Required) The algorithm to fetch threshold overrides for."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "object",
+                  "description": "(Required) The object to fetch threshold overrides for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "56430f17-d298-42d5-9456-096a7e149977",
+              "name": "List of Requested Threshold Overrides",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "algorithms",
+                    ":algorithm",
+                    "objects",
+                    ":object"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The algorithm to fetch threshold overrides for."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "object",
+                      "description": "(Required) The object to fetch threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 7512,\n    \"count\": 1803\n  },\n  \"data\": [\n    {\n      \"algorithm\": \"string\",\n      \"auto\": true,\n      \"beta\": false,\n      \"bypassdisplay\": false,\n      \"bypassrule\": false,\n      \"createdby\": \"string\",\n      \"default\": true,\n      \"items\": \"string\",\n      \"ndm_score_confidence\": 7125,\n      \"ndm_score_threat\": 4912,\n      \"rollupperiod\": 8443,\n      \"sharedkey\": true,\n      \"state\": \"string\",\n      \"thresholds\": [\n        {\n          \"severity\": \"low\",\n          \"threshold\": \"string\"\n        },\n        {\n          \"severity\": \"medium\",\n          \"threshold\": \"string\"\n        }\n      ],\n      \"track\": \"string\",\n      \"updateinterval\": 9676\n    },\n    {\n      \"algorithm\": \"string\",\n      \"auto\": false,\n      \"beta\": true,\n      \"bypassdisplay\": true,\n      \"bypassrule\": false,\n      \"createdby\": \"string\",\n      \"default\": false,\n      \"items\": \"string\",\n      \"ndm_score_confidence\": 8951,\n      \"ndm_score_threat\": 8596,\n      \"rollupperiod\": 9719,\n      \"sharedkey\": true,\n      \"state\": \"string\",\n      \"thresholds\": [\n        {\n          \"severity\": \"high\",\n          \"threshold\": \"string\"\n        },\n        {\n          \"severity\": \"medium\",\n          \"threshold\": \"string\"\n        }\n      ],\n      \"track\": \"string\",\n      \"updateinterval\": 2575\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "273e9c42-7c1e-41c3-bed6-9256f00654c2",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "algorithms",
+                    ":algorithm",
+                    "objects",
+                    ":object"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The algorithm to fetch threshold overrides for."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "object",
+                      "description": "(Required) The object to fetch threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "784008f7-a6c6-41f8-8c6b-a84ca748af69",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "algorithms",
+                    ":algorithm",
+                    "objects",
+                    ":object"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The algorithm to fetch threshold overrides for."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "object",
+                      "description": "(Required) The object to fetch threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5013e411-9f22-4f2a-91a5-650fe4c419ef",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "algorithms",
+                    ":algorithm",
+                    "objects",
+                    ":object"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The algorithm to fetch threshold overrides for."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "object",
+                      "description": "(Required) The object to fetch threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a54da394-87bf-4db8-8de4-f787c12c5988",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "algorithms",
+                    ":algorithm",
+                    "objects",
+                    ":object"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The algorithm to fetch threshold overrides for."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "object",
+                      "description": "(Required) The object to fetch threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f2c2d8f-ea95-443d-a59e-43a905b7b8fd",
+          "name": "Delete Threshold Overrides for Algorithm and Object",
+          "request": {
+            "name": "Delete Threshold Overrides for Algorithm and Object",
+            "description": {
+              "content": "Deletes threshold overrides for the specified algorithm and object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "triggers",
+                "algorithms",
+                ":algorithm",
+                "objects",
+                ":object"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "algorithm",
+                  "description": "(Required) The algorithm to delete threshold overrides for."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "object",
+                  "description": "(Required) The object to delete threshold overrides for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "67a54ceb-38a4-420a-9c50-2e9172ac3cb0",
+              "name": "An empty array",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "algorithms",
+                    ":algorithm",
+                    "objects",
+                    ":object"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The algorithm to delete threshold overrides for."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "object",
+                      "description": "(Required) The object to delete threshold overrides for."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "25c682aa-639a-4aaa-802d-99ae777b4645",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "algorithms",
+                    ":algorithm",
+                    "objects",
+                    ":object"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The algorithm to delete threshold overrides for."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "object",
+                      "description": "(Required) The object to delete threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3256a345-3186-48d1-b9cf-d1275476b618",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "algorithms",
+                    ":algorithm",
+                    "objects",
+                    ":object"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The algorithm to delete threshold overrides for."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "object",
+                      "description": "(Required) The object to delete threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8915d715-a2cd-4a07-b47d-a1aa584ce083",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "algorithms",
+                    ":algorithm",
+                    "objects",
+                    ":object"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The algorithm to delete threshold overrides for."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "object",
+                      "description": "(Required) The object to delete threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0de03dc7-7fb9-4b60-9fdf-da74c7ed7747",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "triggers",
+                    "algorithms",
+                    ":algorithm",
+                    "objects",
+                    ":object"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "algorithm",
+                      "description": "(Required) The algorithm to delete threshold overrides for."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "object",
+                      "description": "(Required) The object to delete threshold overrides for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 4906,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.netography.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "76d6d836-e64b-4d4e-a82d-a889791c2ef6",
+    "name": "Netography (Vectra Fusion) Analytics Detect and Respond - Threshold Overrides API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).",
+      "type": "text/plain"
+    }
+  }
+}

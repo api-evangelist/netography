@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Settings - Security API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Settings - Security",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Allowed IPs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/customer/access-allowed-ips"
+          },
+          "docs": "Fetches the IPs from KeyCloak that are allowed to access Fusion"
+        },
+        {
+          "info": {
+            "name": "Update Allowed IPs",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/customer/access-allowed-ips",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the IPs within KeyCloak that are allowed to access Fusion"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

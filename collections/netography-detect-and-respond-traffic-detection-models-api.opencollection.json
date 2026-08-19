@@ -1,0 +1,162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Detect and Respond - Traffic Detection Models API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Detect and Respond - Traffic Detection Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Traffic Detection Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/rule-engine/algorithms"
+          },
+          "docs": "Returns an array of Traffic Detection Models."
+        },
+        {
+          "info": {
+            "name": "Create Traffic Detection Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/rule-engine/algorithm",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a traffic detection model from the data that's been supplied.  Do not provide an id.  IDs are auto generated"
+        },
+        {
+          "info": {
+            "name": "Fetch Traffic Detection Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/rule-engine/algorithm/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the traffic detection model to be returned."
+              }
+            ]
+          },
+          "docs": "Fetches a specific traffic detection model from the ID supplied in the path."
+        },
+        {
+          "info": {
+            "name": "Update Traffic Detection Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/rule-engine/algorithm/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the traffic detection model to be updated"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a traffic detection model given the provided object.  This does not do a diff.  You must send the complete object."
+        },
+        {
+          "info": {
+            "name": "Delete Traffic Detection Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/rule-engine/algorithm/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the traffic detection model to be deleted"
+              }
+            ]
+          },
+          "docs": "Deletes a traffic detection model"
+        },
+        {
+          "info": {
+            "name": "Enable Traffic Detection Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/rule-engine/algorithm/:id/enable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the traffic detection model to be enabled"
+              }
+            ]
+          },
+          "docs": "Enables a traffic detection model"
+        },
+        {
+          "info": {
+            "name": "Disable Traffic Detection Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/rule-engine/algorithm/:id/disable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the traffic detection model to be disabled"
+              }
+            ]
+          },
+          "docs": "Disables a traffic detection model"
+        },
+        {
+          "info": {
+            "name": "Reset Traffic Detection Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/rule-engine/algorithm/:id/reset",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the traffic detection model to be reseted"
+              }
+            ]
+          },
+          "docs": "Resets a customized system traffic detection model"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

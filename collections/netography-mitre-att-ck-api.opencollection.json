@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics MITRE ATT&CK API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "MITRE ATT&CK",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List MITRE tactics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/mitre/tactics"
+          },
+          "docs": "Returns an array of MITRE tactics"
+        },
+        {
+          "info": {
+            "name": "List MITRE techniques for a given tactic",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/mitre/tactics/:tactic_id",
+            "params": [
+              {
+                "name": "tactic_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the tactic to fetch techniques for"
+              }
+            ]
+          },
+          "docs": "Returns an array of MITRE techniques for a given tactic"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

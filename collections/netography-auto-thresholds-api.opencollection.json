@@ -1,0 +1,142 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Auto Thresholds API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Auto Thresholds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all threshold automaton configs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/thresholder/automaton"
+          },
+          "docs": "Returns all auto-threshold automaton configs configured for all DMs in a given customer."
+        },
+        {
+          "info": {
+            "name": "Update threshold automaton config",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/thresholder/automaton",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the auto-threshold automaton config for a given detection model."
+        },
+        {
+          "info": {
+            "name": "Get threshold automaton config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/thresholder/automaton/:algorithm",
+            "params": [
+              {
+                "name": "algorithm",
+                "value": "",
+                "type": "path",
+                "description": "The name of the detection model to fetch automaton config for"
+              }
+            ]
+          },
+          "docs": "Returns the auto-threshold automaton config for a detection model"
+        },
+        {
+          "info": {
+            "name": "Update threshold automaton config specific value",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.netography.com/api/v1/thresholder/automaton/:algorithm",
+            "params": [
+              {
+                "name": "algorithm",
+                "value": "",
+                "type": "path",
+                "description": "The name of the detection model to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates specific values in the auto-threshold automaton config for a given detection model."
+        },
+        {
+          "info": {
+            "name": "Delete automaton config",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/thresholder/automaton/:algorithm",
+            "params": [
+              {
+                "name": "algorithm",
+                "value": "",
+                "type": "path",
+                "description": "The name of the detection model to delete."
+              }
+            ]
+          },
+          "docs": "Deletes the threshold automaton config for a given detection model"
+        },
+        {
+          "info": {
+            "name": "Get track values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/thresholder/automaton/:algorithm/trackby/:track",
+            "params": [
+              {
+                "name": "algorithm",
+                "value": "",
+                "type": "path",
+                "description": "The name of the detection model to fetch track data for"
+              },
+              {
+                "name": "track",
+                "value": "",
+                "type": "path",
+                "description": "The name of the track (group) to fetch data for"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp defining the start of the data range to query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp defining the end of the data range to query"
+              }
+            ]
+          },
+          "docs": "Returns auto-threshold track data for the given track"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

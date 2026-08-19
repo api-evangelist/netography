@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Raw Records - Search API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Raw Records - Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Field Values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/search/:context/fields",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "path",
+                "description": "Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+              }
+            ]
+          },
+          "docs": "Values that can be used for the <code>field</code> parameter in subsequent search API calls"
+        },
+        {
+          "info": {
+            "name": "Search Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/search/:context",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "path",
+                "description": "Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves a list of individual events or records for the specified context over a given time range.  This call takes advantage of the Netography Query Language via the <code>search</code> parameter."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Configuration API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Netography AWS Custom Trust Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/integrations/aws/role"
+          },
+          "docs": "Information relating to configuring AWS Role based authentication.  \nProvides Netography's Account Id, sts:ExternalId and an example usage in a custom trust policy.\nRole based AWS authentication can be used in Flow Sources and Context Integrations.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

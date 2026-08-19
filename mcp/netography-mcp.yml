@@ -101,3 +101,9 @@ tools:
 - name: get_detection_model_details
   description: Details of a specific detection model
   source_operation: openapi/netography-openapi.yml#v1_traffic_detection_model_id_get
+deployment:
+  mode: local-stdio
+  verified: searched
+  tools: 27
+  checked: '2026-08-12'
+  source: catalog MCP census

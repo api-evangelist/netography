@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Raw Records - Fetch API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Raw Records - Fetch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/fetch/:context/:id",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "path",
+                "description": "Context of the Fields Request"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the record to be returned."
+              }
+            ]
+          },
+          "docs": "Fetches a specific context record per the id supplied in the path.\n\n<b>Note: flow records by ID are currently not available.</b>\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

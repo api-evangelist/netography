@@ -1,0 +1,1548 @@
+{
+  "item": [
+    {
+      "id": "1e9f074b-d040-482c-bf21-0456ba56246d",
+      "name": "Analytics",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "461ad52c-7dbf-470a-902c-296038b059f9",
+          "name": "Fields",
+          "request": {
+            "name": "Fields",
+            "description": {
+              "content": "Values that can be used for the <code>field</code> parameter in subsequent API calls",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "stats",
+                ":context",
+                "fields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "context",
+                  "description": "(Required) Context of the Fields Request"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "be3f9ec7-f45f-4b91-9651-d73db34d0c0c",
+              "name": "An object which contains response metadata information and a data array of Fields.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Context of the Fields Request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 9968,\n    \"count\": 8247\n  },\n  \"data\": [\n    {\n      \"field\": \"string\",\n      \"type\": \"string\",\n      \"description\": 6818\n    },\n    {\n      \"field\": \"string\",\n      \"type\": \"string\",\n      \"description\": 8870\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e22cc885-ab43-45bd-87af-5656fc1cad34",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Context of the Fields Request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7871,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a714ced-291f-4d47-9084-d19e4acfff30",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Context of the Fields Request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7871,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f0f6203-a254-4cf0-8e42-b8eab6f08336",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Context of the Fields Request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7871,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "014ceba5-fff9-4b3e-b0e7-90391ebdf429",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Context of the Fields Request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7871,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "657294ed-48ea-4dc7-a919-76e39e7526a7",
+          "name": "Aliases",
+          "request": {
+            "name": "Aliases",
+            "description": {
+              "content": "Values that can be used for the <code>field</code> parameter in subsequent search API calls.  \nAliases are shortcuts for searching multiple fields of a similar nomenclature.  \nExamples:\n  * <code>ip == 8.8.8.8</code> will be interpolated to create a search of <code>(dstip = 8.8.8.8 or srcip = 8.8.8.8)</code>\n  * <code>ipname == myipname</code> will create a search of <code>(dstipname = myipname or srcipname = myipname)</code>\n  * <code>as.number</code> will search the fields <code>dstas.number, dstowneras.number, srcas.number, and srcowneras.number</code>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "stats",
+                ":context",
+                "aliases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "context",
+                  "description": "(Required) Context of the Fields Request, e.g. flow"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b3e5c44-6e2c-4c13-94ff-668eb6d28cce",
+              "name": "An object which contains response metadata information and a data array of Fields.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "aliases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Context of the Fields Request, e.g. flow"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 9968,\n    \"count\": 8247\n  },\n  \"data\": [\n    {\n      \"field\": \"string\",\n      \"type\": \"string\",\n      \"description\": 6818\n    },\n    {\n      \"field\": \"string\",\n      \"type\": \"string\",\n      \"description\": 8870\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f4ecd10-7e71-4c53-9d6f-dcaec7aa3fd5",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "aliases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Context of the Fields Request, e.g. flow"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7871,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43f6e381-6b43-4288-83b6-133725e2e336",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "aliases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Context of the Fields Request, e.g. flow"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7871,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e85ccd1-814c-43e1-942c-cb7177a6d615",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "aliases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Context of the Fields Request, e.g. flow"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7871,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f117d6f-4a57-4297-ab8a-5a078f7d4bf9",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "aliases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Context of the Fields Request, e.g. flow"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7871,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8ea2243b-7374-409e-9639-3ebc7efc02b7",
+          "name": "Metrics",
+          "request": {
+            "name": "Metrics",
+            "description": {
+              "content": "Values that can be used for the <code>metric</code> parameter in subsequent search API calls",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "stats",
+                ":context",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "context",
+                  "description": "(Required) Context of the Metrics Request"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "279e2e61-f17e-4ac8-9268-7a3ab87ebfdc",
+              "name": "An object which contains response metadata information and a data array of Fields.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Context of the Metrics Request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 9968,\n    \"count\": 8247\n  },\n  \"data\": [\n    {\n      \"field\": \"string\",\n      \"type\": \"string\",\n      \"description\": 6818\n    },\n    {\n      \"field\": \"string\",\n      \"type\": \"string\",\n      \"description\": 8870\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "131b52d0-d971-422b-985b-abf1318c1c83",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Context of the Metrics Request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7871,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4caf8e90-b81c-4482-bc13-ea507c50c133",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Context of the Metrics Request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7871,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7cae37dc-e947-40bf-ae9e-92c2917d253d",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Context of the Metrics Request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7871,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24440016-2842-45dd-b9ff-0afdda764678",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Context of the Metrics Request"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7871,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "261afee1-ca84-4f77-b2dc-f20ea26565f7",
+          "name": "Time Series",
+          "request": {
+            "name": "Time Series",
+            "description": {
+              "content": "Request data as a time series. This is used for charts and graphs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "stats",
+                ":context",
+                "ts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "context",
+                  "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start\": \"<integer>\",\n  \"end\": \"<integer>\",\n  \"series\": [\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"sort\": \"asc\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"sort\": \"asc\"\n    }\n  ],\n  \"format\": \"highcharts\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b7c5eeb3-ef03-4c16-8dad-1d5d9d933220",
+              "name": "An object which contains response metadata information and a data object containing the Time Series array.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "ts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"end\": \"<integer>\",\n  \"series\": [\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"sort\": \"asc\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"sort\": \"asc\"\n    }\n  ],\n  \"format\": \"highcharts\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 4146,\n    \"count\": 123\n  },\n  \"data\": [\n    {\n      \"data\": [\n        {\n          \"key\": \"string\",\n          \"value\": {}\n        },\n        {\n          \"key\": \"string\",\n          \"value\": {}\n        }\n      ]\n    },\n    {\n      \"data\": [\n        {\n          \"key\": \"string\",\n          \"value\": {}\n        },\n        {\n          \"key\": \"string\",\n          \"value\": {}\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f6e8808-3117-492a-b62a-b321cc4db506",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "ts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"end\": \"<integer>\",\n  \"series\": [\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"sort\": \"asc\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"sort\": \"asc\"\n    }\n  ],\n  \"format\": \"highcharts\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7871,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e53319a9-b9e7-4d0d-bb93-f65ba33a8699",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "ts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"end\": \"<integer>\",\n  \"series\": [\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"sort\": \"asc\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"sort\": \"asc\"\n    }\n  ],\n  \"format\": \"highcharts\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7871,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "048320be-2ac1-40f7-8f19-a68f7dd9122a",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "ts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"end\": \"<integer>\",\n  \"series\": [\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"sort\": \"asc\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"sort\": \"asc\"\n    }\n  ],\n  \"format\": \"highcharts\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7871,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea37d2b0-5b15-404e-8014-9ab296f80df0",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "ts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"end\": \"<integer>\",\n  \"series\": [\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"sort\": \"asc\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"sort\": \"asc\"\n    }\n  ],\n  \"format\": \"highcharts\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7871,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a1f65c7-9612-4238-b9a8-9d7be3156ccc",
+          "name": "Aggregations",
+          "request": {
+            "name": "Aggregations",
+            "description": {
+              "content": "Get summarized statistics by aggregating data for the specified context over a given time range. Returns computed metrics like counts, sums, averages, etc. rather than individual events.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "stats",
+                ":context",
+                "agg"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "context",
+                  "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start\": \"<integer>\",\n  \"end\": \"<integer>\",\n  \"series\": [\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"size\": \"<integer>\",\n      \"sort\": \"asc\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"size\": \"<integer>\",\n      \"sort\": \"asc\"\n    }\n  ],\n  \"format\": \"highcharts\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ad2f62bc-c79a-4ca4-8077-13ef464dc33e",
+              "name": "An object which contains response metadata information and a data object containing the Aggregation array.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "agg"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"end\": \"<integer>\",\n  \"series\": [\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"size\": \"<integer>\",\n      \"sort\": \"asc\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"size\": \"<integer>\",\n      \"sort\": \"asc\"\n    }\n  ],\n  \"format\": \"highcharts\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 1696,\n    \"count\": 3295\n  },\n  \"data\": [\n    {\n      \"interval\": \"string\",\n      \"label\": \"string\",\n      \"metric\": \"string\",\n      \"name\": \"string\",\n      \"series\": \"string\",\n      \"data\": [\n        {\n          \"key\": \"string\",\n          \"value\": {}\n        },\n        {\n          \"key\": \"string\",\n          \"value\": {}\n        }\n      ]\n    },\n    {\n      \"interval\": \"string\",\n      \"label\": \"string\",\n      \"metric\": \"string\",\n      \"name\": \"string\",\n      \"series\": \"string\",\n      \"data\": [\n        {\n          \"key\": \"string\",\n          \"value\": {}\n        },\n        {\n          \"key\": \"string\",\n          \"value\": {}\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee3de47c-e8cf-493f-ac60-376b378c4acd",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "agg"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"end\": \"<integer>\",\n  \"series\": [\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"size\": \"<integer>\",\n      \"sort\": \"asc\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"size\": \"<integer>\",\n      \"sort\": \"asc\"\n    }\n  ],\n  \"format\": \"highcharts\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7871,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e21a2f2d-6d05-4f42-b5bf-fd68f5ec8637",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "agg"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"end\": \"<integer>\",\n  \"series\": [\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"size\": \"<integer>\",\n      \"sort\": \"asc\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"size\": \"<integer>\",\n      \"sort\": \"asc\"\n    }\n  ],\n  \"format\": \"highcharts\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7871,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42f9e266-f07a-4d2e-8448-898332357b42",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "agg"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"end\": \"<integer>\",\n  \"series\": [\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"size\": \"<integer>\",\n      \"sort\": \"asc\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"size\": \"<integer>\",\n      \"sort\": \"asc\"\n    }\n  ],\n  \"format\": \"highcharts\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7871,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ea696fd-b6db-4ab9-8701-d264ba0b76e8",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "stats",
+                    ":context",
+                    "agg"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"end\": \"<integer>\",\n  \"series\": [\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"size\": \"<integer>\",\n      \"sort\": \"asc\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"metric\": \"<string>\",\n      \"field\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"field_separator\": \".\",\n      \"interval\": \"<integer>\",\n      \"ipagg\": {\n        \"cidr\": \"<integer>\",\n        \"field\": \"<string>\"\n      },\n      \"search\": [\n        \"<string>\"\n      ],\n      \"size\": \"<integer>\",\n      \"sort\": \"asc\"\n    }\n  ],\n  \"format\": \"highcharts\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7871,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.netography.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "10467df4-b141-4986-b7c5-2d2aa53fc999",
+    "name": "Netography (Vectra Fusion) Analytics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).",
+      "type": "text/plain"
+    }
+  }
+}

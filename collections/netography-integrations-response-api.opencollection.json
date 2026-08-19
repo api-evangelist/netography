@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Integrations - Response API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Integrations - Response",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Response Integrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/integrations/response"
+          },
+          "docs": "Returns an array of response integrations."
+        },
+        {
+          "info": {
+            "name": "Create Response Integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/integrations/response",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a response integration from the data that's been supplied.  Do not provide an id.  IDs are auto generated"
+        },
+        {
+          "info": {
+            "name": "Test a Response Integration Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/integrations/response/test",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Tests the supplied Response Integration configuration."
+        },
+        {
+          "info": {
+            "name": "Fetch Response Integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/integrations/response/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the response integration to be returned."
+              }
+            ]
+          },
+          "docs": "Fetches a specific response integration from the ID supplied in the path."
+        },
+        {
+          "info": {
+            "name": "Update Response Integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/integrations/response/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the response integration to be updated"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a response integration given the provided object.  This does not do a diff.  You must send the complete object."
+        },
+        {
+          "info": {
+            "name": "Delete Response Integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/integrations/response/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the response integration to be deleted"
+              }
+            ]
+          },
+          "docs": "Deletes a response integration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

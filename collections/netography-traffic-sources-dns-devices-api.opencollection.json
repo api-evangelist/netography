@@ -1,0 +1,158 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Traffic Sources - DNS Devices API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Traffic Sources - DNS Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All DNS Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/dns-devices"
+          },
+          "docs": "Returns a list of all DNS devices."
+        },
+        {
+          "info": {
+            "name": "Add DNS Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/dns-devices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a new DNS device."
+        },
+        {
+          "info": {
+            "name": "Get DNS Device By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/dns-devices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the DNS device to fetch."
+              }
+            ]
+          },
+          "docs": "Fetches a specific DNS device by ID."
+        },
+        {
+          "info": {
+            "name": "Update DNS Device By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/dns-devices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the DNS device to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a DNS device by ID."
+        },
+        {
+          "info": {
+            "name": "Delete DNS Device By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/dns-devices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the DNS device to delete."
+              }
+            ]
+          },
+          "docs": "Deletes a DNS device by ID."
+        },
+        {
+          "info": {
+            "name": "Bulk Delete DNS Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/dns-devices/bulkdelete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes multiple DNS devices in bulk."
+        },
+        {
+          "info": {
+            "name": "Enable DNS Device By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/dns-devices/:id/enable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the DNS device to enable."
+              }
+            ]
+          },
+          "docs": "Enables a DNS device by ID."
+        },
+        {
+          "info": {
+            "name": "Disable DNS Device By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/dns-devices/:id/disable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the DNS device to disable."
+              }
+            ]
+          },
+          "docs": "Disables a DNS device by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

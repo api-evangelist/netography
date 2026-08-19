@@ -1,0 +1,181 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Detect and Respond - Threshold Overrides API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Detect and Respond - Threshold Overrides",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Threshold Overrides",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/rule-engine/triggers"
+          },
+          "docs": "Returns an array of Threshold Overrides."
+        },
+        {
+          "info": {
+            "name": "Create or Update Threshold Overrides",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/rule-engine/triggers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update threshold overrides given the provided object."
+        },
+        {
+          "info": {
+            "name": "Delete All Threshold Overrides",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/rule-engine/triggers"
+          },
+          "docs": "Deletes custom threshold overrides."
+        },
+        {
+          "info": {
+            "name": "List Threshold Overrides for Algorithm",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/rule-engine/triggers/algorithms/:algorithm",
+            "params": [
+              {
+                "name": "algorithm",
+                "value": "",
+                "type": "path",
+                "description": "The algorithm to fetch threshold overrides for."
+              }
+            ]
+          },
+          "docs": "Returns an array of Threshold Overrides for the specified algorithm."
+        },
+        {
+          "info": {
+            "name": "Delete Threshold Overrides for Algorithm",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/rule-engine/triggers/algorithms/:algorithm",
+            "params": [
+              {
+                "name": "algorithm",
+                "value": "",
+                "type": "path",
+                "description": "The algorithm to delete threshold overrides for."
+              }
+            ]
+          },
+          "docs": "Deletes threshold overrides for the specified algorithm."
+        },
+        {
+          "info": {
+            "name": "List Threshold Overrides for Object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/rule-engine/triggers/objects/:object",
+            "params": [
+              {
+                "name": "object",
+                "value": "",
+                "type": "path",
+                "description": "The object to fetch threshold overrides for."
+              }
+            ]
+          },
+          "docs": "Returns an array of Threshold Overrides for the specified object."
+        },
+        {
+          "info": {
+            "name": "Delete Threshold Overrides for Object",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/rule-engine/triggers/objects/:object",
+            "params": [
+              {
+                "name": "object",
+                "value": "",
+                "type": "path",
+                "description": "The object to delete threshold overrides for."
+              }
+            ]
+          },
+          "docs": "Deletes threshold overrides for the specified object."
+        },
+        {
+          "info": {
+            "name": "List Threshold Overrides for Algorithm and Object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/rule-engine/triggers/algorithms/:algorithm/objects/:object",
+            "params": [
+              {
+                "name": "algorithm",
+                "value": "",
+                "type": "path",
+                "description": "The algorithm to fetch threshold overrides for."
+              },
+              {
+                "name": "object",
+                "value": "",
+                "type": "path",
+                "description": "The object to fetch threshold overrides for."
+              }
+            ]
+          },
+          "docs": "Returns an array of Threshold Overrides for the specified algorithm and object."
+        },
+        {
+          "info": {
+            "name": "Delete Threshold Overrides for Algorithm and Object",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/rule-engine/triggers/algorithms/:algorithm/objects/:object",
+            "params": [
+              {
+                "name": "algorithm",
+                "value": "",
+                "type": "path",
+                "description": "The algorithm to delete threshold overrides for."
+              },
+              {
+                "name": "object",
+                "value": "",
+                "type": "path",
+                "description": "The object to delete threshold overrides for."
+              }
+            ]
+          },
+          "docs": "Deletes threshold overrides for the specified algorithm and object."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

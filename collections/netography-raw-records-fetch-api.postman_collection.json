@@ -1,0 +1,356 @@
+{
+  "item": [
+    {
+      "id": "08a5c56a-b296-4aba-8292-8cd8ddfac185",
+      "name": "Raw Records - Fetch",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b1af4ddf-4f7e-45da-880f-c7e421f2e6f1",
+          "name": "Fetch Record",
+          "request": {
+            "name": "Fetch Record",
+            "description": {
+              "content": "Fetches a specific context record per the id supplied in the path.\n\n<b>Note: flow records by ID are currently not available.</b>\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "fetch",
+                ":context",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "context",
+                  "description": "(Required) Context of the Fields Request"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the record to be returned."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4db32faa-5f12-4786-89fb-08b7a81a3611",
+              "name": "An object which contains response metadata information and a data array of records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "fetch",
+                    ":context",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Context of the Fields Request"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the record to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 4980,\n    \"count\": 4387\n  },\n  \"data\": [\n    {\n      \"alerttype\": \"string\",\n      \"algorithm\": \"string\",\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"description\": \"string\",\n      \"dstports\": \"\",\n      \"duration\": 2437,\n      \"end\": 2631,\n      \"flowsrcnames\": \"string\",\n      \"id\": \"string\",\n      \"ipinfo\": [\n        {\n          \"as\": {\n            \"number\": 4683,\n            \"org\": \"string\"\n          },\n          \"bogon\": false,\n          \"count\": 6506,\n          \"firstseen\": 2170,\n          \"geo\": {\n            \"city\": \"string\",\n            \"continentcode\": \"string\",\n            \"countrycode\": \"string\",\n            \"location\": {\n              \"lat\": -43.697781758907524,\n              \"lon\": 163.34659840017918\n            },\n            \"postal\": \"string\",\n            \"subdiso\": \"string\",\n            \"subdivisionb\": \"string\"\n          },\n          \"ip\": \"string\",\n          \"iprep\": {\n            \"categories\": [\n              \"string\",\n              \"string\"\n            ],\n            \"count\": 1639\n          },\n          \"lastseen\": 5037,\n          \"pdns\": {\n            \"count\": 8945,\n            \"records\": [\n              \"string\",\n              \"string\"\n            ]\n          },\n          \"rdns\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"as\": {\n            \"number\": 9906,\n            \"org\": \"string\"\n          },\n          \"bogon\": true,\n          \"count\": 2407,\n          \"firstseen\": 8371,\n          \"geo\": {\n            \"city\": \"string\",\n            \"continentcode\": \"string\",\n            \"countrycode\": \"string\",\n            \"location\": {\n              \"lat\": 72.33160703454061,\n              \"lon\": -18.594781446355654\n            },\n            \"postal\": \"string\",\n            \"subdiso\": \"string\",\n            \"subdivisionb\": \"string\"\n          },\n          \"ip\": \"string\",\n          \"iprep\": {\n            \"categories\": [\n              \"string\",\n              \"string\"\n            ],\n            \"count\": 3997\n          },\n          \"lastseen\": 849,\n          \"pdns\": {\n            \"count\": 5917,\n            \"records\": [\n              \"string\",\n              \"string\"\n            ]\n          },\n          \"rdns\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"ipinfocount\": 766,\n      \"metrics\": {\n        \"bits\": {\n          \"min\": 2145,\n          \"max\": 6519,\n          \"avg\": 9913.77280907954,\n          \"sum\": 7780.556334758977\n        },\n        \"bitsxrate\": {\n          \"min\": 978,\n          \"max\": 4568,\n          \"avg\": 4554.457726745284,\n          \"sum\": 8774.412787550755\n        },\n        \"packets\": {\n          \"min\": 3505,\n          \"max\": 2013,\n          \"avg\": 7224.664627522851,\n          \"sum\": 4137.529564231602\n        },\n        \"packetsxrate\": {\n          \"min\": 1452,\n          \"max\": 3729,\n          \"avg\": 7020.03728432783,\n          \"sum\": 6497.732372695956\n        }\n      },\n      \"rollupperiod\": 2623,\n      \"rulecount\": 3457,\n      \"rules\": [\n        \"string\",\n        \"string\"\n      ],\n      \"search\": \"string\",\n      \"severity\": \"string\",\n      \"sites\": \"string\",\n      \"srcports\": \"\",\n      \"start\": 960,\n      \"summary\": \"string\",\n      \"tag\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"threshold\": \"string\",\n      \"timestamp\": 3817,\n      \"track\": \"string\",\n      \"track_by\": [\n        \"string\",\n        \"string\"\n      ],\n      \"updateinterval\": 3767\n    },\n    {\n      \"alerttype\": \"string\",\n      \"algorithm\": \"string\",\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"description\": \"string\",\n      \"dstports\": \"\",\n      \"duration\": 747,\n      \"end\": 6663,\n      \"flowsrcnames\": \"string\",\n      \"id\": \"string\",\n      \"ipinfo\": [\n        {\n          \"as\": {\n            \"number\": 5780,\n            \"org\": \"string\"\n          },\n          \"bogon\": false,\n          \"count\": 2069,\n          \"firstseen\": 158,\n          \"geo\": {\n            \"city\": \"string\",\n            \"continentcode\": \"string\",\n            \"countrycode\": \"string\",\n            \"location\": {\n              \"lat\": -73.93773077751271,\n              \"lon\": 58.4234368086355\n            },\n            \"postal\": \"string\",\n            \"subdiso\": \"string\",\n            \"subdivisionb\": \"string\"\n          },\n          \"ip\": \"string\",\n          \"iprep\": {\n            \"categories\": [\n              \"string\",\n              \"string\"\n            ],\n            \"count\": 3373\n          },\n          \"lastseen\": 4591,\n          \"pdns\": {\n            \"count\": 5377,\n            \"records\": [\n              \"string\",\n              \"string\"\n            ]\n          },\n          \"rdns\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"as\": {\n            \"number\": 3516,\n            \"org\": \"string\"\n          },\n          \"bogon\": false,\n          \"count\": 805,\n          \"firstseen\": 9799,\n          \"geo\": {\n            \"city\": \"string\",\n            \"continentcode\": \"string\",\n            \"countrycode\": \"string\",\n            \"location\": {\n              \"lat\": 23.276520853750597,\n              \"lon\": 153.7554895032884\n            },\n            \"postal\": \"string\",\n            \"subdiso\": \"string\",\n            \"subdivisionb\": \"string\"\n          },\n          \"ip\": \"string\",\n          \"iprep\": {\n            \"categories\": [\n              \"string\",\n              \"string\"\n            ],\n            \"count\": 4965\n          },\n          \"lastseen\": 6446,\n          \"pdns\": {\n            \"count\": 7455,\n            \"records\": [\n              \"string\",\n              \"string\"\n            ]\n          },\n          \"rdns\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"ipinfocount\": 6268,\n      \"metrics\": {\n        \"bits\": {\n          \"min\": 9067,\n          \"max\": 1519,\n          \"avg\": 443.818824216553,\n          \"sum\": 8800.318610117907\n        },\n        \"bitsxrate\": {\n          \"min\": 4879,\n          \"max\": 655,\n          \"avg\": 8818.8573914204,\n          \"sum\": 7302.291006467786\n        },\n        \"packets\": {\n          \"min\": 9566,\n          \"max\": 3035,\n          \"avg\": 4876.836321702695,\n          \"sum\": 9988.901862311712\n        },\n        \"packetsxrate\": {\n          \"min\": 8136,\n          \"max\": 1924,\n          \"avg\": 40.440520397925226,\n          \"sum\": 6587.985406676027\n        }\n      },\n      \"rollupperiod\": 2181,\n      \"rulecount\": 4364,\n      \"rules\": [\n        \"string\",\n        \"string\"\n      ],\n      \"search\": \"string\",\n      \"severity\": \"string\",\n      \"sites\": \"string\",\n      \"srcports\": \"\",\n      \"start\": 7021,\n      \"summary\": \"string\",\n      \"tag\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"threshold\": \"string\",\n      \"timestamp\": 1889,\n      \"track\": \"string\",\n      \"track_by\": [\n        \"string\",\n        \"string\"\n      ],\n      \"updateinterval\": 4494\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f69a326-9f99-40e6-95e0-56f8698f6281",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "fetch",
+                    ":context",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Context of the Fields Request"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the record to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 1034,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69f2a705-228b-4abd-afe3-43fb0efe8d9a",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "fetch",
+                    ":context",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Context of the Fields Request"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the record to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 1034,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "281f3b03-d109-4b79-8836-8423de1f0143",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "fetch",
+                    ":context",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Context of the Fields Request"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the record to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 1034,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b675e60-d611-4ee1-852c-c321baf56e11",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "fetch",
+                    ":context",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Context of the Fields Request"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the record to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 1034,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.netography.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e9fa046e-306a-45f1-8540-a2d778110c22",
+    "name": "Netography (Vectra Fusion) Analytics Raw Records - Fetch API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).",
+      "type": "text/plain"
+    }
+  }
+}

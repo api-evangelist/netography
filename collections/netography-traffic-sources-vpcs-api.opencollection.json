@@ -1,0 +1,229 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Traffic Sources - VPCs API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Traffic Sources - VPCs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All VPCs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/vpc",
+            "params": [
+              {
+                "name": "flowtype",
+                "value": "",
+                "type": "query",
+                "description": "Filter by flow type (e.g., aws, azure, gcp, etc.)"
+              },
+              {
+                "name": "flowresource",
+                "value": "",
+                "type": "query",
+                "description": "Filter by flow resource (e.g., s3, kinesis, etc.)"
+              },
+              {
+                "name": "traffictype",
+                "value": "",
+                "type": "query",
+                "description": "Filter by traffic type (e.g., dns, flow)"
+              },
+              {
+                "name": "logtype",
+                "value": "",
+                "type": "query",
+                "description": "Filter by log type (e.g., gcp-dns-query-log, etc.)"
+              }
+            ]
+          },
+          "docs": "Return a list of all Cloud Sources.   Supports filtering by flowtype, flowresource, traffictype, and logtype (all together or separate).\n"
+        },
+        {
+          "info": {
+            "name": "Create VPC",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/vpc",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a VPC from the supplied object.  Do NOT submit an ID.  IDs are auto generated and immutable."
+        },
+        {
+          "info": {
+            "name": "Get VPC",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/vpc/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Numeric ID of the VPC to get"
+              }
+            ]
+          },
+          "docs": "Fetches a specific VPC from the ID supplied in the path."
+        },
+        {
+          "info": {
+            "name": "Update VPC",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/vpc/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the VPC to be updated"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a VPC given the provided object.  This does not do a diff.  You must send the complete object."
+        },
+        {
+          "info": {
+            "name": "Delete VPC",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/vpc/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the VPC to be retrieved"
+              }
+            ]
+          },
+          "docs": "Deletes the VPC and shuts down the kinesis feed."
+        },
+        {
+          "info": {
+            "name": "Enable VPC",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/vpc/:id/enable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Numeric ID of the VPC to get"
+              }
+            ]
+          },
+          "docs": "Enables flow polling for the indicated VPC"
+        },
+        {
+          "info": {
+            "name": "Disable VPC",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/vpc/:id/disable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Numeric ID of the VPC to get"
+              }
+            ]
+          },
+          "docs": "Disables flow polling for the indicated VPC"
+        },
+        {
+          "info": {
+            "name": "List VPC Statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/vpc/status"
+          },
+          "docs": "Returns an array of vpc status objects."
+        },
+        {
+          "info": {
+            "name": "Fetch VPC Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/vpc/status/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the vpc to be returned."
+              }
+            ]
+          },
+          "docs": "Fetches a specific VPC from the ID supplied in the path."
+        },
+        {
+          "info": {
+            "name": "List VPC Regions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/vpc/regions"
+          },
+          "docs": "Return all regions for each provider."
+        },
+        {
+          "info": {
+            "name": "Get VPC regions by flowtype",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/vpc/regions/:flowtype",
+            "params": [
+              {
+                "name": "flowtype",
+                "value": "",
+                "type": "path",
+                "description": "Flow Type to filter the VPC regions list by"
+              }
+            ]
+          },
+          "docs": "Returns VPC regions for a specific provider/flowtype."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

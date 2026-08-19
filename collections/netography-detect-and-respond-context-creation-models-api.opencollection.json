@@ -1,0 +1,162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Detect and Respond - Context Creation Models API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Detect and Respond - Context Creation Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Context Creation Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/rule-engine/ccms"
+          },
+          "docs": "Returns an array of Context Creation Models."
+        },
+        {
+          "info": {
+            "name": "Create Context Creation Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/rule-engine/ccm",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a context creation model from the data that's been supplied.  Do not provide an id.  IDs are auto generated"
+        },
+        {
+          "info": {
+            "name": "Fetch Context Creation Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/rule-engine/ccm/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the context creation model to be returned."
+              }
+            ]
+          },
+          "docs": "Fetches a specific context creation model from the ID supplied in the path."
+        },
+        {
+          "info": {
+            "name": "Update Context Creation Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/rule-engine/ccm/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the context creation model to be updated"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a context creation model given the provided object.  This does not do a diff.  You must send the complete object."
+        },
+        {
+          "info": {
+            "name": "Delete Context Creation Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/rule-engine/ccm/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the context creation model to be deleted"
+              }
+            ]
+          },
+          "docs": "Deletes a context creation model"
+        },
+        {
+          "info": {
+            "name": "Enable Context Creation Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/rule-engine/ccm/:id/enable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the context creation model to be enabled"
+              }
+            ]
+          },
+          "docs": "Enables a context creation model"
+        },
+        {
+          "info": {
+            "name": "Disable Context Creation Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/rule-engine/ccm/:id/disable",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the context creation model to be disabled"
+              }
+            ]
+          },
+          "docs": "Disables a context creation model"
+        },
+        {
+          "info": {
+            "name": "Reset Context Creation Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/rule-engine/ccm/:id/reset",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the context creation model to be reseted"
+              }
+            ]
+          },
+          "docs": "Resets a customized system context creation model"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

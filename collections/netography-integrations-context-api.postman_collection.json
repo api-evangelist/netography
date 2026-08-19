@@ -1,0 +1,2298 @@
+{
+  "item": [
+    {
+      "id": "bd90ce3b-95c9-43a2-b4c5-4ce3e29ffb43",
+      "name": "Integrations - Context",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "60cee129-9489-4c5b-98ca-57758c731d62",
+          "name": "List Context Integrations",
+          "request": {
+            "name": "List Context Integrations",
+            "description": {
+              "content": "Returns an array of context integrations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "integrations",
+                "context"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9677187f-fdad-4b86-9ab3-6c74666ff0fe",
+              "name": "List of Context Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 77,\n    \"count\": 6306\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"created\": \"string\",\n      \"lastupdated\": \"string\",\n      \"allOf\": {\n        \"name\": \"string\",\n        \"type\": \"gcp\",\n        \"enabled\": false,\n        \"updateinterval\": 42974,\n        \"aws\": {\n          \"awsauthtype\": \"AccessKey\",\n          \"region\": \"string\",\n          \"tags\": [\n            \"string\",\n            \"string\"\n          ],\n          \"accesskeyid\": \"string\",\n          \"accesssecret\": \"string\",\n          \"role\": {\n            \"arn\": \"string\"\n          }\n        },\n        \"azure\": {\n          \"clientid\": \"string\",\n          \"clientsecret\": \"string\",\n          \"subscriptionid\": \"string\",\n          \"tenantid\": \"string\",\n          \"tags\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"crowdstrike\": {\n          \"clientid\": \"string\",\n          \"clientsecret\": \"string\",\n          \"cloud\": \"us-2\",\n          \"filter\": \"string\",\n          \"sort\": \"string\"\n        },\n        \"crowdstrikediscover\": {\n          \"clientid\": \"string\",\n          \"clientsecret\": \"string\",\n          \"cloud\": \"us-2\",\n          \"filter\": \"string\",\n          \"sort\": \"string\"\n        },\n        \"ibm\": {\n          \"apikey\": \"string\",\n          \"region\": \"string\"\n        },\n        \"oracle\": {\n          \"user\": \"string\",\n          \"tenancy\": \"string\",\n          \"region\": \"string\",\n          \"tags\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"gcp\": {\n          \"zone\": \"string\",\n          \"credentials\": {\n            \"type\": \"string\",\n            \"project_id\": \"string\",\n            \"private_key_id\": \"string\",\n            \"private_key\": \"string\",\n            \"client_email\": \"string\",\n            \"client_id\": \"string\",\n            \"auth_uri\": \"string\",\n            \"token_uri\": \"string\",\n            \"auth_provider_x509_cert_url\": \"string\",\n            \"client_x509_cert_url\": \"string\"\n          },\n          \"labels\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"s3\": {\n          \"awsauthtype\": \"AccessKey\",\n          \"region\": \"string\",\n          \"bucket\": \"string\",\n          \"path\": \"string\",\n          \"accesskeyid\": \"string\",\n          \"accesssecret\": \"string\",\n          \"role\": {\n            \"arn\": \"string\"\n          }\n        },\n        \"sentinelone\": {\n          \"base_url\": \"string\",\n          \"params\": {\n            \"accountId\": \"string\",\n            \"filterId\": \"string\"\n          },\n          \"token\": \"string\",\n          \"ranger\": {\n            \"enabled\": true\n          }\n        },\n        \"wiz\": {\n          \"apiendpoint\": \"https://api.eu2.app.wiz.io/graphql\",\n          \"tokenurl\": \"https://auth.app.wiz.io/oauth/token\",\n          \"clientid\": \"string\",\n          \"clientsecret\": \"string\"\n        }\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"created\": \"string\",\n      \"lastupdated\": \"string\",\n      \"allOf\": {\n        \"name\": \"string\",\n        \"type\": \"gcp\",\n        \"enabled\": true,\n        \"updateinterval\": 524670,\n        \"aws\": {\n          \"awsauthtype\": \"AccessKey\",\n          \"region\": \"string\",\n          \"tags\": [\n            \"string\",\n            \"string\"\n          ],\n          \"accesskeyid\": \"string\",\n          \"accesssecret\": \"string\",\n          \"role\": {\n            \"arn\": \"string\"\n          }\n        },\n        \"azure\": {\n          \"clientid\": \"string\",\n          \"clientsecret\": \"string\",\n          \"subscriptionid\": \"string\",\n          \"tenantid\": \"string\",\n          \"tags\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"crowdstrike\": {\n          \"clientid\": \"string\",\n          \"clientsecret\": \"string\",\n          \"cloud\": \"eu-1\",\n          \"filter\": \"string\",\n          \"sort\": \"string\"\n        },\n        \"crowdstrikediscover\": {\n          \"clientid\": \"string\",\n          \"clientsecret\": \"string\",\n          \"cloud\": \"eu-1\",\n          \"filter\": \"string\",\n          \"sort\": \"string\"\n        },\n        \"ibm\": {\n          \"apikey\": \"string\",\n          \"region\": \"string\"\n        },\n        \"oracle\": {\n          \"user\": \"string\",\n          \"tenancy\": \"string\",\n          \"region\": \"string\",\n          \"tags\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"gcp\": {\n          \"zone\": \"string\",\n          \"credentials\": {\n            \"type\": \"string\",\n            \"project_id\": \"string\",\n            \"private_key_id\": \"string\",\n            \"private_key\": \"string\",\n            \"client_email\": \"string\",\n            \"client_id\": \"string\",\n            \"auth_uri\": \"string\",\n            \"token_uri\": \"string\",\n            \"auth_provider_x509_cert_url\": \"string\",\n            \"client_x509_cert_url\": \"string\"\n          },\n          \"labels\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"s3\": {\n          \"awsauthtype\": \"AccessKey\",\n          \"region\": \"string\",\n          \"bucket\": \"string\",\n          \"path\": \"string\",\n          \"accesskeyid\": \"string\",\n          \"accesssecret\": \"string\",\n          \"role\": {\n            \"arn\": \"string\"\n          }\n        },\n        \"sentinelone\": {\n          \"base_url\": \"string\",\n          \"params\": {\n            \"accountId\": \"string\",\n            \"filterId\": \"string\"\n          },\n          \"token\": \"string\",\n          \"ranger\": {\n            \"enabled\": false\n          }\n        },\n        \"wiz\": {\n          \"apiendpoint\": \"https://api.us2.app.wiz.io/graphql\",\n          \"tokenurl\": \"https://auth.wiz.io/oauth/token\",\n          \"clientid\": \"string\",\n          \"clientsecret\": \"string\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "609027bb-51df-4216-96a7-fedd65f901d8",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2ad5baf-6807-493f-869a-db6173787e8c",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c1603e0f-f6c9-441a-ab1e-d7c6faacffa6",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03c49761-946a-4a33-a7b8-69e2362e4970",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cffef5d6-99ad-4340-88d4-17128899a4c2",
+          "name": "Create Context Integration",
+          "request": {
+            "name": "Create Context Integration",
+            "description": {
+              "content": "Creates a context integration from the data that's been supplied.  Do not provide an id.  IDs are auto generated",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "integrations",
+                "context"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cdd8aa37-c53e-43ea-98a5-546f63a5240d",
+              "name": "List of Context Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"updateinterval\": \"<integer>\",\n  \"aws\": {\n    \"awsauthtype\": \"<string>\",\n    \"region\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"accesskeyid\": \"<string>\",\n    \"accesssecret\": \"<string>\",\n    \"role\": {\n      \"arn\": \"<string>\"\n    }\n  },\n  \"azure\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"subscriptionid\": \"<string>\",\n    \"tenantid\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"crowdstrike\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"cloud\": \"<string>\",\n    \"filter\": \"<string>\",\n    \"sort\": \"<string>\"\n  },\n  \"crowdstrikediscover\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"cloud\": \"<string>\",\n    \"filter\": \"<string>\",\n    \"sort\": \"<string>\"\n  },\n  \"ibm\": {\n    \"apikey\": \"<string>\",\n    \"region\": \"<string>\"\n  },\n  \"oracle\": {\n    \"user\": \"<string>\",\n    \"tenancy\": \"<string>\",\n    \"region\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"gcp\": {\n    \"zone\": \"<string>\",\n    \"credentials\": {\n      \"type\": \"<string>\",\n      \"project_id\": \"<string>\",\n      \"private_key_id\": \"<string>\",\n      \"private_key\": \"<string>\",\n      \"client_email\": \"<string>\",\n      \"client_id\": \"<string>\",\n      \"auth_uri\": \"<string>\",\n      \"token_uri\": \"<string>\",\n      \"auth_provider_x509_cert_url\": \"<string>\",\n      \"client_x509_cert_url\": \"<string>\"\n    },\n    \"labels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"s3\": {\n    \"awsauthtype\": \"<string>\",\n    \"region\": \"<string>\",\n    \"bucket\": \"<string>\",\n    \"path\": \"<string>\",\n    \"accesskeyid\": \"<string>\",\n    \"accesssecret\": \"<string>\",\n    \"role\": {\n      \"arn\": \"<string>\"\n    }\n  },\n  \"sentinelone\": {\n    \"base_url\": \"<string>\",\n    \"params\": {\n      \"accountId\": \"<string>\",\n      \"filterId\": \"<string>\"\n    },\n    \"token\": \"<string>\",\n    \"ranger\": {\n      \"enabled\": \"<boolean>\"\n    }\n  },\n  \"wiz\": {\n    \"apiendpoint\": \"<string>\",\n    \"tokenurl\": \"<string>\",\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 77,\n    \"count\": 6306\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"created\": \"string\",\n      \"lastupdated\": \"string\",\n      \"allOf\": {\n        \"name\": \"string\",\n        \"type\": \"gcp\",\n        \"enabled\": false,\n        \"updateinterval\": 42974,\n        \"aws\": {\n          \"awsauthtype\": \"AccessKey\",\n          \"region\": \"string\",\n          \"tags\": [\n            \"string\",\n            \"string\"\n          ],\n          \"accesskeyid\": \"string\",\n          \"accesssecret\": \"string\",\n          \"role\": {\n            \"arn\": \"string\"\n          }\n        },\n        \"azure\": {\n          \"clientid\": \"string\",\n          \"clientsecret\": \"string\",\n          \"subscriptionid\": \"string\",\n          \"tenantid\": \"string\",\n          \"tags\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"crowdstrike\": {\n          \"clientid\": \"string\",\n          \"clientsecret\": \"string\",\n          \"cloud\": \"us-2\",\n          \"filter\": \"string\",\n          \"sort\": \"string\"\n        },\n        \"crowdstrikediscover\": {\n          \"clientid\": \"string\",\n          \"clientsecret\": \"string\",\n          \"cloud\": \"us-2\",\n          \"filter\": \"string\",\n          \"sort\": \"string\"\n        },\n        \"ibm\": {\n          \"apikey\": \"string\",\n          \"region\": \"string\"\n        },\n        \"oracle\": {\n          \"user\": \"string\",\n          \"tenancy\": \"string\",\n          \"region\": \"string\",\n          \"tags\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"gcp\": {\n          \"zone\": \"string\",\n          \"credentials\": {\n            \"type\": \"string\",\n            \"project_id\": \"string\",\n            \"private_key_id\": \"string\",\n            \"private_key\": \"string\",\n            \"client_email\": \"string\",\n            \"client_id\": \"string\",\n            \"auth_uri\": \"string\",\n            \"token_uri\": \"string\",\n            \"auth_provider_x509_cert_url\": \"string\",\n            \"client_x509_cert_url\": \"string\"\n          },\n          \"labels\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"s3\": {\n          \"awsauthtype\": \"AccessKey\",\n          \"region\": \"string\",\n          \"bucket\": \"string\",\n          \"path\": \"string\",\n          \"accesskeyid\": \"string\",\n          \"accesssecret\": \"string\",\n          \"role\": {\n            \"arn\": \"string\"\n          }\n        },\n        \"sentinelone\": {\n          \"base_url\": \"string\",\n          \"params\": {\n            \"accountId\": \"string\",\n            \"filterId\": \"string\"\n          },\n          \"token\": \"string\",\n          \"ranger\": {\n            \"enabled\": true\n          }\n        },\n        \"wiz\": {\n          \"apiendpoint\": \"https://api.eu2.app.wiz.io/graphql\",\n          \"tokenurl\": \"https://auth.app.wiz.io/oauth/token\",\n          \"clientid\": \"string\",\n          \"clientsecret\": \"string\"\n        }\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"created\": \"string\",\n      \"lastupdated\": \"string\",\n      \"allOf\": {\n        \"name\": \"string\",\n        \"type\": \"gcp\",\n        \"enabled\": true,\n        \"updateinterval\": 524670,\n        \"aws\": {\n          \"awsauthtype\": \"AccessKey\",\n          \"region\": \"string\",\n          \"tags\": [\n            \"string\",\n            \"string\"\n          ],\n          \"accesskeyid\": \"string\",\n          \"accesssecret\": \"string\",\n          \"role\": {\n            \"arn\": \"string\"\n          }\n        },\n        \"azure\": {\n          \"clientid\": \"string\",\n          \"clientsecret\": \"string\",\n          \"subscriptionid\": \"string\",\n          \"tenantid\": \"string\",\n          \"tags\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"crowdstrike\": {\n          \"clientid\": \"string\",\n          \"clientsecret\": \"string\",\n          \"cloud\": \"eu-1\",\n          \"filter\": \"string\",\n          \"sort\": \"string\"\n        },\n        \"crowdstrikediscover\": {\n          \"clientid\": \"string\",\n          \"clientsecret\": \"string\",\n          \"cloud\": \"eu-1\",\n          \"filter\": \"string\",\n          \"sort\": \"string\"\n        },\n        \"ibm\": {\n          \"apikey\": \"string\",\n          \"region\": \"string\"\n        },\n        \"oracle\": {\n          \"user\": \"string\",\n          \"tenancy\": \"string\",\n          \"region\": \"string\",\n          \"tags\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"gcp\": {\n          \"zone\": \"string\",\n          \"credentials\": {\n            \"type\": \"string\",\n            \"project_id\": \"string\",\n            \"private_key_id\": \"string\",\n            \"private_key\": \"string\",\n            \"client_email\": \"string\",\n            \"client_id\": \"string\",\n            \"auth_uri\": \"string\",\n            \"token_uri\": \"string\",\n            \"auth_provider_x509_cert_url\": \"string\",\n            \"client_x509_cert_url\": \"string\"\n          },\n          \"labels\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"s3\": {\n          \"awsauthtype\": \"AccessKey\",\n          \"region\": \"string\",\n          \"bucket\": \"string\",\n          \"path\": \"string\",\n          \"accesskeyid\": \"string\",\n          \"accesssecret\": \"string\",\n          \"role\": {\n            \"arn\": \"string\"\n          }\n        },\n        \"sentinelone\": {\n          \"base_url\": \"string\",\n          \"params\": {\n            \"accountId\": \"string\",\n            \"filterId\": \"string\"\n          },\n          \"token\": \"string\",\n          \"ranger\": {\n            \"enabled\": false\n          }\n        },\n        \"wiz\": {\n          \"apiendpoint\": \"https://api.us2.app.wiz.io/graphql\",\n          \"tokenurl\": \"https://auth.wiz.io/oauth/token\",\n          \"clientid\": \"string\",\n          \"clientsecret\": \"string\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24a83f8a-c897-4d29-a3f5-56708b83b4c7",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"updateinterval\": \"<integer>\",\n  \"aws\": {\n    \"awsauthtype\": \"<string>\",\n    \"region\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"accesskeyid\": \"<string>\",\n    \"accesssecret\": \"<string>\",\n    \"role\": {\n      \"arn\": \"<string>\"\n    }\n  },\n  \"azure\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"subscriptionid\": \"<string>\",\n    \"tenantid\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"crowdstrike\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"cloud\": \"<string>\",\n    \"filter\": \"<string>\",\n    \"sort\": \"<string>\"\n  },\n  \"crowdstrikediscover\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"cloud\": \"<string>\",\n    \"filter\": \"<string>\",\n    \"sort\": \"<string>\"\n  },\n  \"ibm\": {\n    \"apikey\": \"<string>\",\n    \"region\": \"<string>\"\n  },\n  \"oracle\": {\n    \"user\": \"<string>\",\n    \"tenancy\": \"<string>\",\n    \"region\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"gcp\": {\n    \"zone\": \"<string>\",\n    \"credentials\": {\n      \"type\": \"<string>\",\n      \"project_id\": \"<string>\",\n      \"private_key_id\": \"<string>\",\n      \"private_key\": \"<string>\",\n      \"client_email\": \"<string>\",\n      \"client_id\": \"<string>\",\n      \"auth_uri\": \"<string>\",\n      \"token_uri\": \"<string>\",\n      \"auth_provider_x509_cert_url\": \"<string>\",\n      \"client_x509_cert_url\": \"<string>\"\n    },\n    \"labels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"s3\": {\n    \"awsauthtype\": \"<string>\",\n    \"region\": \"<string>\",\n    \"bucket\": \"<string>\",\n    \"path\": \"<string>\",\n    \"accesskeyid\": \"<string>\",\n    \"accesssecret\": \"<string>\",\n    \"role\": {\n      \"arn\": \"<string>\"\n    }\n  },\n  \"sentinelone\": {\n    \"base_url\": \"<string>\",\n    \"params\": {\n      \"accountId\": \"<string>\",\n      \"filterId\": \"<string>\"\n    },\n    \"token\": \"<string>\",\n    \"ranger\": {\n      \"enabled\": \"<boolean>\"\n    }\n  },\n  \"wiz\": {\n    \"apiendpoint\": \"<string>\",\n    \"tokenurl\": \"<string>\",\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "deee2b20-ac0b-433a-b84c-65062605794f",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"updateinterval\": \"<integer>\",\n  \"aws\": {\n    \"awsauthtype\": \"<string>\",\n    \"region\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"accesskeyid\": \"<string>\",\n    \"accesssecret\": \"<string>\",\n    \"role\": {\n      \"arn\": \"<string>\"\n    }\n  },\n  \"azure\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"subscriptionid\": \"<string>\",\n    \"tenantid\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"crowdstrike\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"cloud\": \"<string>\",\n    \"filter\": \"<string>\",\n    \"sort\": \"<string>\"\n  },\n  \"crowdstrikediscover\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"cloud\": \"<string>\",\n    \"filter\": \"<string>\",\n    \"sort\": \"<string>\"\n  },\n  \"ibm\": {\n    \"apikey\": \"<string>\",\n    \"region\": \"<string>\"\n  },\n  \"oracle\": {\n    \"user\": \"<string>\",\n    \"tenancy\": \"<string>\",\n    \"region\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"gcp\": {\n    \"zone\": \"<string>\",\n    \"credentials\": {\n      \"type\": \"<string>\",\n      \"project_id\": \"<string>\",\n      \"private_key_id\": \"<string>\",\n      \"private_key\": \"<string>\",\n      \"client_email\": \"<string>\",\n      \"client_id\": \"<string>\",\n      \"auth_uri\": \"<string>\",\n      \"token_uri\": \"<string>\",\n      \"auth_provider_x509_cert_url\": \"<string>\",\n      \"client_x509_cert_url\": \"<string>\"\n    },\n    \"labels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"s3\": {\n    \"awsauthtype\": \"<string>\",\n    \"region\": \"<string>\",\n    \"bucket\": \"<string>\",\n    \"path\": \"<string>\",\n    \"accesskeyid\": \"<string>\",\n    \"accesssecret\": \"<string>\",\n    \"role\": {\n      \"arn\": \"<string>\"\n    }\n  },\n  \"sentinelone\": {\n    \"base_url\": \"<string>\",\n    \"params\": {\n      \"accountId\": \"<string>\",\n      \"filterId\": \"<string>\"\n    },\n    \"token\": \"<string>\",\n    \"ranger\": {\n      \"enabled\": \"<boolean>\"\n    }\n  },\n  \"wiz\": {\n    \"apiendpoint\": \"<string>\",\n    \"tokenurl\": \"<string>\",\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cca3aa6d-e767-496b-9177-e6bd5f89469f",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"updateinterval\": \"<integer>\",\n  \"aws\": {\n    \"awsauthtype\": \"<string>\",\n    \"region\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"accesskeyid\": \"<string>\",\n    \"accesssecret\": \"<string>\",\n    \"role\": {\n      \"arn\": \"<string>\"\n    }\n  },\n  \"azure\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"subscriptionid\": \"<string>\",\n    \"tenantid\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"crowdstrike\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"cloud\": \"<string>\",\n    \"filter\": \"<string>\",\n    \"sort\": \"<string>\"\n  },\n  \"crowdstrikediscover\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"cloud\": \"<string>\",\n    \"filter\": \"<string>\",\n    \"sort\": \"<string>\"\n  },\n  \"ibm\": {\n    \"apikey\": \"<string>\",\n    \"region\": \"<string>\"\n  },\n  \"oracle\": {\n    \"user\": \"<string>\",\n    \"tenancy\": \"<string>\",\n    \"region\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"gcp\": {\n    \"zone\": \"<string>\",\n    \"credentials\": {\n      \"type\": \"<string>\",\n      \"project_id\": \"<string>\",\n      \"private_key_id\": \"<string>\",\n      \"private_key\": \"<string>\",\n      \"client_email\": \"<string>\",\n      \"client_id\": \"<string>\",\n      \"auth_uri\": \"<string>\",\n      \"token_uri\": \"<string>\",\n      \"auth_provider_x509_cert_url\": \"<string>\",\n      \"client_x509_cert_url\": \"<string>\"\n    },\n    \"labels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"s3\": {\n    \"awsauthtype\": \"<string>\",\n    \"region\": \"<string>\",\n    \"bucket\": \"<string>\",\n    \"path\": \"<string>\",\n    \"accesskeyid\": \"<string>\",\n    \"accesssecret\": \"<string>\",\n    \"role\": {\n      \"arn\": \"<string>\"\n    }\n  },\n  \"sentinelone\": {\n    \"base_url\": \"<string>\",\n    \"params\": {\n      \"accountId\": \"<string>\",\n      \"filterId\": \"<string>\"\n    },\n    \"token\": \"<string>\",\n    \"ranger\": {\n      \"enabled\": \"<boolean>\"\n    }\n  },\n  \"wiz\": {\n    \"apiendpoint\": \"<string>\",\n    \"tokenurl\": \"<string>\",\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0427bb3-3b98-4762-9518-066e92488bfc",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"updateinterval\": \"<integer>\",\n  \"aws\": {\n    \"awsauthtype\": \"<string>\",\n    \"region\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"accesskeyid\": \"<string>\",\n    \"accesssecret\": \"<string>\",\n    \"role\": {\n      \"arn\": \"<string>\"\n    }\n  },\n  \"azure\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"subscriptionid\": \"<string>\",\n    \"tenantid\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"crowdstrike\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"cloud\": \"<string>\",\n    \"filter\": \"<string>\",\n    \"sort\": \"<string>\"\n  },\n  \"crowdstrikediscover\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"cloud\": \"<string>\",\n    \"filter\": \"<string>\",\n    \"sort\": \"<string>\"\n  },\n  \"ibm\": {\n    \"apikey\": \"<string>\",\n    \"region\": \"<string>\"\n  },\n  \"oracle\": {\n    \"user\": \"<string>\",\n    \"tenancy\": \"<string>\",\n    \"region\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"gcp\": {\n    \"zone\": \"<string>\",\n    \"credentials\": {\n      \"type\": \"<string>\",\n      \"project_id\": \"<string>\",\n      \"private_key_id\": \"<string>\",\n      \"private_key\": \"<string>\",\n      \"client_email\": \"<string>\",\n      \"client_id\": \"<string>\",\n      \"auth_uri\": \"<string>\",\n      \"token_uri\": \"<string>\",\n      \"auth_provider_x509_cert_url\": \"<string>\",\n      \"client_x509_cert_url\": \"<string>\"\n    },\n    \"labels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"s3\": {\n    \"awsauthtype\": \"<string>\",\n    \"region\": \"<string>\",\n    \"bucket\": \"<string>\",\n    \"path\": \"<string>\",\n    \"accesskeyid\": \"<string>\",\n    \"accesssecret\": \"<string>\",\n    \"role\": {\n      \"arn\": \"<string>\"\n    }\n  },\n  \"sentinelone\": {\n    \"base_url\": \"<string>\",\n    \"params\": {\n      \"accountId\": \"<string>\",\n      \"filterId\": \"<string>\"\n    },\n    \"token\": \"<string>\",\n    \"ranger\": {\n      \"enabled\": \"<boolean>\"\n    }\n  },\n  \"wiz\": {\n    \"apiendpoint\": \"<string>\",\n    \"tokenurl\": \"<string>\",\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91bf5869-78c6-453d-b611-ecceb07583b5",
+          "name": "Fetch Context Integration",
+          "request": {
+            "name": "Fetch Context Integration",
+            "description": {
+              "content": "Fetches a specific context integration from the ID supplied in the path.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "integrations",
+                "context",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the context integration to be returned."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e3404d0f-e8e1-4dfb-9c5f-42319257aef9",
+              "name": "List of Context Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 1252,\n    \"count\": 6099\n  },\n  \"data\": {\n    \"id\": \"string\",\n    \"created\": \"string\",\n    \"lastupdated\": \"string\",\n    \"allOf\": {\n      \"name\": \"string\",\n      \"type\": \"gcp\",\n      \"enabled\": true,\n      \"updateinterval\": 364555,\n      \"aws\": {\n        \"awsauthtype\": \"AccessKey\",\n        \"region\": \"string\",\n        \"tags\": [\n          \"string\",\n          \"string\"\n        ],\n        \"accesskeyid\": \"string\",\n        \"accesssecret\": \"string\",\n        \"role\": {\n          \"arn\": \"string\"\n        }\n      },\n      \"azure\": {\n        \"clientid\": \"string\",\n        \"clientsecret\": \"string\",\n        \"subscriptionid\": \"string\",\n        \"tenantid\": \"string\",\n        \"tags\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"crowdstrike\": {\n        \"clientid\": \"string\",\n        \"clientsecret\": \"string\",\n        \"cloud\": \"eu-1\",\n        \"filter\": \"string\",\n        \"sort\": \"string\"\n      },\n      \"crowdstrikediscover\": {\n        \"clientid\": \"string\",\n        \"clientsecret\": \"string\",\n        \"cloud\": \"us-gov-1\",\n        \"filter\": \"string\",\n        \"sort\": \"string\"\n      },\n      \"ibm\": {\n        \"apikey\": \"string\",\n        \"region\": \"string\"\n      },\n      \"oracle\": {\n        \"user\": \"string\",\n        \"tenancy\": \"string\",\n        \"region\": \"string\",\n        \"tags\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"gcp\": {\n        \"zone\": \"string\",\n        \"credentials\": {\n          \"type\": \"string\",\n          \"project_id\": \"string\",\n          \"private_key_id\": \"string\",\n          \"private_key\": \"string\",\n          \"client_email\": \"string\",\n          \"client_id\": \"string\",\n          \"auth_uri\": \"string\",\n          \"token_uri\": \"string\",\n          \"auth_provider_x509_cert_url\": \"string\",\n          \"client_x509_cert_url\": \"string\"\n        },\n        \"labels\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"s3\": {\n        \"awsauthtype\": \"AccessKey\",\n        \"region\": \"string\",\n        \"bucket\": \"string\",\n        \"path\": \"string\",\n        \"accesskeyid\": \"string\",\n        \"accesssecret\": \"string\",\n        \"role\": {\n          \"arn\": \"string\"\n        }\n      },\n      \"sentinelone\": {\n        \"base_url\": \"string\",\n        \"params\": {\n          \"accountId\": \"string\",\n          \"filterId\": \"string\"\n        },\n        \"token\": \"string\",\n        \"ranger\": {\n          \"enabled\": false\n        }\n      },\n      \"wiz\": {\n        \"apiendpoint\": \"https://api.eu2.app.wiz.io/graphql\",\n        \"tokenurl\": \"https://auth.gov.wiz.io/oauth/token\",\n        \"clientid\": \"string\",\n        \"clientsecret\": \"string\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6b63a799-7cb4-436f-9b6f-095c142ea44a",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62fa10e4-bced-4cd9-aeb8-592700843997",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a821bac0-c9dc-42de-8538-5056a7b1fb71",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f608a315-8f93-48f0-ac1a-a0b1dd4b186c",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "270089a2-531f-4a87-81f2-1e0401b10f28",
+          "name": "Update Context Integration",
+          "request": {
+            "name": "Update Context Integration",
+            "description": {
+              "content": "Update a context integration given the provided object.  This does not do a diff.  You must send the complete object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "integrations",
+                "context",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the context integration to be updated"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "418357b9-e394-43e5-a229-5a0223d0cb9b",
+              "name": "List of Context Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"updateinterval\": \"<integer>\",\n  \"aws\": {\n    \"awsauthtype\": \"<string>\",\n    \"region\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"accesskeyid\": \"<string>\",\n    \"accesssecret\": \"<string>\",\n    \"role\": {\n      \"arn\": \"<string>\"\n    }\n  },\n  \"azure\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"subscriptionid\": \"<string>\",\n    \"tenantid\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"crowdstrike\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"cloud\": \"<string>\",\n    \"filter\": \"<string>\",\n    \"sort\": \"<string>\"\n  },\n  \"crowdstrikediscover\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"cloud\": \"<string>\",\n    \"filter\": \"<string>\",\n    \"sort\": \"<string>\"\n  },\n  \"ibm\": {\n    \"apikey\": \"<string>\",\n    \"region\": \"<string>\"\n  },\n  \"oracle\": {\n    \"user\": \"<string>\",\n    \"tenancy\": \"<string>\",\n    \"region\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"gcp\": {\n    \"zone\": \"<string>\",\n    \"credentials\": {\n      \"type\": \"<string>\",\n      \"project_id\": \"<string>\",\n      \"private_key_id\": \"<string>\",\n      \"private_key\": \"<string>\",\n      \"client_email\": \"<string>\",\n      \"client_id\": \"<string>\",\n      \"auth_uri\": \"<string>\",\n      \"token_uri\": \"<string>\",\n      \"auth_provider_x509_cert_url\": \"<string>\",\n      \"client_x509_cert_url\": \"<string>\"\n    },\n    \"labels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"s3\": {\n    \"awsauthtype\": \"<string>\",\n    \"region\": \"<string>\",\n    \"bucket\": \"<string>\",\n    \"path\": \"<string>\",\n    \"accesskeyid\": \"<string>\",\n    \"accesssecret\": \"<string>\",\n    \"role\": {\n      \"arn\": \"<string>\"\n    }\n  },\n  \"sentinelone\": {\n    \"base_url\": \"<string>\",\n    \"params\": {\n      \"accountId\": \"<string>\",\n      \"filterId\": \"<string>\"\n    },\n    \"token\": \"<string>\",\n    \"ranger\": {\n      \"enabled\": \"<boolean>\"\n    }\n  },\n  \"wiz\": {\n    \"apiendpoint\": \"<string>\",\n    \"tokenurl\": \"<string>\",\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 1252,\n    \"count\": 6099\n  },\n  \"data\": {\n    \"id\": \"string\",\n    \"created\": \"string\",\n    \"lastupdated\": \"string\",\n    \"allOf\": {\n      \"name\": \"string\",\n      \"type\": \"gcp\",\n      \"enabled\": true,\n      \"updateinterval\": 364555,\n      \"aws\": {\n        \"awsauthtype\": \"AccessKey\",\n        \"region\": \"string\",\n        \"tags\": [\n          \"string\",\n          \"string\"\n        ],\n        \"accesskeyid\": \"string\",\n        \"accesssecret\": \"string\",\n        \"role\": {\n          \"arn\": \"string\"\n        }\n      },\n      \"azure\": {\n        \"clientid\": \"string\",\n        \"clientsecret\": \"string\",\n        \"subscriptionid\": \"string\",\n        \"tenantid\": \"string\",\n        \"tags\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"crowdstrike\": {\n        \"clientid\": \"string\",\n        \"clientsecret\": \"string\",\n        \"cloud\": \"eu-1\",\n        \"filter\": \"string\",\n        \"sort\": \"string\"\n      },\n      \"crowdstrikediscover\": {\n        \"clientid\": \"string\",\n        \"clientsecret\": \"string\",\n        \"cloud\": \"us-gov-1\",\n        \"filter\": \"string\",\n        \"sort\": \"string\"\n      },\n      \"ibm\": {\n        \"apikey\": \"string\",\n        \"region\": \"string\"\n      },\n      \"oracle\": {\n        \"user\": \"string\",\n        \"tenancy\": \"string\",\n        \"region\": \"string\",\n        \"tags\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"gcp\": {\n        \"zone\": \"string\",\n        \"credentials\": {\n          \"type\": \"string\",\n          \"project_id\": \"string\",\n          \"private_key_id\": \"string\",\n          \"private_key\": \"string\",\n          \"client_email\": \"string\",\n          \"client_id\": \"string\",\n          \"auth_uri\": \"string\",\n          \"token_uri\": \"string\",\n          \"auth_provider_x509_cert_url\": \"string\",\n          \"client_x509_cert_url\": \"string\"\n        },\n        \"labels\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"s3\": {\n        \"awsauthtype\": \"AccessKey\",\n        \"region\": \"string\",\n        \"bucket\": \"string\",\n        \"path\": \"string\",\n        \"accesskeyid\": \"string\",\n        \"accesssecret\": \"string\",\n        \"role\": {\n          \"arn\": \"string\"\n        }\n      },\n      \"sentinelone\": {\n        \"base_url\": \"string\",\n        \"params\": {\n          \"accountId\": \"string\",\n          \"filterId\": \"string\"\n        },\n        \"token\": \"string\",\n        \"ranger\": {\n          \"enabled\": false\n        }\n      },\n      \"wiz\": {\n        \"apiendpoint\": \"https://api.eu2.app.wiz.io/graphql\",\n        \"tokenurl\": \"https://auth.gov.wiz.io/oauth/token\",\n        \"clientid\": \"string\",\n        \"clientsecret\": \"string\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e8b944e-7ab6-4ab6-a21b-0228e13f185d",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"updateinterval\": \"<integer>\",\n  \"aws\": {\n    \"awsauthtype\": \"<string>\",\n    \"region\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"accesskeyid\": \"<string>\",\n    \"accesssecret\": \"<string>\",\n    \"role\": {\n      \"arn\": \"<string>\"\n    }\n  },\n  \"azure\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"subscriptionid\": \"<string>\",\n    \"tenantid\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"crowdstrike\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"cloud\": \"<string>\",\n    \"filter\": \"<string>\",\n    \"sort\": \"<string>\"\n  },\n  \"crowdstrikediscover\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"cloud\": \"<string>\",\n    \"filter\": \"<string>\",\n    \"sort\": \"<string>\"\n  },\n  \"ibm\": {\n    \"apikey\": \"<string>\",\n    \"region\": \"<string>\"\n  },\n  \"oracle\": {\n    \"user\": \"<string>\",\n    \"tenancy\": \"<string>\",\n    \"region\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"gcp\": {\n    \"zone\": \"<string>\",\n    \"credentials\": {\n      \"type\": \"<string>\",\n      \"project_id\": \"<string>\",\n      \"private_key_id\": \"<string>\",\n      \"private_key\": \"<string>\",\n      \"client_email\": \"<string>\",\n      \"client_id\": \"<string>\",\n      \"auth_uri\": \"<string>\",\n      \"token_uri\": \"<string>\",\n      \"auth_provider_x509_cert_url\": \"<string>\",\n      \"client_x509_cert_url\": \"<string>\"\n    },\n    \"labels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"s3\": {\n    \"awsauthtype\": \"<string>\",\n    \"region\": \"<string>\",\n    \"bucket\": \"<string>\",\n    \"path\": \"<string>\",\n    \"accesskeyid\": \"<string>\",\n    \"accesssecret\": \"<string>\",\n    \"role\": {\n      \"arn\": \"<string>\"\n    }\n  },\n  \"sentinelone\": {\n    \"base_url\": \"<string>\",\n    \"params\": {\n      \"accountId\": \"<string>\",\n      \"filterId\": \"<string>\"\n    },\n    \"token\": \"<string>\",\n    \"ranger\": {\n      \"enabled\": \"<boolean>\"\n    }\n  },\n  \"wiz\": {\n    \"apiendpoint\": \"<string>\",\n    \"tokenurl\": \"<string>\",\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e20ac7b-95c8-4689-9159-a529a8286c59",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"updateinterval\": \"<integer>\",\n  \"aws\": {\n    \"awsauthtype\": \"<string>\",\n    \"region\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"accesskeyid\": \"<string>\",\n    \"accesssecret\": \"<string>\",\n    \"role\": {\n      \"arn\": \"<string>\"\n    }\n  },\n  \"azure\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"subscriptionid\": \"<string>\",\n    \"tenantid\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"crowdstrike\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"cloud\": \"<string>\",\n    \"filter\": \"<string>\",\n    \"sort\": \"<string>\"\n  },\n  \"crowdstrikediscover\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"cloud\": \"<string>\",\n    \"filter\": \"<string>\",\n    \"sort\": \"<string>\"\n  },\n  \"ibm\": {\n    \"apikey\": \"<string>\",\n    \"region\": \"<string>\"\n  },\n  \"oracle\": {\n    \"user\": \"<string>\",\n    \"tenancy\": \"<string>\",\n    \"region\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"gcp\": {\n    \"zone\": \"<string>\",\n    \"credentials\": {\n      \"type\": \"<string>\",\n      \"project_id\": \"<string>\",\n      \"private_key_id\": \"<string>\",\n      \"private_key\": \"<string>\",\n      \"client_email\": \"<string>\",\n      \"client_id\": \"<string>\",\n      \"auth_uri\": \"<string>\",\n      \"token_uri\": \"<string>\",\n      \"auth_provider_x509_cert_url\": \"<string>\",\n      \"client_x509_cert_url\": \"<string>\"\n    },\n    \"labels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"s3\": {\n    \"awsauthtype\": \"<string>\",\n    \"region\": \"<string>\",\n    \"bucket\": \"<string>\",\n    \"path\": \"<string>\",\n    \"accesskeyid\": \"<string>\",\n    \"accesssecret\": \"<string>\",\n    \"role\": {\n      \"arn\": \"<string>\"\n    }\n  },\n  \"sentinelone\": {\n    \"base_url\": \"<string>\",\n    \"params\": {\n      \"accountId\": \"<string>\",\n      \"filterId\": \"<string>\"\n    },\n    \"token\": \"<string>\",\n    \"ranger\": {\n      \"enabled\": \"<boolean>\"\n    }\n  },\n  \"wiz\": {\n    \"apiendpoint\": \"<string>\",\n    \"tokenurl\": \"<string>\",\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43ff78f8-fbde-498e-ac42-0bd0eadc0a02",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"updateinterval\": \"<integer>\",\n  \"aws\": {\n    \"awsauthtype\": \"<string>\",\n    \"region\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"accesskeyid\": \"<string>\",\n    \"accesssecret\": \"<string>\",\n    \"role\": {\n      \"arn\": \"<string>\"\n    }\n  },\n  \"azure\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"subscriptionid\": \"<string>\",\n    \"tenantid\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"crowdstrike\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"cloud\": \"<string>\",\n    \"filter\": \"<string>\",\n    \"sort\": \"<string>\"\n  },\n  \"crowdstrikediscover\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"cloud\": \"<string>\",\n    \"filter\": \"<string>\",\n    \"sort\": \"<string>\"\n  },\n  \"ibm\": {\n    \"apikey\": \"<string>\",\n    \"region\": \"<string>\"\n  },\n  \"oracle\": {\n    \"user\": \"<string>\",\n    \"tenancy\": \"<string>\",\n    \"region\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"gcp\": {\n    \"zone\": \"<string>\",\n    \"credentials\": {\n      \"type\": \"<string>\",\n      \"project_id\": \"<string>\",\n      \"private_key_id\": \"<string>\",\n      \"private_key\": \"<string>\",\n      \"client_email\": \"<string>\",\n      \"client_id\": \"<string>\",\n      \"auth_uri\": \"<string>\",\n      \"token_uri\": \"<string>\",\n      \"auth_provider_x509_cert_url\": \"<string>\",\n      \"client_x509_cert_url\": \"<string>\"\n    },\n    \"labels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"s3\": {\n    \"awsauthtype\": \"<string>\",\n    \"region\": \"<string>\",\n    \"bucket\": \"<string>\",\n    \"path\": \"<string>\",\n    \"accesskeyid\": \"<string>\",\n    \"accesssecret\": \"<string>\",\n    \"role\": {\n      \"arn\": \"<string>\"\n    }\n  },\n  \"sentinelone\": {\n    \"base_url\": \"<string>\",\n    \"params\": {\n      \"accountId\": \"<string>\",\n      \"filterId\": \"<string>\"\n    },\n    \"token\": \"<string>\",\n    \"ranger\": {\n      \"enabled\": \"<boolean>\"\n    }\n  },\n  \"wiz\": {\n    \"apiendpoint\": \"<string>\",\n    \"tokenurl\": \"<string>\",\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "836a6981-3ffc-43d8-a0f6-a10c38436108",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"updateinterval\": \"<integer>\",\n  \"aws\": {\n    \"awsauthtype\": \"<string>\",\n    \"region\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"accesskeyid\": \"<string>\",\n    \"accesssecret\": \"<string>\",\n    \"role\": {\n      \"arn\": \"<string>\"\n    }\n  },\n  \"azure\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"subscriptionid\": \"<string>\",\n    \"tenantid\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"crowdstrike\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"cloud\": \"<string>\",\n    \"filter\": \"<string>\",\n    \"sort\": \"<string>\"\n  },\n  \"crowdstrikediscover\": {\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\",\n    \"cloud\": \"<string>\",\n    \"filter\": \"<string>\",\n    \"sort\": \"<string>\"\n  },\n  \"ibm\": {\n    \"apikey\": \"<string>\",\n    \"region\": \"<string>\"\n  },\n  \"oracle\": {\n    \"user\": \"<string>\",\n    \"tenancy\": \"<string>\",\n    \"region\": \"<string>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"gcp\": {\n    \"zone\": \"<string>\",\n    \"credentials\": {\n      \"type\": \"<string>\",\n      \"project_id\": \"<string>\",\n      \"private_key_id\": \"<string>\",\n      \"private_key\": \"<string>\",\n      \"client_email\": \"<string>\",\n      \"client_id\": \"<string>\",\n      \"auth_uri\": \"<string>\",\n      \"token_uri\": \"<string>\",\n      \"auth_provider_x509_cert_url\": \"<string>\",\n      \"client_x509_cert_url\": \"<string>\"\n    },\n    \"labels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"s3\": {\n    \"awsauthtype\": \"<string>\",\n    \"region\": \"<string>\",\n    \"bucket\": \"<string>\",\n    \"path\": \"<string>\",\n    \"accesskeyid\": \"<string>\",\n    \"accesssecret\": \"<string>\",\n    \"role\": {\n      \"arn\": \"<string>\"\n    }\n  },\n  \"sentinelone\": {\n    \"base_url\": \"<string>\",\n    \"params\": {\n      \"accountId\": \"<string>\",\n      \"filterId\": \"<string>\"\n    },\n    \"token\": \"<string>\",\n    \"ranger\": {\n      \"enabled\": \"<boolean>\"\n    }\n  },\n  \"wiz\": {\n    \"apiendpoint\": \"<string>\",\n    \"tokenurl\": \"<string>\",\n    \"clientid\": \"<string>\",\n    \"clientsecret\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fea8c198-1e62-4408-93fb-cc78df7b34d4",
+          "name": "Delete Context Integration",
+          "request": {
+            "name": "Delete Context Integration",
+            "description": {
+              "content": "Deletes a context integration",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "integrations",
+                "context",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the context integration to be deleted"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "11e71467-ce79-41da-9a15-60deff7af0e3",
+              "name": "An empty array",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be deleted"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e4c2c8a5-abbf-4a92-bacc-597514c62ba2",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "070ed5b9-e480-4614-bf44-ba59d806c396",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d6fdcff-d18d-4518-926c-40a89737a663",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf4ef1b3-62d2-46c6-bc29-acb56bebab6c",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19f82618-6562-48c1-9ecf-8718d9dd5ced",
+          "name": "Dry Run/Test a Context Integration",
+          "request": {
+            "name": "Dry Run/Test a Context Integration",
+            "description": {
+              "content": "Runs the specified context integration.  Retuns a list of ip labels that would be imported when the context integration is run.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "integrations",
+                "context",
+                ":id",
+                "run"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the context integration to be test run."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3eab7b8b-3d6d-42f8-957f-3bc06dd37c68",
+              "name": "List of IP Labels Requested",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be test run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 373,\n    \"count\": 8512\n  },\n  \"data\": [\n    {\n      \"ip\": \"string\",\n      \"context\": \"string\",\n      \"labels\": [\n        \"string\"\n      ]\n    },\n    {\n      \"ip\": \"string\",\n      \"context\": \"string\",\n      \"labels\": [\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f748b02-559e-4f30-bcf0-720e9c5db39d",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be test run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f4835c1-adc8-43f7-bbb7-feab6d9995aa",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be test run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73bd1072-425f-4a86-9c4b-94a996632510",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be test run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f145c66-1c68-41d2-b562-fd81dd540515",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be test run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b500a61-c36c-4e54-bbb1-49f82363b6b7",
+          "name": "Run a Context Integration",
+          "request": {
+            "name": "Run a Context Integration",
+            "description": {
+              "content": "Runs the specified context integration.  Returns a list of ip labels that were imported.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "integrations",
+                "context",
+                ":id",
+                "run"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The ID of the context integration to be test run."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af08bb7b-43ce-4345-8f78-e37204b3cac3",
+              "name": "List of IP Labels Requested",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be test run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 373,\n    \"count\": 8512\n  },\n  \"data\": [\n    {\n      \"ip\": \"string\",\n      \"context\": \"string\",\n      \"labels\": [\n        \"string\"\n      ]\n    },\n    {\n      \"ip\": \"string\",\n      \"context\": \"string\",\n      \"labels\": [\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03cea203-0256-4a2f-9462-501325b79499",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be test run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "786af373-814f-43c1-882f-b4bc2ae0af65",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be test run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48cd4ef6-7b11-43b7-ae8a-1a78fdd717e6",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be test run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1ecf98c-b80e-4da0-840c-e6a9de502546",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context integration to be test run."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49a450d3-3d53-4245-9cae-ac06e34ebb63",
+          "name": "Regenerate private/public keys.",
+          "request": {
+            "name": "Regenerate private/public keys.",
+            "description": {
+              "content": "Only applicable to Oracle Cloud.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "integrations",
+                "context",
+                ":id",
+                "regenkeys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) String ID of the role to get"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "087ff352-e02e-47db-822c-4e381b083e81",
+              "name": "List of Context Integrations Requested, or an array containing the new/updated Context Integration after a Create or Update operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id",
+                    "regenkeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) String ID of the role to get"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 1252,\n    \"count\": 6099\n  },\n  \"data\": {\n    \"id\": \"string\",\n    \"created\": \"string\",\n    \"lastupdated\": \"string\",\n    \"allOf\": {\n      \"name\": \"string\",\n      \"type\": \"gcp\",\n      \"enabled\": true,\n      \"updateinterval\": 364555,\n      \"aws\": {\n        \"awsauthtype\": \"AccessKey\",\n        \"region\": \"string\",\n        \"tags\": [\n          \"string\",\n          \"string\"\n        ],\n        \"accesskeyid\": \"string\",\n        \"accesssecret\": \"string\",\n        \"role\": {\n          \"arn\": \"string\"\n        }\n      },\n      \"azure\": {\n        \"clientid\": \"string\",\n        \"clientsecret\": \"string\",\n        \"subscriptionid\": \"string\",\n        \"tenantid\": \"string\",\n        \"tags\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"crowdstrike\": {\n        \"clientid\": \"string\",\n        \"clientsecret\": \"string\",\n        \"cloud\": \"eu-1\",\n        \"filter\": \"string\",\n        \"sort\": \"string\"\n      },\n      \"crowdstrikediscover\": {\n        \"clientid\": \"string\",\n        \"clientsecret\": \"string\",\n        \"cloud\": \"us-gov-1\",\n        \"filter\": \"string\",\n        \"sort\": \"string\"\n      },\n      \"ibm\": {\n        \"apikey\": \"string\",\n        \"region\": \"string\"\n      },\n      \"oracle\": {\n        \"user\": \"string\",\n        \"tenancy\": \"string\",\n        \"region\": \"string\",\n        \"tags\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"gcp\": {\n        \"zone\": \"string\",\n        \"credentials\": {\n          \"type\": \"string\",\n          \"project_id\": \"string\",\n          \"private_key_id\": \"string\",\n          \"private_key\": \"string\",\n          \"client_email\": \"string\",\n          \"client_id\": \"string\",\n          \"auth_uri\": \"string\",\n          \"token_uri\": \"string\",\n          \"auth_provider_x509_cert_url\": \"string\",\n          \"client_x509_cert_url\": \"string\"\n        },\n        \"labels\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"s3\": {\n        \"awsauthtype\": \"AccessKey\",\n        \"region\": \"string\",\n        \"bucket\": \"string\",\n        \"path\": \"string\",\n        \"accesskeyid\": \"string\",\n        \"accesssecret\": \"string\",\n        \"role\": {\n          \"arn\": \"string\"\n        }\n      },\n      \"sentinelone\": {\n        \"base_url\": \"string\",\n        \"params\": {\n          \"accountId\": \"string\",\n          \"filterId\": \"string\"\n        },\n        \"token\": \"string\",\n        \"ranger\": {\n          \"enabled\": false\n        }\n      },\n      \"wiz\": {\n        \"apiendpoint\": \"https://api.eu2.app.wiz.io/graphql\",\n        \"tokenurl\": \"https://auth.gov.wiz.io/oauth/token\",\n        \"clientid\": \"string\",\n        \"clientsecret\": \"string\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac56a9ce-f22e-4946-85fe-36388806e6e6",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id",
+                    "regenkeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) String ID of the role to get"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4919d9a2-e35e-4f8b-8006-6b18ab90dc90",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id",
+                    "regenkeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) String ID of the role to get"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42f108ed-fd31-4ef9-ac46-90ffd0480c12",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id",
+                    "regenkeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) String ID of the role to get"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d662dded-ddea-4b28-8161-eadeb5927aaa",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "integrations",
+                    "context",
+                    ":id",
+                    "regenkeys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) String ID of the role to get"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 805,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.netography.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "75fb33fa-81df-43dc-9d61-cbff2d689094",
+    "name": "Netography (Vectra Fusion) Analytics Integrations - Context API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).",
+      "type": "text/plain"
+    }
+  }
+}

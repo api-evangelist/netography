@@ -1,0 +1,643 @@
+{
+  "item": [
+    {
+      "id": "1c43ac77-aec2-44b7-81ab-ba82198b1504",
+      "name": "Raw Records - Search",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ce5da584-fd74-4ccc-922b-7bd839543b00",
+          "name": "Field Values",
+          "request": {
+            "name": "Field Values",
+            "description": {
+              "content": "Values that can be used for the <code>field</code> parameter in subsequent search API calls",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "search",
+                ":context",
+                "fields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "context",
+                  "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0289585f-4325-4464-b6d5-ff043bf6f94b",
+              "name": "An object which contains response metadata information and a data array of Fields.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    ":context",
+                    "fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 67,\n    \"count\": 4351\n  },\n  \"data\": [\n    {\n      \"field\": \"string\",\n      \"type\": \"string\",\n      \"description\": 6984\n    },\n    {\n      \"field\": \"string\",\n      \"type\": \"string\",\n      \"description\": 6090\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35201ee6-30b5-43a8-9ff4-842d43ba2aea",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    ":context",
+                    "fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 496,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8b30ed6-4216-43f0-a14a-49a17405680d",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    ":context",
+                    "fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 496,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a082759-6797-490e-8fd4-be6eefc75d18",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    ":context",
+                    "fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 496,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09cbb5a4-028a-496a-a57a-c7ffceb9ae92",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    ":context",
+                    "fields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 496,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "64e58969-608e-4f49-9c17-1070b6014b63",
+          "name": "Search Records",
+          "request": {
+            "name": "Search Records",
+            "description": {
+              "content": "Retrieves a list of individual events or records for the specified context over a given time range.  This call takes advantage of the Netography Query Language via the <code>search</code> parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "search",
+                ":context"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "context",
+                  "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start\": \"<integer>\",\n  \"end\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"from\": \"<integer>\",\n  \"include\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"search\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0558b395-9639-4756-9323-3a75738ff494",
+              "name": "An object which contains response metadata information and a data array of records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    ":context"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"end\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"from\": \"<integer>\",\n  \"include\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"search\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 5694,\n    \"count\": 3230\n  },\n  \"data\": [\n    {\n      \"alerttype\": \"string\",\n      \"algorithm\": \"string\",\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"description\": \"string\",\n      \"dstports\": \"\",\n      \"duration\": 9396,\n      \"end\": 3294,\n      \"flowsrcnames\": \"string\",\n      \"id\": \"string\",\n      \"ipinfo\": [\n        {\n          \"as\": {\n            \"number\": 1720,\n            \"org\": \"string\"\n          },\n          \"bogon\": false,\n          \"count\": 5175,\n          \"firstseen\": 7849,\n          \"geo\": {\n            \"city\": \"string\",\n            \"continentcode\": \"string\",\n            \"countrycode\": \"string\",\n            \"location\": {\n              \"lat\": 48.856185611629456,\n              \"lon\": -141.08655637172706\n            },\n            \"postal\": \"string\",\n            \"subdiso\": \"string\",\n            \"subdivisionb\": \"string\"\n          },\n          \"ip\": \"string\",\n          \"iprep\": {\n            \"categories\": [\n              \"string\",\n              \"string\"\n            ],\n            \"count\": 7034\n          },\n          \"lastseen\": 4031,\n          \"pdns\": {\n            \"count\": 6318,\n            \"records\": [\n              \"string\",\n              \"string\"\n            ]\n          },\n          \"rdns\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"as\": {\n            \"number\": 5717,\n            \"org\": \"string\"\n          },\n          \"bogon\": false,\n          \"count\": 6186,\n          \"firstseen\": 3462,\n          \"geo\": {\n            \"city\": \"string\",\n            \"continentcode\": \"string\",\n            \"countrycode\": \"string\",\n            \"location\": {\n              \"lat\": -83.21899535729068,\n              \"lon\": -3.2524320900565726\n            },\n            \"postal\": \"string\",\n            \"subdiso\": \"string\",\n            \"subdivisionb\": \"string\"\n          },\n          \"ip\": \"string\",\n          \"iprep\": {\n            \"categories\": [\n              \"string\",\n              \"string\"\n            ],\n            \"count\": 6367\n          },\n          \"lastseen\": 1960,\n          \"pdns\": {\n            \"count\": 7814,\n            \"records\": [\n              \"string\",\n              \"string\"\n            ]\n          },\n          \"rdns\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"ipinfocount\": 1121,\n      \"metrics\": {\n        \"bits\": {\n          \"min\": 180,\n          \"max\": 1049,\n          \"avg\": 9564.072643320842,\n          \"sum\": 2117.7243971295266\n        },\n        \"bitsxrate\": {\n          \"min\": 404,\n          \"max\": 2179,\n          \"avg\": 7637.642097452154,\n          \"sum\": 3785.190616242945\n        },\n        \"packets\": {\n          \"min\": 9429,\n          \"max\": 256,\n          \"avg\": 8020.144495531778,\n          \"sum\": 5879.811017872739\n        },\n        \"packetsxrate\": {\n          \"min\": 3613,\n          \"max\": 8201,\n          \"avg\": 2704.5607068649256,\n          \"sum\": 7407.57625842498\n        }\n      },\n      \"rollupperiod\": 4416,\n      \"rulecount\": 2681,\n      \"rules\": [\n        \"string\",\n        \"string\"\n      ],\n      \"search\": \"string\",\n      \"severity\": \"string\",\n      \"sites\": \"string\",\n      \"srcports\": \"\",\n      \"start\": 3037,\n      \"summary\": \"string\",\n      \"tag\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"threshold\": \"string\",\n      \"timestamp\": 2890,\n      \"track\": \"string\",\n      \"track_by\": [\n        \"string\",\n        \"string\"\n      ],\n      \"updateinterval\": 8047\n    },\n    {\n      \"alerttype\": \"string\",\n      \"algorithm\": \"string\",\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"description\": \"string\",\n      \"dstports\": \"\",\n      \"duration\": 980,\n      \"end\": 8280,\n      \"flowsrcnames\": \"string\",\n      \"id\": \"string\",\n      \"ipinfo\": [\n        {\n          \"as\": {\n            \"number\": 25,\n            \"org\": \"string\"\n          },\n          \"bogon\": true,\n          \"count\": 5081,\n          \"firstseen\": 6421,\n          \"geo\": {\n            \"city\": \"string\",\n            \"continentcode\": \"string\",\n            \"countrycode\": \"string\",\n            \"location\": {\n              \"lat\": -31.845354078080845,\n              \"lon\": 152.07151585272993\n            },\n            \"postal\": \"string\",\n            \"subdiso\": \"string\",\n            \"subdivisionb\": \"string\"\n          },\n          \"ip\": \"string\",\n          \"iprep\": {\n            \"categories\": [\n              \"string\",\n              \"string\"\n            ],\n            \"count\": 5140\n          },\n          \"lastseen\": 5839,\n          \"pdns\": {\n            \"count\": 435,\n            \"records\": [\n              \"string\",\n              \"string\"\n            ]\n          },\n          \"rdns\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"as\": {\n            \"number\": 2083,\n            \"org\": \"string\"\n          },\n          \"bogon\": false,\n          \"count\": 9408,\n          \"firstseen\": 9286,\n          \"geo\": {\n            \"city\": \"string\",\n            \"continentcode\": \"string\",\n            \"countrycode\": \"string\",\n            \"location\": {\n              \"lat\": -63.9116186511198,\n              \"lon\": 32.68110371789709\n            },\n            \"postal\": \"string\",\n            \"subdiso\": \"string\",\n            \"subdivisionb\": \"string\"\n          },\n          \"ip\": \"string\",\n          \"iprep\": {\n            \"categories\": [\n              \"string\",\n              \"string\"\n            ],\n            \"count\": 9813\n          },\n          \"lastseen\": 6840,\n          \"pdns\": {\n            \"count\": 843,\n            \"records\": [\n              \"string\",\n              \"string\"\n            ]\n          },\n          \"rdns\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"ipinfocount\": 4807,\n      \"metrics\": {\n        \"bits\": {\n          \"min\": 2240,\n          \"max\": 332,\n          \"avg\": 9904.806646877154,\n          \"sum\": 2817.250761403065\n        },\n        \"bitsxrate\": {\n          \"min\": 6990,\n          \"max\": 6408,\n          \"avg\": 8087.010984733105,\n          \"sum\": 2878.0457235030276\n        },\n        \"packets\": {\n          \"min\": 8323,\n          \"max\": 9214,\n          \"avg\": 4439.12504903202,\n          \"sum\": 7008.172083754011\n        },\n        \"packetsxrate\": {\n          \"min\": 4462,\n          \"max\": 2371,\n          \"avg\": 1010.2427455945395,\n          \"sum\": 9997.251707164882\n        }\n      },\n      \"rollupperiod\": 9589,\n      \"rulecount\": 471,\n      \"rules\": [\n        \"string\",\n        \"string\"\n      ],\n      \"search\": \"string\",\n      \"severity\": \"string\",\n      \"sites\": \"string\",\n      \"srcports\": \"\",\n      \"start\": 4247,\n      \"summary\": \"string\",\n      \"tag\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"threshold\": \"string\",\n      \"timestamp\": 7632,\n      \"track\": \"string\",\n      \"track_by\": [\n        \"string\",\n        \"string\"\n      ],\n      \"updateinterval\": 1850\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "738c25b5-e954-4258-8a58-b5d870de09c9",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    ":context"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"end\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"from\": \"<integer>\",\n  \"include\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"search\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 496,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6ab916d-a6ea-4634-b1a5-26c794f84ee8",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    ":context"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"end\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"from\": \"<integer>\",\n  \"include\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"search\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 496,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba7558d1-1905-4304-bde3-1b920bd716db",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    ":context"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"end\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"from\": \"<integer>\",\n  \"include\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"search\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 496,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0e0f2d4-e431-46a9-a1aa-41c8f9b647f8",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "search",
+                    ":context"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "context",
+                      "description": "(Required) Data category or event type to query (e.g., alerts, audit logs, blocked traffic, network flows, DNS queries)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<integer>\",\n  \"end\": \"<integer>\",\n  \"size\": \"<integer>\",\n  \"from\": \"<integer>\",\n  \"include\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"search\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 496,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.netography.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "84080fcc-f415-4344-8d07-e97a8f0ad0ad",
+    "name": "Netography (Vectra Fusion) Analytics Raw Records - Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).",
+      "type": "text/plain"
+    }
+  }
+}

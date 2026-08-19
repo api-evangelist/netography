@@ -1,0 +1,2298 @@
+{
+  "item": [
+    {
+      "id": "7f9943c9-85a3-434e-aad7-6b9dbe4e3c0d",
+      "name": "Detect and Respond - Context Creation Models",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dc1339f7-bc11-43ed-8326-9720a9c4f0ae",
+          "name": "List Context Creation Models",
+          "request": {
+            "name": "List Context Creation Models",
+            "description": {
+              "content": "Returns an array of Context Creation Models.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "ccms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83e9da37-b530-470d-acb8-c99865528573",
+              "name": "List of Requested Context Creation Models",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 2514,\n    \"count\": 5301\n  },\n  \"data\": [\n    {\n      \"algo_type\": \"string\",\n      \"beta\": true,\n      \"created\": 43,\n      \"id\": \"string\",\n      \"recommended\": false,\n      \"subscription\": {\n        \"all\": \"string\"\n      },\n      \"subscriptiontype\": \"string\",\n      \"system\": false,\n      \"systemdefault\": true,\n      \"updated\": 7715,\n      \"action\": [\n        {\n          \"type\": \"string\",\n          \"field\": \"string\",\n          \"context\": \"string\",\n          \"labels\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"type\": \"string\",\n          \"field\": \"string\",\n          \"context\": \"string\",\n          \"labels\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"bypassdisplay\": false,\n      \"bypassrule\": true,\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"description\": \"string\",\n      \"discards\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": false,\n      \"expiration\": 2413,\n      \"factors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\",\n      \"rollupperiod\": 7210,\n      \"search_by\": [\n        {\n          \"search\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"string\"\n        },\n        {\n          \"search\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"string\"\n        }\n      ],\n      \"thresholds\": [\n        {\n          \"severity\": \"string\",\n          \"threshold\": \"string\"\n        },\n        {\n          \"severity\": \"string\",\n          \"threshold\": \"string\"\n        }\n      ],\n      \"track_by\": [\n        [\n          \"string\",\n          \"string\"\n        ],\n        [\n          \"string\",\n          \"string\"\n        ]\n      ],\n      \"updateinterval\": 9758,\n      \"algo_record_type\": \"dns\"\n    },\n    {\n      \"algo_type\": \"string\",\n      \"beta\": false,\n      \"created\": 4559,\n      \"id\": \"string\",\n      \"recommended\": false,\n      \"subscription\": {\n        \"all\": \"string\"\n      },\n      \"subscriptiontype\": \"string\",\n      \"system\": false,\n      \"systemdefault\": true,\n      \"updated\": 3602,\n      \"action\": [\n        {\n          \"type\": \"string\",\n          \"field\": \"string\",\n          \"context\": \"string\",\n          \"labels\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"type\": \"string\",\n          \"field\": \"string\",\n          \"context\": \"string\",\n          \"labels\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"bypassdisplay\": true,\n      \"bypassrule\": false,\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"description\": \"string\",\n      \"discards\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": true,\n      \"expiration\": 9940,\n      \"factors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\",\n      \"rollupperiod\": 1903,\n      \"search_by\": [\n        {\n          \"search\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"string\"\n        },\n        {\n          \"search\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"string\"\n        }\n      ],\n      \"thresholds\": [\n        {\n          \"severity\": \"string\",\n          \"threshold\": \"string\"\n        },\n        {\n          \"severity\": \"string\",\n          \"threshold\": \"string\"\n        }\n      ],\n      \"track_by\": [\n        [\n          \"string\",\n          \"string\"\n        ],\n        [\n          \"string\",\n          \"string\"\n        ]\n      ],\n      \"updateinterval\": 6414,\n      \"algo_record_type\": \"flow\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93749a1f-0801-4dd9-9f46-77664ff970d2",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd8dde3d-5542-48e9-a59c-097d58c99d99",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62cf0b10-26ab-427e-834e-b30eb99a1df1",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76624a49-b4c9-48f8-b1dd-50324cf5a100",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59da517c-fcef-490c-939a-911a8558435a",
+          "name": "Create Context Creation Model",
+          "request": {
+            "name": "Create Context Creation Model",
+            "description": {
+              "content": "Creates a context creation model from the data that's been supplied.  Do not provide an id.  IDs are auto generated",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "ccm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9bb56f01-a913-462a-a7aa-cbb8be0fe4b6",
+              "name": "Requested Context Creation Model",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"expiration\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"rollupperiod\": \"<integer>\",\n  \"search_by\": [\n    {\n      \"search\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\"\n    },\n    {\n      \"search\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\"\n    }\n  ],\n  \"thresholds\": [\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    }\n  ],\n  \"track_by\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"algo_record_type\": \"<string>\",\n  \"action\": [\n    {\n      \"type\": \"<string>\",\n      \"field\": \"<string>\",\n      \"context\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"type\": \"<string>\",\n      \"field\": \"<string>\",\n      \"context\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"bypassdisplay\": \"<boolean>\",\n  \"bypassrule\": \"<boolean>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"discards\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"factors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"updateinterval\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 5451,\n    \"count\": 9958\n  },\n  \"data\": [\n    {\n      \"algo_type\": \"string\",\n      \"beta\": false,\n      \"created\": 6860,\n      \"id\": \"string\",\n      \"recommended\": true,\n      \"subscription\": {\n        \"all\": \"string\"\n      },\n      \"subscriptiontype\": \"string\",\n      \"system\": false,\n      \"systemdefault\": true,\n      \"updated\": 8054,\n      \"action\": [\n        {\n          \"type\": \"string\",\n          \"field\": \"string\",\n          \"context\": \"string\",\n          \"labels\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"type\": \"string\",\n          \"field\": \"string\",\n          \"context\": \"string\",\n          \"labels\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"bypassdisplay\": false,\n      \"bypassrule\": true,\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"description\": \"string\",\n      \"discards\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": true,\n      \"expiration\": 9585,\n      \"factors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\",\n      \"rollupperiod\": 9139,\n      \"search_by\": [\n        {\n          \"search\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"string\"\n        },\n        {\n          \"search\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"string\"\n        }\n      ],\n      \"thresholds\": [\n        {\n          \"severity\": \"string\",\n          \"threshold\": \"string\"\n        },\n        {\n          \"severity\": \"string\",\n          \"threshold\": \"string\"\n        }\n      ],\n      \"track_by\": [\n        [\n          \"string\",\n          \"string\"\n        ],\n        [\n          \"string\",\n          \"string\"\n        ]\n      ],\n      \"updateinterval\": 3177,\n      \"algo_record_type\": \"dns\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aeb7e4e6-67ab-4445-a8d7-49148fcad789",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"expiration\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"rollupperiod\": \"<integer>\",\n  \"search_by\": [\n    {\n      \"search\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\"\n    },\n    {\n      \"search\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\"\n    }\n  ],\n  \"thresholds\": [\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    }\n  ],\n  \"track_by\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"algo_record_type\": \"<string>\",\n  \"action\": [\n    {\n      \"type\": \"<string>\",\n      \"field\": \"<string>\",\n      \"context\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"type\": \"<string>\",\n      \"field\": \"<string>\",\n      \"context\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"bypassdisplay\": \"<boolean>\",\n  \"bypassrule\": \"<boolean>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"discards\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"factors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"updateinterval\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4fceb51d-6068-47fd-a32a-e86aeefa7985",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"expiration\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"rollupperiod\": \"<integer>\",\n  \"search_by\": [\n    {\n      \"search\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\"\n    },\n    {\n      \"search\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\"\n    }\n  ],\n  \"thresholds\": [\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    }\n  ],\n  \"track_by\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"algo_record_type\": \"<string>\",\n  \"action\": [\n    {\n      \"type\": \"<string>\",\n      \"field\": \"<string>\",\n      \"context\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"type\": \"<string>\",\n      \"field\": \"<string>\",\n      \"context\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"bypassdisplay\": \"<boolean>\",\n  \"bypassrule\": \"<boolean>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"discards\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"factors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"updateinterval\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "095dcf83-ef7a-4a90-a0c9-b8f438edadbc",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"expiration\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"rollupperiod\": \"<integer>\",\n  \"search_by\": [\n    {\n      \"search\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\"\n    },\n    {\n      \"search\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\"\n    }\n  ],\n  \"thresholds\": [\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    }\n  ],\n  \"track_by\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"algo_record_type\": \"<string>\",\n  \"action\": [\n    {\n      \"type\": \"<string>\",\n      \"field\": \"<string>\",\n      \"context\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"type\": \"<string>\",\n      \"field\": \"<string>\",\n      \"context\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"bypassdisplay\": \"<boolean>\",\n  \"bypassrule\": \"<boolean>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"discards\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"factors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"updateinterval\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bfc9bd7-0114-40c7-bbab-3140e0562cd1",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"expiration\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"rollupperiod\": \"<integer>\",\n  \"search_by\": [\n    {\n      \"search\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\"\n    },\n    {\n      \"search\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\"\n    }\n  ],\n  \"thresholds\": [\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    }\n  ],\n  \"track_by\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"algo_record_type\": \"<string>\",\n  \"action\": [\n    {\n      \"type\": \"<string>\",\n      \"field\": \"<string>\",\n      \"context\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"type\": \"<string>\",\n      \"field\": \"<string>\",\n      \"context\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"bypassdisplay\": \"<boolean>\",\n  \"bypassrule\": \"<boolean>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"discards\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"factors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"updateinterval\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b583788e-4517-4f20-986f-eae860a29f38",
+          "name": "Fetch Context Creation Model",
+          "request": {
+            "name": "Fetch Context Creation Model",
+            "description": {
+              "content": "Fetches a specific context creation model from the ID supplied in the path.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "ccm",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the context creation model to be returned."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b0d53404-4e63-4e08-8379-5d2f36ac12ab",
+              "name": "Requested Context Creation Model",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 5451,\n    \"count\": 9958\n  },\n  \"data\": [\n    {\n      \"algo_type\": \"string\",\n      \"beta\": false,\n      \"created\": 6860,\n      \"id\": \"string\",\n      \"recommended\": true,\n      \"subscription\": {\n        \"all\": \"string\"\n      },\n      \"subscriptiontype\": \"string\",\n      \"system\": false,\n      \"systemdefault\": true,\n      \"updated\": 8054,\n      \"action\": [\n        {\n          \"type\": \"string\",\n          \"field\": \"string\",\n          \"context\": \"string\",\n          \"labels\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"type\": \"string\",\n          \"field\": \"string\",\n          \"context\": \"string\",\n          \"labels\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"bypassdisplay\": false,\n      \"bypassrule\": true,\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"description\": \"string\",\n      \"discards\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": true,\n      \"expiration\": 9585,\n      \"factors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\",\n      \"rollupperiod\": 9139,\n      \"search_by\": [\n        {\n          \"search\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"string\"\n        },\n        {\n          \"search\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"string\"\n        }\n      ],\n      \"thresholds\": [\n        {\n          \"severity\": \"string\",\n          \"threshold\": \"string\"\n        },\n        {\n          \"severity\": \"string\",\n          \"threshold\": \"string\"\n        }\n      ],\n      \"track_by\": [\n        [\n          \"string\",\n          \"string\"\n        ],\n        [\n          \"string\",\n          \"string\"\n        ]\n      ],\n      \"updateinterval\": 3177,\n      \"algo_record_type\": \"dns\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "855d9e03-3255-4133-9445-e47e618c8342",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c3016d1-a851-490e-9ec5-ffd5a81e67cd",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb755ff9-e8f8-4762-be96-e04faa6181e2",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f8ae560-c5b1-4089-b461-1b5b54552c35",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7998d26-981c-4a8b-9050-a62129a9d97f",
+          "name": "Update Context Creation Model",
+          "request": {
+            "name": "Update Context Creation Model",
+            "description": {
+              "content": "Update a context creation model given the provided object.  This does not do a diff.  You must send the complete object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "ccm",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the context creation model to be updated"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e570809b-a935-45c6-a986-fe81a13ee886",
+              "name": "Requested Context Creation Model",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"expiration\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"rollupperiod\": \"<integer>\",\n  \"search_by\": [\n    {\n      \"search\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\"\n    },\n    {\n      \"search\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\"\n    }\n  ],\n  \"thresholds\": [\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    }\n  ],\n  \"track_by\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"algo_record_type\": \"<string>\",\n  \"action\": [\n    {\n      \"type\": \"<string>\",\n      \"field\": \"<string>\",\n      \"context\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"type\": \"<string>\",\n      \"field\": \"<string>\",\n      \"context\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"bypassdisplay\": \"<boolean>\",\n  \"bypassrule\": \"<boolean>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"discards\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"factors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"updateinterval\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 5451,\n    \"count\": 9958\n  },\n  \"data\": [\n    {\n      \"algo_type\": \"string\",\n      \"beta\": false,\n      \"created\": 6860,\n      \"id\": \"string\",\n      \"recommended\": true,\n      \"subscription\": {\n        \"all\": \"string\"\n      },\n      \"subscriptiontype\": \"string\",\n      \"system\": false,\n      \"systemdefault\": true,\n      \"updated\": 8054,\n      \"action\": [\n        {\n          \"type\": \"string\",\n          \"field\": \"string\",\n          \"context\": \"string\",\n          \"labels\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"type\": \"string\",\n          \"field\": \"string\",\n          \"context\": \"string\",\n          \"labels\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"bypassdisplay\": false,\n      \"bypassrule\": true,\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"description\": \"string\",\n      \"discards\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": true,\n      \"expiration\": 9585,\n      \"factors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\",\n      \"rollupperiod\": 9139,\n      \"search_by\": [\n        {\n          \"search\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"string\"\n        },\n        {\n          \"search\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"string\"\n        }\n      ],\n      \"thresholds\": [\n        {\n          \"severity\": \"string\",\n          \"threshold\": \"string\"\n        },\n        {\n          \"severity\": \"string\",\n          \"threshold\": \"string\"\n        }\n      ],\n      \"track_by\": [\n        [\n          \"string\",\n          \"string\"\n        ],\n        [\n          \"string\",\n          \"string\"\n        ]\n      ],\n      \"updateinterval\": 3177,\n      \"algo_record_type\": \"dns\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a53932b-01e7-4899-b518-11e59a540618",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"expiration\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"rollupperiod\": \"<integer>\",\n  \"search_by\": [\n    {\n      \"search\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\"\n    },\n    {\n      \"search\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\"\n    }\n  ],\n  \"thresholds\": [\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    }\n  ],\n  \"track_by\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"algo_record_type\": \"<string>\",\n  \"action\": [\n    {\n      \"type\": \"<string>\",\n      \"field\": \"<string>\",\n      \"context\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"type\": \"<string>\",\n      \"field\": \"<string>\",\n      \"context\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"bypassdisplay\": \"<boolean>\",\n  \"bypassrule\": \"<boolean>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"discards\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"factors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"updateinterval\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b64d63f0-a3bd-4390-9f48-1749d7416f07",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"expiration\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"rollupperiod\": \"<integer>\",\n  \"search_by\": [\n    {\n      \"search\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\"\n    },\n    {\n      \"search\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\"\n    }\n  ],\n  \"thresholds\": [\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    }\n  ],\n  \"track_by\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"algo_record_type\": \"<string>\",\n  \"action\": [\n    {\n      \"type\": \"<string>\",\n      \"field\": \"<string>\",\n      \"context\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"type\": \"<string>\",\n      \"field\": \"<string>\",\n      \"context\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"bypassdisplay\": \"<boolean>\",\n  \"bypassrule\": \"<boolean>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"discards\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"factors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"updateinterval\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce4997d9-17d8-482c-8c7d-1c2bb2540695",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"expiration\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"rollupperiod\": \"<integer>\",\n  \"search_by\": [\n    {\n      \"search\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\"\n    },\n    {\n      \"search\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\"\n    }\n  ],\n  \"thresholds\": [\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    }\n  ],\n  \"track_by\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"algo_record_type\": \"<string>\",\n  \"action\": [\n    {\n      \"type\": \"<string>\",\n      \"field\": \"<string>\",\n      \"context\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"type\": \"<string>\",\n      \"field\": \"<string>\",\n      \"context\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"bypassdisplay\": \"<boolean>\",\n  \"bypassrule\": \"<boolean>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"discards\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"factors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"updateinterval\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b4efc24-ab8b-493a-b939-c39412f93a20",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"expiration\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"rollupperiod\": \"<integer>\",\n  \"search_by\": [\n    {\n      \"search\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\"\n    },\n    {\n      \"search\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"type\": \"<string>\"\n    }\n  ],\n  \"thresholds\": [\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    },\n    {\n      \"severity\": \"<string>\",\n      \"threshold\": \"<string>\"\n    }\n  ],\n  \"track_by\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"algo_record_type\": \"<string>\",\n  \"action\": [\n    {\n      \"type\": \"<string>\",\n      \"field\": \"<string>\",\n      \"context\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"type\": \"<string>\",\n      \"field\": \"<string>\",\n      \"context\": \"<string>\",\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"bypassdisplay\": \"<boolean>\",\n  \"bypassrule\": \"<boolean>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"discards\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"enabled\": \"<boolean>\",\n  \"factors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"updateinterval\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a51d27f5-3dd8-460f-a19b-cc784df808ef",
+          "name": "Delete Context Creation Model",
+          "request": {
+            "name": "Delete Context Creation Model",
+            "description": {
+              "content": "Deletes a context creation model",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "ccm",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the context creation model to be deleted"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "548a37c5-7a26-4282-aa65-2321972883ae",
+              "name": "An empty array",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be deleted"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ed446424-1eb6-48a3-b411-b301708bb8d2",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f95fc08e-4beb-4b71-aa94-ddaaf8078163",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8529039e-b625-4467-afff-b730c89838aa",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef38d407-b527-43bb-bbe3-e214e02357fa",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31b97160-4bd3-4430-ac3d-6e96c06ff9b6",
+          "name": "Enable Context Creation Model",
+          "request": {
+            "name": "Enable Context Creation Model",
+            "description": {
+              "content": "Enables a context creation model",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "ccm",
+                ":id",
+                "enable"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the context creation model to be enabled"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1b5fc38c-485e-4112-9d18-486ee3eb0e3d",
+              "name": "Requested Context Creation Model",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be enabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 5451,\n    \"count\": 9958\n  },\n  \"data\": [\n    {\n      \"algo_type\": \"string\",\n      \"beta\": false,\n      \"created\": 6860,\n      \"id\": \"string\",\n      \"recommended\": true,\n      \"subscription\": {\n        \"all\": \"string\"\n      },\n      \"subscriptiontype\": \"string\",\n      \"system\": false,\n      \"systemdefault\": true,\n      \"updated\": 8054,\n      \"action\": [\n        {\n          \"type\": \"string\",\n          \"field\": \"string\",\n          \"context\": \"string\",\n          \"labels\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"type\": \"string\",\n          \"field\": \"string\",\n          \"context\": \"string\",\n          \"labels\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"bypassdisplay\": false,\n      \"bypassrule\": true,\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"description\": \"string\",\n      \"discards\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": true,\n      \"expiration\": 9585,\n      \"factors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\",\n      \"rollupperiod\": 9139,\n      \"search_by\": [\n        {\n          \"search\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"string\"\n        },\n        {\n          \"search\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"string\"\n        }\n      ],\n      \"thresholds\": [\n        {\n          \"severity\": \"string\",\n          \"threshold\": \"string\"\n        },\n        {\n          \"severity\": \"string\",\n          \"threshold\": \"string\"\n        }\n      ],\n      \"track_by\": [\n        [\n          \"string\",\n          \"string\"\n        ],\n        [\n          \"string\",\n          \"string\"\n        ]\n      ],\n      \"updateinterval\": 3177,\n      \"algo_record_type\": \"dns\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c78d0338-06a7-4217-91b7-326032d88099",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be enabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d66f55f5-4add-41b5-aec7-ba8522c78bc5",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be enabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e2cfd6a-9544-4784-a1d9-c59de4166b15",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be enabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3d86269-4665-4b51-9a41-c0564a2ec6e8",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be enabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb83b398-9c6c-4acd-8e0f-243f969ba58a",
+          "name": "Disable Context Creation Model",
+          "request": {
+            "name": "Disable Context Creation Model",
+            "description": {
+              "content": "Disables a context creation model",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "ccm",
+                ":id",
+                "disable"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the context creation model to be disabled"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "65e3bb6e-5fd7-43e2-a638-f9b08758c9dc",
+              "name": "Requested Context Creation Model",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be disabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 5451,\n    \"count\": 9958\n  },\n  \"data\": [\n    {\n      \"algo_type\": \"string\",\n      \"beta\": false,\n      \"created\": 6860,\n      \"id\": \"string\",\n      \"recommended\": true,\n      \"subscription\": {\n        \"all\": \"string\"\n      },\n      \"subscriptiontype\": \"string\",\n      \"system\": false,\n      \"systemdefault\": true,\n      \"updated\": 8054,\n      \"action\": [\n        {\n          \"type\": \"string\",\n          \"field\": \"string\",\n          \"context\": \"string\",\n          \"labels\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"type\": \"string\",\n          \"field\": \"string\",\n          \"context\": \"string\",\n          \"labels\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"bypassdisplay\": false,\n      \"bypassrule\": true,\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"description\": \"string\",\n      \"discards\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": true,\n      \"expiration\": 9585,\n      \"factors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\",\n      \"rollupperiod\": 9139,\n      \"search_by\": [\n        {\n          \"search\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"string\"\n        },\n        {\n          \"search\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"string\"\n        }\n      ],\n      \"thresholds\": [\n        {\n          \"severity\": \"string\",\n          \"threshold\": \"string\"\n        },\n        {\n          \"severity\": \"string\",\n          \"threshold\": \"string\"\n        }\n      ],\n      \"track_by\": [\n        [\n          \"string\",\n          \"string\"\n        ],\n        [\n          \"string\",\n          \"string\"\n        ]\n      ],\n      \"updateinterval\": 3177,\n      \"algo_record_type\": \"dns\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5038de0f-fdc6-4bf3-904d-d9fb4c77e19f",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be disabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "97025cfa-927f-48f9-b9b2-4e099d0e9976",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be disabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8922f963-3f9e-46b8-928d-7eb63c3fbdd9",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be disabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "786b98a6-841f-4fe8-89f9-a985d6231b10",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be disabled"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "187f2a6a-5040-4416-9179-30dc525c3225",
+          "name": "Reset Context Creation Model",
+          "request": {
+            "name": "Reset Context Creation Model",
+            "description": {
+              "content": "Resets a customized system context creation model",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "rule-engine",
+                "ccm",
+                ":id",
+                "reset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the context creation model to be reseted"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4d4b6322-dfdf-4e49-add1-08e3b76fdcb5",
+              "name": "Requested Context Creation Model",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id",
+                    "reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be reseted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 5451,\n    \"count\": 9958\n  },\n  \"data\": [\n    {\n      \"algo_type\": \"string\",\n      \"beta\": false,\n      \"created\": 6860,\n      \"id\": \"string\",\n      \"recommended\": true,\n      \"subscription\": {\n        \"all\": \"string\"\n      },\n      \"subscriptiontype\": \"string\",\n      \"system\": false,\n      \"systemdefault\": true,\n      \"updated\": 8054,\n      \"action\": [\n        {\n          \"type\": \"string\",\n          \"field\": \"string\",\n          \"context\": \"string\",\n          \"labels\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"type\": \"string\",\n          \"field\": \"string\",\n          \"context\": \"string\",\n          \"labels\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"bypassdisplay\": false,\n      \"bypassrule\": true,\n      \"categories\": [\n        \"string\",\n        \"string\"\n      ],\n      \"description\": \"string\",\n      \"discards\": [\n        \"string\",\n        \"string\"\n      ],\n      \"enabled\": true,\n      \"expiration\": 9585,\n      \"factors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\",\n      \"rollupperiod\": 9139,\n      \"search_by\": [\n        {\n          \"search\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"string\"\n        },\n        {\n          \"search\": [\n            \"string\",\n            \"string\"\n          ],\n          \"type\": \"string\"\n        }\n      ],\n      \"thresholds\": [\n        {\n          \"severity\": \"string\",\n          \"threshold\": \"string\"\n        },\n        {\n          \"severity\": \"string\",\n          \"threshold\": \"string\"\n        }\n      ],\n      \"track_by\": [\n        [\n          \"string\",\n          \"string\"\n        ],\n        [\n          \"string\",\n          \"string\"\n        ]\n      ],\n      \"updateinterval\": 3177,\n      \"algo_record_type\": \"dns\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e28938c-e43b-4719-bc68-49d3893ee3a1",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id",
+                    "reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be reseted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b31d6175-26d5-4bed-a200-9ca6bae2a2f5",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id",
+                    "reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be reseted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4591fe8-214e-42dc-8bf7-e3e029966899",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id",
+                    "reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be reseted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2bc5889c-7a29-4fa6-ba51-24d59d4bc28d",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "rule-engine",
+                    "ccm",
+                    ":id",
+                    "reset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the context creation model to be reseted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 2566,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.netography.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f5927319-917a-4f59-b91d-35d78ba881bd",
+    "name": "Netography (Vectra Fusion) Analytics Detect and Respond - Context Creation Models API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Resellers API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Resellers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Account Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/customers/types"
+          },
+          "docs": "Return a list of all Accounts Types."
+        },
+        {
+          "info": {
+            "name": "List Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/customers"
+          },
+          "docs": "Return a list of all Accounts for the reseller."
+        },
+        {
+          "info": {
+            "name": "Create Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.netography.com/api/v1/customer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an Account (sub customer) the supplied object.  Do NOT submit an ID.  IDs are auto generated and immutable."
+        },
+        {
+          "info": {
+            "name": "Get Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/customer/:shortname",
+            "params": [
+              {
+                "name": "shortname",
+                "value": "",
+                "type": "path",
+                "description": "String identifier of the customer"
+              }
+            ]
+          },
+          "docs": "Fetches a specific Account from the shortname supplied in the path."
+        },
+        {
+          "info": {
+            "name": "Update Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/customer/:shortname",
+            "params": [
+              {
+                "name": "shortname",
+                "value": "",
+                "type": "path",
+                "description": "The shortname of the Account to be updated"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an Account given the provided object.  This does not do a diff.  You must send the complete object."
+        },
+        {
+          "info": {
+            "name": "Delete Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/customer/:shortname",
+            "params": [
+              {
+                "name": "shortname",
+                "value": "",
+                "type": "path",
+                "description": "The shortname of the User to be retrieved"
+              }
+            ]
+          },
+          "docs": "Deletes the Account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

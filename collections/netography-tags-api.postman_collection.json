@@ -1,0 +1,2080 @@
+{
+  "item": [
+    {
+      "id": "adb9c334-d503-4356-800d-8df16c93bb6c",
+      "name": "Tags",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "22d29848-651e-4a6d-97f0-975b3d0150cd",
+          "name": "List Tags",
+          "request": {
+            "name": "List Tags",
+            "description": {
+              "content": "Return a list of all Tags.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "terse",
+                  "value": "<integer>",
+                  "description": "boolean as integer.  default 1 (true).  0 for false.  true will return a simple array of tags, e.g. [ 'tag1', 'tag2', 'tag3', ... ]"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0d712283-0cf8-4644-9531-8c15b78ddc25",
+              "name": "An array of Tags",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "terse",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 1143,\n    \"count\": 7869\n  },\n  \"data\": [\n    {\n      \"entitytype\": \"vpc\",\n      \"entityname\": \"string\",\n      \"entityid\": \"string\",\n      \"tag\": \"string\"\n    },\n    {\n      \"entitytype\": \"device\",\n      \"entityname\": \"string\",\n      \"entityid\": \"string\",\n      \"tag\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1afd0e7f-f219-41c8-b451-8bad5582fc96",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "terse",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "308db532-9bcd-4269-a55f-4791690adb1d",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "terse",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6b0665a-319c-4274-b5da-226a02dae6a5",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "terse",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d797c804-6b10-40d5-bf57-1d00c800d6b3",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "terse",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea3c3375-61d5-482d-aca0-0a2c14921bfc",
+          "name": "List Tags by Entity Type",
+          "request": {
+            "name": "List Tags by Entity Type",
+            "description": {
+              "content": "Return a list of all Tags.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tags",
+                ":entitytype"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "terse",
+                  "value": "<integer>",
+                  "description": "boolean as integer.  default 1 (true).  0 for false.  true will return a simple array of tags, e.g. [ 'tag1', 'tag2', 'tag3', ... ]"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entitytype",
+                  "description": "(Required) Entity Type of the Tags, e.g. device, flow, vpc"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0db6584a-9be4-4166-b8fc-5a613a7509f1",
+              "name": "An array of Tags",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tags",
+                    ":entitytype"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "terse",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entitytype",
+                      "description": "(Required) Entity Type of the Tags, e.g. device, flow, vpc"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 1143,\n    \"count\": 7869\n  },\n  \"data\": [\n    {\n      \"entitytype\": \"vpc\",\n      \"entityname\": \"string\",\n      \"entityid\": \"string\",\n      \"tag\": \"string\"\n    },\n    {\n      \"entitytype\": \"device\",\n      \"entityname\": \"string\",\n      \"entityid\": \"string\",\n      \"tag\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2a56b6e-0d3c-4137-8bb8-93fcab4c42d0",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tags",
+                    ":entitytype"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "terse",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entitytype",
+                      "description": "(Required) Entity Type of the Tags, e.g. device, flow, vpc"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b992ab7-99bd-4f73-a7ae-550daa1ce00a",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tags",
+                    ":entitytype"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "terse",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entitytype",
+                      "description": "(Required) Entity Type of the Tags, e.g. device, flow, vpc"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e0a748a-d774-426a-af50-bc056abe99a3",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tags",
+                    ":entitytype"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "terse",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entitytype",
+                      "description": "(Required) Entity Type of the Tags, e.g. device, flow, vpc"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6414dea7-6c41-44d8-bf15-9429bcfcd8af",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tags",
+                    ":entitytype"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "terse",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entitytype",
+                      "description": "(Required) Entity Type of the Tags, e.g. device, flow, vpc"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "892d751a-02d8-4725-987e-c0507d1b8d9d",
+          "name": "Get Tag Values for IP",
+          "request": {
+            "name": "Get Tag Values for IP",
+            "description": {
+              "content": "Returns all tag values associated with a specific IP address within the specified timeframe.\n\nThis endpoint allows you to retrieve all tags that have been applied to flows associated with the given IP address during the specified time period.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tags",
+                "ip"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ip",
+                  "value": "<string>",
+                  "description": "(Required) The IP address to retrieve tag values for"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<integer>",
+                  "description": "(Required) Start time for the query. Negative values represent lookback time in seconds from now \n(e.g., -86400 for 24 hours ago), or positive values represent Unix timestamp in seconds.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<integer>",
+                  "description": "(Required) End time for the query. Negative values represent lookback time in seconds from now \n(e.g., -3600 for 1 hour ago), 0 for current time, or positive values represent Unix timestamp in seconds.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e1c9d416-4421-477a-925d-739a8295be82",
+              "name": "Tag values for an IP address within a timeframe",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tags",
+                    "ip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 3459,\n    \"count\": 82\n  },\n  \"data\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df008f51-4e92-470c-89f2-eccb076b3603",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tags",
+                    "ip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96447f83-226a-411f-98f7-89fb34ddfd0a",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tags",
+                    "ip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87f660d9-a1cb-4741-b6fe-6fafb5d02a1c",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tags",
+                    "ip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24ba4904-6ac5-46bd-85e6-85fdd8971811",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tags",
+                    "ip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a499d529-b17f-486b-a146-37f0c892573b",
+          "name": "Create Flow Tag",
+          "request": {
+            "name": "Create Flow Tag",
+            "description": {
+              "content": "Create a Tag given the provided object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tag",
+                "flow"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"inputaliasregex\": \"<string>\",\n  \"inputnameregex\": \"<string>\",\n  \"outputaliasregex\": \"<string>\",\n  \"outputnameregex\": \"<string>\",\n  \"srcnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dstnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"srcport\": \"<integer>\",\n  \"dstport\": \"<integer>\",\n  \"protocol\": \"<string>\",\n  \"tcpflagsint\": \"<integer>\",\n  \"srcas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"srcowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fa6d0982-8723-4dd2-a612-a65409ca98da",
+              "name": "An array of Flow Tags",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tag",
+                    "flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"inputaliasregex\": \"<string>\",\n  \"inputnameregex\": \"<string>\",\n  \"outputaliasregex\": \"<string>\",\n  \"outputnameregex\": \"<string>\",\n  \"srcnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dstnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"srcport\": \"<integer>\",\n  \"dstport\": \"<integer>\",\n  \"protocol\": \"<string>\",\n  \"tcpflagsint\": \"<integer>\",\n  \"srcas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"srcowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 5462,\n    \"count\": 252\n  },\n  \"data\": [\n    {\n      \"name\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"inputaliasregex\": \"string\",\n      \"inputnameregex\": \"string\",\n      \"outputaliasregex\": \"string\",\n      \"outputnameregex\": \"string\",\n      \"srcnets\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dstnets\": [\n        \"string\",\n        \"string\"\n      ],\n      \"srcport\": 9132,\n      \"dstport\": 3088,\n      \"protocol\": \"string\",\n      \"tcpflagsint\": 2495,\n      \"srcas\": [\n        9753,\n        4581\n      ],\n      \"dstas\": [\n        5554,\n        9086\n      ],\n      \"srcowneras\": [\n        4172,\n        5141\n      ],\n      \"dstowneras\": [\n        751,\n        9310\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"inputaliasregex\": \"string\",\n      \"inputnameregex\": \"string\",\n      \"outputaliasregex\": \"string\",\n      \"outputnameregex\": \"string\",\n      \"srcnets\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dstnets\": [\n        \"string\",\n        \"string\"\n      ],\n      \"srcport\": 9687,\n      \"dstport\": 8666,\n      \"protocol\": \"string\",\n      \"tcpflagsint\": 6313,\n      \"srcas\": [\n        5840,\n        4213\n      ],\n      \"dstas\": [\n        4480,\n        4718\n      ],\n      \"srcowneras\": [\n        9473,\n        2812\n      ],\n      \"dstowneras\": [\n        6609,\n        3511\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c5aa004-2885-4825-bcb0-09c23d5ab432",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tag",
+                    "flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"inputaliasregex\": \"<string>\",\n  \"inputnameregex\": \"<string>\",\n  \"outputaliasregex\": \"<string>\",\n  \"outputnameregex\": \"<string>\",\n  \"srcnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dstnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"srcport\": \"<integer>\",\n  \"dstport\": \"<integer>\",\n  \"protocol\": \"<string>\",\n  \"tcpflagsint\": \"<integer>\",\n  \"srcas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"srcowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aee6095b-615e-4939-b56d-1821d7ee9883",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tag",
+                    "flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"inputaliasregex\": \"<string>\",\n  \"inputnameregex\": \"<string>\",\n  \"outputaliasregex\": \"<string>\",\n  \"outputnameregex\": \"<string>\",\n  \"srcnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dstnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"srcport\": \"<integer>\",\n  \"dstport\": \"<integer>\",\n  \"protocol\": \"<string>\",\n  \"tcpflagsint\": \"<integer>\",\n  \"srcas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"srcowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b181da80-34fb-42ac-80ed-ebee4e4a62cc",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tag",
+                    "flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"inputaliasregex\": \"<string>\",\n  \"inputnameregex\": \"<string>\",\n  \"outputaliasregex\": \"<string>\",\n  \"outputnameregex\": \"<string>\",\n  \"srcnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dstnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"srcport\": \"<integer>\",\n  \"dstport\": \"<integer>\",\n  \"protocol\": \"<string>\",\n  \"tcpflagsint\": \"<integer>\",\n  \"srcas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"srcowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a387672c-8a20-43ea-9ac1-ba8e7e2df573",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tag",
+                    "flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"inputaliasregex\": \"<string>\",\n  \"inputnameregex\": \"<string>\",\n  \"outputaliasregex\": \"<string>\",\n  \"outputnameregex\": \"<string>\",\n  \"srcnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dstnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"srcport\": \"<integer>\",\n  \"dstport\": \"<integer>\",\n  \"protocol\": \"<string>\",\n  \"tcpflagsint\": \"<integer>\",\n  \"srcas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"srcowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b727db3c-d4e4-47f0-a8f7-841362d35f10",
+          "name": "Get Flow Tag",
+          "request": {
+            "name": "Get Flow Tag",
+            "description": {
+              "content": "Fetches a specific Flow Tag from the ID supplied in the path.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tag",
+                "flow",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the Flow Tag to be returned."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "416dad8b-b08c-4f6a-8fa4-46f910a259c4",
+              "name": "An array of Flow Tags",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tag",
+                    "flow",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the Flow Tag to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 5462,\n    \"count\": 252\n  },\n  \"data\": [\n    {\n      \"name\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"inputaliasregex\": \"string\",\n      \"inputnameregex\": \"string\",\n      \"outputaliasregex\": \"string\",\n      \"outputnameregex\": \"string\",\n      \"srcnets\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dstnets\": [\n        \"string\",\n        \"string\"\n      ],\n      \"srcport\": 9132,\n      \"dstport\": 3088,\n      \"protocol\": \"string\",\n      \"tcpflagsint\": 2495,\n      \"srcas\": [\n        9753,\n        4581\n      ],\n      \"dstas\": [\n        5554,\n        9086\n      ],\n      \"srcowneras\": [\n        4172,\n        5141\n      ],\n      \"dstowneras\": [\n        751,\n        9310\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"inputaliasregex\": \"string\",\n      \"inputnameregex\": \"string\",\n      \"outputaliasregex\": \"string\",\n      \"outputnameregex\": \"string\",\n      \"srcnets\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dstnets\": [\n        \"string\",\n        \"string\"\n      ],\n      \"srcport\": 9687,\n      \"dstport\": 8666,\n      \"protocol\": \"string\",\n      \"tcpflagsint\": 6313,\n      \"srcas\": [\n        5840,\n        4213\n      ],\n      \"dstas\": [\n        4480,\n        4718\n      ],\n      \"srcowneras\": [\n        9473,\n        2812\n      ],\n      \"dstowneras\": [\n        6609,\n        3511\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f6bb938-11f6-4bec-a404-af9bc782c238",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tag",
+                    "flow",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the Flow Tag to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a987cb41-b37f-47da-87d4-f9777111eb74",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tag",
+                    "flow",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the Flow Tag to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "947c613c-414b-4447-92c9-20a6ac0f0f25",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tag",
+                    "flow",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the Flow Tag to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4057851b-45cb-4ac5-93ca-7bf93a164023",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tag",
+                    "flow",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the Flow Tag to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "283a49be-354b-4dfe-99b6-e9f89ad5524f",
+          "name": "Update Flow Tag",
+          "request": {
+            "name": "Update Flow Tag",
+            "description": {
+              "content": "Update a Flow Tag given the provided object.  This does not do a diff.  You must send the complete object and have at least 1 match criteria set.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tag",
+                "flow",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the Flow Tag Rule to be updated"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"inputaliasregex\": \"<string>\",\n  \"inputnameregex\": \"<string>\",\n  \"outputaliasregex\": \"<string>\",\n  \"outputnameregex\": \"<string>\",\n  \"srcnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dstnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"srcport\": \"<integer>\",\n  \"dstport\": \"<integer>\",\n  \"protocol\": \"<string>\",\n  \"tcpflagsint\": \"<integer>\",\n  \"srcas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"srcowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "231b05f3-fa8d-4a8b-939f-35ea96cdb30f",
+              "name": "An array of Flow Tags",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tag",
+                    "flow",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the Flow Tag Rule to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"inputaliasregex\": \"<string>\",\n  \"inputnameregex\": \"<string>\",\n  \"outputaliasregex\": \"<string>\",\n  \"outputnameregex\": \"<string>\",\n  \"srcnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dstnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"srcport\": \"<integer>\",\n  \"dstport\": \"<integer>\",\n  \"protocol\": \"<string>\",\n  \"tcpflagsint\": \"<integer>\",\n  \"srcas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"srcowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 5462,\n    \"count\": 252\n  },\n  \"data\": [\n    {\n      \"name\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"inputaliasregex\": \"string\",\n      \"inputnameregex\": \"string\",\n      \"outputaliasregex\": \"string\",\n      \"outputnameregex\": \"string\",\n      \"srcnets\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dstnets\": [\n        \"string\",\n        \"string\"\n      ],\n      \"srcport\": 9132,\n      \"dstport\": 3088,\n      \"protocol\": \"string\",\n      \"tcpflagsint\": 2495,\n      \"srcas\": [\n        9753,\n        4581\n      ],\n      \"dstas\": [\n        5554,\n        9086\n      ],\n      \"srcowneras\": [\n        4172,\n        5141\n      ],\n      \"dstowneras\": [\n        751,\n        9310\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"inputaliasregex\": \"string\",\n      \"inputnameregex\": \"string\",\n      \"outputaliasregex\": \"string\",\n      \"outputnameregex\": \"string\",\n      \"srcnets\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dstnets\": [\n        \"string\",\n        \"string\"\n      ],\n      \"srcport\": 9687,\n      \"dstport\": 8666,\n      \"protocol\": \"string\",\n      \"tcpflagsint\": 6313,\n      \"srcas\": [\n        5840,\n        4213\n      ],\n      \"dstas\": [\n        4480,\n        4718\n      ],\n      \"srcowneras\": [\n        9473,\n        2812\n      ],\n      \"dstowneras\": [\n        6609,\n        3511\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d5354c9-b4c2-4893-9f38-e0603f6d78b8",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tag",
+                    "flow",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the Flow Tag Rule to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"inputaliasregex\": \"<string>\",\n  \"inputnameregex\": \"<string>\",\n  \"outputaliasregex\": \"<string>\",\n  \"outputnameregex\": \"<string>\",\n  \"srcnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dstnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"srcport\": \"<integer>\",\n  \"dstport\": \"<integer>\",\n  \"protocol\": \"<string>\",\n  \"tcpflagsint\": \"<integer>\",\n  \"srcas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"srcowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1076e69e-8cdd-48e0-99c2-4b96ee4298b5",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tag",
+                    "flow",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the Flow Tag Rule to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"inputaliasregex\": \"<string>\",\n  \"inputnameregex\": \"<string>\",\n  \"outputaliasregex\": \"<string>\",\n  \"outputnameregex\": \"<string>\",\n  \"srcnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dstnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"srcport\": \"<integer>\",\n  \"dstport\": \"<integer>\",\n  \"protocol\": \"<string>\",\n  \"tcpflagsint\": \"<integer>\",\n  \"srcas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"srcowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "162f6bda-7500-4d98-8eb2-55ac65153fe5",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tag",
+                    "flow",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the Flow Tag Rule to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"inputaliasregex\": \"<string>\",\n  \"inputnameregex\": \"<string>\",\n  \"outputaliasregex\": \"<string>\",\n  \"outputnameregex\": \"<string>\",\n  \"srcnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dstnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"srcport\": \"<integer>\",\n  \"dstport\": \"<integer>\",\n  \"protocol\": \"<string>\",\n  \"tcpflagsint\": \"<integer>\",\n  \"srcas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"srcowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4710298b-6417-407b-b2ab-3fac879a0092",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tag",
+                    "flow",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the Flow Tag Rule to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"inputaliasregex\": \"<string>\",\n  \"inputnameregex\": \"<string>\",\n  \"outputaliasregex\": \"<string>\",\n  \"outputnameregex\": \"<string>\",\n  \"srcnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"dstnets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"srcport\": \"<integer>\",\n  \"dstport\": \"<integer>\",\n  \"protocol\": \"<string>\",\n  \"tcpflagsint\": \"<integer>\",\n  \"srcas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstas\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"srcowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"dstowneras\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a86be0b-06b0-4fb0-8b29-251066c7db38",
+          "name": "Delete Flow Tag",
+          "request": {
+            "name": "Delete Flow Tag",
+            "description": {
+              "content": "Deletes the Flow Tag.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tag",
+                "flow",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the Flow Tag Rule to be deleted"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5992f7fe-500a-4161-9b54-85930e39f0e7",
+              "name": "Empty response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tag",
+                    "flow",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the Flow Tag Rule to be deleted"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "34415434-c9f0-4dc3-a661-313e47a77861",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tag",
+                    "flow",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the Flow Tag Rule to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7309a80f-1a26-4dbc-9777-dcfa009284f8",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tag",
+                    "flow",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the Flow Tag Rule to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75e86cab-317e-4dba-a7c3-0275a3da7149",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tag",
+                    "flow",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the Flow Tag Rule to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34d6f3ec-36c2-43a7-90a8-ef04d9164bee",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tag",
+                    "flow",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the Flow Tag Rule to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 3606,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.netography.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4eb39ce2-ff22-43f0-8887-f09f63a7dcd2",
+    "name": "Netography (Vectra Fusion) Analytics Tags API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).",
+      "type": "text/plain"
+    }
+  }
+}

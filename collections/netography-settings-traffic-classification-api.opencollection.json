@@ -1,0 +1,162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Netography (Vectra Fusion) Analytics Settings - Traffic Classification API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Settings - Traffic Classification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Network Classifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/netclasses"
+          },
+          "docs": "Returns an array of Network Classifications."
+        },
+        {
+          "info": {
+            "name": "Get Network Classification",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/netclass/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "The type of network classification."
+              }
+            ]
+          },
+          "docs": "Returns a Network Classification by type."
+        },
+        {
+          "info": {
+            "name": "Update Network Classification",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/netclass/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "The type of network classification."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a Network Classification by type."
+        },
+        {
+          "info": {
+            "name": "Delete Network Classification",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/netclass/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "The type of network classification."
+              }
+            ]
+          },
+          "docs": "Deletes a Network Classification by type."
+        },
+        {
+          "info": {
+            "name": "List DNS Classifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/dnsclasses"
+          },
+          "docs": "Returns an array of DNS Classifications."
+        },
+        {
+          "info": {
+            "name": "Get DNS Classification",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.netography.com/api/v1/dnsclass/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of dns classification."
+              }
+            ]
+          },
+          "docs": "Returns a DNS Classification by type."
+        },
+        {
+          "info": {
+            "name": "Update DNS Classification",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.netography.com/api/v1/dnsclass/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of dns classification."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a DNS Classification by type."
+        },
+        {
+          "info": {
+            "name": "Delete DNS Classification",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.netography.com/api/v1/dnsclass/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of dns classification."
+              }
+            ]
+          },
+          "docs": "Deletes a DNS Classification by id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

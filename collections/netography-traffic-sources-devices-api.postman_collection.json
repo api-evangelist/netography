@@ -1,0 +1,4180 @@
+{
+  "item": [
+    {
+      "id": "8df3750d-da52-4f8c-9854-f798723d3758",
+      "name": "Traffic Sources - Devices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "333ef15c-5835-47ac-ae50-f9f82262a542",
+          "name": "List Devices",
+          "request": {
+            "name": "List Devices",
+            "description": {
+              "content": "Returns an array of devices.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af52b542-a73d-4f36-a0e7-79e904fa9dbb",
+              "name": "List of Devices Requested, or an array containing the new/updated Device after a Create or Update operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 1873,\n    \"count\": 9291\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"ips\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\",\n      \"samplerate\": 49099,\n      \"payload\": true,\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"site\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"ips\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\",\n      \"samplerate\": 60086,\n      \"payload\": false,\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"site\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d1ce779-6a85-40b2-8db5-bed07f42ee5d",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f8c25776-662c-4e99-a432-1e05ce67b878",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73512012-4684-4797-bbd9-8690b4ecc456",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8492cdc7-dec6-41e7-b739-440364efaba7",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dbd9946e-9a50-41c9-9e60-6a7253d026f3",
+          "name": "Create Device",
+          "request": {
+            "name": "Create Device",
+            "description": {
+              "content": "Creates a device from the data that's been supplied.  Do not provide an id.  IDs are auto generated",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "device"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"ips\": [\n    \"<cidr>\",\n    \"<cidr>\"\n  ],\n  \"samplerate\": \"<integer>\",\n  \"payload\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"site\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6aa43661-e83a-4276-8aec-4a96283517eb",
+              "name": "List of Devices Requested, or an array containing the new/updated Device after a Create or Update operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"ips\": [\n    \"<cidr>\",\n    \"<cidr>\"\n  ],\n  \"samplerate\": \"<integer>\",\n  \"payload\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"site\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 1873,\n    \"count\": 9291\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"ips\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\",\n      \"samplerate\": 49099,\n      \"payload\": true,\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"site\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"ips\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\",\n      \"samplerate\": 60086,\n      \"payload\": false,\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"site\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb18edd9-c1da-4c5d-bf49-eb985d7ab5b8",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"ips\": [\n    \"<cidr>\",\n    \"<cidr>\"\n  ],\n  \"samplerate\": \"<integer>\",\n  \"payload\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"site\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fc1e298-7c19-4b40-92b4-86cee6f80454",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"ips\": [\n    \"<cidr>\",\n    \"<cidr>\"\n  ],\n  \"samplerate\": \"<integer>\",\n  \"payload\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"site\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c481af0-01a3-4a7c-8535-ff6367d77bc3",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"ips\": [\n    \"<cidr>\",\n    \"<cidr>\"\n  ],\n  \"samplerate\": \"<integer>\",\n  \"payload\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"site\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "244abc17-9335-4d31-9463-bea58078d4ab",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"ips\": [\n    \"<cidr>\",\n    \"<cidr>\"\n  ],\n  \"samplerate\": \"<integer>\",\n  \"payload\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"site\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff80ec95-ad09-476c-92f4-61723daddfca",
+          "name": "Fetch Device",
+          "request": {
+            "name": "Fetch Device",
+            "description": {
+              "content": "Fetches a specific device from the ID supplied in the path.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "device",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the device to be returned."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3ef6677b-af9f-4688-8f0b-691f6afcbce3",
+              "name": "List of Devices Requested, or an array containing the new/updated Device after a Create or Update operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the device to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 1873,\n    \"count\": 9291\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"ips\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\",\n      \"samplerate\": 49099,\n      \"payload\": true,\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"site\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"ips\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\",\n      \"samplerate\": 60086,\n      \"payload\": false,\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"site\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50d3c88a-34e5-4918-8959-0f057474a223",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the device to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3964ddbb-6e85-4c5d-8e1b-be0519e927a5",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the device to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b29fc40f-d693-49cb-a39f-652ef730700f",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the device to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46f0c0a8-3196-4770-9f28-26f406b3a30b",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the device to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8cf4e78-b702-4287-bc89-4499480513f0",
+          "name": "Update Device",
+          "request": {
+            "name": "Update Device",
+            "description": {
+              "content": "Update a device given the provided object.  This does not do a diff.  You must send the complete object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "device",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the device to be updated"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"ips\": [\n    \"<cidr>\",\n    \"<cidr>\"\n  ],\n  \"samplerate\": \"<integer>\",\n  \"payload\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"site\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a5676642-6387-44a8-b9b5-52b2c78214a7",
+              "name": "List of Devices Requested, or an array containing the new/updated Device after a Create or Update operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the device to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"ips\": [\n    \"<cidr>\",\n    \"<cidr>\"\n  ],\n  \"samplerate\": \"<integer>\",\n  \"payload\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"site\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 1873,\n    \"count\": 9291\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"ips\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\",\n      \"samplerate\": 49099,\n      \"payload\": true,\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"site\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"ips\": [\n        \"string\",\n        \"string\"\n      ],\n      \"name\": \"string\",\n      \"samplerate\": 60086,\n      \"payload\": false,\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"site\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "caaf5118-6681-4553-a5ec-d0090f2d5f40",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the device to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"ips\": [\n    \"<cidr>\",\n    \"<cidr>\"\n  ],\n  \"samplerate\": \"<integer>\",\n  \"payload\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"site\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98ad4f6e-2581-4c96-95f4-7dac55b73852",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the device to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"ips\": [\n    \"<cidr>\",\n    \"<cidr>\"\n  ],\n  \"samplerate\": \"<integer>\",\n  \"payload\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"site\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9865cc6e-2bda-4b02-b25d-bca9916a7f63",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the device to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"ips\": [\n    \"<cidr>\",\n    \"<cidr>\"\n  ],\n  \"samplerate\": \"<integer>\",\n  \"payload\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"site\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7b1d961-3078-45d1-ae2e-8bc9970b000e",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the device to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"ips\": [\n    \"<cidr>\",\n    \"<cidr>\"\n  ],\n  \"samplerate\": \"<integer>\",\n  \"payload\": \"<boolean>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"site\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e4d845e8-b827-474c-8e13-561574503302",
+          "name": "Delete Device",
+          "request": {
+            "name": "Delete Device",
+            "description": {
+              "content": "Deletes a device",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "device",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the device to be deleted"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "501b34e9-2f13-45c7-b70d-8e82faa5707a",
+              "name": "An empty array",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the device to be deleted"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "55215795-81be-4f0b-97f7-8387f74e5d6d",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the device to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d78a5f72-122c-46ec-887d-ecf38f92da40",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the device to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e474de48-f4d6-4457-83d3-1095f01da9bd",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the device to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dac06b21-0305-4ed7-9b45-f2968b0f5745",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the device to be deleted"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a274156a-f6ac-41ab-b58a-5e3028f9b43b",
+          "name": "List Device Statuses",
+          "request": {
+            "name": "List Device Statuses",
+            "description": {
+              "content": "Returns an array of device status objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "devices",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b0120bab-052a-4a4a-ad73-03d14a68593b",
+              "name": "List of Device States.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 2976,\n    \"count\": 9763\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"flow\": {\n        \"lastseen\": 219.24438344071427,\n        \"active\": false\n      },\n      \"bgp\": {\n        \"active\": false\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"flow\": {\n        \"lastseen\": 4966.96866252379,\n        \"active\": true\n      },\n      \"bgp\": {\n        \"active\": true\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9dba954-64e4-4f67-be79-ed435944ed1d",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b91a5c5-57f4-4885-a20e-062e66417724",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eef9b356-6bc9-4413-ae06-f938498f0cf1",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94632867-337b-424c-ba48-55e375698827",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "devices",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d403d0b7-c584-4319-bee5-587c6ef0d1c3",
+          "name": "Fetch Device Status",
+          "request": {
+            "name": "Fetch Device Status",
+            "description": {
+              "content": "Fetches a specific device from the ID supplied in the path.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "device",
+                "status",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The ID of the device to be returned."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e1fe7d58-3e02-4204-9f70-a4933f8313e7",
+              "name": "List of Device States.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device",
+                    "status",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the device to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 2976,\n    \"count\": 9763\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"flow\": {\n        \"lastseen\": 219.24438344071427,\n        \"active\": false\n      },\n      \"bgp\": {\n        \"active\": false\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"flow\": {\n        \"lastseen\": 4966.96866252379,\n        \"active\": true\n      },\n      \"bgp\": {\n        \"active\": true\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba465a7f-c96c-4256-bdc3-e2ee2d648640",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device",
+                    "status",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the device to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb53a11b-e332-43f3-a912-b6cc2243606c",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device",
+                    "status",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the device to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "788cc123-ad7e-4ff2-b616-b3bb556a9227",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device",
+                    "status",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the device to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d27c8a8-abfa-4052-b17d-4b2ae5b0db31",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "device",
+                    "status",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The ID of the device to be returned."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8dee9162-34ef-4a93-af8a-2cf970e01445",
+          "name": "List BGP Neighbors",
+          "request": {
+            "name": "List BGP Neighbors",
+            "description": {
+              "content": "Returns an array of BGP Neighbors.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "bgp",
+                "neighbors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38ea6507-ba33-4e98-b456-b76e68eec52d",
+              "name": "List of BGP Neighbors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 7684,\n    \"count\": 1174\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"addresslocal\": \"string\",\n      \"addressremote\": \"string\",\n      \"admindown\": true,\n      \"advanced\": false,\n      \"asn\": \"string\",\n      \"authpassword\": \"string\",\n      \"description\": \"string\",\n      \"deviceid\": \"string\",\n      \"gracefulrestart\": true,\n      \"holdtime\": 6394,\n      \"ipv4-flowspec\": false,\n      \"ipv4-unicast\": false,\n      \"ipv6-flowspec\": true,\n      \"ipv6-unicast\": true,\n      \"keepalive\": 1086,\n      \"negotiated\": {\n        \"holdtime\": 336,\n        \"keepalive\": 9158\n      },\n      \"restarttime\": 2368,\n      \"routes\": {\n        \"ipv4-flow\": {\n          \"accepted\": 4961,\n          \"advertised\": 7190,\n          \"received\": 1444\n        },\n        \"ipv4-unicast\": {\n          \"accepted\": 5165,\n          \"advertised\": 5578,\n          \"received\": 758\n        },\n        \"ipv6-flow\": {\n          \"accepted\": 3177,\n          \"advertised\": 9553,\n          \"received\": 7576\n        },\n        \"ipv6-unicast\": {\n          \"accepted\": 6860,\n          \"advertised\": 4062,\n          \"received\": 90\n        },\n        \"total\": {\n          \"accepted\": 1981,\n          \"advertised\": 1524,\n          \"prefixrate\": 2278,\n          \"prefixsessioncount\": 4102,\n          \"prefixtotalcount\": 7550,\n          \"received\": 3880\n        }\n      },\n      \"state\": \"string\",\n      \"stats\": {\n        \"recv\": {\n          \"discarded\": 4319,\n          \"keepalives\": 437,\n          \"notifications\": 8323,\n          \"opens\": 9815,\n          \"routerefreshes\": 1671,\n          \"updates\": 466,\n          \"withdrawprefix\": 1855,\n          \"withdrawupdate\": 5356\n        },\n        \"sent\": {\n          \"discarded\": 4602,\n          \"keepalives\": 6562,\n          \"notifications\": 5915,\n          \"opens\": 5778,\n          \"routerefreshes\": 5099,\n          \"updates\": 2746,\n          \"withdrawprefix\": 5534,\n          \"withdrawupdate\": 9486\n        }\n      },\n      \"uptime\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"addresslocal\": \"string\",\n      \"addressremote\": \"string\",\n      \"admindown\": true,\n      \"advanced\": true,\n      \"asn\": \"string\",\n      \"authpassword\": \"string\",\n      \"description\": \"string\",\n      \"deviceid\": \"string\",\n      \"gracefulrestart\": true,\n      \"holdtime\": 1019,\n      \"ipv4-flowspec\": false,\n      \"ipv4-unicast\": true,\n      \"ipv6-flowspec\": false,\n      \"ipv6-unicast\": false,\n      \"keepalive\": 6697,\n      \"negotiated\": {\n        \"holdtime\": 5789,\n        \"keepalive\": 8845\n      },\n      \"restarttime\": 5814,\n      \"routes\": {\n        \"ipv4-flow\": {\n          \"accepted\": 9991,\n          \"advertised\": 8940,\n          \"received\": 7197\n        },\n        \"ipv4-unicast\": {\n          \"accepted\": 3153,\n          \"advertised\": 5781,\n          \"received\": 7066\n        },\n        \"ipv6-flow\": {\n          \"accepted\": 9217,\n          \"advertised\": 7623,\n          \"received\": 5906\n        },\n        \"ipv6-unicast\": {\n          \"accepted\": 1461,\n          \"advertised\": 9574,\n          \"received\": 1893\n        },\n        \"total\": {\n          \"accepted\": 3451,\n          \"advertised\": 1957,\n          \"prefixrate\": 3731,\n          \"prefixsessioncount\": 6169,\n          \"prefixtotalcount\": 1518,\n          \"received\": 3627\n        }\n      },\n      \"state\": \"string\",\n      \"stats\": {\n        \"recv\": {\n          \"discarded\": 3543,\n          \"keepalives\": 3272,\n          \"notifications\": 8247,\n          \"opens\": 5347,\n          \"routerefreshes\": 8805,\n          \"updates\": 247,\n          \"withdrawprefix\": 805,\n          \"withdrawupdate\": 3768\n        },\n        \"sent\": {\n          \"discarded\": 9159,\n          \"keepalives\": 4340,\n          \"notifications\": 4306,\n          \"opens\": 4451,\n          \"routerefreshes\": 1508,\n          \"updates\": 3454,\n          \"withdrawprefix\": 5594,\n          \"withdrawupdate\": 9889\n        }\n      },\n      \"uptime\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29b8618b-0aa0-479c-837e-c74b6b536406",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "614bd7d6-6878-42b8-9cb1-6eea826ae765",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57b47545-5039-469a-9cfb-78988c27cc90",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7fd1846a-e66e-4761-983e-2530ad4572c2",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b322ba52-7f3d-4c91-9859-1ca00cc10670",
+          "name": "List BGP Neighbors for a Device",
+          "request": {
+            "name": "List BGP Neighbors for a Device",
+            "description": {
+              "content": "Returns an array of BGP Neighbors for a Device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "bgp",
+                "neighbors",
+                "devices",
+                ":deviceid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceid",
+                  "description": "(Required) The ID of the device to retrieve BGP Neighbors for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "04f0236b-8810-4377-b050-ac788b39feac",
+              "name": "List of BGP Neighbors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbors",
+                    "devices",
+                    ":deviceid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceid",
+                      "description": "(Required) The ID of the device to retrieve BGP Neighbors for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 7684,\n    \"count\": 1174\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"addresslocal\": \"string\",\n      \"addressremote\": \"string\",\n      \"admindown\": true,\n      \"advanced\": false,\n      \"asn\": \"string\",\n      \"authpassword\": \"string\",\n      \"description\": \"string\",\n      \"deviceid\": \"string\",\n      \"gracefulrestart\": true,\n      \"holdtime\": 6394,\n      \"ipv4-flowspec\": false,\n      \"ipv4-unicast\": false,\n      \"ipv6-flowspec\": true,\n      \"ipv6-unicast\": true,\n      \"keepalive\": 1086,\n      \"negotiated\": {\n        \"holdtime\": 336,\n        \"keepalive\": 9158\n      },\n      \"restarttime\": 2368,\n      \"routes\": {\n        \"ipv4-flow\": {\n          \"accepted\": 4961,\n          \"advertised\": 7190,\n          \"received\": 1444\n        },\n        \"ipv4-unicast\": {\n          \"accepted\": 5165,\n          \"advertised\": 5578,\n          \"received\": 758\n        },\n        \"ipv6-flow\": {\n          \"accepted\": 3177,\n          \"advertised\": 9553,\n          \"received\": 7576\n        },\n        \"ipv6-unicast\": {\n          \"accepted\": 6860,\n          \"advertised\": 4062,\n          \"received\": 90\n        },\n        \"total\": {\n          \"accepted\": 1981,\n          \"advertised\": 1524,\n          \"prefixrate\": 2278,\n          \"prefixsessioncount\": 4102,\n          \"prefixtotalcount\": 7550,\n          \"received\": 3880\n        }\n      },\n      \"state\": \"string\",\n      \"stats\": {\n        \"recv\": {\n          \"discarded\": 4319,\n          \"keepalives\": 437,\n          \"notifications\": 8323,\n          \"opens\": 9815,\n          \"routerefreshes\": 1671,\n          \"updates\": 466,\n          \"withdrawprefix\": 1855,\n          \"withdrawupdate\": 5356\n        },\n        \"sent\": {\n          \"discarded\": 4602,\n          \"keepalives\": 6562,\n          \"notifications\": 5915,\n          \"opens\": 5778,\n          \"routerefreshes\": 5099,\n          \"updates\": 2746,\n          \"withdrawprefix\": 5534,\n          \"withdrawupdate\": 9486\n        }\n      },\n      \"uptime\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"addresslocal\": \"string\",\n      \"addressremote\": \"string\",\n      \"admindown\": true,\n      \"advanced\": true,\n      \"asn\": \"string\",\n      \"authpassword\": \"string\",\n      \"description\": \"string\",\n      \"deviceid\": \"string\",\n      \"gracefulrestart\": true,\n      \"holdtime\": 1019,\n      \"ipv4-flowspec\": false,\n      \"ipv4-unicast\": true,\n      \"ipv6-flowspec\": false,\n      \"ipv6-unicast\": false,\n      \"keepalive\": 6697,\n      \"negotiated\": {\n        \"holdtime\": 5789,\n        \"keepalive\": 8845\n      },\n      \"restarttime\": 5814,\n      \"routes\": {\n        \"ipv4-flow\": {\n          \"accepted\": 9991,\n          \"advertised\": 8940,\n          \"received\": 7197\n        },\n        \"ipv4-unicast\": {\n          \"accepted\": 3153,\n          \"advertised\": 5781,\n          \"received\": 7066\n        },\n        \"ipv6-flow\": {\n          \"accepted\": 9217,\n          \"advertised\": 7623,\n          \"received\": 5906\n        },\n        \"ipv6-unicast\": {\n          \"accepted\": 1461,\n          \"advertised\": 9574,\n          \"received\": 1893\n        },\n        \"total\": {\n          \"accepted\": 3451,\n          \"advertised\": 1957,\n          \"prefixrate\": 3731,\n          \"prefixsessioncount\": 6169,\n          \"prefixtotalcount\": 1518,\n          \"received\": 3627\n        }\n      },\n      \"state\": \"string\",\n      \"stats\": {\n        \"recv\": {\n          \"discarded\": 3543,\n          \"keepalives\": 3272,\n          \"notifications\": 8247,\n          \"opens\": 5347,\n          \"routerefreshes\": 8805,\n          \"updates\": 247,\n          \"withdrawprefix\": 805,\n          \"withdrawupdate\": 3768\n        },\n        \"sent\": {\n          \"discarded\": 9159,\n          \"keepalives\": 4340,\n          \"notifications\": 4306,\n          \"opens\": 4451,\n          \"routerefreshes\": 1508,\n          \"updates\": 3454,\n          \"withdrawprefix\": 5594,\n          \"withdrawupdate\": 9889\n        }\n      },\n      \"uptime\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf8559fd-3919-4d69-84c4-3a7b08c5bbc2",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbors",
+                    "devices",
+                    ":deviceid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceid",
+                      "description": "(Required) The ID of the device to retrieve BGP Neighbors for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09ff6bcb-b0d9-46ea-8c89-7ad82952b9f9",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbors",
+                    "devices",
+                    ":deviceid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceid",
+                      "description": "(Required) The ID of the device to retrieve BGP Neighbors for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42e3571d-f7af-49a6-96ed-275b3f25d2f2",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbors",
+                    "devices",
+                    ":deviceid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceid",
+                      "description": "(Required) The ID of the device to retrieve BGP Neighbors for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cdd9b9cb-1b9c-495f-a0c9-ac59da5b5705",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbors",
+                    "devices",
+                    ":deviceid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceid",
+                      "description": "(Required) The ID of the device to retrieve BGP Neighbors for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36461503-02b9-4215-afa5-5664c5705805",
+          "name": "Create BGP Neighbor",
+          "request": {
+            "name": "Create BGP Neighbor",
+            "description": {
+              "content": "Create a new BGP Neighbor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "bgp",
+                "neighbor"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c05819a-9e5b-4e28-ace2-9cfae65220ff",
+              "name": "List of BGP Neighbors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addressremote\": \"<string>\",\n  \"description\": \"<string>\",\n  \"asn\": \"<string>\",\n  \"addresslocal\": \"<string>\",\n  \"admindown\": \"<boolean>\",\n  \"advanced\": \"<boolean>\",\n  \"authpassword\": \"<string>\",\n  \"deviceid\": \"<string>\",\n  \"gracefulrestart\": \"<boolean>\",\n  \"holdtime\": \"<integer>\",\n  \"ipv4-flowspec\": \"<boolean>\",\n  \"ipv4-unicast\": \"<boolean>\",\n  \"ipv6-flowspec\": \"<boolean>\",\n  \"ipv6-unicast\": \"<boolean>\",\n  \"keepalive\": \"<integer>\",\n  \"negotiated\": {\n    \"capabilities\": \"<array>\",\n    \"holdtime\": \"<integer>\",\n    \"keepalive\": \"<integer>\"\n  },\n  \"restarttime\": \"<integer>\",\n  \"routes\": {\n    \"ipv4-flow\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv4-unicast\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv6-flow\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv6-unicast\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"total\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"prefixrate\": \"<integer>\",\n      \"prefixsessioncount\": \"<integer>\",\n      \"prefixtotalcount\": \"<integer>\",\n      \"received\": \"<integer>\"\n    }\n  },\n  \"state\": \"<string>\",\n  \"stats\": {\n    \"recv\": {\n      \"discarded\": \"<integer>\",\n      \"keepalives\": \"<integer>\",\n      \"notifications\": \"<integer>\",\n      \"opens\": \"<integer>\",\n      \"routerefreshes\": \"<integer>\",\n      \"updates\": \"<integer>\",\n      \"withdrawprefix\": \"<integer>\",\n      \"withdrawupdate\": \"<integer>\"\n    },\n    \"sent\": {\n      \"discarded\": \"<integer>\",\n      \"keepalives\": \"<integer>\",\n      \"notifications\": \"<integer>\",\n      \"opens\": \"<integer>\",\n      \"routerefreshes\": \"<integer>\",\n      \"updates\": \"<integer>\",\n      \"withdrawprefix\": \"<integer>\",\n      \"withdrawupdate\": \"<integer>\"\n    }\n  },\n  \"uptime\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 8254,\n    \"count\": 6055\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"addresslocal\": \"string\",\n      \"addressremote\": \"string\",\n      \"admindown\": true,\n      \"advanced\": true,\n      \"asn\": \"string\",\n      \"authpassword\": \"string\",\n      \"description\": \"string\",\n      \"deviceid\": \"string\",\n      \"gracefulrestart\": false,\n      \"holdtime\": 3716,\n      \"ipv4-flowspec\": true,\n      \"ipv4-unicast\": false,\n      \"ipv6-flowspec\": true,\n      \"ipv6-unicast\": true,\n      \"keepalive\": 3053,\n      \"negotiated\": {\n        \"holdtime\": 3634,\n        \"keepalive\": 6187\n      },\n      \"restarttime\": 8753,\n      \"routes\": {\n        \"ipv4-flow\": {\n          \"accepted\": 5475,\n          \"advertised\": 2194,\n          \"received\": 4410\n        },\n        \"ipv4-unicast\": {\n          \"accepted\": 2364,\n          \"advertised\": 7161,\n          \"received\": 2465\n        },\n        \"ipv6-flow\": {\n          \"accepted\": 5524,\n          \"advertised\": 5694,\n          \"received\": 3860\n        },\n        \"ipv6-unicast\": {\n          \"accepted\": 4186,\n          \"advertised\": 39,\n          \"received\": 406\n        },\n        \"total\": {\n          \"accepted\": 1603,\n          \"advertised\": 1418,\n          \"prefixrate\": 3523,\n          \"prefixsessioncount\": 4083,\n          \"prefixtotalcount\": 814,\n          \"received\": 4731\n        }\n      },\n      \"state\": \"string\",\n      \"stats\": {\n        \"recv\": {\n          \"discarded\": 7607,\n          \"keepalives\": 3104,\n          \"notifications\": 5101,\n          \"opens\": 8122,\n          \"routerefreshes\": 1833,\n          \"updates\": 3653,\n          \"withdrawprefix\": 7575,\n          \"withdrawupdate\": 2634\n        },\n        \"sent\": {\n          \"discarded\": 9447,\n          \"keepalives\": 1276,\n          \"notifications\": 4707,\n          \"opens\": 2767,\n          \"routerefreshes\": 4301,\n          \"updates\": 5148,\n          \"withdrawprefix\": 6776,\n          \"withdrawupdate\": 5695\n        }\n      },\n      \"uptime\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7973e3e1-8dca-4cae-9687-b18e22096799",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addressremote\": \"<string>\",\n  \"description\": \"<string>\",\n  \"asn\": \"<string>\",\n  \"addresslocal\": \"<string>\",\n  \"admindown\": \"<boolean>\",\n  \"advanced\": \"<boolean>\",\n  \"authpassword\": \"<string>\",\n  \"deviceid\": \"<string>\",\n  \"gracefulrestart\": \"<boolean>\",\n  \"holdtime\": \"<integer>\",\n  \"ipv4-flowspec\": \"<boolean>\",\n  \"ipv4-unicast\": \"<boolean>\",\n  \"ipv6-flowspec\": \"<boolean>\",\n  \"ipv6-unicast\": \"<boolean>\",\n  \"keepalive\": \"<integer>\",\n  \"negotiated\": {\n    \"capabilities\": \"<array>\",\n    \"holdtime\": \"<integer>\",\n    \"keepalive\": \"<integer>\"\n  },\n  \"restarttime\": \"<integer>\",\n  \"routes\": {\n    \"ipv4-flow\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv4-unicast\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv6-flow\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv6-unicast\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"total\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"prefixrate\": \"<integer>\",\n      \"prefixsessioncount\": \"<integer>\",\n      \"prefixtotalcount\": \"<integer>\",\n      \"received\": \"<integer>\"\n    }\n  },\n  \"state\": \"<string>\",\n  \"stats\": {\n    \"recv\": {\n      \"discarded\": \"<integer>\",\n      \"keepalives\": \"<integer>\",\n      \"notifications\": \"<integer>\",\n      \"opens\": \"<integer>\",\n      \"routerefreshes\": \"<integer>\",\n      \"updates\": \"<integer>\",\n      \"withdrawprefix\": \"<integer>\",\n      \"withdrawupdate\": \"<integer>\"\n    },\n    \"sent\": {\n      \"discarded\": \"<integer>\",\n      \"keepalives\": \"<integer>\",\n      \"notifications\": \"<integer>\",\n      \"opens\": \"<integer>\",\n      \"routerefreshes\": \"<integer>\",\n      \"updates\": \"<integer>\",\n      \"withdrawprefix\": \"<integer>\",\n      \"withdrawupdate\": \"<integer>\"\n    }\n  },\n  \"uptime\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "884fd0c0-f835-447f-90f8-a69992dd6568",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addressremote\": \"<string>\",\n  \"description\": \"<string>\",\n  \"asn\": \"<string>\",\n  \"addresslocal\": \"<string>\",\n  \"admindown\": \"<boolean>\",\n  \"advanced\": \"<boolean>\",\n  \"authpassword\": \"<string>\",\n  \"deviceid\": \"<string>\",\n  \"gracefulrestart\": \"<boolean>\",\n  \"holdtime\": \"<integer>\",\n  \"ipv4-flowspec\": \"<boolean>\",\n  \"ipv4-unicast\": \"<boolean>\",\n  \"ipv6-flowspec\": \"<boolean>\",\n  \"ipv6-unicast\": \"<boolean>\",\n  \"keepalive\": \"<integer>\",\n  \"negotiated\": {\n    \"capabilities\": \"<array>\",\n    \"holdtime\": \"<integer>\",\n    \"keepalive\": \"<integer>\"\n  },\n  \"restarttime\": \"<integer>\",\n  \"routes\": {\n    \"ipv4-flow\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv4-unicast\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv6-flow\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv6-unicast\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"total\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"prefixrate\": \"<integer>\",\n      \"prefixsessioncount\": \"<integer>\",\n      \"prefixtotalcount\": \"<integer>\",\n      \"received\": \"<integer>\"\n    }\n  },\n  \"state\": \"<string>\",\n  \"stats\": {\n    \"recv\": {\n      \"discarded\": \"<integer>\",\n      \"keepalives\": \"<integer>\",\n      \"notifications\": \"<integer>\",\n      \"opens\": \"<integer>\",\n      \"routerefreshes\": \"<integer>\",\n      \"updates\": \"<integer>\",\n      \"withdrawprefix\": \"<integer>\",\n      \"withdrawupdate\": \"<integer>\"\n    },\n    \"sent\": {\n      \"discarded\": \"<integer>\",\n      \"keepalives\": \"<integer>\",\n      \"notifications\": \"<integer>\",\n      \"opens\": \"<integer>\",\n      \"routerefreshes\": \"<integer>\",\n      \"updates\": \"<integer>\",\n      \"withdrawprefix\": \"<integer>\",\n      \"withdrawupdate\": \"<integer>\"\n    }\n  },\n  \"uptime\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87ea139a-65df-4986-bad3-f6ee938d600f",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addressremote\": \"<string>\",\n  \"description\": \"<string>\",\n  \"asn\": \"<string>\",\n  \"addresslocal\": \"<string>\",\n  \"admindown\": \"<boolean>\",\n  \"advanced\": \"<boolean>\",\n  \"authpassword\": \"<string>\",\n  \"deviceid\": \"<string>\",\n  \"gracefulrestart\": \"<boolean>\",\n  \"holdtime\": \"<integer>\",\n  \"ipv4-flowspec\": \"<boolean>\",\n  \"ipv4-unicast\": \"<boolean>\",\n  \"ipv6-flowspec\": \"<boolean>\",\n  \"ipv6-unicast\": \"<boolean>\",\n  \"keepalive\": \"<integer>\",\n  \"negotiated\": {\n    \"capabilities\": \"<array>\",\n    \"holdtime\": \"<integer>\",\n    \"keepalive\": \"<integer>\"\n  },\n  \"restarttime\": \"<integer>\",\n  \"routes\": {\n    \"ipv4-flow\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv4-unicast\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv6-flow\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv6-unicast\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"total\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"prefixrate\": \"<integer>\",\n      \"prefixsessioncount\": \"<integer>\",\n      \"prefixtotalcount\": \"<integer>\",\n      \"received\": \"<integer>\"\n    }\n  },\n  \"state\": \"<string>\",\n  \"stats\": {\n    \"recv\": {\n      \"discarded\": \"<integer>\",\n      \"keepalives\": \"<integer>\",\n      \"notifications\": \"<integer>\",\n      \"opens\": \"<integer>\",\n      \"routerefreshes\": \"<integer>\",\n      \"updates\": \"<integer>\",\n      \"withdrawprefix\": \"<integer>\",\n      \"withdrawupdate\": \"<integer>\"\n    },\n    \"sent\": {\n      \"discarded\": \"<integer>\",\n      \"keepalives\": \"<integer>\",\n      \"notifications\": \"<integer>\",\n      \"opens\": \"<integer>\",\n      \"routerefreshes\": \"<integer>\",\n      \"updates\": \"<integer>\",\n      \"withdrawprefix\": \"<integer>\",\n      \"withdrawupdate\": \"<integer>\"\n    }\n  },\n  \"uptime\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f8fb136-ffc0-41df-9c27-998877141ac0",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addressremote\": \"<string>\",\n  \"description\": \"<string>\",\n  \"asn\": \"<string>\",\n  \"addresslocal\": \"<string>\",\n  \"admindown\": \"<boolean>\",\n  \"advanced\": \"<boolean>\",\n  \"authpassword\": \"<string>\",\n  \"deviceid\": \"<string>\",\n  \"gracefulrestart\": \"<boolean>\",\n  \"holdtime\": \"<integer>\",\n  \"ipv4-flowspec\": \"<boolean>\",\n  \"ipv4-unicast\": \"<boolean>\",\n  \"ipv6-flowspec\": \"<boolean>\",\n  \"ipv6-unicast\": \"<boolean>\",\n  \"keepalive\": \"<integer>\",\n  \"negotiated\": {\n    \"capabilities\": \"<array>\",\n    \"holdtime\": \"<integer>\",\n    \"keepalive\": \"<integer>\"\n  },\n  \"restarttime\": \"<integer>\",\n  \"routes\": {\n    \"ipv4-flow\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv4-unicast\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv6-flow\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv6-unicast\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"total\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"prefixrate\": \"<integer>\",\n      \"prefixsessioncount\": \"<integer>\",\n      \"prefixtotalcount\": \"<integer>\",\n      \"received\": \"<integer>\"\n    }\n  },\n  \"state\": \"<string>\",\n  \"stats\": {\n    \"recv\": {\n      \"discarded\": \"<integer>\",\n      \"keepalives\": \"<integer>\",\n      \"notifications\": \"<integer>\",\n      \"opens\": \"<integer>\",\n      \"routerefreshes\": \"<integer>\",\n      \"updates\": \"<integer>\",\n      \"withdrawprefix\": \"<integer>\",\n      \"withdrawupdate\": \"<integer>\"\n    },\n    \"sent\": {\n      \"discarded\": \"<integer>\",\n      \"keepalives\": \"<integer>\",\n      \"notifications\": \"<integer>\",\n      \"opens\": \"<integer>\",\n      \"routerefreshes\": \"<integer>\",\n      \"updates\": \"<integer>\",\n      \"withdrawprefix\": \"<integer>\",\n      \"withdrawupdate\": \"<integer>\"\n    }\n  },\n  \"uptime\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f513fd8b-138f-416b-9ae7-7b3a4b3d9163",
+          "name": "Get BGP Neighbor",
+          "request": {
+            "name": "Get BGP Neighbor",
+            "description": {
+              "content": "Returns the details of a specific BGP Neighbor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "bgp",
+                "neighbor",
+                ":neighborid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "neighborid",
+                  "description": "(Required) The ID of the BGP Neighbor to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "94a3f5e6-fc07-4c78-9a9c-4e61eac13394",
+              "name": "List of BGP Neighbors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 8254,\n    \"count\": 6055\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"addresslocal\": \"string\",\n      \"addressremote\": \"string\",\n      \"admindown\": true,\n      \"advanced\": true,\n      \"asn\": \"string\",\n      \"authpassword\": \"string\",\n      \"description\": \"string\",\n      \"deviceid\": \"string\",\n      \"gracefulrestart\": false,\n      \"holdtime\": 3716,\n      \"ipv4-flowspec\": true,\n      \"ipv4-unicast\": false,\n      \"ipv6-flowspec\": true,\n      \"ipv6-unicast\": true,\n      \"keepalive\": 3053,\n      \"negotiated\": {\n        \"holdtime\": 3634,\n        \"keepalive\": 6187\n      },\n      \"restarttime\": 8753,\n      \"routes\": {\n        \"ipv4-flow\": {\n          \"accepted\": 5475,\n          \"advertised\": 2194,\n          \"received\": 4410\n        },\n        \"ipv4-unicast\": {\n          \"accepted\": 2364,\n          \"advertised\": 7161,\n          \"received\": 2465\n        },\n        \"ipv6-flow\": {\n          \"accepted\": 5524,\n          \"advertised\": 5694,\n          \"received\": 3860\n        },\n        \"ipv6-unicast\": {\n          \"accepted\": 4186,\n          \"advertised\": 39,\n          \"received\": 406\n        },\n        \"total\": {\n          \"accepted\": 1603,\n          \"advertised\": 1418,\n          \"prefixrate\": 3523,\n          \"prefixsessioncount\": 4083,\n          \"prefixtotalcount\": 814,\n          \"received\": 4731\n        }\n      },\n      \"state\": \"string\",\n      \"stats\": {\n        \"recv\": {\n          \"discarded\": 7607,\n          \"keepalives\": 3104,\n          \"notifications\": 5101,\n          \"opens\": 8122,\n          \"routerefreshes\": 1833,\n          \"updates\": 3653,\n          \"withdrawprefix\": 7575,\n          \"withdrawupdate\": 2634\n        },\n        \"sent\": {\n          \"discarded\": 9447,\n          \"keepalives\": 1276,\n          \"notifications\": 4707,\n          \"opens\": 2767,\n          \"routerefreshes\": 4301,\n          \"updates\": 5148,\n          \"withdrawprefix\": 6776,\n          \"withdrawupdate\": 5695\n        }\n      },\n      \"uptime\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69076c45-2972-4346-9eaf-85e13ff40069",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5fd1ab4d-0195-4d43-a563-cf1daf14d6c7",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a545ce7-4943-4840-a860-45393e05f25e",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86b8dea0-d17b-4314-9ef1-9bae5770ea54",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be9a685c-b84c-44ab-9dd4-6c3f77e36018",
+          "name": "Update BGP Neighbor",
+          "request": {
+            "name": "Update BGP Neighbor",
+            "description": {
+              "content": "Updates the details of a specific BGP Neighbor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "bgp",
+                "neighbor",
+                ":neighborid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "neighborid",
+                  "description": "(Required) The ID of the BGP Neighbor to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "958bdfe9-d582-46e3-ac3a-a462aed0285e",
+              "name": "List of BGP Neighbors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addressremote\": \"<string>\",\n  \"description\": \"<string>\",\n  \"asn\": \"<string>\",\n  \"addresslocal\": \"<string>\",\n  \"admindown\": \"<boolean>\",\n  \"advanced\": \"<boolean>\",\n  \"authpassword\": \"<string>\",\n  \"deviceid\": \"<string>\",\n  \"gracefulrestart\": \"<boolean>\",\n  \"holdtime\": \"<integer>\",\n  \"ipv4-flowspec\": \"<boolean>\",\n  \"ipv4-unicast\": \"<boolean>\",\n  \"ipv6-flowspec\": \"<boolean>\",\n  \"ipv6-unicast\": \"<boolean>\",\n  \"keepalive\": \"<integer>\",\n  \"negotiated\": {\n    \"capabilities\": \"<array>\",\n    \"holdtime\": \"<integer>\",\n    \"keepalive\": \"<integer>\"\n  },\n  \"restarttime\": \"<integer>\",\n  \"routes\": {\n    \"ipv4-flow\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv4-unicast\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv6-flow\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv6-unicast\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"total\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"prefixrate\": \"<integer>\",\n      \"prefixsessioncount\": \"<integer>\",\n      \"prefixtotalcount\": \"<integer>\",\n      \"received\": \"<integer>\"\n    }\n  },\n  \"state\": \"<string>\",\n  \"stats\": {\n    \"recv\": {\n      \"discarded\": \"<integer>\",\n      \"keepalives\": \"<integer>\",\n      \"notifications\": \"<integer>\",\n      \"opens\": \"<integer>\",\n      \"routerefreshes\": \"<integer>\",\n      \"updates\": \"<integer>\",\n      \"withdrawprefix\": \"<integer>\",\n      \"withdrawupdate\": \"<integer>\"\n    },\n    \"sent\": {\n      \"discarded\": \"<integer>\",\n      \"keepalives\": \"<integer>\",\n      \"notifications\": \"<integer>\",\n      \"opens\": \"<integer>\",\n      \"routerefreshes\": \"<integer>\",\n      \"updates\": \"<integer>\",\n      \"withdrawprefix\": \"<integer>\",\n      \"withdrawupdate\": \"<integer>\"\n    }\n  },\n  \"uptime\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 8254,\n    \"count\": 6055\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"addresslocal\": \"string\",\n      \"addressremote\": \"string\",\n      \"admindown\": true,\n      \"advanced\": true,\n      \"asn\": \"string\",\n      \"authpassword\": \"string\",\n      \"description\": \"string\",\n      \"deviceid\": \"string\",\n      \"gracefulrestart\": false,\n      \"holdtime\": 3716,\n      \"ipv4-flowspec\": true,\n      \"ipv4-unicast\": false,\n      \"ipv6-flowspec\": true,\n      \"ipv6-unicast\": true,\n      \"keepalive\": 3053,\n      \"negotiated\": {\n        \"holdtime\": 3634,\n        \"keepalive\": 6187\n      },\n      \"restarttime\": 8753,\n      \"routes\": {\n        \"ipv4-flow\": {\n          \"accepted\": 5475,\n          \"advertised\": 2194,\n          \"received\": 4410\n        },\n        \"ipv4-unicast\": {\n          \"accepted\": 2364,\n          \"advertised\": 7161,\n          \"received\": 2465\n        },\n        \"ipv6-flow\": {\n          \"accepted\": 5524,\n          \"advertised\": 5694,\n          \"received\": 3860\n        },\n        \"ipv6-unicast\": {\n          \"accepted\": 4186,\n          \"advertised\": 39,\n          \"received\": 406\n        },\n        \"total\": {\n          \"accepted\": 1603,\n          \"advertised\": 1418,\n          \"prefixrate\": 3523,\n          \"prefixsessioncount\": 4083,\n          \"prefixtotalcount\": 814,\n          \"received\": 4731\n        }\n      },\n      \"state\": \"string\",\n      \"stats\": {\n        \"recv\": {\n          \"discarded\": 7607,\n          \"keepalives\": 3104,\n          \"notifications\": 5101,\n          \"opens\": 8122,\n          \"routerefreshes\": 1833,\n          \"updates\": 3653,\n          \"withdrawprefix\": 7575,\n          \"withdrawupdate\": 2634\n        },\n        \"sent\": {\n          \"discarded\": 9447,\n          \"keepalives\": 1276,\n          \"notifications\": 4707,\n          \"opens\": 2767,\n          \"routerefreshes\": 4301,\n          \"updates\": 5148,\n          \"withdrawprefix\": 6776,\n          \"withdrawupdate\": 5695\n        }\n      },\n      \"uptime\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02d697b9-3cba-4520-b445-ce9d33861b67",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addressremote\": \"<string>\",\n  \"description\": \"<string>\",\n  \"asn\": \"<string>\",\n  \"addresslocal\": \"<string>\",\n  \"admindown\": \"<boolean>\",\n  \"advanced\": \"<boolean>\",\n  \"authpassword\": \"<string>\",\n  \"deviceid\": \"<string>\",\n  \"gracefulrestart\": \"<boolean>\",\n  \"holdtime\": \"<integer>\",\n  \"ipv4-flowspec\": \"<boolean>\",\n  \"ipv4-unicast\": \"<boolean>\",\n  \"ipv6-flowspec\": \"<boolean>\",\n  \"ipv6-unicast\": \"<boolean>\",\n  \"keepalive\": \"<integer>\",\n  \"negotiated\": {\n    \"capabilities\": \"<array>\",\n    \"holdtime\": \"<integer>\",\n    \"keepalive\": \"<integer>\"\n  },\n  \"restarttime\": \"<integer>\",\n  \"routes\": {\n    \"ipv4-flow\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv4-unicast\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv6-flow\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv6-unicast\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"total\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"prefixrate\": \"<integer>\",\n      \"prefixsessioncount\": \"<integer>\",\n      \"prefixtotalcount\": \"<integer>\",\n      \"received\": \"<integer>\"\n    }\n  },\n  \"state\": \"<string>\",\n  \"stats\": {\n    \"recv\": {\n      \"discarded\": \"<integer>\",\n      \"keepalives\": \"<integer>\",\n      \"notifications\": \"<integer>\",\n      \"opens\": \"<integer>\",\n      \"routerefreshes\": \"<integer>\",\n      \"updates\": \"<integer>\",\n      \"withdrawprefix\": \"<integer>\",\n      \"withdrawupdate\": \"<integer>\"\n    },\n    \"sent\": {\n      \"discarded\": \"<integer>\",\n      \"keepalives\": \"<integer>\",\n      \"notifications\": \"<integer>\",\n      \"opens\": \"<integer>\",\n      \"routerefreshes\": \"<integer>\",\n      \"updates\": \"<integer>\",\n      \"withdrawprefix\": \"<integer>\",\n      \"withdrawupdate\": \"<integer>\"\n    }\n  },\n  \"uptime\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd6e11c4-f8be-4f57-8cf1-c6ff10485f9f",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addressremote\": \"<string>\",\n  \"description\": \"<string>\",\n  \"asn\": \"<string>\",\n  \"addresslocal\": \"<string>\",\n  \"admindown\": \"<boolean>\",\n  \"advanced\": \"<boolean>\",\n  \"authpassword\": \"<string>\",\n  \"deviceid\": \"<string>\",\n  \"gracefulrestart\": \"<boolean>\",\n  \"holdtime\": \"<integer>\",\n  \"ipv4-flowspec\": \"<boolean>\",\n  \"ipv4-unicast\": \"<boolean>\",\n  \"ipv6-flowspec\": \"<boolean>\",\n  \"ipv6-unicast\": \"<boolean>\",\n  \"keepalive\": \"<integer>\",\n  \"negotiated\": {\n    \"capabilities\": \"<array>\",\n    \"holdtime\": \"<integer>\",\n    \"keepalive\": \"<integer>\"\n  },\n  \"restarttime\": \"<integer>\",\n  \"routes\": {\n    \"ipv4-flow\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv4-unicast\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv6-flow\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv6-unicast\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"total\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"prefixrate\": \"<integer>\",\n      \"prefixsessioncount\": \"<integer>\",\n      \"prefixtotalcount\": \"<integer>\",\n      \"received\": \"<integer>\"\n    }\n  },\n  \"state\": \"<string>\",\n  \"stats\": {\n    \"recv\": {\n      \"discarded\": \"<integer>\",\n      \"keepalives\": \"<integer>\",\n      \"notifications\": \"<integer>\",\n      \"opens\": \"<integer>\",\n      \"routerefreshes\": \"<integer>\",\n      \"updates\": \"<integer>\",\n      \"withdrawprefix\": \"<integer>\",\n      \"withdrawupdate\": \"<integer>\"\n    },\n    \"sent\": {\n      \"discarded\": \"<integer>\",\n      \"keepalives\": \"<integer>\",\n      \"notifications\": \"<integer>\",\n      \"opens\": \"<integer>\",\n      \"routerefreshes\": \"<integer>\",\n      \"updates\": \"<integer>\",\n      \"withdrawprefix\": \"<integer>\",\n      \"withdrawupdate\": \"<integer>\"\n    }\n  },\n  \"uptime\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "892893bd-7f38-4f28-8ee2-8bc66d3ba74b",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addressremote\": \"<string>\",\n  \"description\": \"<string>\",\n  \"asn\": \"<string>\",\n  \"addresslocal\": \"<string>\",\n  \"admindown\": \"<boolean>\",\n  \"advanced\": \"<boolean>\",\n  \"authpassword\": \"<string>\",\n  \"deviceid\": \"<string>\",\n  \"gracefulrestart\": \"<boolean>\",\n  \"holdtime\": \"<integer>\",\n  \"ipv4-flowspec\": \"<boolean>\",\n  \"ipv4-unicast\": \"<boolean>\",\n  \"ipv6-flowspec\": \"<boolean>\",\n  \"ipv6-unicast\": \"<boolean>\",\n  \"keepalive\": \"<integer>\",\n  \"negotiated\": {\n    \"capabilities\": \"<array>\",\n    \"holdtime\": \"<integer>\",\n    \"keepalive\": \"<integer>\"\n  },\n  \"restarttime\": \"<integer>\",\n  \"routes\": {\n    \"ipv4-flow\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv4-unicast\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv6-flow\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv6-unicast\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"total\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"prefixrate\": \"<integer>\",\n      \"prefixsessioncount\": \"<integer>\",\n      \"prefixtotalcount\": \"<integer>\",\n      \"received\": \"<integer>\"\n    }\n  },\n  \"state\": \"<string>\",\n  \"stats\": {\n    \"recv\": {\n      \"discarded\": \"<integer>\",\n      \"keepalives\": \"<integer>\",\n      \"notifications\": \"<integer>\",\n      \"opens\": \"<integer>\",\n      \"routerefreshes\": \"<integer>\",\n      \"updates\": \"<integer>\",\n      \"withdrawprefix\": \"<integer>\",\n      \"withdrawupdate\": \"<integer>\"\n    },\n    \"sent\": {\n      \"discarded\": \"<integer>\",\n      \"keepalives\": \"<integer>\",\n      \"notifications\": \"<integer>\",\n      \"opens\": \"<integer>\",\n      \"routerefreshes\": \"<integer>\",\n      \"updates\": \"<integer>\",\n      \"withdrawprefix\": \"<integer>\",\n      \"withdrawupdate\": \"<integer>\"\n    }\n  },\n  \"uptime\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2c26632-9c6f-449f-b74f-62d1111bc937",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addressremote\": \"<string>\",\n  \"description\": \"<string>\",\n  \"asn\": \"<string>\",\n  \"addresslocal\": \"<string>\",\n  \"admindown\": \"<boolean>\",\n  \"advanced\": \"<boolean>\",\n  \"authpassword\": \"<string>\",\n  \"deviceid\": \"<string>\",\n  \"gracefulrestart\": \"<boolean>\",\n  \"holdtime\": \"<integer>\",\n  \"ipv4-flowspec\": \"<boolean>\",\n  \"ipv4-unicast\": \"<boolean>\",\n  \"ipv6-flowspec\": \"<boolean>\",\n  \"ipv6-unicast\": \"<boolean>\",\n  \"keepalive\": \"<integer>\",\n  \"negotiated\": {\n    \"capabilities\": \"<array>\",\n    \"holdtime\": \"<integer>\",\n    \"keepalive\": \"<integer>\"\n  },\n  \"restarttime\": \"<integer>\",\n  \"routes\": {\n    \"ipv4-flow\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv4-unicast\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv6-flow\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"ipv6-unicast\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"received\": \"<integer>\"\n    },\n    \"total\": {\n      \"accepted\": \"<integer>\",\n      \"advertised\": \"<integer>\",\n      \"prefixrate\": \"<integer>\",\n      \"prefixsessioncount\": \"<integer>\",\n      \"prefixtotalcount\": \"<integer>\",\n      \"received\": \"<integer>\"\n    }\n  },\n  \"state\": \"<string>\",\n  \"stats\": {\n    \"recv\": {\n      \"discarded\": \"<integer>\",\n      \"keepalives\": \"<integer>\",\n      \"notifications\": \"<integer>\",\n      \"opens\": \"<integer>\",\n      \"routerefreshes\": \"<integer>\",\n      \"updates\": \"<integer>\",\n      \"withdrawprefix\": \"<integer>\",\n      \"withdrawupdate\": \"<integer>\"\n    },\n    \"sent\": {\n      \"discarded\": \"<integer>\",\n      \"keepalives\": \"<integer>\",\n      \"notifications\": \"<integer>\",\n      \"opens\": \"<integer>\",\n      \"routerefreshes\": \"<integer>\",\n      \"updates\": \"<integer>\",\n      \"withdrawprefix\": \"<integer>\",\n      \"withdrawupdate\": \"<integer>\"\n    }\n  },\n  \"uptime\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "97c6839d-b560-4029-b5d4-1154ca8e6788",
+          "name": "Delete BGP Neighbor",
+          "request": {
+            "name": "Delete BGP Neighbor",
+            "description": {
+              "content": "Deletes a specific BGP Neighbor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "bgp",
+                "neighbor",
+                ":neighborid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "neighborid",
+                  "description": "(Required) The ID of the BGP Neighbor to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba58b50f-9419-460a-9e2e-8fc72c218cad",
+              "name": "Empty Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to delete."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "edd4c772-8f84-40e4-9dc6-660f0450f8d0",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b5c830f-dc6b-4c19-b7f3-92b232ddd5df",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c7d52ac-00cd-4e28-b5d2-0e519dbba42b",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d6ff5dd-f30e-4829-a151-0e5c3dbc5a4d",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb214476-34fc-4a49-aea3-692362a579af",
+          "name": "Enable BGP Neighbor",
+          "request": {
+            "name": "Enable BGP Neighbor",
+            "description": {
+              "content": "Enable a specific BGP Neighbor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "bgp",
+                "neighbor",
+                ":neighborid",
+                "enable"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "neighborid",
+                  "description": "(Required) The ID of the BGP Neighbor to enable."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c78f7299-931e-4785-8822-2f1a1aa34b85",
+              "name": "List of BGP Neighbors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to enable."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 8254,\n    \"count\": 6055\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"addresslocal\": \"string\",\n      \"addressremote\": \"string\",\n      \"admindown\": true,\n      \"advanced\": true,\n      \"asn\": \"string\",\n      \"authpassword\": \"string\",\n      \"description\": \"string\",\n      \"deviceid\": \"string\",\n      \"gracefulrestart\": false,\n      \"holdtime\": 3716,\n      \"ipv4-flowspec\": true,\n      \"ipv4-unicast\": false,\n      \"ipv6-flowspec\": true,\n      \"ipv6-unicast\": true,\n      \"keepalive\": 3053,\n      \"negotiated\": {\n        \"holdtime\": 3634,\n        \"keepalive\": 6187\n      },\n      \"restarttime\": 8753,\n      \"routes\": {\n        \"ipv4-flow\": {\n          \"accepted\": 5475,\n          \"advertised\": 2194,\n          \"received\": 4410\n        },\n        \"ipv4-unicast\": {\n          \"accepted\": 2364,\n          \"advertised\": 7161,\n          \"received\": 2465\n        },\n        \"ipv6-flow\": {\n          \"accepted\": 5524,\n          \"advertised\": 5694,\n          \"received\": 3860\n        },\n        \"ipv6-unicast\": {\n          \"accepted\": 4186,\n          \"advertised\": 39,\n          \"received\": 406\n        },\n        \"total\": {\n          \"accepted\": 1603,\n          \"advertised\": 1418,\n          \"prefixrate\": 3523,\n          \"prefixsessioncount\": 4083,\n          \"prefixtotalcount\": 814,\n          \"received\": 4731\n        }\n      },\n      \"state\": \"string\",\n      \"stats\": {\n        \"recv\": {\n          \"discarded\": 7607,\n          \"keepalives\": 3104,\n          \"notifications\": 5101,\n          \"opens\": 8122,\n          \"routerefreshes\": 1833,\n          \"updates\": 3653,\n          \"withdrawprefix\": 7575,\n          \"withdrawupdate\": 2634\n        },\n        \"sent\": {\n          \"discarded\": 9447,\n          \"keepalives\": 1276,\n          \"notifications\": 4707,\n          \"opens\": 2767,\n          \"routerefreshes\": 4301,\n          \"updates\": 5148,\n          \"withdrawprefix\": 6776,\n          \"withdrawupdate\": 5695\n        }\n      },\n      \"uptime\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f09804c9-c896-4da1-88da-b4c236e40458",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to enable."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee909fdb-3393-4c0b-b5f3-c08c966e048d",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to enable."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5531336e-aeb8-4435-b552-66b2e6f35c1a",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to enable."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb808655-2be7-402e-910a-39cea1344dcb",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid",
+                    "enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to enable."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "641e9941-b0c6-4c36-a6e7-dd297783819a",
+          "name": "Disable BGP Neighbor",
+          "request": {
+            "name": "Disable BGP Neighbor",
+            "description": {
+              "content": "Disable a specific BGP Neighbor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "bgp",
+                "neighbor",
+                ":neighborid",
+                "disable"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "neighborid",
+                  "description": "(Required) The ID of the BGP Neighbor to disable."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8730bbd0-98a5-4d1e-b2d3-609aee2f9f69",
+              "name": "List of BGP Neighbors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to disable."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"code\": 8254,\n    \"count\": 6055\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"addresslocal\": \"string\",\n      \"addressremote\": \"string\",\n      \"admindown\": true,\n      \"advanced\": true,\n      \"asn\": \"string\",\n      \"authpassword\": \"string\",\n      \"description\": \"string\",\n      \"deviceid\": \"string\",\n      \"gracefulrestart\": false,\n      \"holdtime\": 3716,\n      \"ipv4-flowspec\": true,\n      \"ipv4-unicast\": false,\n      \"ipv6-flowspec\": true,\n      \"ipv6-unicast\": true,\n      \"keepalive\": 3053,\n      \"negotiated\": {\n        \"holdtime\": 3634,\n        \"keepalive\": 6187\n      },\n      \"restarttime\": 8753,\n      \"routes\": {\n        \"ipv4-flow\": {\n          \"accepted\": 5475,\n          \"advertised\": 2194,\n          \"received\": 4410\n        },\n        \"ipv4-unicast\": {\n          \"accepted\": 2364,\n          \"advertised\": 7161,\n          \"received\": 2465\n        },\n        \"ipv6-flow\": {\n          \"accepted\": 5524,\n          \"advertised\": 5694,\n          \"received\": 3860\n        },\n        \"ipv6-unicast\": {\n          \"accepted\": 4186,\n          \"advertised\": 39,\n          \"received\": 406\n        },\n        \"total\": {\n          \"accepted\": 1603,\n          \"advertised\": 1418,\n          \"prefixrate\": 3523,\n          \"prefixsessioncount\": 4083,\n          \"prefixtotalcount\": 814,\n          \"received\": 4731\n        }\n      },\n      \"state\": \"string\",\n      \"stats\": {\n        \"recv\": {\n          \"discarded\": 7607,\n          \"keepalives\": 3104,\n          \"notifications\": 5101,\n          \"opens\": 8122,\n          \"routerefreshes\": 1833,\n          \"updates\": 3653,\n          \"withdrawprefix\": 7575,\n          \"withdrawupdate\": 2634\n        },\n        \"sent\": {\n          \"discarded\": 9447,\n          \"keepalives\": 1276,\n          \"notifications\": 4707,\n          \"opens\": 2767,\n          \"routerefreshes\": 4301,\n          \"updates\": 5148,\n          \"withdrawprefix\": 6776,\n          \"withdrawupdate\": 5695\n        }\n      },\n      \"uptime\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ff263bf-d325-475d-9b76-4d8ddfe38241",
+              "name": "Bad Request. Typically due to a malformatted JSON body, or parameter values are not validating.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to disable."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a272da7e-e9f4-46bf-8eba-271bdad609f1",
+              "name": "Access token is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to disable."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b250e0b-e66e-4255-9437-2277214f5c14",
+              "name": "Access is forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to disable."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62c98c1c-51d6-478f-9576-5065c1d5f8db",
+              "name": "Unknown Error Occurred",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bgp",
+                    "neighbor",
+                    ":neighborid",
+                    "disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "neighborid",
+                      "description": "(Required) The ID of the BGP Neighbor to disable."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 7941,\n  \"name\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.netography.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "10652db3-2a8d-4c05-8b71-b09dccbcd6eb",
+    "name": "Netography (Vectra Fusion) Analytics Traffic Sources - Devices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).",
+      "type": "text/plain"
+    }
+  }
+}
