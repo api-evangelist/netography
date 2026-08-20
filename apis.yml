@@ -60,6 +60,8 @@ apis:
   humanURL: https://docs.fusion.vectra.ai/api-reference
   baseURL: https://api.netography.com
   tags:
+  - APIKeys
+  tags_raw:
   - API Keys
   properties:
   - type: OpenAPI
@@ -90,6 +92,8 @@ apis:
   humanURL: https://docs.fusion.vectra.ai/api-reference
   baseURL: https://api.netography.com
   tags:
+  - Blocklist
+  tags_raw:
   - Block List
   properties:
   - type: OpenAPI
@@ -111,7 +115,8 @@ apis:
     respond - context creation models.
   humanURL: https://docs.fusion.vectra.ai/api-reference
   baseURL: https://api.netography.com
-  tags:
+  tags: []
+  tags_raw:
   - Detect and Respond - Context Creation Models
   properties:
   - type: OpenAPI
@@ -159,7 +164,8 @@ apis:
     and respond - traffic detection models.
   humanURL: https://docs.fusion.vectra.ai/api-reference
   baseURL: https://api.netography.com
-  tags:
+  tags: []
+  tags_raw:
   - Detect and Respond - Traffic Detection Models
   properties:
   - type: OpenAPI
@@ -337,6 +343,8 @@ apis:
   humanURL: https://docs.fusion.vectra.ai/api-reference
   baseURL: https://api.netography.com
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
