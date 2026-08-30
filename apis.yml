@@ -103,7 +103,7 @@ apis:
   humanURL: https://docs.fusion.vectra.ai/api-reference
   baseURL: https://api.netography.com
   tags:
-  - Blocklist
+  - Block List
   tags_raw:
   - Block List
   properties:
