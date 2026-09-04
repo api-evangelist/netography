@@ -20,6 +20,7 @@ accessModel:
   confidence: low
   source:
   - authentication
+  - {url: 'https://netography.com/', status: 301, note: 'declared website redirects to https://www.vectra.ai/platform/network-observability — a different registrable domain (netography.com -> vectra.ai), possible rename or acquisition (probed 2026-09-03, roadmap#169)'}
   generated: '2026-07-22'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/netography.png
@@ -366,6 +367,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/netography-capability-edges.yml
+  name: Netography Business Capability Map
 - type: AgenticAccess
   url: agentic-access/netography-agentic-access.yml
 - type: VulnerabilityDisclosure
