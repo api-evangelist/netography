@@ -98,18 +98,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/netography-auto-thresholds-api-openapi.yml
-- aid: netography:netography-block-list-api
-  name: Netography Block List API
-  description: The Block List API from Netography — 1 operation(s) for block list.
-  humanURL: https://docs.fusion.vectra.ai/api-reference
-  baseURL: https://api.netography.com
-  tags:
-  - Blocklist
-  tags_raw:
-  - Block List
-  properties:
-  - type: OpenAPI
-    url: openapi/netography-block-list-api-openapi.yml
 - aid: netography:netography-configuration-api
   name: Netography Configuration API
   description: The Configuration API from Netography — 1 operation(s) for configuration.
@@ -361,6 +349,16 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/netography-users-api-openapi.yml
+- aid: netography:netography-blocklist-api
+  name: Netography Blocklist API
+  description: The Blocklist API from Netography — 1 operation(s) for blocklist.
+  humanURL: https://docs.fusion.vectra.ai/api-reference
+  baseURL: https://api.netography.com
+  tags:
+  - Blocklist
+  properties:
+  - type: OpenAPI
+    url: openapi/netography-blocklist-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
