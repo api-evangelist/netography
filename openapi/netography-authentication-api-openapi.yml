@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Netography (Vectra Fusion) Analytics Authentication API
+  title: Netography (Vectra Fusion) Authentication API
   version: '1.0'
   description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
   x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
@@ -32,7 +32,72 @@ paths:
               required:
               - jwt
       summary: via API Key
-      description: "To authenticate to the API, a JWT request token is encoded and sent as the `jwt` param in a `POST` to `/auth/token`.  The `access_token` in the response is the JWT bearer token that is included as the `Authorization` value in the `Header` of all subsequent API calls.\n\nIf you do not have the 4 fields below available, see [Create a Netography API Key](ref:create-a-netography-api-key).\n\n## Generating a JWT request token in code\n\n[block:tutorial-tile]\n{\n  \"backgroundColor\": \"#018FF4\",\n  \"emoji\": \"\U0001F989\",\n  \"id\": \"657c52c3a5434c00493811e0\",\n  \"link\": \"https://docs.netography.com/v1.0/recipes/create-a-jwt-request-token\",\n  \"slug\": \"create-a-jwt-request-token\",\n  \"title\": \"Create a JWT request token\"\n}\n[/block]\n\n\n## Generating a JWT request token in browser\n\nTo use API via the API reference pages here, you can create a JWT request token here, and then copy it to the _jwt_ params field below.\n\n[block:embed]\n{\n  \"html\": false,\n  \"url\": \"https://jsfiddle.net/netography/rex57sb6/12/embedded/result,js,html\",\n  \"provider\": \"jsfiddle.net\",\n  \"href\": \"https://jsfiddle.net/netography/rex57sb6/12/embedded/result,js,html\",\n  \"typeOfEmbed\": \"iframe\",\n  \"height\": \"400px\",\n  \"width\": \"100%\",\n  \"iframe\": true\n}\n[/block]\n\n\n> ↕️ Copy and Paste the JWT request token string\n> \n> To authenticate to the API on this page, you need to copy the token string from the _JWT Request Token_ field directly above, and paste it into the _jwt_ field directly below.\n"
+      description: 'To authenticate to the API, a JWT request token is encoded and sent as the `jwt` param in a `POST` to `/auth/token`. The `access_token` in the response is the JWT bearer token that is included as the `Authorization` value in the `Header` of all subsequent API calls.
+
+
+        If you do not have the 4 fields below available, see Create a Netography API Key.
+
+
+        ## Generating a JWT request token in code
+
+
+        [block:tutorial-tile]
+
+        {
+
+        "backgroundColor": "#018FF4",
+
+        "emoji": "🦉",
+
+        "id": "657c52c3a5434c00493811e0",
+
+        "link": "https://docs.netography.com/v1.0/recipes/create-a-jwt-request-token",
+
+        "slug": "create-a-jwt-request-token",
+
+        "title": "Create a JWT request token"
+
+        }
+
+        [/block]
+
+
+        ## Generating a JWT request token in browser
+
+
+        To use API via the API reference pages here, you can create a JWT request token here, and then copy it to the _jwt_ params field below.
+
+
+        [block:embed]
+
+        {
+
+        "html": false,
+
+        "url": "https://jsfiddle.net/netography/rex57sb6/12/embedded/result,js,html",
+
+        "provider": "jsfiddle.net",
+
+        "href": "https://jsfiddle.net/netography/rex57sb6/12/embedded/result,js,html",
+
+        "typeOfEmbed": "iframe",
+
+        "height": "400px",
+
+        "width": "100%",
+
+        "iframe": true
+
+        }
+
+        [/block]
+
+
+        > ↕️ Copy and Paste the JWT request token string
+
+        >
+
+        > To authenticate to the API on this page, you need to copy the token string from the _JWT Request Token_ field directly above, and paste it into the _jwt_ field directly below.'
       responses:
         '200':
           description: A JSON object which contains the `access_token` to use in all subsequent calls to the API

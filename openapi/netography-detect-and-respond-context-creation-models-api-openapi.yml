@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Netography (Vectra Fusion) Analytics Detect and Respond - Context Creation Models API
+  title: Netography (Vectra Fusion) Detect and Respond - Context…
   version: '1.0'
   description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
   x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
@@ -298,7 +298,7 @@ paths:
     post:
       operationId: v1_context_creation_model_post
       summary: Create Context Creation Model
-      description: Creates a context creation model from the data that's been supplied.  Do not provide an id.  IDs are auto generated
+      description: Creates a context creation model from the data that's been supplied. Do not provide an id. IDs are auto generated
       tags:
       - Detect and Respond - Context Creation Models
       requestBody:
@@ -980,7 +980,7 @@ paths:
     put:
       operationId: v1_context_creation_model_id_put
       summary: Update Context Creation Model
-      description: Update a context creation model given the provided object.  This does not do a diff.  You must send the complete object.
+      description: Update a context creation model given the provided object. This does not do a diff. You must send the complete object.
       tags:
       - Detect and Respond - Context Creation Models
       requestBody:

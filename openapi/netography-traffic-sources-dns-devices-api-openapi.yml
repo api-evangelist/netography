@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Netography (Vectra Fusion) Analytics Traffic Sources - DNS Devices API
+  title: Netography (Vectra Fusion) Traffic Sources - DNS Devices API
   version: '1.0'
   description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
   x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks

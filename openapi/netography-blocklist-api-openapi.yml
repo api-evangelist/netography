@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Netography (Vectra Fusion) Analytics Block List API
+  title: Netography (Vectra Fusion) Block List API
   version: '1.0'
   description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
   x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
@@ -10,7 +10,7 @@ servers:
 - url: https://api.netography.com
   description: Netography API
 tags:
-- name: Block List
+- name: Blocklist
 paths:
   /api/v1/blocks:
     delete:
@@ -18,7 +18,7 @@ paths:
       summary: Clear the Block List
       description: This method will clear all active blocks from the block list
       tags:
-      - Block List
+      - Blocklist
       responses:
         '204':
           description: Empty Response

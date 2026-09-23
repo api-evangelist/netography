@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Netography (Vectra Fusion) Analytics Resellers API
+  title: Netography (Vectra Fusion) Resellers API
   version: '1.0'
   description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
   x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
@@ -389,7 +389,7 @@ paths:
     post:
       operationId: v1_customer_post
       summary: Create Account
-      description: Create an Account (sub customer) the supplied object.  Do NOT submit an ID.  IDs are auto generated and immutable.
+      description: Create an Account (sub customer) the supplied object. Do NOT submit an ID. IDs are auto generated and immutable.
       requestBody:
         description: Account to be added
         required: true
@@ -853,7 +853,7 @@ paths:
     put:
       operationId: v1_customer_shortname_put
       summary: Update Account
-      description: Update an Account given the provided object.  This does not do a diff.  You must send the complete object.
+      description: Update an Account given the provided object. This does not do a diff. You must send the complete object.
       requestBody:
         description: Account to be updated
         required: true

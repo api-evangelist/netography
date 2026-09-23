@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Netography (Vectra Fusion) Analytics Integrations - Context API
+  title: Netography (Vectra Fusion) Integrations - Context API
   version: '1.0'
   description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
   x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
@@ -538,7 +538,7 @@ paths:
     post:
       operationId: v1_integrations_context_post
       summary: Create Context Integration
-      description: Creates a context integration from the data that's been supplied.  Do not provide an id.  IDs are auto generated
+      description: Creates a context integration from the data that's been supplied. Do not provide an id. IDs are auto generated
       requestBody:
         description: Integration to be added.  Parameters are dependant on which context 'type' is provided.
         required: true
@@ -1949,7 +1949,7 @@ paths:
     put:
       operationId: v1_integrations_context_id_put
       summary: Update Context Integration
-      description: Update a context integration given the provided object.  This does not do a diff.  You must send the complete object.
+      description: Update a context integration given the provided object. This does not do a diff. You must send the complete object.
       requestBody:
         description: Context Integration to be updated
         required: true
@@ -2972,7 +2972,7 @@ paths:
     get:
       operationId: v1_integrations_context_id_run_get
       summary: Dry Run/Test a Context Integration
-      description: Runs the specified context integration.  Retuns a list of ip labels that would be imported when the context integration is run.
+      description: Runs the specified context integration. Retuns a list of ip labels that would be imported when the context integration is run.
       tags:
       - Integrations - Context
       parameters:
@@ -3153,7 +3153,7 @@ paths:
     put:
       operationId: v1_integrations_context_id_run_put
       summary: Run a Context Integration
-      description: Runs the specified context integration.  Returns a list of ip labels that were imported.
+      description: Runs the specified context integration. Returns a list of ip labels that were imported.
       tags:
       - Integrations - Context
       parameters:
@@ -3334,7 +3334,7 @@ paths:
   /api/v1/integrations/context/{id}/regenkeys:
     put:
       operationId: v1_integrations_context_id_regenkeys_put
-      summary: Regenerate private/public keys.
+      summary: Regenerate private/public keys
       description: Only applicable to Oracle Cloud.
       tags:
       - Integrations - Context

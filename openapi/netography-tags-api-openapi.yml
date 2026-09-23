@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Netography (Vectra Fusion) Analytics Tags API
+  title: Netography (Vectra Fusion) Tags API
   version: '1.0'
   description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
   x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
@@ -399,9 +399,7 @@ paths:
       description: 'Returns all tag values associated with a specific IP address within the specified timeframe.
 
 
-        This endpoint allows you to retrieve all tags that have been applied to flows associated with the given IP address during the specified time period.
-
-        '
+        This endpoint allows you to retrieve all tags that have been applied to flows associated with the given IP address during the specified time period.'
       tags:
       - Tags
       parameters:
@@ -1103,7 +1101,7 @@ paths:
     put:
       operationId: v1_tag_flow_id_put
       summary: Update Flow Tag
-      description: Update a Flow Tag given the provided object.  This does not do a diff.  You must send the complete object and have at least 1 match criteria set.
+      description: Update a Flow Tag given the provided object. This does not do a diff. You must send the complete object and have at least 1 match criteria set.
       requestBody:
         description: Flow Tag Rule to be updated
         required: true

@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Netography (Vectra Fusion) Analytics Users API
+  title: Netography (Vectra Fusion) Users API
   version: '1.0'
   description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
   x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
@@ -193,7 +193,9 @@ paths:
     post:
       operationId: v1_user_get
       summary: Create User
-      description: 'Create a User from the supplied object.  Do NOT submit an ID.  IDs are auto generated and immutable.<br> <b>Note: This API is rate limited to 50 requests per 300 seconds.</b>'
+      description: 'Create a User from the supplied object. Do NOT submit an ID. IDs are auto generated and immutable.
+
+        Note: This API is rate limited to 50 requests per 300 seconds.'
       requestBody:
         description: User to be added
         required: true
@@ -586,7 +588,7 @@ paths:
     put:
       operationId: v1_user_id_put
       summary: Update User
-      description: Update a User given the provided object.  This does not do a diff.  You must send the complete object.
+      description: Update a User given the provided object. This does not do a diff. You must send the complete object.
       requestBody:
         description: User to be updated
         required: true

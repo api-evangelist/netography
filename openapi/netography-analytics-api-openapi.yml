@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   title: Netography (Vectra Fusion) Analytics API
   version: '1.0'
@@ -18,7 +18,7 @@ paths:
       tags:
       - Analytics
       summary: Fields
-      description: Values that can be used for the <code>field</code> parameter in subsequent API calls
+      description: Values that can be used for the field parameter in subsequent API calls
       parameters:
       - name: context
         in: path
@@ -199,7 +199,17 @@ paths:
       tags:
       - Analytics
       summary: Aliases
-      description: "Values that can be used for the <code>field</code> parameter in subsequent search API calls.  \nAliases are shortcuts for searching multiple fields of a similar nomenclature.  \nExamples:\n  * <code>ip == 8.8.8.8</code> will be interpolated to create a search of <code>(dstip = 8.8.8.8 or srcip = 8.8.8.8)</code>\n  * <code>ipname == myipname</code> will create a search of <code>(dstipname = myipname or srcipname = myipname)</code>\n  * <code>as.number</code> will search the fields <code>dstas.number, dstowneras.number, srcas.number, and srcowneras.number</code>"
+      description: 'Values that can be used for the field parameter in subsequent search API calls.
+
+        Aliases are shortcuts for searching multiple fields of a similar nomenclature.
+
+        Examples:
+
+        * ip == 8.8.8.8 will be interpolated to create a search of (dstip = 8.8.8.8 or srcip = 8.8.8.8)
+
+        * ipname == myipname will create a search of (dstipname = myipname or srcipname = myipname)
+
+        * as.number will search the fields dstas.number, dstowneras.number, srcas.number, and srcowneras.number'
       parameters:
       - name: context
         in: path
@@ -380,7 +390,7 @@ paths:
       tags:
       - Analytics
       summary: Metrics
-      description: Values that can be used for the <code>metric</code> parameter in subsequent search API calls
+      description: Values that can be used for the metric parameter in subsequent search API calls
       parameters:
       - name: context
         in: path

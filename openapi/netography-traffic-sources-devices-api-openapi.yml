@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Netography (Vectra Fusion) Analytics Traffic Sources - Devices API
+  title: Netography (Vectra Fusion) Traffic Sources - Devices API
   version: '1.0'
   description: Netography Fusion (now Vectra Fusion) REST API. Harvested from the provider's public API reference (docs.fusion.vectra.ai, formerly docs.netography.com).
   x-apievangelist-source: https://docs.fusion.vectra.ai/api-reference (formerly docs.netography.com); harvested from embedded OpenAPI blocks
@@ -217,7 +217,7 @@ paths:
     post:
       operationId: v1_device_post
       summary: Create Device
-      description: Creates a device from the data that's been supplied.  Do not provide an id.  IDs are auto generated
+      description: Creates a device from the data that's been supplied. Do not provide an id. IDs are auto generated
       requestBody:
         description: Device to be added
         required: true
@@ -663,7 +663,7 @@ paths:
     put:
       operationId: v1_devoce_id_put
       summary: Update Device
-      description: Update a device given the provided object.  This does not do a diff.  You must send the complete object.
+      description: Update a device given the provided object. This does not do a diff. You must send the complete object.
       requestBody:
         description: Device to be updated
         required: true
