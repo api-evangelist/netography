@@ -355,6 +355,8 @@ apis:
   humanURL: https://docs.fusion.vectra.ai/api-reference
   baseURL: https://api.netography.com
   tags:
+  - Blacklist
+  tags_raw:
   - Blocklist
   properties:
   - type: OpenAPI
