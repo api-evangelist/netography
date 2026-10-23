@@ -1217,3 +1217,9 @@ paths:
                     description: description of the error
                     type: string
                     readOnly: true
+x-provenance:
+  method: harvested
+  publisher: Netography
+  source: https://neto-downloads.s3.us-east-1.amazonaws.com/openapi/openapi.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
